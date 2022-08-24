@@ -40,13 +40,14 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
             // // apply metadata bound to message id in messaging service (this allows bot to send messages with metadata)
             const msg = await messagingService.messageInterceptor(rawMsg);
+            const userJid = normalizeJid(msg.senderJid ?? "");
+            if (!["972557223809"].some((e) => userJid?.startsWith(e))) return;
+
             logger.debug(
                 `Processing message (${messageNumber++}) - (${moment
                     .unix(msg.timestamp)
                     .format("DD/MM/YYYY - HH:mm")}) ${msg.from} -> ${msg.to}}`,
             );
-            const userJid = normalizeJid(msg.senderJid ?? "");
-            if (!["972557223809"].some((e) => userJid?.startsWith(e))) return;
 
             const chatJid = normalizeJid(msg.raw?.key.remoteJid ?? "");
             if (!userJid) return; // if JID failed to normalize return
@@ -54,6 +55,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
             const pushName = !msg.fromBot ? rawMsg.pushName ?? undefined : undefined; // if message is not from bot save with push name (WA name))
             let user = await fetchOrCreateUserFromJID(userJid, pushName);
+            console.log('user', user)
             if (!user) return; // if user failed to fetch return
 
             // if pushName exists and current user name does not match pushName, update user name
@@ -112,17 +114,19 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                 const commandAliases = data[0].split("\n");
                 const commandDescription = data[1];
                 let id = 0;
-                const aliasesButtons: proto.Message.ButtonsMessage.IButton[] = commandAliases.map((alias) => {
-                    return {
-                        buttonId: (id++).toString(),
-                        buttonText: {
-                            displayText: alias.replace(
-                                "{prefix}",
-                                chat?.prefix ?? config.default_command_prefix,
-                            ),
-                        },
-                    };
-                });
+                const aliasesButtons: proto.Message.ButtonsMessage.IButton[] = commandAliases.map(
+                    (alias) => {
+                        return {
+                            buttonId: (id++).toString(),
+                            buttonText: {
+                                displayText: alias.replace(
+                                    "{prefix}",
+                                    chat?.prefix ?? config.default_command_prefix,
+                                ),
+                            },
+                        };
+                    },
+                );
 
                 return await messagingService.replyAdvanced(
                     msg,
@@ -254,6 +258,8 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
     eventListener.on("groups.upsert", async (groups) => {
         for (const group of groups) {
+            console.log(group.id, group.subject)
+            if (group.id != '120363041344515310@g.us') return;
             const chat = await getFullChat(group.id);
             if (!chat) {
                 return;
@@ -291,6 +297,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
     eventListener.on("chats.upsert", async (chats: WAChat[]) => {
         for (const chatData of chats) {
             const chatJid = chatData.id;
+            if (chatJid != '120363041344515310@g.us' && chatJid != '972557223809@whatsapp.net') return;
             if (!chatJid) continue;
 
             const chatExists = doesChatExist(chatJid);
@@ -306,7 +313,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                         })) || undefined;
                 }
             } else {
-                chat = await getFullChat(chatJid) ?? undefined;
+                chat = (await getFullChat(chatJid)) ?? undefined;
             }
 
             if (!chat) {
@@ -339,6 +346,9 @@ function registerListeners() {}
 function registerCommands() {}
 
 async function sendDisclaimer(chat: FullChat) {
+    if (chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@whatsapp.net') return;
+    console.log('sending disclaimer');
+
     const joinMessage = `**Disclaimer**\
                 \nThis bot is handled and managed by a human\
                 \nAs such, I have the ability to see the messages in this chat.\
@@ -382,6 +392,7 @@ async function fetchOrCreateUserFromJID(jid: string, pushName?: string) {
         try {
             user = await createUser(jid, pushName ?? "");
         } catch (e) {
+            console.error(e)
             user = await getFullUser(jid);
         }
 

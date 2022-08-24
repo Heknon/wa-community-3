@@ -9,10 +9,10 @@ import Metadata from "./metadata";
 import { Placeholder } from "./types";
 
 export default class Message {
-    public raw: WAMessage | undefined;
     public _media: Buffer | undefined;
 
     constructor(
+        public raw: WAMessage | undefined,
         public content: string | undefined,
         public from: string,
         public to: string,
@@ -62,6 +62,7 @@ export default class Message {
         const mediaBlocked = metadata?.meta.get("media") == false;
 
         return new Message(
+            message,
             getMessageBody(message),
             from!,
             to!,

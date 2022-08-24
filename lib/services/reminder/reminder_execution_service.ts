@@ -22,14 +22,16 @@ export default class ReminderExecutionService {
             if (isExecuting) return;
             isExecuting = true;
             
+            const deletions: Promise<boolean>[] = [];
             const checkTime = new Date();
             for (const [id, reminder] of this.repository) {
                 if (reminder.time <= checkTime) {
                     await messagingService.sendMessage(reminder.sentTo, {text: `*⏰Reminder*\n\n${reminder.message}`});
-                    this.delete(reminder);
+                    deletions.push(this.delete(reminder));
                 }
             }
 
+            await Promise.all(deletions)
             isExecuting = false;
         }, 1000 * 5);
     }
@@ -39,9 +41,10 @@ export default class ReminderExecutionService {
         return true;
     }
 
-    delete(reminder: Reminder): boolean {
+    async delete(reminder: Reminder): Promise<boolean> {
         this.repository.delete(reminder.id);
-        return true;
+        const res = await prisma.reminder.delete({where: {id: reminder.id}}).catch(e => false);
+        return !!res;
     }
 
     private updateLocal(reminder: Reminder): void {

@@ -41,7 +41,7 @@ model Cooldown {
     user       User     @relation(fields: [userJid], references: [jid], onDelete: Cascade)
     cooldownOn String
     expiresAt  DateTime
-    userJid    String   @unique
+    userJid    String
 
     @@index([userJid])
 }
@@ -59,7 +59,7 @@ model Reputation {
 
 model Reminder {
     id      String   @id @default(cuid())
-    sentTo  String   @unique
+    sentTo  String
     message String
     time    DateTime
 
@@ -72,7 +72,7 @@ model InventoryItem {
 
     itemId   String
     quantity Int    @default(0)
-    userJid  String @unique
+    userJid  String
 
     @@index([userJid])
 }

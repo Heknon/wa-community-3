@@ -7,7 +7,6 @@ import {create as createRandom} from "random-seed";
 import {CommandTrigger, Command} from "../command";
 import {getNumberFromAccountType} from "../utils/utils";
 
-
 export const userCalculateNetBalance = async (
     user: Prisma.UserGetPayload<{
         include: {
@@ -71,18 +70,38 @@ export const getCooldownLeft = (
     return cooldownLeft;
 };
 
-export const addCooldownToUser = async (user: User, cooldownOn: string, cooldown: number) => {
+export const addCooldownToUser = async (
+    user: Prisma.UserGetPayload<{include: {cooldowns: true}}>,
+    cooldownOn: string,
+    cooldown: number,
+) => {
     const expiresAt = new Date(Date.now() + cooldown);
-    await prisma.cooldown.create({
-        data: {
-            cooldownOn,
-            expiresAt,
-            user: {connect: {jid: user.jid}},
-        },
-    });
+    const formattedCooldownOn = cooldownOn.toLowerCase().trim();
+    const cooldownOnUser = user.cooldowns.find(
+        (c) => c.cooldownOn.toLowerCase().trim() === formattedCooldownOn,
+    );
+    cooldownOnUser
+        ? await prisma.cooldown.update({
+              where: {
+                  id: cooldownOnUser.id,
+              },
+              data: {
+                  expiresAt,
+              },
+          })
+        : await prisma.cooldown.create({
+              data: {
+                  cooldownOn: formattedCooldownOn,
+                  expiresAt,
+                  user: {connect: {jid: user.jid}},
+              },
+          });
 };
 
-export const addCommandCooldown = async (user: User, command: Command) => {
+export const addCommandCooldown = async (
+    user: Prisma.UserGetPayload<{include: {cooldowns: true}}>,
+    command: Command,
+) => {
     let cooldown = command.cooldowns.get(user.accountType);
     if (!cooldown) {
         let accountLevel = getNumberFromAccountType(user.accountType);
@@ -94,14 +113,7 @@ export const addCommandCooldown = async (user: User, command: Command) => {
     }
 
     if (cooldown == 0 || cooldown === undefined) return;
-    const expiresAt = new Date(Date.now() + cooldown);
-    await prisma.cooldown.create({
-        data: {
-            cooldownOn: command.mainTrigger.command,
-            expiresAt,
-            user: {connect: {jid: user.jid}},
-        },
-    });
+    await addCooldownToUser(user, command.mainTrigger.command, cooldown);
 };
 
 export const getUserRandom = (user: User) => {

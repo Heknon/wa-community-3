@@ -32,6 +32,7 @@ export function normalizeJid(jid?: string): string | undefined {
     try {
         return jidNormalizedUser(jid);
     } catch (err) {
+        console.error(err)
         return undefined;
     }
 }

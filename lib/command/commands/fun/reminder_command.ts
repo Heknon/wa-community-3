@@ -151,6 +151,8 @@ export default class ReminderCommand extends InteractableCommand {
             return;
         }
 
+        reminderService.update(reminder);
+
         await message.reply(this.language.execution.success, true, {
             placeholder: {
                 chat: chat,

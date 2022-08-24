@@ -33,9 +33,6 @@ export const createUser = async (jid: string, name: string): Promise<FullUser> =
                 },
             },
             accountType: "USER",
-            cooldowns: {
-                connect: {userJid: jid},
-            },
             daily: {
                 connectOrCreate: {
                     where: {userJid: jid},
@@ -43,11 +40,6 @@ export const createUser = async (jid: string, name: string): Promise<FullUser> =
                         lastDaily: new Date(0),
                         streak: 0,
                     },
-                },
-            },
-            items: {
-                connect: {
-                    userJid: jid,
                 },
             },
             reputation: {
