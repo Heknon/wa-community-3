@@ -42,7 +42,7 @@ export default class DepositCommand extends EconomyCommand {
             return await message.reply(this.language.execution.no_balance, true);
         }
 
-        const bankCapacity = user.money.bank;
+        const bankCapacity = user.money.bankCapacity;
         const net = (await userCalculateNetBalance(user)) ?? 0;
 
         const allowedDeposit = bankCapacity - user.money.bank;

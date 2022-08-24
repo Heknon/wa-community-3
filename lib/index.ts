@@ -55,7 +55,6 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
             const pushName = !msg.fromBot ? rawMsg.pushName ?? undefined : undefined; // if message is not from bot save with push name (WA name))
             let user = await fetchOrCreateUserFromJID(userJid, pushName);
-            console.log('user', user)
             if (!user) return; // if user failed to fetch return
 
             // if pushName exists and current user name does not match pushName, update user name
@@ -234,15 +233,6 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                 );
             }
 
-            if (
-                msg.senderJid?.startsWith(config.idoBotJid) &&
-                msg.content?.includes(
-                    "כרגע הבוט סגור לקבוצות חדשות אך הוא ממשיך לעבוד בקבוצות שהוא נוסף אליהם בעבר.",
-                )
-            ) {
-                await messagingService.reply(msg, "🤡", true);
-            }
-
             // if (msg.raw && msg.raw.key && msg.raw.key.remoteJid && msg.raw.key.id)
             //     await whatsappBot.client!.sendReceipt(
             //         msg.raw?.key.remoteJid,
@@ -297,7 +287,8 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
     eventListener.on("chats.upsert", async (chats: WAChat[]) => {
         for (const chatData of chats) {
             const chatJid = chatData.id;
-            if (chatJid != '120363041344515310@g.us' && chatJid != '972557223809@whatsapp.net') return;
+            console.log(chatJid)
+            if (chatJid != '120363041344515310@g.us' && chatJid != '972557223809@s.whatsapp.net') return;
             if (!chatJid) continue;
 
             const chatExists = doesChatExist(chatJid);
@@ -346,7 +337,7 @@ function registerListeners() {}
 function registerCommands() {}
 
 async function sendDisclaimer(chat: FullChat) {
-    if (chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@whatsapp.net') return;
+    if (chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@s.whatsapp.net') return;
     console.log('sending disclaimer');
 
     const joinMessage = `**Disclaimer**\

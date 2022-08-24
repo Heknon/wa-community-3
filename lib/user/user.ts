@@ -66,7 +66,7 @@ export const getCooldownLeft = (
 ) => {
     const cooldown = user.cooldowns.find((c) => trigger.isTriggered(c.cooldownOn));
     const now = Date.now();
-    const cooldownLeft = Math.max(0, (cooldown?.expiresAt?.getTime() ?? now) - now);
+    const cooldownLeft = Math.max(0, (new Date(cooldown?.expiresAt ?? now)?.getTime() ?? now) - now);
     return cooldownLeft;
 };
 
@@ -80,6 +80,7 @@ export const addCooldownToUser = async (
     const cooldownOnUser = user.cooldowns.find(
         (c) => c.cooldownOn.toLowerCase().trim() === formattedCooldownOn,
     );
+    
     cooldownOnUser
         ? await prisma.cooldown.update({
               where: {
