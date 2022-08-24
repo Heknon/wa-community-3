@@ -20,6 +20,7 @@ import {createChat, doesChatExist, getFullChat} from "./chat/database_interactio
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
 export const whatsappBot: BotClient = new BotClient("./session", registerEventHandlers);
+export const SAFE_DEBUG_MODE = true;
 
 whatsappBot.start();
 
@@ -41,7 +42,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
             // // apply metadata bound to message id in messaging service (this allows bot to send messages with metadata)
             const msg = await messagingService.messageInterceptor(rawMsg);
             const userJid = normalizeJid(msg.senderJid ?? "");
-            if (!["972557223809"].some((e) => userJid?.startsWith(e))) return;
+            if (SAFE_DEBUG_MODE && !["972557223809"].some((e) => userJid?.startsWith(e))) return;
 
             logger.debug(
                 `Processing message (${messageNumber++}) - (${moment
@@ -248,8 +249,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
     eventListener.on("groups.upsert", async (groups) => {
         for (const group of groups) {
-            console.log(group.id, group.subject)
-            if (group.id != '120363041344515310@g.us') return;
+            if (SAFE_DEBUG_MODE && group.id != '120363041344515310@g.us') return;
             const chat = await getFullChat(group.id);
             if (!chat) {
                 return;
@@ -287,8 +287,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
     eventListener.on("chats.upsert", async (chats: WAChat[]) => {
         for (const chatData of chats) {
             const chatJid = chatData.id;
-            console.log(chatJid)
-            if (chatJid != '120363041344515310@g.us' && chatJid != '972557223809@s.whatsapp.net') return;
+            if (SAFE_DEBUG_MODE && chatJid != '120363041344515310@g.us' && chatJid != '972557223809@s.whatsapp.net') return;
             if (!chatJid) continue;
 
             const chatExists = doesChatExist(chatJid);
@@ -337,8 +336,7 @@ function registerListeners() {}
 function registerCommands() {}
 
 async function sendDisclaimer(chat: FullChat) {
-    if (chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@s.whatsapp.net') return;
-    console.log('sending disclaimer');
+    if (SAFE_DEBUG_MODE && chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@s.whatsapp.net') return;
 
     const joinMessage = `**Disclaimer**\
                 \nThis bot is handled and managed by a human\
@@ -383,7 +381,6 @@ async function fetchOrCreateUserFromJID(jid: string, pushName?: string) {
         try {
             user = await createUser(jid, pushName ?? "");
         } catch (e) {
-            console.error(e)
             user = await getFullUser(jid);
         }
 
