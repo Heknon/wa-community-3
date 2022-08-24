@@ -1,4 +1,6 @@
+import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {Reminder} from "@prisma/client";
+import {whatsappBot} from "../..";
 import {prisma} from "../../db/client";
 import {messagingService} from "../../messaging";
 
@@ -21,17 +23,38 @@ export default class ReminderExecutionService {
         setInterval(async () => {
             if (isExecuting) return;
             isExecuting = true;
-            
+
             const deletions: Promise<boolean>[] = [];
             const checkTime = new Date();
             for (const [id, reminder] of this.repository) {
                 if (reminder.time <= checkTime) {
-                    await messagingService.sendMessage(reminder.sentTo, {text: `*⏰Reminder*\n\n${reminder.message}`});
+                    if (
+                        isJidUser(reminder.sentTo) &&
+                        !(await whatsappBot.client?.onWhatsApp(reminder.sentTo))?.[0].exists
+                    ) {
+                        deletions.push(this.delete(reminder));
+                        continue;
+                    } else if (isJidGroup(reminder.sentTo)) {
+                        try {
+                            const res = await whatsappBot.client?.groupMetadata(reminder.sentTo);
+                            if (!res) {
+                                deletions.push(this.delete(reminder));
+                                return;
+                            }
+                        } catch (err) {
+                            deletions.push(this.delete(reminder));
+                            return;
+                        }
+                    }
+
+                    await messagingService.sendMessage(reminder.sentTo, {
+                        text: `*⏰Reminder*\n\n${reminder.message}`,
+                    });
                     deletions.push(this.delete(reminder));
                 }
             }
 
-            await Promise.all(deletions)
+            await Promise.all(deletions);
             isExecuting = false;
         }, 1000 * 5);
     }
@@ -43,7 +66,7 @@ export default class ReminderExecutionService {
 
     async delete(reminder: Reminder): Promise<boolean> {
         this.repository.delete(reminder.id);
-        const res = await prisma.reminder.delete({where: {id: reminder.id}}).catch(e => false);
+        const res = await prisma.reminder.delete({where: {id: reminder.id}}).catch((e) => false);
         return !!res;
     }
 

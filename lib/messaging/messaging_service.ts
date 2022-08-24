@@ -165,21 +165,6 @@ export default class MessagingService {
             if (caption != undefined && caption.length > 0)
                 (content as any).caption = await applyPlaceholders(caption, placeholder);
 
-            if (isJidUser(recipient) && !(await this.client?.onWhatsApp(recipient))?.[0].exists) {
-                return;
-            } else if (isJidGroup(recipient)) {
-                let groupMeta: GroupMetadata | undefined;
-                try {
-                    groupMeta = whatsappBot.store.groupMetadata[recipient];
-                    if (groupMeta === undefined) {
-                        groupMeta = await this.client!.groupMetadata(recipient);
-                        if (!groupMeta) return;
-                    }
-                } catch (e) {
-                    return;
-                }
-            }
-
             sentMessage = await this.client!.sendMessage(recipient, content, options);
 
             if (this.metadataEnabled && metadata) {
