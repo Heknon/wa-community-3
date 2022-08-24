@@ -5,6 +5,7 @@ import {botTrafficLogger, logger, storeLogger} from "./logger";
 import {AuthManager} from "./auth_manager";
 import {messagingService} from "./messaging";
 import {getClientID} from "./utils/client_utils";
+import { sleep, wait } from "./utils/async_utils";
 
 export class BotClient {
     public static currentClientId: string | undefined;
@@ -148,6 +149,7 @@ export class BotClient {
                 try {
                     counter++;
                     this.store.groupMetadata[chat.id] = await this.client!.groupMetadata(chat.id);
+                    await wait(50)
                 } catch (e) {
                     errorCounter++;
                 }
