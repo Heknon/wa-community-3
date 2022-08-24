@@ -278,7 +278,7 @@ export default class HelpCommand extends Command {
             .map((e) => e.command)
             .join(", ")}\n\n*${this.language.execution.cooldowns}:*\n${Array.from(
             command.cooldowns.entries(),
-        )
+        ).filter(([acc, time])=> !!languages.ranks[this.langCode][acc.toLowerCase()])
             .map(
                 (e) =>
                     `${languages.ranks[this.langCode][AccountType[e[0]].toLowerCase()]}: ${
