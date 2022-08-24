@@ -181,7 +181,6 @@ export default class MessagingService {
             }
 
             sentMessage = await this.client!.sendMessage(recipient, content, options);
-            console.log('sent message')
 
             if (this.metadataEnabled && metadata) {
                 this.metadataAssignment.set(sentMessage?.key.id!, metadata);
@@ -193,7 +192,6 @@ export default class MessagingService {
             logger.error(error);
             if ((error as any).stack) logger.error((error as any).stack);
             sentMessage = await this.client!.sendMessage(recipient, {text: "Failed to send this message."}, options);
-            console.log('sent message')
             return Message.fromWAMessage(sentMessage!, metadata);
         } finally {
             if (sentMessage && sentMessage.message) {

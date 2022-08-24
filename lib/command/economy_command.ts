@@ -23,10 +23,6 @@ export default abstract class EconomyCommand extends InteractableCommand {
         const leftOutOfBank = (balance.bank ?? 0) - bank;
         const wallet = balance.wallet ?? 0 + leftOutOfBank;
 
-        console.log("set to", {
-            wallet,
-            bank,
-        });
         const update = await prisma.money
             .upsert({
                 where: {
@@ -56,10 +52,6 @@ export default abstract class EconomyCommand extends InteractableCommand {
         }>,
         balance: Balance,
     ) {
-        console.log("setting balance", {
-            wallet: (user.money?.wallet ?? 0) + (balance.wallet ?? 0),
-            bank: (user.money?.bank ?? 0) + (balance.bank ?? 0),
-        });
         return this.setBalance(user, {
             wallet: (user.money?.wallet ?? 0) + (balance.wallet ?? 0),
             bank: (user.money?.bank ?? 0) + (balance.bank ?? 0),
