@@ -1,0 +1,149 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+    provider             = "postgresql"
+    // NOTE: When using postgresql, mysql or sqlserver, uncomment the @db.text annotations in model Account below
+    // Further reading: 
+    // https://next-auth.js.org/adapters/prisma#create-the-prisma-schema
+    // https://www.prisma.io/docs/reference/api-reference/prisma-schema-reference#string
+    url                  = env("DATABASE_URL")
+    referentialIntegrity = "prisma"
+}
+
+// USER MODELS
+
+model User {
+    jid                   String          @id
+    phone                 String          @unique
+    name                  String
+    accountType           AccountType     @default(USER)
+    accountTypeExpiration DateTime?
+    money                 Money?
+    cooldowns             Cooldown[]
+    reputation            Reputation?
+    items                 InventoryItem[]
+    daily                 DailyReward?
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+
+    @@index([phone])
+}
+
+model Cooldown {
+    id         Int      @id @default(autoincrement())
+    user       User     @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+    cooldownOn String
+    expiresAt  DateTime
+    userJid    String   @unique
+
+    @@index([userJid])
+}
+
+model Reputation {
+    id              Int        @id @default(autoincrement())
+    reputation      Int        @default(0)
+    reputationGiven DateTime[]
+
+    user    User   @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+    userJid String @unique
+
+    @@index([userJid])
+}
+
+model Reminder {
+    id      String   @id @default(cuid())
+    sentTo  String   @unique
+    message String
+    time    DateTime
+
+    @@index([sentTo])
+}
+
+model InventoryItem {
+    id   String @id @default(cuid())
+    user User   @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+
+    itemId   String
+    quantity Int    @default(0)
+    userJid  String @unique
+
+    @@index([userJid])
+}
+
+model Money {
+    id   Int  @id @default(autoincrement())
+    user User @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+
+    wallet       Int    @default(0)
+    bank         Int    @default(0)
+    bankCapacity Int    @default(10000)
+    userJid      String @unique
+
+    @@index([userJid])
+}
+
+model DailyReward {
+    id   Int  @id @default(autoincrement())
+    user User @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+
+    lastDaily DateTime @default("1970-01-01T00:00:00.00Z")
+    streak    Int      @default(0)
+    userJid   String   @unique
+
+    @@index([userJid])
+}
+
+enum AccountType {
+    ADMIN
+    DEVELOPER
+    MODERATOR
+    SPONSOR
+    DONOR
+    USER
+}
+
+// CHAT MODELS
+
+model Chat {
+    jid String @id
+
+    type           ChatType
+    prefix         String
+    sentDisclaimer Boolean       @default(false)
+    language       Language      @default(hebrew)
+    responses      BotResponse[]
+
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
+}
+
+model BotResponse {
+    id      Int    @id @default(autoincrement())
+    chat    Chat   @relation(fields: [chatJid], references: [jid], onDelete: Cascade)
+    chatJid String @unique
+
+    filter     String
+    responses  String[]
+    includes   Boolean  @default(true)
+    equals     Boolean  @default(false)
+    startsWith Boolean  @default(false)
+
+    @@index([chatJid])
+}
+
+enum ChatType {
+    GROUP
+    DM
+}
+
+enum Language {
+    english
+    hebrew
+}

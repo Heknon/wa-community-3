@@ -1,0 +1,1250 @@
+[
+    {
+        "route": "abandon",
+        "name": {
+            "english": "abandon",
+            "hebrew": "נטישה"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "aborted",
+        "name": {
+            "english": "aborted",
+            "hebrew": "הפלה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "affect",
+        "name": {
+            "english": "affect",
+            "hebrew": "השפעות"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "airpods",
+        "name": {
+            "english": "airpods",
+            "hebrew": "איירפודס"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "america",
+        "name": {
+            "english": "america",
+            "hebrew": "אמריקה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "armor",
+        "name": {
+            "english": "armor",
+            "hebrew": "שריון"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "balloon",
+        "name": {
+            "english": "balloon",
+            "hebrew": "בלון"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "bed",
+        "name": {
+            "english": "bed",
+            "hebrew": "מיטה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 2,
+            "text": false
+        }
+    },
+    {
+        "route": "bongocat",
+        "name": {
+            "english": "bongocat",
+            "hebrew": "חתול בונגו"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "boo",
+        "name": {
+            "english": "boo",
+            "hebrew": "בו!"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "brain",
+        "name": {
+            "english": "brain",
+            "hebrew": "מוח"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "brazzers",
+        "name": {
+            "english": "brazzers",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "byemom",
+        "name": {
+            "english": "byemom",
+            "hebrew": "בייאמא"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "cancer",
+        "name": {
+            "english": "cancer",
+            "hebrew": "מחלת סרטן"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "changemymind",
+        "name": {
+            "english": "changemymind",
+            "hebrew": "תשנה את דעתי"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "cheating",
+        "name": {
+            "english": "cheating",
+            "hebrew": "להעתיק"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "citation",
+        "name": {
+            "english": "citation",
+            "hebrew": "דוח"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "communism",
+        "name": {
+            "english": "communism",
+            "hebrew": "קומוניזם"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "confusedcat",
+        "name": {
+            "english": "confusedcat",
+            "hebrew": "חתול מבולבל"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "corporate",
+        "name": {
+            "english": "corporate",
+            "hebrew": "תאגיד"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "crab",
+        "name": {
+            "english": "crab",
+            "hebrew": "סרטן"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "cry",
+        "name": {
+            "english": "cry",
+            "hebrew": "תבכה"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "dab",
+        "name": {
+            "english": "dab",
+            "hebrew": "דאב"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "dank",
+        "name": {
+            "english": "dank",
+            "hebrew": "דאנק"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "deepfry",
+        "name": {
+            "english": "deepfry",
+            "hebrew": "טיגון עמוק"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "delete",
+        "name": {
+            "english": "trashcan",
+            "hebrew": "פח אשפה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "disability",
+        "name": {
+            "english": "disability",
+            "hebrew": "נכה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "doglemon",
+        "name": {
+            "english": "doglemon",
+            "hebrew": "כלב כועס"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "door",
+        "name": {
+            "english": "door",
+            "hebrew": "דלת"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "egg",
+        "name": {
+            "english": "egg",
+            "hebrew": "ביצה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "emergencymeeting",
+        "name": {
+            "english": "emergencymeeting",
+            "hebrew": "פגישת חירום"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "excuseme",
+        "name": {
+            "english": "excuseme",
+            "hebrew": "סליחה"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "expanddong",
+        "name": {
+            "english": "expanddong",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "expandingwwe",
+        "name": {
+            "english": "expandingwwe",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "facts",
+        "name": {
+            "english": "facts",
+            "hebrew": "עובדות"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "failure",
+        "name": {
+            "english": "failure",
+            "hebrew": "כישלון"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "fakenews",
+        "name": {
+            "english": "fakenews",
+            "hebrew": "חדשות מזויפות"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "farmer",
+        "name": {
+            "english": "farmer",
+            "hebrew": "חקלאי"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "fedora",
+        "name": {
+            "english": "fedora",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "floor",
+        "name": {
+            "english": "floor",
+            "hebrew": "רצפה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "fuck",
+        "name": {
+            "english": "fuck",
+            "hebrew": "פאק"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "garfield",
+        "name": {
+            "english": "garfield",
+            "hebrew": "גרפילד"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "gay",
+        "name": {
+            "english": "gay",
+            "hebrew": "גיי"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "godwhy",
+        "name": {
+            "english": "godwhy",
+            "hebrew": "אלוהים למה"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "goggles",
+        "name": {
+            "english": "goggles",
+            "hebrew": "משקפת"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "hitler",
+        "name": {
+            "english": "hitler",
+            "hebrew": "היטלר"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "humansgood",
+        "name": {
+            "english": "humansgood",
+            "hebrew": "אדם טוב"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "inator",
+        "name": {
+            "english": "inator",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "invert",
+        "name": {
+            "english": "invert",
+            "hebrew": "היפוך"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "ipad",
+        "name": {
+            "english": "ipad",
+            "hebrew": "אייפד"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "jail",
+        "name": {
+            "english": "jail",
+            "hebrew": "כלא"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "justpretending",
+        "name": {
+            "english": "justpretending",
+            "hebrew": "בכאילו"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "keepurdistance",
+        "name": {
+            "english": "keepurdistance",
+            "hebrew": "תשמור מרחק"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "kimborder",
+        "name": {
+            "english": "kimborder",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "knowyourlocation",
+        "name": {
+            "english": "knowyourlocation",
+            "hebrew": "מיקומך"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "kowalski",
+        "name": {
+            "english": "kowalski",
+            "hebrew": "קוואלסקי"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "laid",
+        "name": {
+            "english": "laid",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "letmein",
+        "name": {
+            "english": "letmein",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "lick",
+        "name": {
+            "english": "lick",
+            "hebrew": "ללקק"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "madethis",
+        "name": {
+            "english": "madethis",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 2,
+            "text": false
+        }
+    },
+    {
+        "route": "magik",
+        "name": {
+            "english": "magik",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "master",
+        "name": {
+            "english": "master",
+            "hebrew": "מאסטר"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "note",
+        "name": {
+            "english": "passnote",
+            "hebrew": "העבר פתק"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "chad",
+        "name": {
+            "english": "chad",
+            "hebrew": "צאד"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "bugatti",
+        "name": {
+            "english": "andrewtate",
+            "hebrew": "בוגטי"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "nothing",
+        "name": {
+            "english": "nothing",
+            "hebrew": "כלום"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "obama",
+        "name": {
+            "english": "obama",
+            "hebrew": "אובמה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "ohno",
+        "name": {
+            "english": "ohno",
+            "hebrew": "אוילא"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "piccolo",
+        "name": {
+            "english": "piccolo",
+            "hebrew": "פיקולו"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "plan",
+        "name": {
+            "english": "plan",
+            "hebrew": "תוכנית"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "presentation",
+        "name": {
+            "english": "presentation",
+            "hebrew": "מצגת"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "quote",
+        "name": {
+            "english": "quote",
+            "hebrew": "ציטוט"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "radialblur",
+        "name": {
+            "english": "radialblur",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "rip",
+        "name": {
+            "english": "rip",
+            "hebrew": "זל"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "roblox",
+        "name": {
+            "english": "roblox",
+            "hebrew": "רובלוקס"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "salty",
+        "name": {
+            "english": "salty",
+            "hebrew": "ממורמר"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "satan",
+        "name": {
+            "english": "satan",
+            "hebrew": "שטן"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "savehumanity",
+        "name": {
+            "english": "savehumanity",
+            "hebrew": "תציל אנושות"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "screams",
+        "name": {
+            "english": "screams",
+            "hebrew": "צרחות"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 2,
+            "text": false
+        }
+    },
+    {
+        "route": "shit",
+        "name": {
+            "english": "shit",
+            "hebrew": "חרא"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "sickban",
+        "name": {
+            "english": "sickban",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "spank",
+        "name": {
+            "english": "spank",
+            "hebrew": "סטירה לתחת"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 2,
+            "text": false
+        }
+    },
+    {
+        "route": "slap",
+        "name": {
+            "english": "slap",
+            "hebrew": "סטירה"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 2,
+            "text": false
+        }
+    },
+    {
+        "route": "slapsroof",
+        "name": {
+            "english": "slapsroof",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "sneakyfox",
+        "name": {
+            "english": "sneakyfox",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "stroke",
+        "name": {
+            "english": "stroke",
+            "hebrew": "שבץ"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "surprised",
+        "name": {
+            "english": "surprised",
+            "hebrew": "מופתע"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "sword",
+        "name": {
+            "english": "sword",
+            "hebrew": "חרב"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "theoffice",
+        "name": {
+            "english": "theoffice",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "thesearch",
+        "name": {
+            "english": "thesearch",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "trash",
+        "name": {
+            "english": "trash",
+            "hebrew": "זבל"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "trigger",
+        "name": {
+            "english": "trigger",
+            "hebrew": "מעוצבן"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "tweet",
+        "name": {
+            "english": "tweet",
+            "hebrew": "טוויטר"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "ugly",
+        "name": {
+            "english": "ugly",
+            "hebrew": "מכוער"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "unpopular",
+        "name": {
+            "english": "unpopular",
+            "hebrew": "לא פופולרי"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "violence",
+        "name": {
+            "english": "violence",
+            "hebrew": "אלים"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "violentsparks",
+        "name": {
+            "english": "violentsparks",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "vr",
+        "name": {
+            "english": "vr",
+            "hebrew": ""
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "walking",
+        "name": {
+            "english": "walking",
+            "hebrew": "הליכה"
+        },
+        "type": "get",
+        "required": {
+            "mentions": 0,
+            "text": true
+        }
+    },
+    {
+        "route": "wanted",
+        "name": {
+            "english": "wanted",
+            "hebrew": "מבוקש"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "warp",
+        "name": {
+            "english": "warp",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "whodidthis",
+        "name": {
+            "english": "whodidthis",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
+        "route": "whothisis",
+        "name": {
+            "english": "whothisis",
+            "hebrew": ""
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    },
+    {
+        "route": "youtube",
+        "name": {
+            "english": "youtube",
+            "hebrew": "יוטיוב"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": true
+        }
+    }
+]

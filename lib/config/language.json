@@ -1,0 +1,1881 @@
+{
+    "languages": [
+        "english",
+        "hebrew"
+    ],
+    "language_changed": {
+        "english": "Language changed",
+        "hebrew": "שפה שונתה."
+    },
+    "commands": {
+        "code": {
+            "triggers": [
+                "code",
+                "קוד"
+            ],
+            "english": {
+                "triggers": [
+                    "code"
+                ],
+                "category": "Info",
+                "description": "Get the code of the bot"
+            },
+            "hebrew": {
+                "triggers": [
+                    "קוד"
+                ],
+                "category": "מידע",
+                "description": "הקוד של הבוט"
+            }
+        },
+        "feature": {
+            "triggers": [
+                "feature",
+                "developer",
+                "רעיון",
+                "מפתח",
+                "report",
+                "bug",
+                "דיווח",
+                "באג"
+            ],
+            "english": {
+                "triggers": [
+                    "feature",
+                    "developer",
+                    "bug"
+                ],
+                "category": "Info",
+                "description": "Suggest a feature",
+                "extended_description": "Contact the creator of the bot to report bugs or suggest features.",
+                "usage": "{prefix}{command} <message>",
+                "execution": {
+                    "creator_message_receive": "You received a message from:",
+                    "no_body": "You need to specify what you want to send to the developer.\nE.g: {prefix}{command} Why should I use this bot?",
+                    "vcard_default_name": "Bot User",
+                    "success_message": "Forwarded your message to the creator of the bot!"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "רעיון",
+                    "באג"
+                ],
+                "category": "מידע",
+                "description": "הצעת רעיון או פקודה בשביל הבוט ליוצר הבוט",
+                "extended_description": "צור קשר עם היוצר של הבוט כדי לדווח על באגים או להציע רעיונות.",
+                "usage": "{prefix}{command} <הודעה>",
+                "execution": {
+                    "creator_message_receive": "You received a message from:",
+                    "vcard_default_name": "Bot User",
+                    "no_body": "אתה צריך שיהיה גוף הודעה בפקודה על מנת לשלוח אותה ליוצר הבוט.\nלדוגמה: {prefix}{command} למה שאשתמש בבוט הזה?",
+                    "success_message": "הודעתך הועברה ליוצר הבוט!"
+                }
+            }
+        },
+        "gpt": {
+            "triggers": [
+                "gpt",
+                "בינה"
+            ],
+            "english": {
+                "triggers": [
+                    "gpt"
+                ],
+                "category": "Study",
+                "description": "Ask an AI a question (This may soon turn into a premium feature)",
+                "usage": "{prefix}{command} <question>",
+                "execution": {
+                    "thinking_texts": [
+                        "Hmmmm, let me think about this one...",
+                        "Huh.... Interesting...",
+                        "I mean... I'll give it my best try.",
+                        "No clue. Well I mean... Hmmmmm...."
+                    ],
+                    "no_question": "You must ask something.\nFor example: {prefix}{command} What is the meaning of life?",
+                    "only_english": "You must ask something in english!",
+                    "too_long": "My brain isn't big enough for this question.\nPlease ask something shorter."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "בינה",
+                    "gpt"
+                ],
+                "category": "למידה",
+                "description": "תשאל בינה מלאכותית שאלה (פקודה זו בקרוב תהפוך לפקודת מנויים)",
+                "usage": "{prefix}{command} <שאלה>",
+                "execution": {
+                    "thinking_texts": [
+                        "הממממממ.... תן לי לחשוב על זה...",
+                        "הא... מעניין...",
+                        "וואי אין לי מושג, תן לי דקה לחשוב על זה...",
+                        "אין לי שמץ.. אהה אווו רגע אחד"
+                    ],
+                    "no_question": "אתה חייב לשאול שאלה.\nלדוגמא: {prefix}{command} מה המשמעות של חיים?",
+                    "only_english": "בגלל מגבלות, השאלה חייבת להיות באנגלית.\nסליחה!",
+                    "too_long": "המוח שלי לא גדול מספיק לשאלה הזאת.\nתשאל שאלה קצרה יותר."
+                }
+            }
+        },
+        "help": {
+            "triggers": [
+                "help",
+                "עזרה"
+            ],
+            "english": {
+                "triggers": [
+                    "help"
+                ],
+                "category": "Info",
+                "description": "This message. You can also do ({prefix}help <command name> | e.g {prefix}help music)",
+                "usage": "{prefix}{command} <command>",
+                "execution": {
+                    "prefix": "*----- HELP ME I'M RETARDED ----*",
+                    "category_help": "*Category - {category}*",
+                    "categories_help": "*Categories - {category}*",
+                    "suffix": "Hope I helped ✌\n~bot",
+                    "footer": "Donators receive special perks!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nWant me to make you a bot? https://www.fiverr.com/share/Y0Zb9a",
+                    "button": "Click me for help!",
+                    "dms": "Check your DMs!",
+                    "misc": "Misc",
+                    "description": "Description",
+                    "aliases": "Aliases",
+                    "cooldowns": "Cooldowns"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "עזרה"
+                ],
+                "category": "מידע",
+                "description": "ההודעה הזו. ניתן גם לעשות ({prefix}עזרה <שפ פקודה> | לדוגמה {prefix}עזרה מוזיקה)",
+                "usage": "{prefix}{command} <פקודה>",
+                "execution": {
+                    "prefix": "*----- עזרה אני מפגר!!! -----*",
+                    "category_help": "*קטגוריה - {category}*",
+                    "categories_help": "*קטגוריות - {category}*",
+                    "suffix": "מקווה שעזרתי ✌",
+                    "footer": "תורמים מקבלים פריבילגיות מיוחדות!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nרוצים שאצור לכם בוט? https://www.fiverr.com/share/Y0Zb9a",
+                    "button": "תלחץ עליי לעזרה!",
+                    "dms": "תסתכל על השיחות הפרטיות שלך!",
+                    "misc": "אחר",
+                    "description": "תיאור",
+                    "aliases": "כינויים",
+                    "cooldowns": "פרקי מנוחה"
+                }
+            }
+        },
+        "donate": {
+            "triggers": [
+                "donate",
+                "תרומה"
+            ],
+            "english": {
+                "triggers": [
+                    "donate"
+                ],
+                "category": "Info",
+                "description": "Information about donating to the bot. What do you get? How to donate?",
+                "execution": {
+                    "text": "Thank you very much for considering donating!\n\n_How to donate?_\nYou can donate through PayBox, PayPal and Patreon\n1. https://payboxapp.page.link/VNQQ1AAknBKoneF79\n2. https://www.patreon.com/wailcommunitybot\n3. https://www.paypal.com/paypalme/whatsappbotisrael\n\nWhen donating, please leave a note stating your phone number so that I can contact you and give you certain \"privileges\"\n\n_Questions_\nFor questions use the command {prefix}developer\n\n_What do you get? (Only for donations above 1 USD or 3 NIS)_\n1. Smaller cooldown between commands\n2. Anonymous command which you can use to send anonymous messages through the bot to any user of the bot.\n3. Ask an AI a question (GPT3)\n4. Allow the bot to keep running for the whole community!\n6. Those who donate above 5USD will get to give access to a group of their choice to Premium features.\n*(The privileges of your donation stay for a month from the moment they are applied unless you donate more than the minimum, which may give you more time)*\n\n_Why donate?_\nYou donations keep the bot running.\nAt this moment, the bot is not at a good financial point.\nYour donations will help cover:\n1. The server the bot is running on.\n2. Upgrading the hardware the bot is running on in order to deal with growing needs of the bot.\n3. The phone number of the bot\n4. I put in over 200 hours of my time working on this bot making it the best I can."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תרומה"
+                ],
+                "category": "מידע",
+                "description": "מידע לגבי התרמות לבוט. מה מקבלים? איך מתרימים?",
+                "execution": {
+                    "text": "תודה רבה על השיקול לתרום לבוט.\n\nאני רק רוצה לומר שכרגע הבוט עוזר לסביבות ה1500 אנשים ביום ומעבד בסביבות ה40 פקודות בדקה. אם רק 10% מהאנשים הללו היו תורמים שקל בחודש אני אוכל לתקצב לרגע זה *לגמרי* את העלויות של הבוט.\n\n_איך תורמים?_\nניתן לתרום דרך פייבוקס, פייפל (PayPal) וPatreon.\n1. https://payboxapp.page.link/VNQQ1AAknBKoneF79\n2. https://www.patreon.com/wailcommunitybot\n3. https://www.paypal.com/paypalme/whatsappbotisrael\n\nכאשר אתם תורמים, אנא השאירו בחלק של הפתק את מספר הטלפון שלכם על מנת שאוכל ליצור אתכם קשר ולתת לכם \"פריבילגיות\"\n\n_שאלות_\nלשאלות שלחו הודעה ליוצר בעזרת הפקודה \"{prefix}מפתח\"\n\n_מה מקבלים?_ (*רק* תורמים של 3 שקל ומעלה!)\n1. לחכות בין שליחת פקודות *פחות*\n2. פקודת \"אנונימי\" שאיתה אפשר לשלוח דרך הבוט הודעות אנונימיות למספרי טלפון (אפשר לשלוח רק למשתמשים של הבוט)\n3. פקודת \"בינה\" שנותנת לבינה מלאכותית לכתוב טקסט על פי שאלה שאתם נותנים לה.\n4. משאירים את הבוט רץ!\n6. אלו שתורמים חמש דולר ומעלה (17 שקל) יקבלו את האפשרות להוסיף את הפריבילגיות האלו לקבוצה אחת לבחירתם.\n*(הפריבילגיות של התרומות שלכם נשארות לחודש מהרגע שהם התווספו אלה אם התרמת יותר מהמינימום, דבר שיכול לתת לך יותר זמן)*\n\n_למה לתרום?_\nהתרומות שלכם משאירים את הבוט רץ.\nכרגע, הבוט במצב לא טוב כספית והמצב הזה לצערי רק מחמיר.\nהתרומות שלכם יכסו את:\n1. השרת שאליו הבוט רץ\n2. שדרוג החומרה שעליו רץ הבוט על מנת להתמודד עם ביקוש עולה\n3. מספר הטלפון (על מנת שלא ישתנה)\n4. הזמן שלי - השקעתי מעל 200 שעות בפיתוח הבוט על מנת שיהיה מעולה לכל קבוצה או אדם."
+                }
+            }
+        },
+        "ping": {
+            "triggers": [
+                "ping",
+                "bot",
+                "פינג",
+                "בוט"
+            ],
+            "english": {
+                "triggers": [
+                    "ping",
+                    "bot"
+                ],
+                "category": "Info",
+                "description": "Ping! Pong! Get the response time of the bot!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "success_message": "Pong! {time}ms"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "פינג",
+                    "בוט"
+                ],
+                "category": "מידע",
+                "description": "פינג! פונג! קבל את זמן התגובה של הבוט!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "success_message": "פונג! {time}ms"
+                }
+            }
+        },
+        "speech_to_text": {
+            "triggers": [
+                "speech_to_text",
+                "stt",
+                "תמלול"
+            ],
+            "english": {
+                "triggers": [
+                    "speechtotext",
+                    "stt"
+                ],
+                "category": "Info",
+                "description": "Speech to text",
+                "extended_description": "Reply to a voice message and get the text!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_reply": "Please reply to a message you want to speech to text",
+                    "error": "An error has occurred. If this error persists, please contact the developer.",
+                    "no_audio": "Please reply to an audio message",
+                    "no_audio_in_storage": "Please reply to an audio message\nMaybe try sending the audio again.",
+                    "success_message": "*SPEECH TO TEXT:*\n{text}",
+                    "started": "Processing...",
+                    "too_big": "This audio file is too big. Please try sending a smaller than 10MB."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תמלול",
+                    "stt"
+                ],
+                "category": "מידע",
+                "description": "תמלול הודעה קולית לטקסט",
+                "extended_description": "הגב להודעה וקבל את הטקסט!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_reply": "הגב להודעה קולית שאתה רוצה לתמלל",
+                    "no_audio": "הגב להודעה קולית כדי לתמלל אותה",
+                    "error": "שגיאה! אם השגיאה הזו ממשיכה בבקשה תיצור קשר עם  המפתח של הבוט.",
+                    "no_audio_in_storage": "הגב להודעה קולית כדי לתמלל אותה\nאולי תנסה לשלוח את ההודעה הקולית שוב.",
+                    "success_message": "*תמלול:*\n{text}",
+                    "started": "מעבד...",
+                    "too_big": "קובץ השמע הזה גדול מדי... תנסה לשלוח משהו שקטן מ10 מגהבייט."
+                }
+            }
+        },
+        "vcard": {
+            "triggers": [
+                "contact",
+                "vcard",
+                "איש קשר"
+            ],
+            "english": {
+                "triggers": [
+                    "contact",
+                    "vcard"
+                ],
+                "category": "Info",
+                "description": "Get the VCard (Contact card) of a number",
+                "usage": "{prefix}{command} <phone>",
+                "execution": {
+                    "no_number": "Please provide a phone number\nExample: {prefix}{command} 050-000-0000"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "איש קשר",
+                    "vcard"
+                ],
+                "category": "מידע",
+                "description": "קבל את הכרטיס איש קשר של מספר טלפון",
+                "usage": "{prefix}{command} <מספר>",
+                "execution": {
+                    "no_number": "הזן מספר טלפון\nלדוגמה: {prefix}{command} 050-000-0000"
+                }
+            }
+        },
+        "add": {
+            "triggers": [
+                "add",
+                "הוסף"
+            ],
+            "english": {
+                "triggers": [
+                    "add"
+                ],
+                "category": "Group Admin",
+                "description": "Add a user to the group using a phone number or contact card. {prefix}{command} 05XXXXXXXX",
+                "usage": "{prefix}{command} <number>",
+                "execution": {
+                    "bot_no_admin": "Give the bot admin access in order to use this command.",
+                    "failed_add": "Failed 😢\nFailed to add: {text}",
+                    "success": "Success 🎊",
+                    "no_body": "You must either provide a body with phone numbers or contact cards",
+                    "blocked_chat": "You can only use this command in a group chat."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "הוסף"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "הוסף משתמש לקבוצה באמצעות מספר טלפון או כרטיס איש קשר. {prefix}{command} 05XXXXXXXX",
+                "usage": "{prefix}{command} <מספר>",
+                "execution": {
+                    "bot_no_admin": "על מנת להשתמש בפקודה זו, עליך לתת לבוט אדמין בקבוצה",
+                    "failed_add": "נכשל 😢\nנכשל להוסיף: {text}",
+                    "success": "הצלחה 🎊",
+                    "no_body": "אתה חייב לספק בגוף ההודעה מספרי טלפון או כרטיסי איש קשר",
+                    "blocked_chat": "אפשר להשתמש בפקודה זו רק בקבוצות."
+                }
+            }
+        },
+        "delete": {
+            "triggers": [
+                "delete",
+                "מחק"
+            ],
+            "english": {
+                "triggers": [
+                    "delete"
+                ],
+                "category": "Group Admin",
+                "description": "Delete a message sent by the bot by replying to it",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_reply": "Please reply to a message you want to delete",
+                    "not_from_bot": "That message isn't from me 🧐🤦‍♂️",
+                    "failed": "An error occurred. Try again.\n\nIf this error persists, please contact the developer using {prefix}creator!",
+                    "only_admin": "You must be a group admin to use this command."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "מחק"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "מחק הודעה של הבוט בעזרת תגובה אלייה",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_reply": "הגב להודעה שאתה רוצה למחוק",
+                    "not_from_bot": "ההודעה הזאת לא ממני 🧐🤦‍♂️",
+                    "failed": "אירעה שגיאה. נסה שוב.\n\nאם השגיאה חוזרת, אנא צור קשר עם המפתח על ידי {prefix}מפתח!",
+                    "only_admin": "אתה חייב להיות מנהל קבוצה כדי להשתמש בפקודה זו."
+                }
+            }
+        },
+        "everyone": {
+            "triggers": [
+                "everyone",
+                "כולם"
+            ],
+            "tip": {
+                "english": "Do you want to tag everyone in this chat?\nTry {prefix}everyone",
+                "hebrew": "אתה רוצה לתייג את כולם בקבוצה?\nתנסה {prefix}כולם"
+            },
+            "english": {
+                "triggers": [
+                    "everyone"
+                ],
+                "category": "Group Admin",
+                "description": "Tag everyone in the group",
+                "extended_description": "Reply to a message to tag everyone to the message",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "only_admin": "You must be a group admin to use this command.",
+                    "only_group": "You can only use this command in a group chat.",
+                    "success": "{group}\nEveryone!\n{tags}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "כולם"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "מתייג את כולם בקבוצה",
+                "extended_description": "תגיב להודעה שאתה רוצה לשייך את התיוג אלייה",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "only_admin": "אתה חייב להיות מנהל קבוצה כדי להשתמש בפקודה זו.",
+                    "only_group": "אתה יכול להשתמש בפקודה זו רק בצ'אט קבוצתי.",
+                    "success": "כולם!\n{group}\n{tags}"
+                }
+            }
+        },
+        "gtfo": {
+            "triggers": [
+                "gtfo",
+                "צא"
+            ],
+            "english": {
+                "triggers": [
+                    "gtfo"
+                ],
+                "category": "Group Admin",
+                "description": "Kick me out of the group 😢",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "only_admin": "You must be a group admin to use this command.",
+                    "only_group": "You can only use this command in a group chat.",
+                    "success": "Leaving the group chat...\nPeace out ✌️"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "צא"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "להעיף אותי מהקבוצה 😢",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "only_admin": "אתה חייב להיות מנהל קבוצה כדי להשתמש בפקודה זו.",
+                    "only_group": "אתה יכול להשתמש בפקודה זו רק בצ'אט קבוצתי.",
+                    "success": "עכשיו עוזב...\nביי ✌️"
+                }
+            }
+        },
+        "kick": {
+            "triggers": [
+                "kick",
+                "תעיף",
+                "תוציא"
+            ],
+            "english": {
+                "triggers": [
+                    "kick"
+                ],
+                "category": "Group Admin",
+                "description": "Kick a user from the group",
+                "extended_description": "Tag the user you want to kick",
+                "usage": "{prefix}{command} <tag>",
+                "execution": {
+                    "not_admin": "You must be a group admin to use this command.",
+                    "not_group": "You can only use this command in a group chat.",
+                    "no_tag": "Please tag the users you want to kick",
+                    "self_kick": "I can't kick myself 😕\nTry using {prefix}gtfo",
+                    "kick_admin": [
+                        "It also seems like you tried to kick an admin when you are an admin 🤦‍♂️",
+                        "You cannot kick an admin if you are an admin"
+                    ],
+                    "bot_no_admin": "I am not a group admin. I can't kick anyone.",
+                    "failed": "Failed 😢\nFailed to kick: {list}",
+                    "success": "Success 🎉🥳🥳"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תוציא",
+                    "תעיף"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "מעיף משתמש מהקבוצה",
+                "extended_description": "תייג את המשתמש שאתה רוצה לעיף",
+                "usage": "{prefix}{command} <תיוג>",
+                "execution": {
+                    "not_admin": "אתה חייב להיות מנהל קבוצה כדי להשתמש בפקודה זו.",
+                    "bot_no_admin": "על מנת להשתמש בפקודה זו, עליך לתת לבוט אדמין בקבוצה",
+                    "not_group": "אתה יכול להשתמש בפקודה זו רק בצ'אט קבוצתי.",
+                    "no_tag": "אנא תייג את המשתמש שאתה רוצה לעיף",
+                    "self_kick": "אני לא יכול להעיף את עצמי 😕\nתנסה {prefix}צא",
+                    "kick_admin": [
+                        "נראה שאתה מנסה להעיף אדמין כאדמין 🤦‍♂️",
+                        "אתה לא יכול להעיף אדמין אם אתה אדמין"
+                    ],
+                    "failed": "נכשל 😢\nנכשל לעיף: {list}",
+                    "success": "הצלחה 🎉🥳🥳"
+                }
+            }
+        },
+        "join": {
+            "triggers": [
+                "join",
+                "הצטרף",
+                "כנס"
+            ],
+            "english": {
+                "triggers": [
+                    "join"
+                ],
+                "category": "Groups",
+                "description": "Want me in another group? Use this command! (You can send me DMs too)",
+                "extended_description": "I'll join the group you send me",
+                "usage": "{prefix}{command} <link>",
+                "execution": {
+                    "no_invite": "You must quote or send along with the command a invite link to the group you want me to join",
+                    "joined": "Joined the group {group}!",
+                    "joining": "Joining the group...",
+                    "failed": "Failed to join group.\nI might've been kicked from it.\nYou'll need to manually add me."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "הצטרף",
+                    "כנס"
+                ],
+                "category": "קבוצות",
+                "description": "רוצה אותי בעוד קבוצה? השתמש בפקודה זו! (אתה יכול גם לשלוח לי הודעות פרטיות)",
+                "extended_description": "אצטרף לקבוצה בעזרת קישור הזמנה",
+                "usage": "{prefix}{command} <קישור>",
+                "execution": {
+                    "no_invite": "אתה חייב להגיב או לשלוח כחלק מהפקודה קישור הזמנה לקבוצה אליה אתה רוצה שאצטרף",
+                    "joined": "הצטרפתי ל {group}!",
+                    "joining": "עכשיו מצטרף...",
+                    "failed": "לא הצלחתי להצטרף לקבוצה.\nאולי העיפו אותי ממנה בעבר.\nאתה יכול להוסיף אותי באופן ידני."
+                }
+            }
+        },
+        "community": {
+            "triggers": [
+                "community",
+                "קהילה"
+            ],
+            "english": {
+                "triggers": [
+                    "community"
+                ],
+                "category": "Groups",
+                "description": "Get the link to the bot's community group",
+                "extended_description": "If you want to stay up to date, know when and why the bot is offline or acting slow, join the group!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "join_message": "Join using this link!\n{link}\n\nReply to this message with \"join\" and I'll add you to the group!",
+                    "failed_add": "Huh... Seems like I couldn't add you to the group.\nMaybe you just left it? 😟 Or maybe you're already in it 🧐",
+                    "added": "Awesome! I added you to the group."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "קהילה"
+                ],
+                "category": "קבוצות",
+                "description": "קישור לקבוצה של הבוט. אם אתם רוצים להישאר מעודכנים על מה שבתהליך עבודה, למה הבוט לא עובד ועוד דברים, תצטרפו!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "join_message": "תצטרפו!\n{link}\n\nתגיבו להודעה הזו עם \"כנס\" ואני אצרף אותכם!",
+                    "failed_add": "הא... נראה שאני לא מצליח לצרף אותך לקבוצה. אולי יצאת? 😟 או שאולי אתה כבר בתוכה 🧐",
+                    "added": "מגניב! צירפתי אותך לקבוצה!"
+                }
+            }
+        },
+        "anonymous": {
+            "triggers": [
+                "anonymous",
+                "אנונימי"
+            ],
+            "english": {
+                "triggers": [
+                    "anonymous"
+                ],
+                "category": "Fun",
+                "description": "Send an anonymous message",
+                "extended_description": "Anonymously message someone through the bot",
+                "usage": "{prefix}{command} <phone> <message>",
+                "execution": {
+                    "no_content": "You must provide a message to send after the command",
+                    "no_number": "You must give a phone number. '{prefix}{command} {phone} {content}",
+                    "not_bot_user": "As a saftety measure, I can only send anonymous messages to bot users.",
+                    "no_whatsapp": "This number isn't on WhatsApp",
+                    "success": "Sent! 🤫",
+                    "received_title": "*ANONYMOUS MESSAGE:*",
+                    "membership": "A membership is needed to use this command. Sorry!"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "אנונימי"
+                ],
+                "category": "כיף",
+                "description": "שלח הודעה אנונימית",
+                "extended_description": "שלח הודעה אנונימית למישהו באמצעות הבוט",
+                "usage": "{prefix}{command} <phone> <הודעה>",
+                "execution": {
+                    "no_content": "בבקשה תכתוב מה אתה רוצה לשלוח לאחר המספר טלפון אליו אתה רוצה לשלוח",
+                    "no_number": "אתה חייב לספק מספר טלפון. '{prefix}{command} {phone} {content}",
+                    "not_bot_user": "כאמצעי הגנה, ניתן רק לשלוח הודעות אנונימיות למשתמשים של הבוט",
+                    "no_whatsapp": "מספר זה אינו בווצאפ",
+                    "success": "נשלח! 🤫",
+                    "received_title": "*הודעה אנונימית:*",
+                    "membership": "עליך להיות תורם כדי להשתמש בפקודה זו. סליחה!"
+                }
+            }
+        },
+        "lmgtfy": {
+            "triggers": [
+                "lmgtfy",
+                "תן גוגל"
+            ],
+            "english": {
+                "triggers": [
+                    "lmgtfy"
+                ],
+                "category": "Fun",
+                "description": "Let me google that for you",
+                "extended_description": "Can you even be more condescending?",
+                "usage": "{prefix}{command} <query>",
+                "execution": {
+                    "message": "You couldn't Google that yourself huh?\n{link}",
+                    "no_body": "You must provide a query to search for."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תן גוגל"
+                ],
+                "category": "כיף",
+                "description": "תן לי לעשות גוגל עבורך",
+                "extended_description": "האם יש דרך להיות יותר מתנשא מזה?",
+                "usage": "{prefix}{command} <שאלה>",
+                "execution": {
+                    "message": "לא יכולת לחפש את זה בעצמך?\n{link}",
+                    "no_body": "בבקשה תספק שאלה לחיפוש."
+                }
+            }
+        },
+        "clown": {
+            "triggers": [
+                "clown",
+                "ליצן"
+            ],
+            "english": {
+                "triggers": [
+                    "clown"
+                ],
+                "category": "Fun",
+                "description": "Clown a message",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "format": "\"{message}\" 🤡",
+                    "no_reply": "You need to reply to the message of the clown with the command",
+                    "clown_bot": "G... You can't clown the boss."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "ליצן"
+                ],
+                "category": "כיף",
+                "description": "תליצן הודעה",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "format": "\"{message}\" 🤡",
+                    "no_reply": "אתה צריך להגיב להודעת הליצן עם הפקודה",
+                    "clown_bot": "בחור... אתה לא יכול לליצן את הבוס."
+                }
+            }
+        },
+        "mp3": {
+            "triggers": [
+                "mp3",
+                "song",
+                "music",
+                "mp3",
+                "שיר",
+                "מוזיקה"
+            ],
+            "english": {
+                "triggers": [
+                    "song",
+                    "music",
+                    "mp3"
+                ],
+                "category": "Fun",
+                "description": "Download a song from YouTube",
+                "extended_description": "Downloads an MP3 of a YouTube video ({prefix}{command} song name)",
+                "usage": "{prefix}{command} <song>",
+                "execution": {
+                    "no_content": "You must provide a song to search for.\n{prefix}{command} Careless Neffex",
+                    "no_results": "No results found for {song}",
+                    "too_long": "I can only download videos up to 10 minutes long. Maybe that's why?",
+                    "downloading": "Downloading MP3 of \"{title}\" from YouTube...",
+                    "failed": "Please try again in a few moments"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "שיר",
+                    "מוזיקה"
+                ],
+                "category": "כיף",
+                "description": "מוריד שיר מיוטיוב",
+                "extended_description": "מוריד שיר מיוטיוב באמצעות הבוט ({prefix}{command} שם השיר)",
+                "usage": "{prefix}{command} <שיר>",
+                "execution": {
+                    "no_content": "בבקשה תספק שיר לחיפוש.\nלדוגמה: {prefix}{command} מסיבה בחיפה",
+                    "no_results": "לא נמצאו תוצאות עבור {song}",
+                    "too_long": "אני רק יכול להוריד שירים שלא עולות על 10 דקות. אולי זה למה?",
+                    "downloading": "אני עכשיו מוריד \"{title}\" מיוטיוב...",
+                    "failed": "נסה שוב עוד כמה רגעים"
+                }
+            }
+        },
+        "prefix": {
+            "triggers": [
+                "prefix",
+                "קידומת"
+            ],
+            "english": {
+                "triggers": [
+                    "prefix"
+                ],
+                "category": "Group Admin",
+                "description": "Change the prefix of the bot",
+                "usage": "{prefix}{command} <prefix>",
+                "execution": {
+                    "no_content": "You must provide a prefix to change the bot's prefix to.",
+                    "success": "Changed the bot's prefix to: \"{prefix}\"",
+                    "too_long": "The prefix must be less than 10 characters long.",
+                    "only_admin": "Only admin's can change the bot's prefix."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "קידומת"
+                ],
+                "category": "אדמין קבוצה",
+                "description": "שנה את הקידומת של הבוט",
+                "usage": "{prefix}{command} <קידומת>",
+                "execution": {
+                    "no_content": "חסר גוף לפקודה. גוף הפקודה תהיה הקידומת החדשה.",
+                    "success": "קידומת הבוט שונתה ל: \"{prefix}\"",
+                    "too_long": "הקידומת חייבת להיות פחות מ10 תווים.",
+                    "only_admin": "רק אדמינים יכולים לשנות את הקידומת של הבוט."
+                }
+            }
+        },
+        "reminder": {
+            "triggers": [
+                "reminder",
+                "remind",
+                "תזכורת",
+                "תזכיר לי"
+            ],
+            "english": {
+                "triggers": [
+                    "reminder",
+                    "remind"
+                ],
+                "category": "Fun",
+                "description": "Set a reminder",
+                "extended_description": "View all the reminders you have set using `{prefix}{command} list`",
+                "usage": "{prefix}{command} <time> <message>",
+                "execution": {
+                    "no_body": "You must provide time and text to set a reminder.\nExample: `{prefix}{command} 1 hour Hello World`",
+                    "too_little_time": "I'm sorry, but I can't set a reminder for less than a minute.",
+                    "valid_times": "You must provide a valid time type.\nValid time types: {list}",
+                    "error": "Something went wrong while creating the reminder.",
+                    "success": "Great.\nI'll remind you to {text} in {time} {time_type}!",
+                    "list_title": "*Reminders:* _(select one to modify using the number)_",
+                    "list_empty": "You have no reminders set.",
+                    "change_menu": {
+                        "title": "What do you want to change?",
+                        "text": "Reminder text",
+                        "dm": "Send reminder in DM",
+                        "delete": "Delete reminder",
+                        "cancel": "Cancel change"
+                    },
+                    "text_change": "What should the reminder be?",
+                    "success_text_change": "Great.\nI'll remind you to {text}!",
+                    "success_dm_update": "Updated reminder.",
+                    "success_delete": "Deleted.",
+                    "success_cancel": "Cancelled reminder change",
+                    "where_to_send_question": "Do you want this reminder to be sent to you privately?\n\n*1.* Yes\n*2.* No\n*3.* Cancel",
+                    "creation_cancel": "Reminder creation cancelled"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תזכורת",
+                    "תזכיר לי"
+                ],
+                "category": "כיף",
+                "description": "הגדר תזכורת",
+                "extended_description": "ניתן לצפות בכל התזכורתים שנקבעו על ידי הפקודה `{prefix}{command} רשימה`",
+                "usage": "{prefix}{command} <הודעה> <זמן>",
+                "execution": {
+                    "no_body": "אתה חייב לספק זמן והודעה בכדי להגדיר תזכורת.\nדוגמא: `{prefix}{command} 1 שעה שלום עולם`",
+                    "too_little_time": "אני לא יכול להגדיר תזכורות מתחת לדקה.",
+                    "valid_times": "אתה חייב לספק זמן תקין.\nזמנים תקינים: {list}",
+                    "error": "אירעה שגיאה בעת יצירת התזכורת.",
+                    "success": "מעולה.\nאני אזכיר לך לעשות {text} בעוד {time} {time_type}!",
+                    "list_title": "*תזכורות:* _(בחר אחד לשינוי בעזרת המספרים)_",
+                    "list_empty": "אין לך כרגע תזכורות.",
+                    "change_menu": {
+                        "title": "מה אתה רוצה לשנות?",
+                        "text": "הודעת התזכורת",
+                        "dm": "שליחת תזכורת בהודעה פרטית",
+                        "delete": "מחק תזכורת",
+                        "cancel": "בטל שינוים"
+                    },
+                    "where_to_send_question": "האם לשלוח את התזכורת בהודעה פרטית?\n\n*1.* כן\n*2.* לא\n*3.* ביטול",
+                    "text_change": "כתוב את התזכורת החדשה:",
+                    "success_text_change": "מעולה, אזכיר לך לעשות {text}!",
+                    "success_dm_update": "התעדכן בהצלחה.",
+                    "success_delete": "נמחק.",
+                    "success_cancel": "יצאתי מהתליך שינוי התזכורת.",
+                    "creation_cancel": "יצירת התזכורת התבטלה."
+                }
+            }
+        },
+        "reputation": {
+            "triggers": [
+                "reputation",
+                "rep",
+                "כבוד"
+            ],
+            "english": {
+                "triggers": [
+                    "reputation",
+                    "rep"
+                ],
+                "category": "Fun",
+                "description": "Give reputation to someone for being nice",
+                "extended_description": "View someone's reputation using `{prefix}{command} stats @mention`",
+                "usage": "{prefix}{command} <tag>",
+                "execution": {
+                    "no_body": "You must provide a user to give them reputation.\nExample: `{prefix}{command} @user`",
+                    "not_reputation_amount": "\"{text}\" is not a valid amount of reputation to give",
+                    "stats": "*Reputation stats of {tag}*\n\n*Total reputation received:* {total}",
+                    "self_stats": "*Total reputation received:* {total}\n*Reputation points remaining:* {left}",
+                    "no_user": "Failed to get this user's reputation.\nI couldn't find a user with the name",
+                    "no_mention": "You must mention someone to give them reputation!",
+                    "no_self_rep": "You can't give yourself reputation!",
+                    "point": [
+                        "point",
+                        "points"
+                    ],
+                    "reputation": "reputation",
+                    "not_enough_rep": "You can not give {pointsGive} reputation point(s) while you only have {pointsLeft} point(s) left",
+                    "success_give": "You've successfully given reputation!\n\n*{tag}:* {previous} => {current} (+{given})\n*Points left:* {left}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "כבוד"
+                ],
+                "category": "כיף",
+                "description": "תתנו למישהו כבוד בגלל שהוא חבר טוב",
+                "extended_description": "ניתן גם לצפות בכבוד של מישהו על ידי הפקודה `{prefix}{command} סטטיסטיקה @תיוג`",
+                "usage": "{prefix}{command} <תיוג>",
+                "execution": {
+                    "no_body": "למי לתת כבוד?\nדוגמא: `{prefix}{command} @תיוג`",
+                    "not_reputation_amount": "\"{text}\" אינו כמות תקינה של כבוד לתת.",
+                    "stats": "*סטטיסטיקת הכבוד של {tag}*\n\n*כבוד כולל:* {total}",
+                    "self_stats": "*כבוד כולל:* {total}\n*כבוד שנותר לתת:* {left}",
+                    "no_user": "אין אפשרות לתת כבוד למשתמש הזה.\nאין משתמש עם השם הזה",
+                    "no_mention": "צריך לתייג את מי שאתה רוצה לתת לו כבוד",
+                    "no_self_rep": "אין כבוד בלתת לעצמך כבוד...",
+                    "point": [
+                        "נקודה",
+                        "נקודות"
+                    ],
+                    "reputation": "כבוד",
+                    "not_enough_rep": "אתה לא יכול לתת {pointsGive} נקודות כבוד שיש לך רק {pointsLeft}",
+                    "success_give": "נתת כבוד!\n\n*{tag}:* {previous} => {current} (+{given})\n*נקודות שנותרו:* {left}"
+                }
+            }
+        },
+        "spoof": {
+            "triggers": [
+                "spoof",
+                "זייף"
+            ],
+            "english": {
+                "triggers": [
+                    "spoof"
+                ],
+                "category": "Fun",
+                "description": "An exploit to spoof a friend's message",
+                "usage": "{prefix}{command} @mention \"spoof message\" \"bot message>\"",
+                "execution": {
+                    "error": "Please follow the following format (with quotes):\n{prefix}{command} @mention \"spoofed message\" \"bot message\""
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "זייף"
+                ],
+                "category": "כיף",
+                "description": "בעיה בווצאפ שנותנת לזייף הודעה של חבר",
+                "usage": "{prefix}{command} @תיוג \"הודעה מזויפת\" \"הודעה של הבוט\"",
+                "execution": {
+                    "error": "בבקשה תעקוב אחר הפורמט הבא (עם גרשיים):\n{prefix}{command} @תיוג \"הודעה מזויפת\" \"הודעה של הבוט\""
+                }
+            }
+        },
+        "response": {
+            "triggers": [
+                "responses",
+                "response",
+                "תגובות",
+                "תגובה"
+            ],
+            "english": {
+                "triggers": [
+                    "responses",
+                    "response"
+                ],
+                "category": "Fun",
+                "description": "Add an automatic response to some text",
+                "extended_description": "You can also view all responses using {prefix}responses",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "stage1": "Please enter the text you want to add a response to:",
+                    "stage2": "Great. Now what should the response be?",
+                    "timeout": "You took too long to respond. Try again.",
+                    "admin": "You must be a group admin to add an automatic response.",
+                    "editMenu": {
+                        "title": "*Edit Response*",
+                        "delete": {
+                            "query": "Delete",
+                            "success": "Response deleted."
+                        },
+                        "add_response": {
+                            "query": "Add Response",
+                            "success": "Added response!\nI will now also respond to {filter} with {response}"
+                        },
+                        "see_responses": {
+                            "query": "All responses",
+                            "success": "*Responses*"
+                        }
+                    },
+                    "responses_menu": {
+                        "title": "*Responses*\n(_Choose a response to edit by it's number_)",
+                        "format": "*{num}.* {filter}",
+                        "empty": "You have no responses set."
+                    },
+                    "creation": "From now on I'll response to {filter} with {response}",
+                    "list_command": "responses",
+                    "create_response_help": "response - create a response",
+                    "exists": "There is already a response set for {filter}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תגובות",
+                    "תגובה"
+                ],
+                "category": "כיף",
+                "description": "יצירת תגובה אוטומטית להודעות",
+                "extended_description": "ניתן גם לראות את כל התגובות שיצרתם בעזרת {prefix}תגובות",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "stage1": "תשלח את הטקסט שאתה רוצה שאני אגיב אליו באופן אוטומטי:",
+                    "stage2": "מעולה. עכשיו מה אתה רוצה שהתגובה שלי תהיה?",
+                    "timeout": "לקח לך יותר מדי זמן להגיב. נסה שוב.",
+                    "editMenu": {
+                        "title": "*עריכת תגובה*",
+                        "delete": {
+                            "query": "מחק",
+                            "success": "נמחק בהצלחה!"
+                        },
+                        "add_response": {
+                            "query": "הוספת תגובה",
+                            "success": "הוספתי את התגובה!\nעכשיו אגיב ל{filter} גם עם {response}"
+                        },
+                        "see_responses": {
+                            "query": "כל התגובות",
+                            "success": "*תגובות*"
+                        }
+                    },
+                    "responses_menu": {
+                        "title": "*תגובות*\n(_תבחר אחד בעזרת המספרים כדי לערוך אותו_)",
+                        "format": "*{num}.* {filter}",
+                        "empty": "לא הגדרתם לי תגובות."
+                    },
+                    "creation": "מעכשיו אני אגיב ל{filter} עם {response}",
+                    "exists": "תגובה ל\"{filter}\" כבר קיימת.",
+                    "list_command": "תגובות",
+                    "create_response_help": "תגובה - יצירת תגובה",
+                    "admin": "אתה חייב להיות אדמין על מנת להוסיף תגובות אוטומטיות."
+                }
+            }
+        },
+        "sticker": {
+            "triggers": [
+                "sticker",
+                "סטיקר"
+            ],
+            "english": {
+                "triggers": [
+                    "sticker"
+                ],
+                "category": "Fun",
+                "description": "Send along with an image or video to create a sticker",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_media": "You must send a video, image, sticker, text or reply to one of those.",
+                    "too_big": "The sticker you are trying to create is too large."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "סטיקר"
+                ],
+                "category": "כיף",
+                "description": "תשלח את הפקודה עם תמונה או סרטון כדי ליצור סטיקר",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_media": "אתה צריך לשלוח תמונה, סרטון, סטיקר, טקסט או לצטט אחד מאלו.",
+                    "too_big": "הסטיקר שאתה מנסה ליצור גדול מדי."
+                }
+            }
+        },
+        "give donor": {
+            "english": {
+                "execution": {
+                    "thanks": "Thank you for donating to our bot! Your donation is incredibly appreciated and will help us to keep the bot running and improve the quality of the bot.\n\nThank you again for your support!\n\nYou are now a {rank}"
+                }
+            },
+            "hebrew": {
+                "execution": {
+                    "thanks": "תודה רבה על תרומתך לבוט! התרומה שלך מוערכת מאוד ותעזור לנו להמשיך את הבוט רץ ותשפר את האיכות של הבוט.\n\nתודה רבה!\n\nאתה עכשיו {rank}"
+                }
+            }
+        },
+        "balance": {
+            "triggers": [
+                "balance",
+                "bal",
+                "יתרה"
+            ],
+            "english": {
+                "triggers": [
+                    "balance",
+                    "bal"
+                ],
+                "category": "Economy",
+                "description": "Check your or someone else's balance",
+                "usage": "{prefix}{command} <tag>",
+                "execution": {
+                    "no_user": "Must provide a user to check their balance.",
+                    "no_balance": "User has no balance.",
+                    "title": "*{tag}'s balance*"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "יתרה"
+                ],
+                "category": "כלכלה",
+                "description": "בדוק את היתרה שלך או של מישהו אחר",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_user": "אתה צריך לספק משתמש שתבדוק לו את היתרה.",
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "title": "*היתרה של {tag}*"
+                }
+            }
+        },
+        "beg": {
+            "triggers": [
+                "beg",
+                "לחם"
+            ],
+            "english": {
+                "triggers": [
+                    "beg"
+                ],
+                "category": "Economy",
+                "description": "Beg for money, poor bastard",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "imagine_begging": "IMAGINE BEGGING 😹",
+                    "no_balance": "User has no balance.",
+                    "success_give": "\"oh you poor little beggar, take {amount}\""
+                },
+                "responses": [
+                    "HAHAHAHA no",
+                    "ew get away",
+                    "Get a job you hippy",
+                    "nah, would rather not feed your gambling addiction",
+                    "begone thot",
+                    "nope, nothing for you",
+                    "ur too stanky",
+                    "no u",
+                    "there. is. no. coins. for. you.",
+                    "get out with that begging bullcrap",
+                    "can you not"
+                ]
+            },
+            "hebrew": {
+                "triggers": [
+                    "לחם"
+                ],
+                "category": "כלכלה",
+                "description": "תתחנן לכסף, עני מסכן",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "imagine_begging": "דמיין להתחנן 😹",
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "success_give": "אוי, מסכן שלי אל תהיה רעב, קח {amount} {coin}"
+                },
+                "responses": [
+                    "חחחחחחחחחחחחחחחחחחחחחחחחחחחחחח לא.",
+                    "איכ תתרחק",
+                    "תשיג עבודה היפי",
+                    "נע, אני מעדיף לא להאכיל את ההתמכרות שלך",
+                    "תתרחקי זונה",
+                    "נופ, כלום בשבילך.",
+                    "אתה מסריח מדי",
+                    "לא, אתה.",
+                    "אין. לי. מטבעות. בשבילך.",
+                    "צא מפה עם החרא שלך.",
+                    "אתה יכול לא"
+                ]
+            }
+        },
+        "steal": {
+            "triggers": [
+                "steal",
+                "rob",
+                "גניבה"
+            ],
+            "english": {
+                "triggers": [
+                    "steal",
+                    "rob"
+                ],
+                "category": "Economy",
+                "description": "Steal money from someone",
+                "usage": "{prefix}{command} @tag",
+                "execution": {
+                    "no_user": "Must provide a user to steal from.",
+                    "no_balance": "This user is too poor to rob 💀.",
+                    "caught": "You were caught *HAHAHA*\nYou paid {name} {coins} {coin}",
+                    "not_enough_money": "The victim doesn't even have 5,000 coins, it ain't worth it man.",
+                    "not_enough_money_self": "You're so poor... You need at least 5,000 coinds to steal from someone.",
+                    "take_messages": [
+                        [
+                            90,
+                            "LMFAO 😂😂 you basically took EVERYTHINg there is to take from this poor bastard"
+                        ],
+                        [
+                            65,
+                            "Great heist! you could have tried to better but good I guess..."
+                        ],
+                        [
+                            40,
+                            "C'mon... At least try.. maybe next time you could score more 🤦‍♂️"
+                        ],
+                        [
+                            15,
+                            "Are you even trying? C'mon your a thief..."
+                        ],
+                        [
+                            0,
+                            "LMAO and you quit your job for this?? 😹😹😹"
+                        ]
+                    ],
+                    "success_footer": "Your payout was {coins} {coin}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "גניבה"
+                ],
+                "category": "כלכלה",
+                "description": "לגנוב כסף ממישהו",
+                "usage": "{prefix}{command} @תיוג",
+                "execution": {
+                    "no_user": "בבקשה תתייג את מי שאתה רוצה לשדוד.",
+                    "no_balance": "למשתמש הזה אין כסף לגנוב 💀.",
+                    "caught": "חחחחחחחחחחחחחחחח נתפסת אני מת\nשילמת ל{name} {coins} {coin}",
+                    "not_enough_money": "לקורבן אין אפילו 5000 מטבעות... תתרחק.. זה לא שווה את זה.",
+                    "not_enough_money_self": "אתה כל כך עני... אתה צריך לפחות 5,000 מטבעות כדי לשדוד מישהו.",
+                    "take_messages": [
+                        [
+                            90,
+                            [
+                                "אני מתתתת 😹 לקחת ליטרלי את כל מה שאפשר לקחת מהעני המסכן הזה",
+                                [
+                                    90,
+                                    100
+                                ]
+                            ]
+                        ],
+                        [
+                            65,
+                            [
+                                "שדידה יפה...  יש מקום להשתפר בטכניקה טיפה אבל יפה.",
+                                [
+                                    10,
+                                    45
+                                ]
+                            ]
+                        ],
+                        [
+                            40,
+                            [
+                                "נו באמת... לפחות תנסה... אולי פעם הבאה תצליח לשדוד יותר.",
+                                [
+                                    15,
+                                    35
+                                ]
+                            ]
+                        ],
+                        [
+                            15,
+                            [
+                                "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
+                                [
+                                    7,
+                                    20
+                                ]
+                            ]
+                        ],
+                        [
+                            0,
+                            [
+                                "ועזבת את העבודה שלך בשביל זה??? 😹😹😹",
+                                [
+                                    1,
+                                    10
+                                ]
+                            ]
+                        ]
+                    ],
+                    "success_footer": "קיבלת {coins} {coin}"
+                }
+            }
+        },
+        "daily": {
+            "triggers": [
+                "daily",
+                "יומי"
+            ],
+            "english": {
+                "triggers": [
+                    "daily"
+                ],
+                "category": "Economy",
+                "description": "Get coins daily, build a streak and get more coins!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_balance": "User has no balance.",
+                    "claimed": "*You've already claimed your daily reward today:*\n\nYour next daily is ready in:\n*{text}*",
+                    "success_title": "{tag}'s Daily Coins",
+                    "success": "*{coins}* {coin} was placed in your wallet!\n\nYour next daily is ready in: {text}\nStreak: {streak} {days} (+{bonus} {coin})",
+                    "and": "and "
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "יומי"
+                ],
+                "category": "כלכלה",
+                "description": "לקבל כמה מטבעות כל יום, תבנה סטריק ותקבל יותר מטבעות!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "claimed": "*אתה כבר לקחת את המתנה היומית שלך:*\n\nהמתנה היומית הבאה שלך תהיה מוכנה בעוד:\n*{text}*",
+                    "success_title": "המתנה היומית של {tag}",
+                    "success": "*{coins}* {coin} הוכנסו לארנק שלך!\n\nהמתנה היומית הבאה שלך תהיה מוכנה בעוד: {text}\nרצף: {streak} {days} (+{bonus} {coin})",
+                    "and": "ו"
+                }
+            }
+        },
+        "deposit": {
+            "triggers": [
+                "deposit",
+                "dep",
+                "הפקד"
+            ],
+            "english": {
+                "triggers": [
+                    "deposit",
+                    "dep"
+                ],
+                "category": "Economy",
+                "description": "Deposit coins into your bank",
+                "usage": "{prefix}{command} <amount>",
+                "execution": {
+                    "no_balance": "User has no balance.",
+                    "cant_deposit": "You can't deposit zero coins",
+                    "no_body": "How much do you want to deposit?\nTry {prefix}{command} <amount>",
+                    "capacity_error": "You can only hold {capacity} in your bank right now. To hold more, upgrade your bank!",
+                    "error": "Failed to deposit.\nIf this error persists please contact an admin using {prefix}developer"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "הפקד"
+                ],
+                "category": "כלכלה",
+                "description": "הפקדת מטבעות לבנק",
+                "usage": "{prefix}{command} <כמות>",
+                "execution": {
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "cant_deposit": "אתה לא יכול להפקיד אפס מטבעות",
+                    "no_body": "כמה את רוצה להפקיד?\nנסה {prefix}{command} <amount>",
+                    "capacity_error": "הבנק שלך יכול להחזיק רק {capacity} מטבעות כרגע. אם תרצה לאחסן יותר, תשדרג את הבנק שלך!",
+                    "error": "ההפקדה נכשלה.\nאם השגיאה הזאת ממשיכה תיצור קשר עם מנהל המערכת באמצעות {prefix}developer"
+                }
+            }
+        },
+        "withdraw": {
+            "triggers": [
+                "withdraw",
+                "with",
+                "משוך"
+            ],
+            "english": {
+                "triggers": [
+                    "withdraw",
+                    "with"
+                ],
+                "category": "Economy",
+                "description": "Withdraw coins from your bank to your wallet",
+                "usage": "{prefix}{command} <amount>",
+                "execution": {
+                    "no_balance": "User has no balance.",
+                    "cant_withdraw": "You can't withdraw zero coins",
+                    "no_body": "How much do you want to withdraw?\nTry {prefix}{command} <amount>",
+                    "too_much": "You only have {max} in your bank right now. Can't withdraw more than that.",
+                    "error": "Failed to withdraw.\nIf this error persists please contact an admin using {prefix}developer"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "משוך"
+                ],
+                "category": "כלכלה",
+                "description": "משיכת מטבעות מהבנק לארנק",
+                "usage": "{prefix}{command} <כמות>",
+                "execution": {
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "cant_withdraw": "אתה לא יכול למשוך אפס מטבעות",
+                    "no_body": "כמה את רוצה למשוך?\nנסה {prefix}{command} <amount>",
+                    "too_much": "כרגע יש לך {max} בבנק. אתה לא יכול למשוך יותר מזה.",
+                    "error": "משיכה נכשלה.\nאם השגיאה הזאת ממשיכה תיצור קשר עם מנהל המערכת באמצעות {prefix}developer"
+                }
+            }
+        },
+        "highlow": {
+            "triggers": [
+                "highlow",
+                "hl",
+                "גבוה נמוך",
+                "גבוהה נמוך"
+            ],
+            "english": {
+                "triggers": [
+                    "highlow",
+                    "hl"
+                ],
+                "category": "Economy",
+                "description": "Guess if the number is higher or lower, if you're right you get money!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_balance": "User has no balance.",
+                    "options": "*1.* Higher\n*2.* Lower\n*3.* JACKPOT!",
+                    "game_text": "{tag}'s high-low game*\n\nI just chose a secret number between 1 and 100.\nIs the secret number higher or lower than {number}?",
+                    "footer": "Your hint was *{number}*. The hidden number was *{secretNumber}*",
+                    "win_text": "*{tag} won high-low game*\n\n*You won {prize}!*",
+                    "lose_text": "*{tag} lost high-low game*\n\n*You lost!*",
+                    "jackpot_text": "{tag} WON HIGH-LOW GAME JACKPOT!\n\n*You won {prize}!*"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "גבוה נמוך",
+                    "hl"
+                ],
+                "category": "כלכלה",
+                "description": "תנחש אם המספר גבוהה או נמוך יותר, אם אתה צודק אתה מקבל כסף!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "no_balance": "משתמש זה לא קיים במערכת.",
+                    "options": "*1.* גבוהה יותר\n*2.* נמוך יותר\n*3.* בול פגיעה!",
+                    "game_text": "*משחק גבוה נמוך של {tag}*\n\nאני בחרת מספר סודי בין 1 ל100.\nהאם המספר הסודי גבוה יותר או נמוך יותר מ{number}?",
+                    "footer": "הרמז שלך היה *{number}*. המספר הסודי היה *{secretNumber}*",
+                    "win_text": "*{tag} ניצח במשחק גבוה נמוך*\n\n*זכית ב{prize}!*",
+                    "lose_text": "*{tag} הפסיד במשחק גבוה נמוך*\n\n*הפסדת!*",
+                    "jackpot_text": "*{tag} ניצח במשחק גבוה נמוך בבול פגיעה!!!*\n\n*זכית ב{prize}!*"
+                }
+            }
+        },
+        "crime": {
+            "triggers": [
+                "crime",
+                "פשע"
+            ],
+            "english": {
+                "triggers": [
+                    "crime"
+                ],
+                "category": "Economy",
+                "description": "Commit a crime for a chance to win some coins (and a chance to die)!",
+                "execution": {
+                    "pick_crime": "*What crime do you want to commit?*\n_Pick an option below to commit one!_",
+                    "didnt_choose_crime": "Guess you are too scared {tag}...",
+                    "found_item": "Wow! You also found a *{item}*!",
+                    "death_not_implemented": "You still can't die since you have no way to save yourself.\nBeware though, in the future there will be an item to save your soul and death will be activated!",
+                    "crimes": [
+                        {
+                            "name": "shoplifting",
+                            "failed": "You tried to steal something but the shop was closed!",
+                            "success": "You managed to steal {amount} {coin}. Money Heist!",
+                            "death": "You stole an unknown drink and drank it. It turned out to be poison and you died. RIP",
+                            "success_chance": 0.7,
+                            "death_chance": 0.001
+                        },
+                        {
+                            "name": "vandalism",
+                            "failed": "You tried to write something on a wall, but ran out of spray. LOL",
+                            "success": "You wrote a support message for the bot on the wall. The developers sent you {amount} {coin}. Nice!",
+                            "death": "",
+                            "death_chance": 0,
+                            "success_chance": 0.75
+                        },
+                        {
+                            "name": "drug distribution",
+                            "failed": "You didn't find any clients... Maybe try a different industry?",
+                            "success": "You distributed a lot of drugs and earned {amount} {coin}, are you the next Escobar?",
+                            "death": "Police caught you and killed you immediately 😥 No more drugs!",
+                            "success_chance": 0.4,
+                            "death_chance": 0.05
+                        },
+                        {
+                            "name": "tax evasion",
+                            "failed": "You accidentally sent correct papers and earned nothing. Loser!",
+                            "success": "You saved {amount} {coin} on avoiding taxes! You'd better not tell anyone...",
+                            "death": "",
+                            "death_chance": 0,
+                            "success_chance": 0.65
+                        },
+                        {
+                            "name": "arson",
+                            "failed": "Turns out that's the fire station, it didn't go up in flames.",
+                            "success": "You set a building on fire and on your way out you found {amount} {coin}",
+                            "death": "You tried to set the police station on fire! They didn't appreciate it and kinda sorta.. shot you..",
+                            "death_chance": 0.05,
+                            "success_chance": 0.4
+                        },
+                        {
+                            "name": "murder",
+                            "failed": "You tried to murder a random stranger, but he got away! You can't even murder properly.",
+                            "success": "You murdered a random stranger in a dark alley. There was {amount} {coin} in his wallet! Was it worth it?",
+                            "death": "You were holding the gun upside down and killed yourself! Imagine being this stupid!",
+                            "death_chance": 0.05,
+                            "success_chance": 0.35
+                        },
+                        {
+                            "name": "cyber bullying",
+                            "failed": "You tried to bully a kid, but quickly got banned by mods. LOL, seeya idiot.",
+                            "success": "You bullied a kid and he sent you {amount} {coin} to stop! I hope that kid grows up richer than you.",
+                            "death": "You laughed at a kid so much, you choked to death. Who is laughing now? Imagine being a bully.",
+                            "death_chance": 0.03,
+                            "success_chance": 0.5
+                        },
+                        {
+                            "name": "fraud",
+                            "failed": "Turns out that old lady you tried to scam, was also a scammer!",
+                            "success": "You lied to an old lady over the phone and got {amount} {coin}",
+                            "death": "Lady you tried to fool had a shotgun and shot you! That's just sad.",
+                            "death_chance": 0.04,
+                            "success_chance": 0.65
+                        },
+                        {
+                            "name": "identity theft",
+                            "failed": "Somebody noticed your strange behaviour and reported you.",
+                            "success": "You stole a hooker's identity, started dancing and got {amount} {coin}",
+                            "death": "You stole the identity of Chuck Norris... Unfortunately, he noticed it and MURDERED you in cold blood!",
+                            "death_chance": 0.05,
+                            "success_chance": 0.4
+                        }
+                    ],
+                    "commited": "*{tag} commited {crime}*",
+                    "failed_crime_footer": "imagine being so bad..."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "פשע"
+                ],
+                "category": "כלכלה",
+                "description": "תבצע פשע בשביל סיכוי לזכות במטבעות (קיים גם סיכון של מוות)!",
+                "execution": {
+                    "pick_crime": "*איזה פשע אתה רוצה לבצע?*\n_תבחר אחת מהאופציות!_",
+                    "didnt_choose_crime": "אני מניח שאתה פשוט מפחד {tag}...",
+                    "found_item": "וואו! מצאת גם *{item}*!",
+                    "death_not_implemented": "יש לך מזל! עוד אי אפשר למות בגלל שאין לך דרך להציל את עצמך...\nבעתיד יהיה מוצר שיוכל להציל אותך ממוות. ברגע שיש אותו מוות יופעל.",
+                    "crimes": [
+                        {
+                            "name": "גניבה מחנות",
+                            "failed": "ניסית לגנוב משהו אבל החנות הייתה סגורה!",
+                            "success": "הצלחת לגנוב {amount} {coin}. שוד!",
+                            "death": "גנבת משקה מוזר ושתית ממנו. מסתבר שזה היה רעל. מתת 😂",
+                            "death_chance": 0.001,
+                            "success_chance": 0.7
+                        },
+                        {
+                            "name": "ונדליזם",
+                            "failed": "ניסית לכתוב משהו על הקיר אבל נגמר לך הספריי חחחחחחחחחחחחחחחחחחחחחח",
+                            "success": "המפתחים אהבו את התמיכה שהבעת על הקיר ושלחו לך {amount} {coin}. Nice!",
+                            "death": "",
+                            "death_chance": 0,
+                            "success_chance": 0.6
+                        },
+                        {
+                            "name": "הפצת סמים",
+                            "failed": "לא מצאת לקוח אחד... אולי תנסה תעשייה אחרת?",
+                            "success": "הפצת הרבה סמים והרווחת {amount} {coin}, אולי אתה האסקובר הבא?",
+                            "death": "המשטרה תפסה אותך וישר הרגה אותך 😥 אין יותר סמים!",
+                            "death_chance": 0.08,
+                            "success_chance": 0.4
+                        },
+                        {
+                            "name": "העלמת מס",
+                            "failed": "בטעות שלחת את הניירת הנכונה ולא הרווחת כלום! אפס!",
+                            "success": "חסכת {amount} {coin} בהעלמת מס! הייתי ממליץ לא לדבר על זה...",
+                            "death": "",
+                            "success_chance": 0.65,
+                            "death_chance": 0
+                        },
+                        {
+                            "name": "הצתה באש",
+                            "failed": "אופס! נראה שזאת תחנת כיבוי אש... המבנה לא עלה באש.",
+                            "success": "הצתתה בניין באש ובדרך החוצה מצאת {amount} {coin}",
+                            "death": "הצתתה את תחנת המשטרה בלהבות ואמממ... הם די לא הערכי את ו... ירו בך.",
+                            "death_chance": 0.04,
+                            "success_chance": 0.4
+                        },
+                        {
+                            "name": "רצח",
+                            "failed": "ניסית לרצוח אדם משונה אבל הוא ברח! אפילו לרצוח אתה לא יכול.",
+                            "success": "רצחת אדם זר בסמטה חשוכה. היה לו {amount} {coin} בארנק! האם זה היה שווה את זה?",
+                            "death": "החזקת את האקדח הפוך וירית בעצמך! תדמיין להיות כזה מפגר!",
+                            "death_chance": 0.05,
+                            "success_chance": 0.35
+                        },
+                        {
+                            "name": "בריונות רשת",
+                            "failed": "ניסית לבריין איזה ילד אבל ישר העיפו אותך מהשרת. חחחחחחחחחחחחח",
+                            "success": "בריינת ילד בן 13 והוא שלח לך {amount} {coin} כדי שתפסיק! אני מקווה שהילד הזה יגלד ויהיה עשיר יותר ממך...",
+                            "death": "צחקת על ילד כל כך הרבה שנחנקת למוות. מי צוחק עכשיו? תדמיין להיות בריון.",
+                            "death_chance": 0.04,
+                            "success_chance": 0.5
+                        },
+                        {
+                            "name": "עקיצה",
+                            "failed": "נראה שהזקנה שניסית לעקוץ גם מנסה לעקוץ אחרים",
+                            "success": "שיקרת לאישה זקנה בטלפון והיא העבירה לך {amount} {coin}",
+                            "death": "לאישה שניסית לרמות היה אקדח והיא ירתה בך. זה פשוט עצוב.",
+                            "death_chance": 0.04,
+                            "success_chance": 0.65
+                        },
+                        {
+                            "name": "גניבת זהות",
+                            "failed": "מישהו שם לב להתנהגות החשודה ודיווח עליך.",
+                            "success": "גנבת את הזהות של זונה והרווחת {amount} {coin} מהלקוחות שלה.",
+                            "death": "גנבת את הזהות של צ'אק נוריס... הוא שם לב ו... *שחט* אותך בדם קר.",
+                            "death_chance": 0.05,
+                            "success_chance": 0.4
+                        }
+                    ],
+                    "commited": "*{tag} ביצע {crime}*",
+                    "failed_crime_footer": "תדמיין להיות כל כך גרוע..."
+                }
+            }
+        },
+        "postmemes": {
+            "triggers": [
+                "postmemes",
+                "postmeme",
+                "pm",
+                "תעלהמימים"
+            ],
+            "english": {
+                "triggers": [
+                    "postmemes",
+                    "postmeme",
+                    "pm"
+                ],
+                "category": "Economy",
+                "description": "Post \"memes\" to earn money from good ones!",
+                "execution": {
+                    "memes": [
+                        "fresh",
+                        "copypasta",
+                        "intellectual",
+                        "repost",
+                        "kind"
+                    ],
+                    "responses": [
+                        [
+                            20,
+                            {
+                                "title": "Your meme is a DEAD BORING TERRIBLE DISGUSTING meme.",
+                                "footer": "You get {coins} {coin} try harder next time. We're not angry, just disappointed.",
+                                "money_range": [
+                                    0,
+                                    0
+                                ]
+                            }
+                        ],
+                        [
+                            70,
+                            {
+                                "title": "You posted a decent meme!",
+                                "footer": "You earned {coins} {coin} for your funny efforts.",
+                                "money_range": [
+                                    1400,
+                                    1900
+                                ]
+                            }
+                        ],
+                        [
+                            10,
+                            {
+                                "title": "You posted a TRENDING meme!",
+                                "footer": "You earned {coins} {coin} for your efforts, niceeee meme bro",
+                                "money_range": [
+                                    1900,
+                                    2300
+                                ]
+                            }
+                        ]
+                    ],
+                    "too_long": "You're too boring.. You took too long to answer.",
+                    "request_title": "*{tag}'s meme posting session*",
+                    "request_body": "Pick a meme to post to the internet!",
+                    "request_footer": "Hopefully people will like it and give you some $$$$, but it's also possible they hate it and you LOSE money from lawsuit fees.",
+                    "invalid_meme": "You didn't pick a meme..................."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "תעלהמימים"
+                ],
+                "category": "כלכלה",
+                "description": "תעלה \"מימים\" כדי להשיג כסף מכאלו טובים!",
+                "execution": {
+                    "memes": [
+                        "חדש",
+                        "העתק הדבק",
+                        "חוכמה",
+                        "העלאה מחדש",
+                        "נחמד"
+                    ],
+                    "responses": [
+                        [
+                            20,
+                            {
+                                "title": "המים שלך *משעמם* _מגעיל_ ו```דוחה```. תתבייש.",
+                                "footer": "קיבלת {coins} {coin}. תנסה יותר פעם הבאה. אנחנו לא כועסים, סתם מאוכזבים...",
+                                "money_range": [
+                                    0,
+                                    0
+                                ]
+                            }
+                        ],
+                        [
+                            70,
+                            {
+                                "title": "העלתה מים סביר!",
+                                "footer": "קיבלת {coins} {coin} על הנסיונות שלך!",
+                                "money_range": [
+                                    1400,
+                                    1900
+                                ]
+                            }
+                        ],
+                        [
+                            10,
+                            {
+                                "title": "העלתה מים טרנדי!",
+                                "footer": "קיבלת {coins} {coin} על הניסיות שלך. איזה מייםםםם אחשליייי",
+                                "money_range": [
+                                    1900,
+                                    2300
+                                ]
+                            }
+                        ]
+                    ],
+                    "too_long": "אתה יותר מדי משעמם. לקח לך יותר מדי זמן לענות.",
+                    "request_title": "*סשן העלאת המימים של {tag}*",
+                    "request_body": "תבחר מים שאתה רוצה לעלות לאינטרנט",
+                    "request_footer": "נקווה שאנשים יאהבו את זה ויתנו לכם $$$$, אבללל יש אפשרות שישנאו אותו ותפסיד כסף מתביעות!",
+                    "invalid_meme": "אתה לא בחרת מים..................."
+                }
+            }
+        },
+        "image": {
+            "english": {
+                "execution": {
+                    "default_name": "THIS GUY",
+                    "body_required": "This is why your mom left.. you need to have text",
+                    "error": "Seems like an error occurred. This guy doesn't allow me to see his profile picture",
+                    "error_map": {
+                        "You must submit exactly two strings split by comma": "You must submit exactly two strings split by comma"
+                    }
+                }
+            },
+            "hebrew": {
+                "execution": {
+                    "default_name": "מפגר בלי שם ווצאפ",
+                    "body_required": "זה למה אמא שלך עזבה... אתה צריך לשלוח את הפקודה עם טקסט",
+                    "error": "נראה שקרתה שגיאה... מי שתייגת לא נותן לי לראות את התמונת פרופיל שלו",
+                    "error_map": {
+                        "You must submit exactly two strings split by comma": "אתה חייב לספק בגוף שלך שתי משפטים או מילים מופרדים על ידי פסיק"
+                    }
+                }
+            }
+        }
+    },
+    "economy": {
+        "balance": {
+            "english": "Balance",
+            "hebrew": "יתרה"
+        },
+        "bank": {
+            "english": "Bank",
+            "hebrew": "בנק"
+        },
+        "wallet": {
+            "english": "Wallet",
+            "hebrew": "ארנק"
+        },
+        "net": {
+            "english": "Net",
+            "hebrew": "שווי כולל"
+        },
+        "coin": {
+            "english": [
+                "coin",
+                "coins"
+            ],
+            "hebrew": [
+                "מטבע",
+                "מטבעות"
+            ]
+        }
+    },
+    "times": {
+        "english": {
+            "hour": [
+                "hour",
+                "hours"
+            ],
+            "minute": [
+                "minute",
+                "minutes"
+            ],
+            "second": [
+                "second",
+                "seconds"
+            ],
+            "day": [
+                "day",
+                "days"
+            ],
+            "week": [
+                "week",
+                "weeks"
+            ],
+            "month": [
+                "month",
+                "months"
+            ],
+            "year": [
+                "year",
+                "years"
+            ]
+        },
+        "hebrew": {
+            "hour": [
+                "שעה",
+                "שעות"
+            ],
+            "minute": [
+                "דקה",
+                "דקות"
+            ],
+            "second": [
+                "שניה",
+                "שניות"
+            ],
+            "day": [
+                "יום",
+                "ימים"
+            ],
+            "week": [
+                "שבוע",
+                "שבועות"
+            ],
+            "month": [
+                "חודש",
+                "חודשים"
+            ],
+            "year": [
+                "שנה",
+                "שנים"
+            ]
+        }
+    },
+    "and": {
+        "english": "and",
+        "hebrew": "ו"
+    },
+    "ranks": {
+        "english": {
+            "user": "Free",
+            "donor": "Donor",
+            "sponsor": "Sponsor"
+        },
+        "hebrew": {
+            "user": "חינם",
+            "donor": "תומך",
+            "sponsor": "ספונסר"
+        }
+    },
+    "audio_stt_recommend": {
+        "english": "Hey! Would you like to convert this audio to text"
+    },
+    "tagged_info": {
+        "english": {
+            "message": "Whop, do you need something?\nTry using {prefix}help",
+            "text_version": "menu",
+            "difference": "Those who use WhatsApp beta won't be able to see this menu."
+        },
+        "hebrew": {
+            "message": "הא? צריך משהו?\nתנסה {prefix}עזרה",
+            "text_version": "תפריט",
+            "difference": "אנשים שמשתמשים בווצאפ בטא לא יוכלו לראות את תפריט זו"
+        }
+    },
+    "chat_upsert_help": {
+        "english": {
+            "help": "Hey! Just want to make sure you know how to get help using the bot.\nClick the button below for help or mention me for help!\nYou can change the bot's prefix using {prefix}{command}"
+        },
+        "hebrew": {
+            "help": "היי! רק רציתי לוודא שאתה יודע איך להשיג עזרה עם שימוש בבוט.\nתלחץ על הכפתור למטה או תתייג אותי לעזרה!\nניתן לשנות את הקידומת של הבוט בעזרת {prefix}{command}"
+        }
+    },
+    "cooldown": {
+        "english": {
+            "message": "You have to wait {time} {second} before using this command again.\nYou can reduce this a lot by donating!"
+        },
+        "hebrew": {
+            "message": "אתה לא יכול להשתמש בפקודה זו לעוד {time} {second}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!"
+        }
+    },
+    "image_gen": {
+        "english": {
+            "category": "Image",
+            "title": "{prefix}help image",
+            "description": "Image generation help menu"
+        },
+        "hebrew": {
+            "category": "תמונה",
+            "title": "{prefix}עזרה תמונה",
+            "description": "תפריט עזרה ליוצר התמונות"
+        }
+    }
+}

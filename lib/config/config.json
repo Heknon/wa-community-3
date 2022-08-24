@@ -1,0 +1,7 @@
+{
+    "default_command_prefix": ";;",
+    "bank_start_capacity": 10000,
+    "github_repo": "https://github.com/Heknon/wa-community-bot-example",
+    "idoBotJid": "972505180883@s.whatsapp.net",
+    "support_group_jid": "120363024042813945@g.us"
+}

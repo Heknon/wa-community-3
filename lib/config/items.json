@@ -1,0 +1,24 @@
+[
+    {
+        "id": "huntingrifle",
+        "name": {
+            "english": "Hunting Rifle",
+            "hebrew": "אקדח ציידים"
+        },
+        "durability": 5,
+        "type": "Tool",
+        "buy": 25000,
+        "sell": 4167
+    },
+    {
+        "id": "skunk",
+        "name": {
+            "english": "Skunk",
+            "hebrew": "בואש"
+        },
+        "durability": -1,
+        "type": "Sellable",
+        "buy": -1,
+        "sell": 2125
+    }
+]
