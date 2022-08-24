@@ -24,6 +24,9 @@ export default class CommandHandler {
 
     findByContent(content: string, prefix: string): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
         const result: [CommandTrigger, Command][] = [];
+        if (!content.slice(0, prefix.length + 2).toLowerCase().trim().startsWith(prefix)) {
+            return result;
+        }
 
         for (const blockable of this.commands) {
             let foundTrigger: CommandTrigger | undefined = undefined;
