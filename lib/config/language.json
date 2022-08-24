@@ -1299,6 +1299,7 @@
                     "cant_deposit": "You can't deposit zero coins",
                     "no_body": "How much do you want to deposit?\nTry {prefix}{command} <amount>",
                     "capacity_error": "You can only hold {capacity} in your bank right now. To hold more, upgrade your bank!",
+                    "too_much": "LOL, you can't deposit that much.\nTry anything below {amount} coins you retarded fool...",
                     "error": "Failed to deposit.\nIf this error persists please contact an admin using {prefix}developer"
                 }
             },
@@ -1314,6 +1315,7 @@
                     "cant_deposit": "אתה לא יכול להפקיד אפס מטבעות",
                     "no_body": "כמה את רוצה להפקיד?\nנסה {prefix}{command} <amount>",
                     "capacity_error": "הבנק שלך יכול להחזיק רק {capacity} מטבעות כרגע. אם תרצה לאחסן יותר, תשדרג את הבנק שלך!",
+                    "too_much": "אני מתתתתתתתת\nאתה לא יכול להפקיד כל כך הרבה. תנסה להצטנע ולהפקיד במקסימום {amount} מטבעות...",
                     "error": "ההפקדה נכשלה.\nאם השגיאה הזאת ממשיכה תיצור קשר עם מנהל המערכת באמצעות {prefix}developer"
                 }
             }

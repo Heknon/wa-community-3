@@ -15,25 +15,35 @@ export default abstract class EconomyCommand extends InteractableCommand {
         balance: Balance,
     ): Promise<Money | undefined> {
         // enforce bank capacity
-        const bank = Math.min(balance.bank ?? 0, user.money?.bank ?? 0);
-        const leftOutOfBank = balance.bank ?? 0 - bank;
+        const capacity = user.money?.bankCapacity ?? config.bank_start_capacity
+        const bank = Math.min(
+            capacity,
+            balance?.bank ?? 0,
+        );
+        const leftOutOfBank = (balance.bank ?? 0) - bank;
         const wallet = balance.wallet ?? 0 + leftOutOfBank;
 
-        const update = await prisma.money.upsert({
-            where: {
-                userJid: user.jid,
-            },
-            update: {
-                wallet,
-                bank,
-            },
-            create: {
-                bank,
-                wallet,
-                bankCapacity: config.bank_start_capacity,
-                user: {connect: {jid: user.jid}},
-            },
-        }).catch(err => undefined);
+        console.log("set to", {
+            wallet,
+            bank,
+        });
+        const update = await prisma.money
+            .upsert({
+                where: {
+                    userJid: user.jid,
+                },
+                update: {
+                    wallet,
+                    bank,
+                },
+                create: {
+                    bank,
+                    wallet,
+                    bankCapacity: config.bank_start_capacity,
+                    user: {connect: {jid: user.jid}},
+                },
+            })
+            .catch((err) => undefined);
 
         return update;
     }
@@ -46,6 +56,10 @@ export default abstract class EconomyCommand extends InteractableCommand {
         }>,
         balance: Balance,
     ) {
+        console.log("setting balance", {
+            wallet: (user.money?.wallet ?? 0) + (balance.wallet ?? 0),
+            bank: (user.money?.bank ?? 0) + (balance.bank ?? 0),
+        });
         return this.setBalance(user, {
             wallet: (user.money?.wallet ?? 0) + (balance.wallet ?? 0),
             bank: (user.money?.bank ?? 0) + (balance.bank ?? 0),

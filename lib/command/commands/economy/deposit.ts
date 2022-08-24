@@ -45,9 +45,12 @@ export default class DepositCommand extends EconomyCommand {
         const bankCapacity = user.money.bankCapacity;
         const net = (await userCalculateNetBalance(user)) ?? 0;
 
-        const allowedDeposit = bankCapacity - user.money.bank;
+        const allowedDeposit = Math.min(
+            user.money.wallet,
+            Math.max(bankCapacity - user.money.bank, 0),
+        );
         // if body starts with 'all' or 'max' then deposit max
-        const depositAmount = ["all", "max"].some((e) => body.startsWith(e))
+        const depositAmount = ["all", "max", "הכל"].some((e) => body.startsWith(e))
             ? Math.min(allowedDeposit, user.money.wallet)
             : Number(extractNumbers(body)[0] ?? "");
         if (depositAmount == 0) {
@@ -62,7 +65,7 @@ export default class DepositCommand extends EconomyCommand {
             });
         }
 
-        if (depositAmount > allowedDeposit || depositAmount < 0) {
+        if (depositAmount < 0) {
             return await message.reply(this.language.execution.capacity_error, true, {
                 placeholder: {
                     custom: {
@@ -70,9 +73,20 @@ export default class DepositCommand extends EconomyCommand {
                     },
                 },
             });
+        } else if (depositAmount > allowedDeposit) {
+            return await message.reply(this.language.execution.too_much, true, {
+                placeholder: {
+                    custom: {
+                        amount: commas(allowedDeposit),
+                    },
+                },
+            });
         }
 
-        const updatedBal = await this.addBalance(user, {wallet: -depositAmount, bank: depositAmount});
+        const updatedBal = await this.addBalance(user, {
+            wallet: -depositAmount,
+            bank: depositAmount,
+        });
         if (!updatedBal) {
             return await message.reply(this.language.execution.error, true, {
                 placeholder: {
@@ -95,17 +109,13 @@ export default class DepositCommand extends EconomyCommand {
         const reply = `${
             languages.commands.balance[this.langCode].execution.title
         }\n\n${balChangeMessage}`;
-        return await message.replyAdvanced(
-            {text: reply, mentions: [user.jid]},
-            true,
-            {
-                placeholder: {
-                    custom: {
-                        tag: `@${user.phone}`,
-                    },
+        return await message.replyAdvanced({text: reply, mentions: [user.jid]}, true, {
+            placeholder: {
+                custom: {
+                    tag: `@${user.phone}`,
                 },
             },
-        );
+        });
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
