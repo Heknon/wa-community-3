@@ -58,6 +58,8 @@ export default class FullStatsCommand extends Command {
                 value.processTimes.reduce((a, b) => a + b, 0) / value.processTimes.length,
         }));
         let commandStatsText = "*COMMANDS STATS*\n\n";
+        // sort commandStats by count descending
+        commandStats.sort((a, b) => b.count - a.count);
         for (const stat of commandStats) {
             commandStatsText += `*${stat.cmd}*: ${stat.count} - _Avg time: (${Math.round(
                 stat.avgProcessTime,
