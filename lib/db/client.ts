@@ -4,10 +4,10 @@ import {createPrismaRedisCache} from "prisma-redis-middleware";
 import {env} from "process";
 import Redis from "ioredis";
 
-export const redis = new Redis(6379, "localhost", {
-    password: env.REDIS_PASSWORD,
-    db: env.REDIS_DB ? parseInt(env.REDIS_DB) : 0,
-});
+// export const redis = new Redis(6379, "localhost", {
+//     password: env.REDIS_PASSWORD,
+//     db: env.REDIS_DB ? parseInt(env.REDIS_DB) : 0,
+// });
 
 export const prisma = new PrismaClient({
     log: ["warn", "error"],

@@ -6,17 +6,27 @@ import languages from "../config/language.json";
 import config from "../config/config.json";
 import {Chat as FullChat, User} from "../db/types";
 import {pluralForm} from "../utils/message_utils";
-import {addCommandCooldown, getCooldownLeft} from "../user/user";
+import {addCommandCooldown, getCooldownLeft, getUserRandom} from "../user/user";
 import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {prisma} from "../db/client";
-import { Chat } from "@prisma/client";
+import {BotResponse, Chat} from "@prisma/client";
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
     const handler = commandHandlerStore.getHandler(chat.language);
+    const foundCommands = await handler.find(message, chat);
+    const foundResponses = findValidBotResponses(message, sender, chat);
 
-    const res = await handler.find(message, chat);
-    for (const [trigger, blockable] of res) {
+    if (foundResponses.length > 0 && foundCommands.length === 0) {
+        const random = getUserRandom(sender);
+        const response = foundResponses[random.intBetween(0, foundResponses.length - 1)];
+        const responseText =
+            response.responses[random.intBetween(0, response.responses.length - 1)];
+        message.reply(responseText, true);
+        return;
+    }
+
+    for (const [trigger, blockable] of foundCommands) {
         const isBlocked = await handler.isBlocked(message, chat, blockable, true, trigger);
 
         if (isBlocked == BlockedReason.Cooldown) {
@@ -85,4 +95,22 @@ export const getCommandByTrigger = async (
             return blockable;
         }
     }
+};
+
+export const findValidBotResponses = (message: Message, sender: User, chat: FullChat) => {
+    const foundResponses: BotResponse[] = [];
+    const content = message.content?.toLowerCase().trim() ?? "";
+
+    for (const response of chat.responses) {
+        const filter = response.filter.toLowerCase().trim();
+        if (response.includes && content.includes(filter)) {
+            foundResponses.push(response);
+        } else if (response.equals && content === filter) {
+            foundResponses.push(response);
+        } else if (response.startsWith && content.startsWith(filter)) {
+            foundResponses.push(response);
+        }
+    }
+
+    return foundResponses;
 };
