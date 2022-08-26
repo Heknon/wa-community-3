@@ -68,20 +68,15 @@ export class BotClient {
             logger: botTrafficLogger,
             printQRInTerminal: true,
             auth: await this.authManager.getState(),
-            // getMessage: async (message) => {
-            //     logger.info(
-            //         `Attempting to fetch message ${message.remoteJid ? `${message.remoteJid}-` : ""}${message.id}`,
-            //         {jid: message.remoteJid, id: message.id},
-            //     );
+            getMessage: async (message) => {
+                const res = message.id
+                    ? messagingService.getSentMessage(message.remoteJid ?? undefined, message.id)
+                    : undefined;
 
-            //     const res = message.id
-            //         ? messagingService.getSentMessage(message.remoteJid ?? undefined, message.id)
-            //         : undefined;
-
-            //     return res;
-            // },
+                return res;
+            },
             msgRetryCounterMap: this.authManager.messageRetryMap,
-            retryRequestDelayMs: 10000,
+            retryRequestDelayMs: 1000,
         });
 
         this.isRunning = true;
