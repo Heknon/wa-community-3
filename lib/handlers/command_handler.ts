@@ -88,7 +88,7 @@ export default class CommandHandler {
         if (!user) return;
 
         if (checkCooldown) {
-            const cooldownLeft = getCooldownLeft(user, blockable.mainTrigger);
+            const cooldownLeft = await getCooldownLeft(user, blockable.mainTrigger);
 
             if (cooldownLeft > 0) {
                 return BlockedReason.Cooldown;

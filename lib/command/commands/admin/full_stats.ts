@@ -2,7 +2,7 @@ import {isJidGroup, isJidUser, WASocket} from "@adiwajshing/baileys";
 import {AccountType, Chat, User} from "@prisma/client";
 import moment from "moment";
 import {BlockedReason} from "../../../blockable";
-import {prisma, redis} from "../../../db/client";
+import {prisma, redis, redisChatStats, redisCommandStats, redisUserStats} from "../../../db/client";
 import {Statistics, statisticsToObject} from "../../../db/statistics";
 import Message from "../../../messaging/message";
 import {fullEnumSearch} from "../../../utils/enum_utils";
@@ -28,6 +28,13 @@ export default class FullStatsCommand extends Command {
         body: string,
         trigger: CommandTrigger,
     ) {
+        if (body.indexOf("clear") > -1) {
+            redisChatStats.flushdb();
+            redisUserStats.flushdb();
+            redisCommandStats.flushdb()
+            return;
+        }
+
         const statsTimeRaw = await redis.get("stats:time");
         const statsTime = statsTimeRaw ? moment(statsTimeRaw) : undefined;
         if (

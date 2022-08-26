@@ -30,7 +30,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         const isBlocked = await handler.isBlocked(message, chat, blockable, true, trigger);
 
         if (isBlocked == BlockedReason.Cooldown) {
-            const timeToWait = getCooldownLeft(sender, blockable.mainTrigger) / 1000.0;
+            const timeToWait = (await getCooldownLeft(sender, blockable.mainTrigger)) / 1000.0;
             const donateCommand = await getCommandByTrigger(chat, "donate");
             await message.replyAdvanced(
                 {
@@ -77,7 +77,19 @@ export const executeCommand = async (
     const body = message.content?.slice(chat.prefix.length + trigger.command.length + 1) ?? "";
     // add command cooldown to user
     await addCommandCooldown(executor, command);
-    command.execute(whatsappBot.client!, chat, executor, message, body, trigger);
+    const futureCmdRes = command.execute(
+        whatsappBot.client!,
+        chat,
+        executor,
+        message,
+        body,
+        trigger,
+    );
+    if (futureCmdRes instanceof Promise) {
+        futureCmdRes.then(async () => {
+            await addCommandCooldown(executor, command);
+        });
+    }
 };
 
 export const getCommandByTrigger = async (

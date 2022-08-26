@@ -1149,7 +1149,7 @@
   "resolved" "https://registry.npmjs.org/luxon/-/luxon-1.28.0.tgz"
   "version" "1.28.0"
 
-"m3u8stream@^0.8.4":
+"m3u8stream@^0.8.6":
   "integrity" "sha512-LZj8kIVf9KCphiHmH7sbFQTVe4tOemb202fWwvJwR9W5ENW/1hxJN6ksAWGhQgSBSa3jyWhnjKU1Fw1GaOdbyA=="
   "resolved" "https://registry.npmjs.org/m3u8stream/-/m3u8stream-0.8.6.tgz"
   "version" "0.8.6"
@@ -1201,7 +1201,7 @@
   "resolved" "https://registry.npmjs.org/mimic-response/-/mimic-response-3.1.0.tgz"
   "version" "3.1.0"
 
-"miniget@^4.0.0", "miniget@^4.2.2":
+"miniget@^4.2.2":
   "integrity" "sha512-a7voNL1N5lDMxvTMExOkg+Fq89jM2vY8pAi9ZEWzZtfNmdfP6RXkvUtFnCAXoCv2T9k1v/fUJVaAEuepGcvLYA=="
   "resolved" "https://registry.npmjs.org/miniget/-/miniget-4.2.2.tgz"
   "version" "4.2.2"
@@ -2155,11 +2155,11 @@
   dependencies:
     "got" "^11.8.3"
 
-"ytdl-core@^4.10.0":
-  "integrity" "sha512-RCCoSVTmMeBPH5NFR1fh3nkDU9okvWM0ZdN6plw6I5+vBBZVUEpOt8vjbSgprLRMmGUsmrQZJhvG1CHOat4mLA=="
-  "resolved" "https://registry.npmjs.org/ytdl-core/-/ytdl-core-4.10.0.tgz"
-  "version" "4.10.0"
+"ytdl-core@^4.11.1":
+  "integrity" "sha512-0H2hl8kv9JA50qEUewPVpDCloyEVkXZfKJ6o2RNmkngfiY99pGVqE7jQbMT6Rs1QwZpF8GiMB50VWXqivpzlgQ=="
+  "resolved" "https://registry.npmjs.org/ytdl-core/-/ytdl-core-4.11.1.tgz"
+  "version" "4.11.1"
   dependencies:
-    "m3u8stream" "^0.8.4"
-    "miniget" "^4.0.0"
+    "m3u8stream" "^0.8.6"
+    "miniget" "^4.2.2"
     "sax" "^1.1.3"

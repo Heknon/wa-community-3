@@ -21,7 +21,7 @@ import {processMessageForStatistic} from "./db/statistics";
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
 export const whatsappBot: BotClient = new BotClient("./session", registerEventHandlers);
-export const SAFE_DEBUG_MODE = false;
+export const SAFE_DEBUG_MODE = true;
 
 whatsappBot.start();
 

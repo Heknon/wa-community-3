@@ -1,4 +1,4 @@
-import {prisma} from "../db/client";
+import {prisma, redisCooldown} from "../db/client";
 import config from "../config/config.json";
 import items from "../config/items.json";
 import {AccountType, Money, Prisma, User} from "@prisma/client";
@@ -56,17 +56,21 @@ export const getUserMoney = async (user: User & {money: Money | null | undefined
         .catch((err) => undefined);
 };
 
-export const getCooldownLeft = (
+export const getCooldownLeft = async (
     user: Prisma.UserGetPayload<{
-        include: {
-            cooldowns: true;
-        };
+        // include: {
+        //     cooldowns: true;
+        // };
     }>,
     trigger: CommandTrigger,
 ) => {
-    const cooldown = user.cooldowns.find((c) => trigger.isTriggered(c.cooldownOn));
+    // const cooldown = user.cooldowns.find((c) => trigger.isTriggered(c.cooldownOn));
+    const cooldownRaw = await redisCooldown.get(
+        getCooldownRedisKey(user.jid, trigger.command.toLowerCase().trim()),
+    );
+    const cooldownExpiresAt = cooldownRaw ? new Date(cooldownRaw) : undefined;
     const now = Date.now();
-    const cooldownLeft = Math.max(0, (new Date(cooldown?.expiresAt ?? now)?.getTime() ?? now) - now);
+    const cooldownLeft = Math.max(0, (new Date(cooldownExpiresAt ?? now)?.getTime() ?? now) - now);
     return cooldownLeft;
 };
 
@@ -77,26 +81,30 @@ export const addCooldownToUser = async (
 ) => {
     const expiresAt = new Date(Date.now() + cooldown);
     const formattedCooldownOn = cooldownOn.toLowerCase().trim();
-    const cooldownOnUser = user.cooldowns.find(
-        (c) => c.cooldownOn.toLowerCase().trim() === formattedCooldownOn,
+    return await redisCooldown.set(
+        getCooldownRedisKey(user.jid, formattedCooldownOn),
+        expiresAt.toISOString(),
     );
-    
-    cooldownOnUser
-        ? await prisma.cooldown.update({
-              where: {
-                  id: cooldownOnUser.id,
-              },
-              data: {
-                  expiresAt,
-              },
-          })
-        : await prisma.cooldown.create({
-              data: {
-                  cooldownOn: formattedCooldownOn,
-                  expiresAt,
-                  user: {connect: {jid: user.jid}},
-              },
-          });
+    // const cooldownOnUser = user.cooldowns.find(
+    //     (c) => c.cooldownOn.toLowerCase().trim() === formattedCooldownOn,
+    // );
+
+    // cooldownOnUser
+    //     ? await prisma.cooldown.update({
+    //           where: {
+    //               id: cooldownOnUser.id,
+    //           },
+    //           data: {
+    //               expiresAt,
+    //           },
+    //       })
+    //     : await prisma.cooldown.create({
+    //           data: {
+    //               cooldownOn: formattedCooldownOn,
+    //               expiresAt,
+    //               user: {connect: {jid: user.jid}},
+    //           },
+    //       });
 };
 
 export const addCommandCooldown = async (
@@ -115,6 +123,10 @@ export const addCommandCooldown = async (
 
     if (cooldown == 0 || cooldown === undefined) return;
     await addCooldownToUser(user, command.mainTrigger.command, cooldown);
+};
+
+export const getCooldownRedisKey = (id: string, cooldownOn: string) => {
+    return `${id}:${cooldownOn}`;
 };
 
 export const getUserRandom = (user: User) => {

@@ -46,7 +46,7 @@
     "weighted-random": "^0.1.0",
     "winston": "^3.8.1",
     "youtube-search-without-api-key": "^1.0.7",
-    "ytdl-core": "^4.10.0"
+    "ytdl-core": "^4.11.1"
   },
   "devDependencies": {
     "@types/death": "^1.1.2",
