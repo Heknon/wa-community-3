@@ -16,6 +16,7 @@ import {getCommandByTrigger, handleChatMessage} from "./chat/chat";
 import {createUser, getFullUser} from "./user/database_interactions";
 import {Chat as FullChat} from "./db/types";
 import {createChat, doesChatExist, getFullChat} from "./chat/database_interactions";
+import {processMessageForStatistic} from "./db/statistics";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
@@ -241,15 +242,20 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
             //         [msg.raw?.key.id],
             //         'read'
             //     );
-            await handleChatMessage(msg, user, chat).catch((e) => logger.error(e.stack));
+            const commandMade = await handleChatMessage(msg, user, chat).catch((e) => {
+                logger.error(e.stack);
+                return undefined;
+            });
             let processedTime = Date.now();
-            console.log(`Processed message in ${processedTime - recvTime}ms`);
+            const processTime = processedTime - recvTime;
+            processMessageForStatistic(user, chat, msg, processTime, commandMade);
+            console.log(`Processed message in ${processTime}ms`);
         }
     });
 
     eventListener.on("groups.upsert", async (groups) => {
         for (const group of groups) {
-            if (SAFE_DEBUG_MODE && group.id != '120363041344515310@g.us') return;
+            if (SAFE_DEBUG_MODE && group.id != "120363041344515310@g.us") return;
             const chat = await getFullChat(group.id);
             if (!chat) {
                 return;
@@ -287,7 +293,12 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
     eventListener.on("chats.upsert", async (chats: WAChat[]) => {
         for (const chatData of chats) {
             const chatJid = chatData.id;
-            if (SAFE_DEBUG_MODE && chatJid != '120363041344515310@g.us' && chatJid != '972557223809@s.whatsapp.net') return;
+            if (
+                SAFE_DEBUG_MODE &&
+                chatJid != "120363041344515310@g.us" &&
+                chatJid != "972557223809@s.whatsapp.net"
+            )
+                return;
             if (!chatJid) continue;
 
             const chatExists = doesChatExist(chatJid);
@@ -336,7 +347,12 @@ function registerListeners() {}
 function registerCommands() {}
 
 async function sendDisclaimer(chat: FullChat) {
-    if (SAFE_DEBUG_MODE && chat.jid != '120363041344515310@g.us' && chat.jid != '972557223809@s.whatsapp.net') return;
+    if (
+        SAFE_DEBUG_MODE &&
+        chat.jid != "120363041344515310@g.us" &&
+        chat.jid != "972557223809@s.whatsapp.net"
+    )
+        return;
 
     const joinMessage = `**Disclaimer**\
                 \nThis bot is handled and managed by a human\

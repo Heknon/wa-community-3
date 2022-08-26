@@ -58,10 +58,12 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         }
 
         if (isBlocked != undefined) {
-            return await blockable.onBlocked(message, isBlocked);
+            await blockable.onBlocked(message, isBlocked);
+            return;
         }
 
         await executeCommand(trigger, blockable, message, sender, chat);
+        return blockable;
     }
 };
 
