@@ -210,14 +210,14 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                     {
                         text: languages.tagged_info[chat.language].message,
                         buttons: [
-                            {
-                                buttonId: "0",
-                                buttonText: {
-                                    displayText: `${chat.prefix}${helpCommand.name} ${
-                                        languages.tagged_info[chat.language].text_version
-                                    }`,
-                                },
-                            },
+                            // {
+                            //     buttonId: "0",
+                            //     buttonText: {
+                            //         displayText: `${chat.prefix}${helpCommand.name} ${
+                            //             languages.tagged_info[chat.language].text_version
+                            //         }`,
+                            //     },
+                            // },
                             {
                                 buttonId: "1",
                                 buttonText: {

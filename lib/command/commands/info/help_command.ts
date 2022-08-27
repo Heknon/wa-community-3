@@ -91,8 +91,9 @@ export default class HelpCommand extends Command {
         }
 
         const isSpecificSectionRequest = allowedCategoriesList.length != categories.length;
+        const imageGenCategory = languages.image_gen[this.langCode].category.toLowerCase();
         if (!isSpecificSectionRequest) {
-            allowedCategories.delete(languages.image_gen[this.langCode].category.toLowerCase());
+            allowedCategories.delete(imageGenCategory);
         }
         let sections = await this.getHelpSections(filteredCommands, chat, message, user, [
             ...allowedCategories,
@@ -116,9 +117,9 @@ export default class HelpCommand extends Command {
         if (!isSpecificSectionRequest) {
             sections = new Map([
                 [
-                    languages.image_gen[this.langCode].category.toLowerCase(),
+                    imageGenCategory,
                     {
-                        title: languages.image_gen[this.langCode].category.toUpperCase(),
+                        title: imageGenCategory,
                         rows: [
                             {
                                 title: languages.image_gen[this.langCode].title.replace(
@@ -126,6 +127,9 @@ export default class HelpCommand extends Command {
                                     prefix,
                                 ),
                                 description: languages.image_gen[this.langCode].description,
+                                rowId: `HELP_COMMAND-0\n${Object.values(languages.image_gen)
+                                    .map((e) => e.title)
+                                    .join("\n")}\n\r`,
                             },
                         ],
                     },
@@ -151,7 +155,9 @@ export default class HelpCommand extends Command {
                 {
                     text: helpMessage,
                     buttonText: this.language.execution.button,
-                    sections: Array.from(sections.entries()).map((arr) => arr[1] as proto.Message.ListMessage.ISection),
+                    sections: Array.from(sections.entries()).map(
+                        (arr) => arr[1] as proto.Message.ListMessage.ISection,
+                    ),
                     footer: this.language.execution.footer,
                     viewOnce: true,
                 },
@@ -169,7 +175,9 @@ export default class HelpCommand extends Command {
                 {
                     text: helpMessage,
                     buttonText: this.language.execution.button,
-                    sections: Array.from(sections.entries()).map((arr) => arr[1] as proto.Message.ListMessage.ISection),
+                    sections: Array.from(sections.entries()).map(
+                        (arr) => arr[1] as proto.Message.ListMessage.ISection,
+                    ),
                     footer: this.language.execution.footer,
                     viewOnce: true,
                 },
@@ -255,7 +263,9 @@ export default class HelpCommand extends Command {
         return [filteredCommands, sendInGroup];
     }
 
-    public async getHelpText(sections: Map<string, proto.Message.ListMessage.ISection>): Promise<string> {
+    public async getHelpText(
+        sections: Map<string, proto.Message.ListMessage.ISection>,
+    ): Promise<string> {
         let help = "";
         for (const section of sections.values()) {
             help += `*${section.title}*\n`;
@@ -278,7 +288,8 @@ export default class HelpCommand extends Command {
             .map((e) => e.command)
             .join(", ")}\n\n*${this.language.execution.cooldowns}:*\n${Array.from(
             command.cooldowns.entries(),
-        ).filter(([acc, time])=> !!languages.ranks[this.langCode][acc.toLowerCase()])
+        )
+            .filter(([acc, time]) => !!languages.ranks[this.langCode][acc.toLowerCase()])
             .map(
                 (e) =>
                     `${languages.ranks[this.langCode][AccountType[e[0]].toLowerCase()]}: ${
