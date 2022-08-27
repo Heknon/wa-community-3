@@ -189,12 +189,7 @@ export default class ResponseCommand extends InteractableCommand {
                 });
                 return;
             case 3:
-                response.responses.splice(index, 1);
-                prisma.botResponse.update({where: {id: response.id}, data: {
-                    responses: {
-                        set: response.responses
-                    }
-                }});
+                await prisma.botResponse.delete({where: {id: response.id}});
                 await actionMsg.reply(this.language.execution.editMenu.delete.success, true, {
                     placeholder,
                 });
