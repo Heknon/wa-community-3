@@ -31,12 +31,12 @@ export default abstract class InteractableCommand extends Command {
                 msg.raw?.key.remoteJid == message.raw?.key.remoteJid &&
                 (msg.content?.trim()?.length ?? 0) > 0;
             if (!baseCheck) return false;
-            const chat = await prisma.chat.findUnique({
-                where: {jid: msg.raw?.key.remoteJid!},
-            });
-            const isCommand = chat ? (await getCommandByTrigger(chat, msg.content ?? '')) != undefined : false;
-            isCommandFlag = isCommand;
-            if (isCommand) return true;
+            // const chat = await prisma.chat.findUnique({
+            //     where: {jid: msg.raw?.key.remoteJid!},
+            // });
+            // // const isCommand = chat ? (await getCommandByTrigger(chat, msg.content ?? '')) != undefined : false;
+            // // isCommandFlag = isCommand;
+            // // if (isCommand) return true;
             if (!filter) {
                 clearTimeout(timerCode);
                 cancelTimeout = true;
