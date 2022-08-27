@@ -128,7 +128,7 @@ model Chat {
 model BotResponse {
     id      Int    @id @default(autoincrement())
     chat    Chat   @relation(fields: [chatJid], references: [jid], onDelete: Cascade)
-    chatJid String @unique
+    chatJid String
 
     filter     String
     responses  String[]
