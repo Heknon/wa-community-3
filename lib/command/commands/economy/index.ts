@@ -6,6 +6,7 @@ import CrimeCommand from "./crime";
 import DailyCommand from "./daily";
 import DepositCommand from "./deposit";
 import HighlowCommand from "./highlow";
+import HuntCommand from "./hunt";
 import InventoryCommand from "./inventory/inventory";
 import UseItemCommand from "./inventory/use";
 import PostMemesCommand from "./postmemes";
@@ -27,5 +28,6 @@ export {
     UseItemCommand,
     InventoryCommand,
     GiveItemCommand,
-    BuyCommand
+    BuyCommand,
+    HuntCommand,
 }
