@@ -76,6 +76,66 @@
                 }
             }
         },
+        "buy": {
+            "triggers": [
+                "buy",
+                "קנה"
+            ],
+            "english": {
+                "triggers": [
+                    "buy"
+                ],
+                "description": "Buy an item from the shop!",
+                "category": "Economy",
+                "execution": {
+                    "success": {
+                        "title": "*Successful {item} purchase*",
+                        "description": "{tag} bought {quantity}x *{item}* and paid ⏣ {price}",
+                        "footer": "Thanks for your purchase!"
+                    },
+                    "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
+                    "no_item": "There is no such item in the shop!",
+                    "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
+                    "no_buy": "You can't buy this item!",
+                    "cancelled": "The purchase has been cancelled.",
+                    "timeout": "You took too long to confirm the purchase. Try again.",
+                    "buttons": [
+                        "{prefix}shop"
+                    ],
+                    "confirm_buttons": [
+                        "Yes",
+                        "No"
+                    ]
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "קנה"
+                ],
+                "description": "קנה מוצר מהחנות!",
+                "category": "כלכלה",
+                "execution": {
+                    "success": {
+                        "title": "*הקנייה של {item} הצליחה*",
+                        "description": "{tag} קנה {quantity}x *{item}* ושילם ⏣ {price}",
+                        "footer": "תודה על הקנייה! לא חשבתי שהכרטיס יעבור"
+                    },
+                    "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
+                    "cancelled": "הקנייה בוטלה.",
+                    "no_item": "אין מוצר כזה בחנות!",
+                    "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
+                    "no_buy": "אתה לא יכול לקנות את המוצר הזה",
+                    "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
+                    "buttons": [
+                        "{prefix}חנות"
+                    ],
+                    "confirm_buttons": [
+                        "כן",
+                        "לא"
+                    ]
+                }
+            }
+        },
         "use": {
             "triggers": [
                 "use",

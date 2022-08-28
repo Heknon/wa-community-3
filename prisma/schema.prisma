@@ -137,11 +137,3 @@ enum Language {
     english
     hebrew
 }
-
-// AD MODELS
-model Ad {
-    id   Int    @id @default(autoincrement())
-    message String
-    createdAt DateTime @default(now())
-    updatedAt DateTime @updatedAt
-}

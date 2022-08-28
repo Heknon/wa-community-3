@@ -1,4 +1,5 @@
 import {Prisma} from "@prisma/client";
+import cuid from "cuid";
 import {prisma} from "../db/client";
 import {User} from "../db/types";
 import {getItemData, ItemID} from "../economy/items";
@@ -25,6 +26,28 @@ export const getInventoryItem = (
         item: itemData,
     };
 };
+
+export const giveItemToUser = async (user: User, itemId: ItemID, quantity: number = 1) => {
+    const item = getItemData(itemId);
+    if (!item) return;
+    const invItem = getInventoryItem(user, itemId);
+
+    const amount = (invItem?.quantity ?? 0) + quantity;
+    const updatedUser = await prisma.inventoryItem.upsert({
+        where: {
+            id: invItem?.id ?? cuid(),
+        },
+        create: {
+            itemId: itemId,
+            quantity: amount,
+            user: {connect: {jid: user.jid}},
+        },
+        update: {
+            quantity: amount,
+        }
+    });
+    return updatedUser;
+}
 
 export const userRegisterItemUse = async (user: User, item: Item) => {
     const itemData = getInventoryItem(user, item.data.id);

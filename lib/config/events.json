@@ -1,0 +1,18 @@
+[
+    {
+        "id": "trivia",
+        "announcement": {
+            "english": {
+                "title": "*TRIVIA NIGHT*",
+                "description": "Let's see who's the smartest person here!",
+                "footer": "_You have 10 seconds to answer_"
+            },
+            "hebrew": {
+                "title": "*לילה טריויה*",
+                "description": "בואו נראה מי הבחור החכם ביותר כאן!",
+                "footer": "_יש לך 10 שניות לענות_"
+            }
+        },
+        "expire_time": 10
+    }
+]
