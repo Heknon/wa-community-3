@@ -7,6 +7,7 @@ import languages from "../../../../config/language.json";
 import Message from "../../../../messaging/message";
 import {Chat, User} from "../../../../db/types";
 import {getAllItems} from "../../../../economy/items";
+import { commas } from "../../../../utils/utils";
 
 export default class ShopCommand extends Command {
     private language: typeof languages.commands.shop[Language];
@@ -41,8 +42,8 @@ export default class ShopCommand extends Command {
             shopText +=
                 this.language.execution.item
                     .replace("{name}", item.name[this.langCode])
-                    .replace("{quantity}", (user.items.find(e => e.itemId == item.id)?.quantity ?? 0).toString())
-                    .replace('{price}', item.buy.toString())
+                    .replace("{quantity}", commas(user.items.find(e => e.itemId == item.id)?.quantity ?? 0))
+                    .replace('{price}', commas(item.buy))
                     .replace('{description}', item.description?.[this.langCode] ?? "No description") + "\n\n";
         }
 

@@ -12,6 +12,7 @@ import {
     giveItemToUser,
     userRegisterItemUse,
 } from "../../../../user/inventory";
+import {commas} from "../../../../utils/utils";
 
 export default class BuyCommand extends EconomyCommand {
     private language: typeof languages.commands.buy[Language];
@@ -39,8 +40,10 @@ export default class BuyCommand extends EconomyCommand {
         body: string,
         trigger: CommandTrigger,
     ) {
-        const itemData = getAllItems().find(
-            (e) => body.toLowerCase().indexOf(e.id.toLowerCase()) > -1,
+        const itemData = getAllItems().find((e) =>
+            [e.id, ...Object.values(e.name)].some(
+                (e) => body.toLowerCase().indexOf(e.toLowerCase().trim()) > -1,
+            ),
         );
 
         const amount = Number(/\d+/.exec(body)?.[0]) || 1;
@@ -51,8 +54,8 @@ export default class BuyCommand extends EconomyCommand {
             message,
             custom: {
                 item: itemData?.name[this.langCode] ?? "N/A",
-                quantity: amount.toString(),
-                price: price.toString(),
+                quantity: commas(amount),
+                price: commas(price),
             },
         });
 
@@ -119,7 +122,7 @@ export default class BuyCommand extends EconomyCommand {
         await this.removeBalance(user, {wallet: price});
         await giveItemToUser(user, itemData.id, amount);
         const successMessage = `${this.language.execution.success.title}\n${this.language.execution.success.description}\n\n${this.language.execution.success.footer}`;
-        message.reply(successMessage, true, {placeholder});
+        message.replyAdvanced({text: successMessage, mentions: [user.jid]}, true, {placeholder});
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}

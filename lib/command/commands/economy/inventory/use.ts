@@ -33,8 +33,10 @@ export default class UseItemCommand extends EconomyCommand {
         body: string,
         trigger: CommandTrigger,
     ) {
-        const itemData = getAllItems().find(
-            (e) => body.toLowerCase().indexOf(e.id.toLowerCase()) > -1,
+        const itemData = getAllItems().find((e) =>
+            [e.id, ...Object.values(e.name)].some(
+                (e) => body.toLowerCase().indexOf(e.toLowerCase().trim()) > -1,
+            ),
         );
         const item = itemData ? getItem(itemData.id) : undefined;
         const placeholder = this.getDefaultPlaceholder({

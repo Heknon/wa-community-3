@@ -61,7 +61,7 @@
                 "category": "Economy",
                 "execution": {
                     "title": "*Shop Items*",
-                    "item": "*{name}* ({quantity}) ── ⏣ {price}\n{description}"
+                    "item": "*{name}* ({quantity}) ─ ⏣ {price}\n{description}"
                 }
             },
             "hebrew": {
@@ -72,7 +72,7 @@
                 "category": "כלכלה",
                 "execution": {
                     "title": "*קניית מוצרים*",
-                    "item": "*{name}* ({quantity}) ── ⏣ {price}\n{description}"
+                    "item": "*{name}* ({quantity}) ─ {price} ⏣\n{description}"
                 }
             }
         },

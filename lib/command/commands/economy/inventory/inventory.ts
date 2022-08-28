@@ -6,6 +6,7 @@ import languages from "../../../../config/language.json";
 import {User} from "../../../../db/types";
 import Message from "../../../../messaging/message";
 import {getInventory} from "../../../../user/inventory";
+import { commas } from "../../../../utils/utils";
 
 export default class InventoryCommand extends EconomyCommand {
     private language: typeof languages.commands.inventory[Language];
@@ -52,7 +53,7 @@ export default class InventoryCommand extends EconomyCommand {
         for (const item of inventory) {
             inventoryText += `${this.language.execution.format
                 .replace("{name}", item.item?.name[this.langCode] ?? "DELETED")
-                .replace("{quantity}", item.quantity.toString())
+                .replace("{quantity}", commas(item.quantity))
                 .replace("{id}", item.item?.id ?? "DELETED")
                 .replace("{category}", item.item?.type ?? "DELETED")}\n\n`;
         }
