@@ -47,12 +47,12 @@ export class BotClient {
             logger: storeLogger,
         });
 
-        this.store.readFromFile(storePath + "/baileys_store_multi.json");
-        // save every 5m
-        this.store.writeToFile(storePath + "/baileys_store_multi.json");
-        setInterval(() => {
-            this.store.writeToFile(storePath + "/baileys_store_multi.json");
-        }, 1000 * 60 * 2);
+        // this.store.readFromFile(storePath + "/baileys_store_multi.json");
+        // // save every 5m
+        // this.store.writeToFile(storePath + "/baileys_store_multi.json");
+        // setInterval(() => {
+        //     this.store.writeToFile(storePath + "/baileys_store_multi.json");
+        // }, 1000 * 60 * 2);
 
         this.client = undefined;
         this.eventListener = undefined;

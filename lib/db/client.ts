@@ -11,9 +11,16 @@ export const redis = new Redis(6379, "localhost", {
 
 export const redisCooldown = new Redis(6379, "localhost", {
     password: env.REDIS_PASSWORD,
-    db: 2,
+    db: 3,
     keyPrefix: "cooldown:",
 });
+
+export const redisBotAuth = new Redis(6379, "localhost", {
+    password: env.REDIS_PASSWORD,
+    db: 4,
+    keyPrefix: "auth:",
+});
+
 
 export const redisUserStats = new Redis(6379, "localhost", {
     password: env.REDIS_PASSWORD,

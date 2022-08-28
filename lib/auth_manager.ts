@@ -1,5 +1,6 @@
-import {AuthenticationState, MessageRetryMap, useMultiFileAuthState} from "@adiwajshing/baileys";
+import {AuthenticationState, MessageRetryMap} from "@adiwajshing/baileys";
 import {existsSync, mkdirSync} from "fs";
+import { useAuthState } from "./auth_state";
 
 export class AuthManager {
     public messageRetryMap: MessageRetryMap;
@@ -28,7 +29,7 @@ export class AuthManager {
                 return reject(e);
             }
 
-            useMultiFileAuthState(this.authenticationPath)
+            useAuthState()
                 .then((e) => {
                     if (!e || !e.state || !e.saveCreds) {
                         reject(e);
