@@ -48,7 +48,9 @@ export default class ShopCommand extends Command {
         }
 
         shopText.trim();
-        message.reply(shopText, true, {
+        message.replyAdvanced({text: shopText, buttons: this.language.execution.buttons.map(e => {
+            return {buttonId: e, buttonText: {displayText: e}};
+        })}, true, {
             placeholder: this.getDefaultPlaceholder({chat, user}),
         });
     }

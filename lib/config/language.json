@@ -12,7 +12,8 @@
             "triggers": [
                 "inv",
                 "inventory",
-                "אינבנטורי"
+                "אינבנטורי",
+                "מוצרים"
             ],
             "english": {
                 "triggers": [
@@ -28,23 +29,24 @@
                         "{prefix}use <item>",
                         "{prefix}sell <item>"
                     ],
-                    "format": "{name} ─ {quantity}\n_ID_ *{id}* ─ {category}"
+                    "format": "{name} ({category}) ─ {quantity}\n_ID_ *{id}*"
                 }
             },
             "hebrew": {
                 "triggers": [
+                    "מוצרים",
                     "אינבנטורי"
                 ],
                 "category": "כלכלה",
                 "description": "תראה את כל המוצרים שאתה מחזיק עליך באינבנטורי!",
                 "execution": {
-                    "request_title": "*אינבנטורי {tag}*",
+                    "request_title": "*המוצרים של {tag}*",
                     "no_items": "איכ עני מגעיל אין לך כלום עליך",
                     "buttons": [
                         "{prefix}השתמש <item>",
                         "{prefix}תמכור <item>"
                     ],
-                    "format": "{name} ─ {quantity}\n_מזהה_ *{id}* ─ {category}"
+                    "format": "{name} ({category}) ─ {quantity}\n_מזהה_ *{id}*"
                 }
             }
         },
@@ -59,9 +61,13 @@
                 ],
                 "description": "Shop to buy items!",
                 "category": "Economy",
+                "usage": "{prefix}{command} <item> {amount}",
                 "execution": {
                     "title": "*Shop Items*",
-                    "item": "*{name}* ({quantity}) ─ ⏣ {price}\n{description}"
+                    "item": "*{name}* ({quantity}) ─ ⏣ {price}\n{description}",
+                    "buttons": [
+                        "{prefix}buy <item>"
+                    ]
                 }
             },
             "hebrew": {
@@ -70,9 +76,13 @@
                 ],
                 "description": "חנות בשביל לקנות כל מיני מוצרים!",
                 "category": "כלכלה",
+                "usage": "{prefix}{command} <מוצר> <כמות>",
                 "execution": {
                     "title": "*קניית מוצרים*",
-                    "item": "*{name}* ({quantity}) ─ {price} ⏣\n{description}"
+                    "item": "*{name}* ({quantity}) ─ {price} ⏣\n{description}",
+                    "buttons": [
+                        "{prefix}קנה <item>"
+                    ]
                 }
             }
         },
