@@ -1,5 +1,27 @@
 [
     {
+        "id": "apple",
+        "name": {
+            "english": "Apple",
+            "hebrew": "תפוח"
+        },
+        "durability": 1,
+        "type": "Usable",
+        "buy": 1000,
+        "sell": 600
+    },
+    {
+        "id": "bread",
+        "name": {
+            "english": "Bread",
+            "hebrew": "לחם"
+        },
+        "durability": 1,
+        "type": "Usable",
+        "buy": 1000,
+        "sell": 600
+    },
+    {
         "id": "huntingrifle",
         "name": {
             "english": "Hunting Rifle",

@@ -30,7 +30,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         const isBlocked = await handler.isBlocked(message, chat, blockable, true, trigger);
 
         if (isBlocked == BlockedReason.Cooldown) {
-            const timeToWait = (await getCooldownLeft(sender, blockable.mainTrigger)) / 1000.0;
+            const timeToWait = (await getCooldownLeft(sender.jid, blockable.mainTrigger)) / 1000.0;
             const donateCommand = await getCommandByTrigger(chat, "donate");
             await message.replyAdvanced(
                 {

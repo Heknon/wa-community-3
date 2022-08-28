@@ -57,16 +57,12 @@ export const getUserMoney = async (user: User & {money: Money | null | undefined
 };
 
 export const getCooldownLeft = async (
-    user: Prisma.UserGetPayload<{
-        // include: {
-        //     cooldowns: true;
-        // };
-    }>,
+    jid: string,
     trigger: CommandTrigger,
 ) => {
     // const cooldown = user.cooldowns.find((c) => trigger.isTriggered(c.cooldownOn));
     const cooldownRaw = await redisCooldown.get(
-        getCooldownRedisKey(user.jid, trigger.command.toLowerCase().trim()),
+        getCooldownRedisKey(jid, trigger.command.toLowerCase().trim()),
     );
     const cooldownExpiresAt = cooldownRaw ? new Date(cooldownRaw) : undefined;
     const now = Date.now();
@@ -75,14 +71,14 @@ export const getCooldownLeft = async (
 };
 
 export const addCooldownToUser = async (
-    user: Prisma.UserGetPayload<{include: {cooldowns: true}}>,
+    jid: string,
     cooldownOn: string,
     cooldown: number,
 ) => {
     const expiresAt = new Date(Date.now() + cooldown);
     const formattedCooldownOn = cooldownOn.toLowerCase().trim();
     return await redisCooldown.set(
-        getCooldownRedisKey(user.jid, formattedCooldownOn),
+        getCooldownRedisKey(jid, formattedCooldownOn),
         expiresAt.toISOString(),
     );
     // const cooldownOnUser = user.cooldowns.find(
@@ -108,7 +104,7 @@ export const addCooldownToUser = async (
 };
 
 export const addCommandCooldown = async (
-    user: Prisma.UserGetPayload<{include: {cooldowns: true}}>,
+    user: Prisma.UserGetPayload<{}>,
     command: Command,
 ) => {
     let cooldown = command.cooldowns.get(user.accountType);
@@ -122,7 +118,7 @@ export const addCommandCooldown = async (
     }
 
     if (cooldown == 0 || cooldown === undefined) return;
-    await addCooldownToUser(user, command.mainTrigger.command, cooldown);
+    await addCooldownToUser(user.jid, command.mainTrigger.command, cooldown);
 };
 
 export const getCooldownRedisKey = (id: string, cooldownOn: string) => {

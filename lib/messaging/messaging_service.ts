@@ -13,8 +13,8 @@ import Metadata from "./metadata";
 import {whatsappBot} from "..";
 import {applyPlaceholders} from "../utils/message_utils";
 import {logger} from "../logger";
-import { ObjectId } from "mongodb";
-import { Placeholder } from "./types";
+import {ObjectId} from "mongodb";
+import {Placeholder} from "./types";
 
 export default class MessagingService {
     private client: WASocket | undefined;
@@ -63,7 +63,13 @@ export default class MessagingService {
             }
         }
 
-        if (!msg.fromBot && message.key && message.key.remoteJid && message.key.id && message.message) {
+        if (
+            !msg.fromBot &&
+            message.key &&
+            message.key.remoteJid &&
+            message.key.id &&
+            message.message
+        ) {
             this.storeMessageToCache(message.key.remoteJid, message.key.id, message.message);
         }
 
@@ -84,7 +90,11 @@ export default class MessagingService {
             placeholder?: Placeholder;
         } = {},
     ) {
-        return await this.replyAdvanced(message, {text: content}, quote, {privateReply, metadata, placeholder});
+        return await this.replyAdvanced(message, {text: content}, quote, {
+            privateReply,
+            metadata,
+            placeholder,
+        });
     }
 
     public async replyAdvanced(
@@ -160,11 +170,26 @@ export default class MessagingService {
 
             const text = (content as any).text;
             const caption = (content as any).caption;
+            const buttons = (content as any).buttons;
             if (text != undefined && text.length > 0)
                 (content as any).text = await applyPlaceholders(text, placeholder);
             if (caption != undefined && caption.length > 0)
                 (content as any).caption = await applyPlaceholders(caption, placeholder);
-
+            if (buttons != undefined && buttons.length > 0) {
+                (content as any).buttons = await Promise.all(
+                    await (content as any).buttons.map(async (e) => {
+                        return {
+                            ...e,
+                            buttonText: {
+                                displayText: await applyPlaceholders(
+                                    e.buttonText.displayText,
+                                    placeholder,
+                                ),
+                            },
+                        };
+                    }),
+                );
+            }
             sentMessage = await this.client!.sendMessage(recipient, content, options);
 
             if (this.metadataEnabled && metadata) {
@@ -176,11 +201,19 @@ export default class MessagingService {
             logger.error("FAILED TO SEND MESSAGE", content, options, error);
             logger.error(error);
             if ((error as any).stack) logger.error((error as any).stack);
-            sentMessage = await this.client!.sendMessage(recipient, {text: "Failed to send this message."}, options);
+            sentMessage = await this.client!.sendMessage(
+                recipient,
+                {text: "Failed to send this message."},
+                options,
+            );
             return Message.fromWAMessage(sentMessage!, metadata);
         } finally {
             if (sentMessage && sentMessage.message) {
-                this.storeMessageToCache(sentMessage.key.remoteJid!, sentMessage.key.id!, sentMessage.message!);
+                this.storeMessageToCache(
+                    sentMessage.key.remoteJid!,
+                    sentMessage.key.id!,
+                    sentMessage.message!,
+                );
             }
         }
     }

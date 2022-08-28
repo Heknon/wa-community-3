@@ -9,7 +9,7 @@ import {getUserPrivilegeLevel} from "../utils/group_utils";
 import {Chat} from "@prisma/client";
 import {getNumberFromAccountType, getNumberFromGroupLevel} from "../utils/utils";
 import {prisma} from "../db/client";
-import { getCooldownLeft } from "../user/user";
+import {getCooldownLeft} from "../user/user";
 
 export default class CommandHandler {
     public commands: Command[];
@@ -18,13 +18,25 @@ export default class CommandHandler {
         this.commands = [];
     }
 
-    find(data: Message, chat: Chat): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
+    find(
+        data: Message,
+        chat: Chat,
+    ): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
         return this.findByContent(data.content ?? "", chat.prefix);
     }
 
-    findByContent(content: string, prefix: string): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
+    findByContent(
+        content: string,
+        prefix: string,
+    ): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
         const result: [CommandTrigger, Command][] = [];
-        if (!content.slice(0, prefix.length + 2).toLowerCase().trim().startsWith(prefix)) {
+        if (
+            !content
+                .slice(0, prefix.length + 2)
+                .toLowerCase()
+                .trim()
+                .startsWith(prefix)
+        ) {
             return result;
         }
 
@@ -76,19 +88,17 @@ export default class CommandHandler {
         if (checkedPerms != undefined) return checkedPerms;
 
         const usedTrigger = trigger ?? blockable.mainTrigger;
-        const body = message.content?.slice(chat.prefix.length + usedTrigger.command.length + 1) ?? "";
+        const body =
+            message.content?.slice(chat.prefix.length + usedTrigger.command.length + 1) ?? "";
         const args = body.split(" ");
         if (args && args.length < blockable.minArgs) {
             return BlockedReason.InsufficientArgs;
         }
 
-        const user =
-            message.senderJid &&
-            (await prisma.user.findUnique({where: {jid: message.senderJid}, include: {cooldowns: true}}));
-        if (!user) return;
+        if (!message.senderJid) return;
 
         if (checkCooldown) {
-            const cooldownLeft = await getCooldownLeft(user, blockable.mainTrigger);
+            const cooldownLeft = await getCooldownLeft(message.senderJid, blockable.mainTrigger);
 
             if (cooldownLeft > 0) {
                 return BlockedReason.Cooldown;

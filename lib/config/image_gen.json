@@ -60,6 +60,18 @@
         }
     },
     {
+        "route": "israel",
+        "name": {
+            "english": "israel",
+            "hebrew": "ישראל"
+        },
+        "type": "post",
+        "required": {
+            "mentions": 1,
+            "text": false
+        }
+    },
+    {
         "route": "armor",
         "name": {
             "english": "armor",

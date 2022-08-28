@@ -12,7 +12,6 @@ export const GroupLevel: {
 
 export type User = Prisma.UserGetPayload<{
     include: {
-        cooldowns: true;
         daily: true;
         items: true;
         money: true;

@@ -25,7 +25,6 @@ model User {
     accountType           AccountType     @default(USER)
     accountTypeExpiration DateTime?
     money                 Money?
-    cooldowns             Cooldown[]
     reputation            Reputation?
     items                 InventoryItem[]
     daily                 DailyReward?
@@ -34,17 +33,6 @@ model User {
     updatedAt DateTime @updatedAt
 
     @@index([phone])
-}
-
-model Cooldown {
-    id         Int      @id @default(autoincrement())
-    user       User     @relation(fields: [userJid], references: [jid], onDelete: Cascade)
-    cooldownOn String
-    expiresAt  DateTime
-    userJid    String
-
-    @@index([userJid, cooldownOn])
-    @@unique([userJid, cooldownOn])
 }
 
 model Reputation {
@@ -73,9 +61,10 @@ model InventoryItem {
 
     itemId   String
     quantity Int    @default(0)
+    uses     Int    @default(0)
     userJid  String
 
-    @@index([userJid])
+    @@index([userJid, itemId])
 }
 
 model Money {
@@ -147,4 +136,12 @@ enum ChatType {
 enum Language {
     english
     hebrew
+}
+
+// AD MODELS
+model Ad {
+    id   Int    @id @default(autoincrement())
+    message String
+    createdAt DateTime @default(now())
+    updatedAt DateTime @updatedAt
 }

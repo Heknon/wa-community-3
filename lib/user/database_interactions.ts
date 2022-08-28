@@ -7,7 +7,6 @@ export const getFullUser = async (jid: string): Promise<FullUser | null> => {
     return await prisma.user.findUnique({
         where: {jid},
         include: {
-            cooldowns: true,
             daily: true,
             items: true,
             money: true,
@@ -54,7 +53,6 @@ export const createUser = async (jid: string, name: string): Promise<FullUser> =
         },
         include: {
             money: true,
-            cooldowns: true,
             daily: true,
             items: true,
             reputation: true,

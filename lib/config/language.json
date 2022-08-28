@@ -8,6 +8,81 @@
         "hebrew": "שפה שונתה."
     },
     "commands": {
+        "inventory": {
+            "triggers": [
+                "inv",
+                "inventory",
+                "אינבנטורי"
+            ],
+            "english": {
+                "triggers": [
+                    "inv",
+                    "inventory"
+                ],
+                "category": "Economy",
+                "description": "Check your inventory and see what you have!",
+                "execution": {
+                    "request_title": "*{tag}'s inventory:*",
+                    "no_items": "You don't have any items!",
+                    "buttons": [
+                        "{prefix}use <item>",
+                        "{prefix}sell <item>"
+                    ],
+                    "format": "{name} ─ {quantity}\n_ID_ *{id}* ─ {category}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "אינבנטורי"
+                ],
+                "category": "כלכלה",
+                "description": "תראה את כל המוצרים שאתה מחזיק עליך באינבנטורי!",
+                "execution": {
+                    "request_title": "*אינבנטורי {tag}*",
+                    "no_items": "איכ עני מגעיל אין לך כלום עליך",
+                    "buttons": [
+                        "{prefix}השתמש <item>",
+                        "{prefix}תמכור <item>"
+                    ],
+                    "format": "{name} ─ {quantity}\n_מזהה_ *{id}* ─ {category}"
+                }
+            }
+        },
+        "use": {
+            "triggers": [
+                "use",
+                "השתמש"
+            ],
+            "english": {
+                "triggers": [
+                    "use",
+                    "השתמש"
+                ],
+                "category": "Economy",
+                "description": "Use an item in your inventory!",
+                "execution": {
+                    "invalid_item": "I don't recognize that item... Try entering the ID of an item from your inventory.",
+                    "no_item": "You ain't that guy buddy... You do not have that item on you.",
+                    "buttons": [
+                        "{prefix}inventory"
+                    ]
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "השתמש"
+                ],
+                "category": "כלכלה",
+                "description": "תשתמש במוצר באינבנטורי!",
+                "execution": {
+                    "invalid_item": "וואלה אין לי מושג מה זה המוצר הזה... תנסה להכניס את הID של המוצר מהאינבנטורי.",
+                    "no_item": "יאללה יאללה לך תנגב את התחת עם שטרות, עני אפס. איך אין לך {item_name}",
+                    "buttons": [
+                        "{prefix}אינבנטורי"
+                    ]
+                }
+            }
+        },
         "code": {
             "triggers": [
                 "code",
