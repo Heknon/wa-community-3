@@ -81,7 +81,7 @@
                     "title": "*קניית מוצרים*",
                     "item": "*{name}* ({quantity}) ─ {price} ⏣\n{description}",
                     "buttons": [
-                        "{prefix}קנה <item>"
+                        "{prefix}קנה <מוצר>"
                     ]
                 }
             }
