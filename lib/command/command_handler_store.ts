@@ -46,12 +46,13 @@ import {
     WithdrawCommand,
     CrimeCommand,
     PostMemesCommand,
+    ShopCommand,
+    GiveItemCommand,
+    UseItemCommand,
+    InventoryCommand,
 } from "./commands/economy";
 import ResponseCommand from "./commands/fun/response";
 import ImageCommand, {ImageGenCommandData} from "./image_command";
-import InventoryCommand from "./commands/economy/inventory/inventory";
-import UseItemCommand from "./commands/economy/inventory/use";
-import GiveItemCommand from "./commands/economy/admin/give_item";
 
 export default class CommandHandlerStore {
     public handlers: Map<Language, CommandHandler> = new Map();
@@ -127,7 +128,8 @@ export default class CommandHandlerStore {
             // inventory - items
             InventoryCommand,
             UseItemCommand,
-            GiveItemCommand
+            GiveItemCommand,
+            ShopCommand,
         ];
 
         genericCommands.forEach((Command) => {

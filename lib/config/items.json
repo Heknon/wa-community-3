@@ -1,14 +1,19 @@
 [
     {
-        "id": "apple",
+        "id": "huntingrifle",
         "name": {
-            "english": "Apple",
-            "hebrew": "תפוח"
+            "english": "Hunting Rifle",
+            "hebrew": "אקדח ציידים"
         },
-        "durability": 1,
-        "type": "Usable",
-        "buy": 1000,
-        "sell": 600
+        "description": {
+            "english": "Use this to access {prefix}hunt",
+            "hebrew": "השתמש בזה כדי לגשת ל {prefix}צייד"
+        },
+        "durability": 4,
+        "default_use": false,
+        "type": "Tool",
+        "buy": 25000,
+        "sell": 4167
     },
     {
         "id": "bread",
@@ -16,21 +21,14 @@
             "english": "Bread",
             "hebrew": "לחם"
         },
-        "durability": 1,
-        "type": "Usable",
-        "buy": 1000,
-        "sell": 600
-    },
-    {
-        "id": "huntingrifle",
-        "name": {
-            "english": "Hunting Rifle",
-            "hebrew": "אקדח ציידים"
+        "description": {
+            "english": "Why not have some bread 🍞",
+            "hebrew": "יאמ יאמ לחם 🍞"
         },
-        "durability": 5,
+        "durability": 1,
         "type": "Tool",
-        "buy": 25000,
-        "sell": 4167
+        "buy": 5000,
+        "sell": 3000
     },
     {
         "id": "skunk",

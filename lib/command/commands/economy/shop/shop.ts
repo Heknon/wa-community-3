@@ -5,22 +5,24 @@ import {Command, CommandTrigger} from "../../..";
 import {BlockedReason} from "../../../../blockable";
 import languages from "../../../../config/language.json";
 import Message from "../../../../messaging/message";
-import { Chat, User } from "../../../../db/types";
+import {Chat, User} from "../../../../db/types";
+import {getAllItems} from "../../../../economy/items";
 
-export default class StickerCommand extends Command {
-    private language: typeof languages.commands.sticker[Language];
+export default class ShopCommand extends Command {
+    private language: typeof languages.commands.shop[Language];
+    private langCode: Language;
 
     constructor(language: Language) {
-        const langs = languages.commands.sticker;
+        const langs = languages.commands.shop;
         const lang = langs[language];
         super({
             triggers: langs.triggers.map((e) => new CommandTrigger(e)),
             announcedAliases: lang.triggers,
-            usage: lang.usage,
             category: lang.category,
             description: lang.description,
         });
 
+        this.langCode = language;
         this.language = lang;
     }
 
@@ -31,7 +33,24 @@ export default class StickerCommand extends Command {
         message: Message,
         body: string,
         trigger: CommandTrigger,
-    ) {}
+    ) {
+        let shopText = this.language.execution.title + "\n";
+        const items = getAllItems();
+        for (const item of items) {
+            if (item.buy <= 0) continue;
+            shopText +=
+                this.language.execution.item
+                    .replace("{name}", item.name[this.langCode])
+                    .replace("{quantity}", (user.items.find(e => e.itemId == item.id)?.quantity ?? 0).toString())
+                    .replace('{price}', item.buy.toString())
+                    .replace('{description}', item.description?.[this.langCode] ?? "No description") + "\n\n";
+        }
+
+        shopText.trim();
+        message.reply(shopText, true, {
+            placeholder: this.getDefaultPlaceholder({chat, user}),
+        });
+    }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
 }

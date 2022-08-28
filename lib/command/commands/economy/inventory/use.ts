@@ -57,6 +57,22 @@ export default class UseItemCommand extends EconomyCommand {
                 true,
                 {placeholder},
             );
+        } else if (itemData.durability <= 0) {
+            return message.replyAdvanced(
+                {
+                    text: this.language.execution.no_use,
+                },
+                true,
+                {placeholder},
+            );
+        } else if (itemData.default_use === false) {
+            return message.replyAdvanced(
+                {
+                    text: this.language.execution.no_default_use,
+                },
+                true,
+                {placeholder},
+            );
         }
 
         const invItem = getInventoryItem(user, item.data.id);

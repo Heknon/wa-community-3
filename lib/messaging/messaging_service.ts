@@ -176,19 +176,15 @@ export default class MessagingService {
             if (caption != undefined && caption.length > 0)
                 (content as any).caption = await applyPlaceholders(caption, placeholder);
             if (buttons != undefined && buttons.length > 0) {
-                (content as any).buttons = await Promise.all(
-                    await (content as any).buttons.map(async (e) => {
-                        return {
-                            ...e,
-                            buttonText: {
-                                displayText: await applyPlaceholders(
-                                    e.buttonText.displayText,
-                                    placeholder,
-                                ),
-                            },
-                        };
-                    }),
-                );
+                if (buttons && buttons.length > 0) {
+                    for (const button of buttons) {
+                        if (!button.buttonText.displayText) continue;
+                        button.buttonText.displayText = await applyPlaceholders(
+                            button.buttonText.displayText,
+                            placeholder,
+                        );
+                    }
+                }
             }
             sentMessage = await this.client!.sendMessage(recipient, content, options);
 
