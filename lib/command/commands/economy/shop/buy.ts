@@ -42,7 +42,7 @@ export default class BuyCommand extends EconomyCommand {
         const itemData = getAllItems().find(
             (e) => body.toLowerCase().indexOf(e.id.toLowerCase()) > -1,
         );
-        const item = itemData ? getItem(itemData.id) : undefined;
+
         const amount = Number(/\d+/.exec(body)?.[0]) || 1;
         const price = (itemData?.buy ?? 0) * amount;
         const placeholder = this.getDefaultPlaceholder({
@@ -56,7 +56,7 @@ export default class BuyCommand extends EconomyCommand {
             },
         });
 
-        if (!item || !itemData) {
+        if (!itemData) {
             return message.replyAdvanced(
                 {
                     text: this.language.execution.no_item,
@@ -75,17 +75,6 @@ export default class BuyCommand extends EconomyCommand {
                 true,
                 {placeholder},
             );
-        }
-
-        const invItem = getInventoryItem(user, item.data.id);
-        if (!invItem || invItem.quantity <= 0) {
-            if (invItem && invItem.quantity <= 0) {
-                await userRegisterItemUse(user, item);
-            }
-
-            return await message.reply(this.language.execution.no_item, true, {
-                placeholder,
-            });
         }
 
         if ((user.money?.wallet ?? 0) < price) {

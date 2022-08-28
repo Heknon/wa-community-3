@@ -4,6 +4,6 @@ import Item from "./item";
 
 export class Bread extends Item {
     public use(executor: User, message?: Message | undefined) {
-        message?.reply("You ate some bread.");
+        message?.reply("😋😋😋");
     }
 }

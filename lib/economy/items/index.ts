@@ -1,6 +1,6 @@
 import items from "../../config/items.json";
-import {Apple} from "./apple";
 import {Bread} from "./bread";
+import { HuntingRifle } from "./huntingrifle";
 
 export type ItemID = typeof items[number]["id"];
 export type ItemData = typeof items[number];
@@ -14,7 +14,7 @@ export const getAllItems = () => {
     return items;
 };
 
-const itemClasses = [Bread, Apple];
+const itemClasses = [Bread, HuntingRifle];
 export default function getItem(itemId: ItemID) {
     const itemData = getItemData(itemId);
     if (!itemData) return;
