@@ -43,8 +43,8 @@
                     "request_title": "*המוצרים של {tag}*",
                     "no_items": "איכ עני מגעיל אין לך כלום עליך",
                     "buttons": [
-                        "{prefix}השתמש <item>",
-                        "{prefix}תמכור <item>"
+                        "{prefix}השתמש <מוצר>",
+                        "{prefix}תמכור <מוצר>"
                     ],
                     "format": "{name} ({category}) ─ {quantity}\n_מזהה_ *{id}*"
                 }
@@ -101,7 +101,10 @@
                     "success": {
                         "title": "*Successful {item} purchase*",
                         "description": "{tag} bought {quantity}x *{item}* and paid ⏣ {price}",
-                        "footer": "Thanks for your purchase!"
+                        "footer": "Thanks for your purchase!",
+                        "buttons": [
+                            "{prefix}use"
+                        ]
                     },
                     "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
                     "no_item": "There is no such item in the shop!",
@@ -128,7 +131,10 @@
                     "success": {
                         "title": "*הקנייה של {item} הצליחה*",
                         "description": "{tag} קנה {quantity}x *{item}* ושילם ⏣ {price}",
-                        "footer": "תודה על הקנייה! לא חשבתי שהכרטיס יעבור"
+                        "footer": "תודה על הקנייה! לא חשבתי שהכרטיס יעבור",
+                        "buttons": [
+                            "{prefix}השתמש"
+                        ]
                     },
                     "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
                     "cancelled": "הקנייה בוטלה.",
@@ -159,7 +165,7 @@
                 "category": "Economy",
                 "description": "Use an item in your inventory!",
                 "execution": {
-                    "invalid_item": "I don't recognize that item... Try entering the ID of an item from your inventory.",
+                    "invalid_item": "I don't recognize that item... Try entering the name or ID of an item from your inventory.",
                     "no_item": "You ain't that guy buddy... You do not have that item on you.",
                     "buttons": [
                         "{prefix}inventory"
@@ -175,7 +181,7 @@
                 "category": "כלכלה",
                 "description": "תשתמש במוצר באינבנטורי!",
                 "execution": {
-                    "invalid_item": "וואלה אין לי מושג מה זה המוצר הזה... תנסה להכניס את הID של המוצר מהאינבנטורי.",
+                    "invalid_item": "וואלה אין לי מושג מה זה המוצר הזה... תנסה להכניס את השם של המוצר מהאינבנטורי.",
                     "no_item": "יאללה יאללה לך תנגב את התחת עם שטרות, עני אפס. איך אין לך {item_name}",
                     "buttons": [
                         "{prefix}אינבנטורי"
@@ -1246,6 +1252,34 @@
                     "no_user": "אתה צריך לספק משתמש שתבדוק לו את היתרה.",
                     "no_balance": "משתמש זה לא קיים במערכת.",
                     "title": "*היתרה של {tag}*"
+                }
+            }
+        },
+        "hunt": {
+            "triggers": [
+                "hunt",
+                "צייד"
+            ],
+            "english": {
+                "triggers": [
+                    "hunt"
+                ],
+                "category": "Economy",
+                "description": "Hunt animals",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "dev": "This command is under development."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "צייד"
+                ],
+                "category": "כלכלה",
+                "description": "תצוד חיות ותמכור אותם!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "dev": "הפקודה תחת פיתוח, סליחה!"
                 }
             }
         },

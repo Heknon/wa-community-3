@@ -122,7 +122,17 @@ export default class BuyCommand extends EconomyCommand {
         await this.removeBalance(user, {wallet: price});
         await giveItemToUser(user, itemData.id, amount);
         const successMessage = `${this.language.execution.success.title}\n${this.language.execution.success.description}\n\n${this.language.execution.success.footer}`;
-        message.replyAdvanced({text: successMessage, mentions: [user.jid]}, true, {placeholder});
+        message.replyAdvanced(
+            {
+                text: successMessage,
+                mentions: [user.jid],
+                buttons: this.language.execution.success.buttons.map((e, i) => {
+                    return {buttonId: i.toString(), buttonText: {displayText: e}};
+                }),
+            },
+            true,
+            {placeholder},
+        );
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
