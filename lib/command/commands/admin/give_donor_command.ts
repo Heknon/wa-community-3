@@ -163,7 +163,14 @@ export default class GiveDonorCommand extends InteractableCommand {
         }
 
         await messagingService.sendMessage(donorJid!, {
-            text: lang.execution.thanks.replace("{rank}", donorChatLevel ?? "USER"),
+            text: lang.execution.thanks,
+        }, undefined, {
+            placeholder: {
+                custom: {
+                    rank: donorChatLevel ?? "USER",
+                    date: moment().add(months, "months").format("DD/MM/YYYY"),
+                }
+            }
         });
     }
 

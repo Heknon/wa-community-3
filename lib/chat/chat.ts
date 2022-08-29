@@ -26,6 +26,10 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         return;
     }
 
+    if (foundCommands.length > 0 && !chat.sentDisclaimer) {
+        
+    }
+
     for (const [trigger, blockable] of foundCommands) {
         const isBlocked = await handler.isBlocked(message, chat, blockable, true, trigger);
 

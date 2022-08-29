@@ -17,6 +17,7 @@ import {createUser, getFullUser} from "./user/database_interactions";
 import {Chat as FullChat} from "./db/types";
 import {createChat, doesChatExist, getFullChat} from "./chat/database_interactions";
 import {processMessageForStatistic} from "./db/statistics";
+import { disclaimerService } from "./disclaimer_service";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
@@ -24,9 +25,6 @@ export const whatsappBot: BotClient = new BotClient("./session", registerEventHa
 export const SAFE_DEBUG_MODE = false;
 
 whatsappBot.start();
-
-registerListeners();
-registerCommands();
 
 let messageNumber = 0;
 function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClient) {
@@ -103,6 +101,10 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
             if (!chat) {
                 return logger.error(`Failed to fetch chat.`, {jid: chatJid});
+            }
+
+            if (!chat.sentDisclaimer) {
+                await disclaimerService.sendDisclaimer(chat);
             }
 
             const selectedRowId =
@@ -289,43 +291,6 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
             }
         }
     });
-
-    eventListener.on("chats.upsert", async (chats: WAChat[]) => {
-        for (const chatData of chats) {
-            const chatJid = chatData.id;
-            if (
-                SAFE_DEBUG_MODE &&
-                chatJid != "120363041344515310@g.us" &&
-                chatJid != "972557223809@s.whatsapp.net"
-            )
-                return;
-            if (!chatJid) continue;
-
-            const chatExists = doesChatExist(chatJid);
-            let chat: FullChat | undefined;
-            if (!chatExists) {
-                try {
-                    chat = await createChat(chatJid);
-                } catch (e) {
-                    logger.error(e);
-                    chat =
-                        (await getFullChat(chatJid).catch((err) => {
-                            logger.error(err.stack);
-                        })) || undefined;
-                }
-            } else {
-                chat = (await getFullChat(chatJid)) ?? undefined;
-            }
-
-            if (!chat) {
-                return logger.error(`Failed to fetch chat.`, {jid: chatJid});
-            }
-
-            if (!chat.sentDisclaimer) {
-                await sendDisclaimer(chat);
-            }
-        }
-    });
 }
 
 process.on("uncaughtException", async (err) => {
@@ -341,54 +306,6 @@ on_death((sig) => {
     prisma.$disconnect();
     process.exit(0);
 });
-
-function registerListeners() {}
-
-function registerCommands() {}
-
-async function sendDisclaimer(chat: FullChat) {
-    if (
-        SAFE_DEBUG_MODE &&
-        chat.jid != "120363041344515310@g.us" &&
-        chat.jid != "972557223809@s.whatsapp.net"
-    )
-        return;
-
-    const joinMessage = `**Disclaimer**\
-                \nThis bot is handled and managed by a human\
-                \nAs such, I have the ability to see the messages in this chat.\
-                \nI DO NOT plan to but the possibility is there.\
-                \nIf you are not keen with this, do not send the bot messages.\
-                \nEnjoy my bot! Get started using: ${chat.prefix}help\n\nP.S You can DM the bot.\n\nI must also mention that this is the same with every bot. We are the only one that mention this.\n\n_Heavy inspiration was taken from Dank Memer bot (Discord)_`;
-
-    const joinMessageHebrew = `**התראה**\nהבוט מנוהל על ידי אדם.\
-                    \nבכך ברשותי האפשרות לצפות בהודעות בצ'אטים.\
-                    \n*אני לא* מתכנן לעשות זאת אך האפשרות קיימת.\
-                    \nאם אינך מעוניין בכך, אל תשלח לבוט הודעות.\
-                    \nתהנו מהבוט שלי!\
-                    \nכתבו ${chat.prefix}עזרה כדי להתחיל להשתמש בו!\n\nיש להבהיר שככה זה עם כל הבוטים בווצאפ. לכולם יש גישה לראות את ההודעות שלכם איתם.\nאנו בין היחידים שמבהירים זאת.`;
-
-    await prisma.chat.update({
-        where: {
-            jid: chat.jid,
-        },
-        data: {
-            sentDisclaimer: true,
-        },
-    });
-
-    await messagingService.sendMessage(chat.jid, {
-        text: joinMessage,
-        buttons: [{buttonText: {displayText: `${chat.prefix}help`}, buttonId: "0"}],
-    });
-
-    await messagingService.sendMessage(chat.jid, {
-        text: joinMessageHebrew,
-        buttons: [{buttonText: {displayText: `${chat.prefix}עזרה`}, buttonId: "0"}],
-    });
-
-    logger.debug(`Sent disclaimer to ${chat.jid}`, {jid: chat.jid});
-}
 
 async function fetchOrCreateUserFromJID(jid: string, pushName?: string) {
     let user = await getFullUser(jid);
