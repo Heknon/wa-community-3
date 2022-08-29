@@ -74,7 +74,7 @@ export default class GiveDonorCommand extends InteractableCommand {
 
         let donorChatLevel: keyof typeof AccountType | undefined;
         const donorLevelText =
-            "*What chat level do you want to set the donator as?*\n_(Please enter the chat level)_\n\n*0.* Free\n*1.* Premium\n*2.* Sponsor";
+            "*What chat level do you want to set the donator as?*\n_(Please enter the chat level)_\n\n*0.* Free\n*1.* Donor\n*2.* Sponsor";
         await message.reply(donorLevelText, true);
 
         const donorLevelMsg = await this.waitForInteractionWith(
@@ -83,10 +83,13 @@ export default class GiveDonorCommand extends InteractableCommand {
                 const body = msg.content;
                 if (!body) return false;
                 const splitBody = body?.split(" ");
-                const accountTypes = Object.keys(this.accountType).reverse() as (keyof typeof AccountType)[];
+                const accountTypes = Object.keys(AccountType).reverse() as (keyof typeof AccountType)[];
                 let query: string | number | undefined = splitBody?.shift()?.trim().toLowerCase();
                 query = Number(query) === NaN ? query : Number(query);
-                const level = accountTypes.find((e, i) => query === e.toLowerCase() || query === i + 1);
+                const level = accountTypes.find((e, i) => query === e.toLowerCase() || query === i);
+                if (getNumberFromAccountType(level) > getNumberFromAccountType(AccountType.SPONSOR)) {
+                    return false;
+                }
 
                 if (donor?.accountType === level) {
                     await message.reply("That user already has that chat level.");
@@ -100,7 +103,7 @@ export default class GiveDonorCommand extends InteractableCommand {
             () => message.reply("You took too long to respond. Please try again."),
         );
 
-        if (!donorLevelMsg || donorChatLevel) return;
+        if (!donorLevelMsg || !donorChatLevel) return;
 
         const howManyMonths =
             "*How many months do you want to give the donator?*\n_(Please enter the number of months)_";
