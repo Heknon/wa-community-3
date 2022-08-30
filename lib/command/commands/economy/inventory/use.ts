@@ -89,7 +89,7 @@ export default class UseItemCommand extends EconomyCommand {
         }
 
         const useRes = await item.use(chat, user, message);
-        if (useRes === false) await userRegisterItemUse(user, item);
+        if (useRes !== false) await userRegisterItemUse(user, item);
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
