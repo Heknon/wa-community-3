@@ -10,7 +10,7 @@ export class AuthManager {
         saveCreds: (() => Promise<void>) | undefined;
     }>;
 
-    constructor(private authenticationPath: string) {
+    constructor() {
         this.messageRetryMap = {};
 
         setInterval(() => {
@@ -21,14 +21,6 @@ export class AuthManager {
         }, 1000 * 60 * 2);
 
         this.initialized = new Promise((resolve, reject) => {
-            try {
-                if (!existsSync(authenticationPath)) {
-                    mkdirSync(authenticationPath);
-                }
-            } catch (e) {
-                return reject(e);
-            }
-
             useAuthState()
                 .then((e) => {
                     if (!e || !e.state || !e.saveCreds) {

@@ -29,19 +29,10 @@ export class BotClient {
      * @param registerListeners App may run into an error and crash. The client tries to reconnect. if successful listeners need to be re-registered
      */
     constructor(
-        session_path = "./session",
         registerListeners: (listener: BaileysEventEmitter, client: BotClient) => void,
     ) {
-        const storePath = `${session_path}/store`;
-        const authPath = `${session_path}/auth`;
-        if (!existsSync(session_path)) {
-            mkdirSync(session_path);
-        }
-        if (!existsSync(storePath)) {
-            mkdirSync(storePath);
-        }
 
-        this.authManager = new AuthManager(authPath);
+        this.authManager = new AuthManager();
 
         this.store = makeInMemoryStore({
             logger: storeLogger,
