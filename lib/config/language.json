@@ -100,6 +100,60 @@
                 "execution": {
                     "success": {
                         "title": "*Successful {item} purchase*",
+                        "description": "{tag} sold {quantity}x *{item}* and received ⏣ {price}"
+                    },
+                    "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
+                    "no_item": "There is no such item!",
+                    "no_item_inv": "You do not have this item in your inventory.",
+                    "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
+                    "no_sell": "You can't sell this item!",
+                    "cancelled": "The purchase has been cancelled.",
+                    "timeout": "You took too long to confirm the purchase. Try again.",
+                    "confirm_buttons": [
+                        "Yes",
+                        "No"
+                    ]
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "קנה"
+                ],
+                "description": "קנה מוצר מהחנות!",
+                "category": "כלכלה",
+                "execution": {
+                    "success": {
+                        "title": "*המכירה של {item} הצליחה*",
+                        "description": "{tag} מכר {quantity}x *{item}* וקיבל ⏣ {price}"
+                    },
+                    "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
+                    "cancelled": "הקנייה בוטלה.",
+                    "no_item": "אין כזה מוצר!",
+                    "no_item_inv": "אתה כרגדע לא מחזיק שום מוצר כזה.",
+                    "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
+                    "no_sell": "אתה לא יכול למכור את המוצר הזה",
+                    "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
+                    "confirm_buttons": [
+                        "כן",
+                        "לא"
+                    ]
+                }
+            }
+        },
+        "sell": {
+            "triggers": [
+                "sell",
+                "מכור"
+            ],
+            "english": {
+                "triggers": [
+                    "sell"
+                ],
+                "description": "Sell an item from your inventory!",
+                "category": "Economy",
+                "execution": {
+                    "success": {
+                        "title": "*Successful {item} purchase*",
                         "description": "{tag} bought {quantity}x *{item}* and paid ⏣ {price}",
                         "footer": "Thanks for your purchase!",
                         "buttons": [
@@ -123,7 +177,7 @@
             },
             "hebrew": {
                 "triggers": [
-                    "קנה"
+                    "מכור"
                 ],
                 "description": "קנה מוצר מהחנות!",
                 "category": "כלכלה",
@@ -1257,6 +1311,56 @@
                 }
             }
         },
+        "baltop": {
+            "triggers": [
+                "baltop",
+                "top",
+                "מובילים"
+            ],
+            "english": {
+                "triggers": [
+                    "baltop",
+                    "top"
+                ],
+                "category": "Economy",
+                "description": "Check the group's richest users",
+                "usage": "{prefix}{command}",
+                "execution": {}
+            },
+            "hebrew": {
+                "triggers": [
+                    "מובילים"
+                ],
+                "category": "כלכלה",
+                "description": "בדוק מי המשתמשים העשירים ביותר בקבוצה",
+                "usage": "{prefix}{command}",
+                "execution": {}
+            }
+        },
+        "passive": {
+            "triggers": [
+                "passive",
+                "פאסיבי"
+            ],
+            "english": {
+                "triggers": [
+                    "passive"
+                ],
+                "category": "Economy",
+                "description": "Change to passive mode. People could no longer steal from you but you will lose access to commands.",
+                "usage": "{prefix}{command}",
+                "execution": {}
+            },
+            "hebrew": {
+                "triggers": [
+                    "פאסיבי"
+                ],
+                "category": "כלכלה",
+                "description": "תהפוך את הפרופיל שלך לפאסיבי כך שלא יוכלו לגנוב ממך אבל גם תחסם מפקודות מסוימות",
+                "usage": "{prefix}{command}",
+                "execution": {}
+            }
+        },
         "hunt": {
             "triggers": [
                 "hunt",
@@ -2148,10 +2252,12 @@
     },
     "cooldown": {
         "english": {
-            "message": "You have to wait {time} {second} before using this command again.\nYou can reduce this a lot by donating!"
+            "message": "You have to wait {time} {second} before using this command again.\nYou can reduce this a lot by donating!",
+            "long": "You have to wait {time} before using this command again.\nYou can reduce this a lot by donating!"
         },
         "hebrew": {
-            "message": "אתה לא יכול להשתמש בפקודה זו לעוד {time} {second}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!"
+            "message": "אתה לא יכול להשתמש בפקודה זו לעוד {time} {second}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!",
+            "long": "אתה לא יכול להשתמש בפקודה זו לעוד {time}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!"
         }
     },
     "image_gen": {
@@ -2246,7 +2352,6 @@
         "robberswishlist": {
             "english": "wow you really tryna be that guy? ok then..\n\nYou can steal from these people:\n{list}",
             "hebrew": "וואו אתה באמת מנסה להיות הבחור הזה? אוקיי...\n\nאתה יכול לגנוב מהאנשים האלה:\n{list}"
-            
         }
     },
     "notuser": {

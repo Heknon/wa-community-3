@@ -11,6 +11,7 @@ import InventoryCommand from "./inventory/inventory";
 import UseItemCommand from "./inventory/use";
 import PostMemesCommand from "./postmemes";
 import BuyCommand from "./shop/buy";
+import SellCommand from "./shop/sell";
 import ShopCommand from "./shop/shop";
 import WithdrawCommand from "./withdraw";
 
@@ -30,4 +31,5 @@ export {
     GiveItemCommand,
     BuyCommand,
     HuntCommand,
+    SellCommand
 }

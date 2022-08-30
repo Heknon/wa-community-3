@@ -32,7 +32,14 @@ export const giveItemToUser = async (user: User, itemId: ItemID, quantity: numbe
     if (!item) return;
     const invItem = getInventoryItem(user, itemId);
 
-    const amount = (invItem?.quantity ?? 0) + quantity;
+    const amount = Math.max((invItem?.quantity ?? 0) + quantity, 0);
+    if (amount === 0 && invItem) {
+        return await prisma.inventoryItem.delete({
+            where: {
+                id: invItem.id,
+            },
+        });
+    }
     const updatedUser = await prisma.inventoryItem.upsert({
         where: {
             id: invItem?.id ?? cuid(),
@@ -44,10 +51,10 @@ export const giveItemToUser = async (user: User, itemId: ItemID, quantity: numbe
         },
         update: {
             quantity: amount,
-        }
+        },
     });
     return updatedUser;
-}
+};
 
 export const userRegisterItemUse = async (user: User, item: Item) => {
     const itemData = getInventoryItem(user, item.data.id);

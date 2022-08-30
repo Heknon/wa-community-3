@@ -10,6 +10,7 @@ import {addCommandCooldown, getCooldownLeft, getUserRandom} from "../user/user";
 import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {prisma} from "../db/client";
 import {BotResponse, Chat} from "@prisma/client";
+import moment from "moment";
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
@@ -27,7 +28,6 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
     }
 
     if (foundCommands.length > 0 && !chat.sentDisclaimer) {
-        
     }
 
     for (const [trigger, blockable] of foundCommands) {
@@ -36,9 +36,14 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         if (isBlocked == BlockedReason.Cooldown) {
             const timeToWait = (await getCooldownLeft(sender.jid, blockable.mainTrigger)) / 1000.0;
             const donateCommand = await getCommandByTrigger(chat, "donate");
+            const isShortWait = timeToWait < 60 * 60;
+            const text = isShortWait
+                ? languages.cooldown[chat.language].message
+                : languages.cooldown[chat.language].long;
+
             await message.replyAdvanced(
                 {
-                    text: languages.cooldown[chat.language].message,
+                    text,
                     buttons: [
                         {
                             buttonId: "0",
@@ -52,7 +57,9 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
                 {
                     placeholder: {
                         custom: {
-                            time: timeToWait.toString(),
+                            time: isShortWait
+                                ? timeToWait.toString()
+                                : moment.duration(timeToWait, "seconds").format("h [hrs], m [min]"),
                             second: pluralForm(timeToWait, languages.times[chat.language].second),
                         },
                         chat: this,
