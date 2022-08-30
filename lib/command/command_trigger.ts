@@ -8,7 +8,7 @@ export default class CommandTrigger implements Triggerable<string> {
     }
 
     isTriggered(data: string): boolean {
-        return data.trim().toLowerCase().startsWith(this.command.toLowerCase()) ?? false;
+        return data.trim().toLowerCase() == this.command.toLowerCase();
     }
 
 }
