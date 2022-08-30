@@ -1357,34 +1357,152 @@
                 "category": "Economy",
                 "description": "Steal money from someone",
                 "usage": "{prefix}{command} @tag",
+                "thefts": [
+                    {
+                        "odds": 0.05,
+                        "amounts": [
+                            [
+                                0.5,
+                                [
+                                    0.85,
+                                    0.95
+                                ]
+                            ],
+                            [
+                                0.3,
+                                [
+                                    0.95,
+                                    1.0
+                                ],
+                                [
+                                    0.2,
+                                    [
+                                        0.77,
+                                        0.85
+                                    ]
+                                ]
+                            ]
+                        ],
+                        "id": "all"
+                    },
+                    {
+                        "odds": 0.15,
+                        "id": "most",
+                        "amounts": [
+                            [
+                                0.6,
+                                [
+                                    0.5,
+                                    0.70
+                                ]
+                            ],
+                            [
+                                0.1,
+                                [
+                                    0.50,
+                                    0.60
+                                ]
+                            ],
+                            [
+                                0.3,
+                                [
+                                    0.60,
+                                    0.75
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "odds": 0.45,
+                        "id": "some",
+                        "amounts": [
+                            [
+                                0.7,
+                                [
+                                    0.3,
+                                    0.5
+                                ]
+                            ],
+                            [
+                                0.1,
+                                [
+                                    0.25,
+                                    0.40
+                                ]
+                            ],
+                            [
+                                0.2,
+                                [
+                                    0.50,
+                                    0.60
+                                ]
+                            ]
+                        ]
+                    },
+                    {
+                        "odds": 0.3,
+                        "id": "little",
+                        "amounts": [
+                            [
+                                0.7,
+                                [
+                                    0.20,
+                                    0.35
+                                ]
+                            ],
+                            [
+                                0.1,
+                                [
+                                    0.35,
+                                    0.40
+                                ]
+                            ],
+                            [
+                                0.2,
+                                [
+                                    0.10,
+                                    0.20
+                                ]
+                            ]
+                        ],
+                        "max": 1000000
+                    },
+                    {
+                        "odds": 0.05,
+                        "id": "none",
+                        "amounts": [
+                            [
+                                0.9,
+                                [
+                                    0.0,
+                                    0.01
+                                ]
+                            ],
+                            [
+                                0.1,
+                                [
+                                    0.0,
+                                    0.0
+                                ]
+                            ]
+                        ],
+                        "max": 500
+                    }
+                ],
+                "caught": 0.4,
                 "execution": {
                     "no_user": "Must provide a user to steal from.",
                     "no_balance": "This user is too poor to rob 💀.",
                     "caught": "You were caught *HAHAHA*\nYou paid {name} {coins} {coin}",
                     "not_enough_money": "The victim doesn't even have 5,000 coins, it ain't worth it man.",
                     "not_enough_money_self": "You're so poor... You need at least 5,000 coinds to steal from someone.",
-                    "take_messages": [
-                        [
-                            90,
-                            "LMFAO 😂😂 you basically took EVERYTHINg there is to take from this poor bastard"
-                        ],
-                        [
-                            65,
-                            "Great heist! you could have tried to better but good I guess..."
-                        ],
-                        [
-                            40,
-                            "C'mon... At least try.. maybe next time you could score more 🤦‍♂️"
-                        ],
-                        [
-                            15,
-                            "Are you even trying? C'mon your a thief..."
-                        ],
-                        [
-                            0,
-                            "LMAO and you quit your job for this?? 😹😹😹"
-                        ]
-                    ],
+                    "take_messsages": {
+                        "all": "LMFAO 😂😂 you basically took EVERYTHINg there is to take from this poor bastard",
+                        "most": "Great heist! you could have tried to better but good I guess...",
+                        "some": "C'mon... At least try.. maybe next time you could score more 🤦‍♂️",
+                        "little": "Are you even trying? C'mon your a thief...",
+                        "none": "LMAO and you quit your job for this?? 😹😹😹"
+                    },
                     "success_footer": "Your payout was {coins} {coin}"
                 }
             },
@@ -1401,58 +1519,13 @@
                     "caught": "חחחחחחחחחחחחחחחח נתפסת אני מת\nשילמת ל{name} {coins} {coin}",
                     "not_enough_money": "לקורבן אין אפילו 5000 מטבעות... תתרחק.. זה לא שווה את זה.",
                     "not_enough_money_self": "אתה כל כך עני... אתה צריך לפחות 5,000 מטבעות כדי לשדוד מישהו.",
-                    "take_messages": [
-                        [
-                            90,
-                            [
-                                "אני מתתתת 😹 לקחת ליטרלי את כל מה שאפשר לקחת מהעני המסכן הזה",
-                                [
-                                    90,
-                                    100
-                                ]
-                            ]
-                        ],
-                        [
-                            65,
-                            [
-                                "שדידה יפה...  יש מקום להשתפר בטכניקה טיפה אבל יפה.",
-                                [
-                                    10,
-                                    45
-                                ]
-                            ]
-                        ],
-                        [
-                            40,
-                            [
-                                "נו באמת... לפחות תנסה... אולי פעם הבאה תצליח לשדוד יותר.",
-                                [
-                                    15,
-                                    35
-                                ]
-                            ]
-                        ],
-                        [
-                            15,
-                            [
-                                "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
-                                [
-                                    7,
-                                    20
-                                ]
-                            ]
-                        ],
-                        [
-                            0,
-                            [
-                                "ועזבת את העבודה שלך בשביל זה??? 😹😹😹",
-                                [
-                                    1,
-                                    10
-                                ]
-                            ]
-                        ]
-                    ],
+                    "take_messsages": {
+                        "all": "אני מתתתת 😹 לקחת ליטרלי את כל מה שאפשר לקחת מהעני המסכן הזה",
+                        "most": "שדידה יפה...  יש מקום להשתפר בטכניקה טיפה אבל יפה.",
+                        "some": "נו באמת... לפחות תנסה... אולי פעם הבאה תצליח לשדוד יותר.",
+                        "little": "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
+                        "none": "ועזבת את העבודה שלך בשביל זה??? 😹😹😹"
+                    },
                     "success_footer": "קיבלת {coins} {coin}"
                 }
             }
@@ -2093,7 +2166,91 @@
             "description": "תפריט עזרה ליוצר התמונות"
         }
     },
-    "disclaimer": {
-        
-    }
+    "items": {
+        "apple": {
+            "english": "You've eaten an apple! If you die within the next 24 hours, you won't lose any items. You will, however, still lose coins.",
+            "hebrew": "אכלת תפוח! אם תמות ב24 שעות הקרובות, לא תאבד שום מוצר. אבל אתה עדיין תאבד מטבעות.",
+            "success": {
+                "english": "WOW! You died!!\nGood news is you kept the doc away by eating an apple and didn't lose any items. Bad news is you lost {amount} {coins} 😹",
+                "hebrew": "וואו! מתת!!!\nהחדשות הטובות הם ששמרת על הרופא רחוק ולא איבדת שום מוצר. החדשות הרעות הם שאיבדת {amount} {coins} 😹"
+            }
+        },
+        "banknote": {
+            "english": "*EXPANDED BANK*\nExpanded by: {expanded} {coins}\nTotal Bank Space: {total} {coins}\n\n_Expanded in total by: {total_expanded} {coins}_",
+            "hebrew": "*הרחוות בנק*\nהרחבת את הבנק ב: {expanded} {coins}\nאחסון בנק כולל: {total} {coins}\n\n_הרחבת את הבנק בסהכ ב: {total_expanded} {coins}_"
+        },
+        "boxofsand": {
+            "english": "You pull out a bit of old, dirty sand from your pocket and blow it right into {tag}'s face.\n{tag} has been blinded and they can't steal from anybody for another 30 minutes",
+            "hebrew": "הוצאת מהכיס שלך טיפה חול מלוכלך וישן והעפת את ישר לתוך הפנים של {tag}.\n{tag} מעוור ולא יכול לשדוד אף אחד ל30 דקות הקרובות.",
+            "receiver": {
+                "english": "Yikeeeesss!\n{tag} threw sand in your eyes and you can't rob anyone for the next 30 minutes 🤣",
+                "hebrew": "איייייייייי\n{tag} העיף לך חול אל תוך העיניים ואתה לא יכול לשדוד אף אחד ל30 דקות הקרובות 🤣"
+            },
+            "notag": {
+                "english": "You need to tag the person you want to throw sand on!",
+                "hebrew": "אתה חייב לתייג את האדם שאתה רוצה לזרוק חול על!"
+            },
+            "selftag": {
+                "english": "Hey now.. You don't want to throw sand on yourself do you?",
+                "hebrew": "אוקיי חמודי.. אתה לא רוצה לזרוק על עצמך חול נכון?"
+            },
+            "bottag": {
+                "english": "YOU CAN'T THROW SAND ON ME!!",
+                "hebrew": "אתה לא יכול לזרוק עליי חול!! 😡😡"
+            }
+        },
+        "coinbomb": {
+            "english": "*{tag}* has thrown a coin bomb!\nTag {tag} to get coins!",
+            "hebrew": "*{tag}* זרק פצצת מטבעות אל תוך הצ'אט!\nתתייג את {tag} ותקבל מטבעות!",
+            "success": {
+                "english": "Wooooo! You got {amount} {coins}!",
+                "hebrew": "היידההה! קיבלת {amount} {coins}!"
+            },
+            "ended": {
+                "english": "*THE COIN BOMB EVENT HAS ENEDED 😢*\n\nA total of {total} {coins} has been collected",
+                "hebrew": "*איסוף המטבעות החמדני הסתיים 😢*\n\nנאספו בסך הכל {total} {coins}"
+            }
+        },
+        "fakeid": {
+            "english": "You've now got a fake ID.\nYou are now disguised on the top command as {identity}, and people won't be able to rob you unless they find your true identity\nYour fake ID will be taken away if you are caught robbing someone!",
+            "hebrew": "יש לך עכשיו זהות בדויה!\nאתה מוסווה בפקודת המובילים כ-{identity}. אנשים לא יוכלו לגנוב ממך אלא אם ימצאו את הזהות האמיתית שלך.\nהזהות הבדויה שלך תילקח אם אתה נתפס גונב ממישהו!",
+            "caught": {
+                "english": "Looks like you've been caught mister \"{identity}\"! Your fake ID has been taken away.",
+                "hebrew": "נראה שנתספת מר \"{identity}\"! לקחו לך את הזהות הבדויה."
+            }
+        },
+        "landmine": {
+            "english": "You placed a landmine down! Anyone who tries to steal from you for the next 24 hours has a 50% chance of instantly dying.",
+            "hebrew": "השטלת מוקש! לכל מי שישדוד אותך ל24 שעות הקרובות יש 50% למוות מידי!",
+            "success": {
+                "english": "I'm deaddddd, oh wait no I'm not, you are.\nDeadly mistake trying to rob {tag}, he had a landmine!",
+                "hebrew": "אני מתתתתתתת, אה רגע.. אני לא.. אתה זה שמת.\nטעות איומה לנסות לשדוד את {tag}, היה לו מוכש מושטל בארנק!"
+            }
+        },
+        "lifesaver": {
+            "english": "Phew!\nYou would've died from that!\nLuckily, you had a lifesaver in your inventory.",
+            "hebrew": "פיוווייי\nיכולת למות מזה!\nלמזלך, היה עליך מציל חיים."
+        },
+        "padlock": {
+            "english": "Your wallet now has a padlock on it.\nAnyone who tries to steal from you will automatically fail if they don't have bolt cutters, however this is only a one-time use. This item will expire after a month if no one breaks it by then.",
+            "hebrew": "יש עכשיו מנעול על הארנק שלך.\nאם מישהו מנסה לגנוב ממך הוא יכשל אוטומטית אלה אם יש להם חותך ברגים, אבל זה מוצר בעל שימוש אחד. המנעול יפוג  עוד חודש אם הוא לא ישבר עד אז.",
+            "break": {
+                "english": "Oui! Looks like {tag}'s padlock wasn't that tough to break! Just like his spirit.",
+                "hebrew": "וואה! נראה שהמנעול של {tag} לא היה כל כך קשה לשבירה!"
+            },
+            "success": {
+                "english": "HAHA! Idiot. You broke the padlock but couldn't steal anything!\nYou can now steal from {tag}!",
+                "hebrew": "מפגר! שברת את המנעול של הארנק שלו אבל לא הצלחת לגנוב כלום!\nעכשיו אפשר לגנוב מ{tag}!"
+            }
+        },
+        "robberswishlist": {
+            "english": "wow you really tryna be that guy? ok then..\n\nYou can steal from these people:\n{list}",
+            "hebrew": "וואו אתה באמת מנסה להיות הבחור הזה? אוקיי...\n\nאתה יכול לגנוב מהאנשים האלה:\n{list}"
+        }
+    },
+    "notuser": {
+        "english": "Huh.. Odd, seems like he is not a user of the bot.\nTell him to send a message!",
+        "hebrew": "הא.. מוזר.. נראה שהוא לא משתמש של הבוט.\nתגיד לו לשלוח הודעה בקבוצה שאני בה או לפרטי שלי!"
+    },
+    "disclaimer": {}
 }

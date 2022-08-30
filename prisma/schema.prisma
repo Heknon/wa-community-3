@@ -28,6 +28,7 @@ model User {
     reputation            Reputation?
     items                 InventoryItem[]
     daily                 DailyReward?
+    activeItems           ActiveItem[]
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
@@ -67,6 +68,18 @@ model InventoryItem {
     @@index([userJid, itemId])
 }
 
+model ActiveItem {
+    id   String @id @default(cuid())
+    user User   @relation(fields: [userJid], references: [jid], onDelete: Cascade)
+
+    itemId  String
+    expire  DateTime?
+    userJid String
+    createdAt DateTime @default(now())
+
+    @@index([userJid, itemId])
+}
+
 model Money {
     id   Int  @id @default(autoincrement())
     user User @relation(fields: [userJid], references: [jid], onDelete: Cascade)
@@ -74,6 +87,7 @@ model Money {
     wallet       Int    @default(0)
     bank         Int    @default(0)
     bankCapacity Int    @default(10000)
+    banknotes   Int    @default(0)
     userJid      String @unique
 
     @@index([userJid])

@@ -38,7 +38,9 @@ export default class StealCommand extends EconomyCommand {
         message: Message,
         body: string,
         trigger: CommandTrigger,
-    ) {}
+    ) {
+        
+    }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
 }

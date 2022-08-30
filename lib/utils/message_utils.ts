@@ -97,6 +97,24 @@ export async function waitForMessage(filter: (message: Message) => boolean | Pro
     });
 }
 
+export async function waitForReply(
+    from: string,
+    jid: string,
+    filter?: (message: Message) => boolean | Promise<boolean>,
+    timeout?: number,
+) {
+    return waitForMessage((msg) => {
+        if (msg.raw?.key.remoteJid !== jid) return false;
+        if (msg.senderJid !== from) return false;
+
+        if (filter) {
+            return filter(msg);
+        }
+
+        return true;
+    }, timeout);
+}
+
 export async function applyPlaceholders(
     content: string,
     {

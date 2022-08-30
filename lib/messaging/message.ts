@@ -41,6 +41,10 @@ export default class Message {
         return this.fromBot ? this.to : this.from;
     }
 
+    public get jid() {
+        return this.raw?.key.remoteJid!;
+    }
+
     public static async fromWAMessage(
         message: WAMessage,
         metadata: Metadata | undefined = undefined,

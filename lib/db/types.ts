@@ -16,6 +16,7 @@ export type User = Prisma.UserGetPayload<{
         items: true;
         money: true;
         reputation: true;
+        activeItems: true;
     };
 }>;
 

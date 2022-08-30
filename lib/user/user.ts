@@ -56,10 +56,7 @@ export const getUserMoney = async (user: User & {money: Money | null | undefined
         .catch((err) => undefined);
 };
 
-export const getCooldownLeft = async (
-    jid: string,
-    trigger: CommandTrigger,
-) => {
+export const getCooldownLeft = async (jid: string, trigger: CommandTrigger) => {
     // const cooldown = user.cooldowns.find((c) => trigger.isTriggered(c.cooldownOn));
     const cooldownRaw = await redisCooldown.get(
         getCooldownRedisKey(jid, trigger.command.toLowerCase().trim()),
@@ -70,11 +67,7 @@ export const getCooldownLeft = async (
     return cooldownLeft;
 };
 
-export const addCooldownToUser = async (
-    jid: string,
-    cooldownOn: string,
-    cooldown: number,
-) => {
+export const addCooldownToUser = async (jid: string, cooldownOn: string, cooldown: number) => {
     const expiresAt = new Date(Date.now() + cooldown);
     const formattedCooldownOn = cooldownOn.toLowerCase().trim();
     return await redisCooldown.set(
@@ -103,10 +96,7 @@ export const addCooldownToUser = async (
     //       });
 };
 
-export const addCommandCooldown = async (
-    user: Prisma.UserGetPayload<{}>,
-    command: Command,
-) => {
+export const addCommandCooldown = async (user: Prisma.UserGetPayload<{}>, command: Command) => {
     let cooldown = command.cooldowns.get(user.accountType);
     if (!cooldown) {
         let accountLevel = getNumberFromAccountType(user.accountType);
@@ -134,4 +124,25 @@ const generateSeedFromUser = (user: User) => {
     const hash = crypto.createHash("sha256");
     hash.update(user.jid + user.name + user.createdAt.toISOString() + Date.now().toString());
     return hash.digest("hex");
+};
+
+const calculateUserMoneyPercentile = async (
+    user: Prisma.UserGetPayload<{include: {money: true}}>,
+) => {
+    const balances = (await prisma.money.findMany({})).map((e) => {
+        return {
+            total: e.bank + e.wallet,
+            bank: e.bank,
+            wallet: e.wallet,
+        };
+    });
+
+    // calculate the percentile of the user's balance
+    const userBalance = {
+        total: (user.money?.bank ?? 0) + (user.money?.wallet ?? 0),
+        bank: user.money?.bank ?? 0,
+        wallet: user.money?.wallet ?? 0,
+    };
+    
+    
 };

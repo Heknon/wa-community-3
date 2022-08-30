@@ -306,7 +306,7 @@ on_death((sig) => {
     process.exit(0);
 });
 
-async function fetchOrCreateUserFromJID(jid: string, pushName?: string) {
+export async function fetchOrCreateUserFromJID(jid: string, pushName?: string) {
     let user = await getFullUser(jid);
 
     if (isJidUser(jid) && !user) {

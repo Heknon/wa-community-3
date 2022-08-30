@@ -40,5 +40,142 @@
         "type": "Sellable",
         "buy": -1,
         "sell": 2125
+    },
+    {
+        "id": "banknote",
+        "name": {
+            "english": "Banknote",
+            "hebrew": "פתק בנק"
+        },
+        "durability": 1,
+        "type": "Power-up",
+        "buy": 350000,
+        "sell": 35000,
+        "description": {
+            "english": "Use this to expand your bank space!",
+            "hebrew": "השתמש בזה על מנת להגדיל את מקום בבנק שלך!"
+        }
+    },
+    {
+        "id": "padlock",
+        "type": "Tool",
+        "name": {
+            "english": "Padlock",
+            "hebrew": "מנעול"
+        },
+        "description": {
+            "english": "Lock your wallet to prevent others from accessing it. *ONE-TIME USE.*\nThere is a chance the padlock would break and not protect your wallet.",
+            "hebrew": "תנעל את הארנק שלך ותמנע מאחרים גישה אליו. *שימוש אחד בלבד*\nיש סיכוי שמישהו יצליח לשבור אותו ולגשת לארנק."
+        },
+        "buy": 5000,
+        "sell": 500,
+        "durability": 1
+    },
+    {
+        "id": "boxofsand",
+        "type": "Tool",
+        "name": {
+            "english": "Box of Sand",
+            "hebrew": "ארגז חול"
+        },
+        "description": {
+            "english": "Throw a box of sand at someone's eyes and prevent them from robbing anyone for 30 minutes.",
+            "hebrew": "תזרוק חול לעיניים של מישהו ותמנע מהם לגנוב מכולם ל30 דקות."
+        },
+        "buy": 15000,
+        "sell": 1500,
+        "durability": 1
+    },
+    {
+        "id": "landmine",
+        "type": "Tool",
+        "name": {
+            "english": "Landmine",
+            "hebrew": "מוקש"
+        },
+        "description": {
+            "english": "If someone tries to steal from you they have a 50% of dying from going KABOOM! (Lasts 24 hours)",
+            "hebrew": "אם מישהו מנסה לגנוב ממך יש להם 50% של ללכת *קאבום* ולמות (פעיל ל24 שעות מהשימוש)"
+        },
+        "buy": 20000,
+        "sell": 2000,
+        "durability": 1
+    },
+    {
+        "id": "coinbomb",
+        "type": "Tool",
+        "name": {
+            "english": "Coin Bomb",
+            "hebrew": "פצצת מטבעות"
+        },
+        "description": {
+            "english": "A bomb that explodes coins for others to pick up. Anywhere from 2,00 to 15,000 coins.",
+            "hebrew": "פצצה שמתפוצצת כמטבעות בשביל אחרים לאסוף. מוציא בין 2,000 ל15,000 מטבעות."
+        },
+        "buy": 18000,
+        "sell": 4000,
+        "durability": 1
+    },
+    {
+        "id": "lifesaver",
+        "type": "Power-up",
+        "default_use": false,
+        "name": {
+            "english": "Lifesaver",
+            "hebrew": "מציל חיים"
+        },
+        "description": {
+            "english": "Having one in the inventory prevents death. This is used before the apple effects.",
+            "hebrew": "אם יש לך מציל חיים עליך זה ימנע את מותך. נעשה שימוש בזה לפני האפקט של התפוח."
+        },
+        "buy": 70000,
+        "sell": 7000,
+        "durability": 1
+    },
+    {
+        "id": "apple",
+        "type": "Power-up",
+        "default_use": false,
+        "name": {
+            "english": "Apple",
+            "hebrew": "תפוח"
+        },
+        "description": {
+            "english": "Eating this once a day makes it so you don't lose any inventory or active items if you die.",
+            "hebrew": "לאכול את זה פעם ביום יגרום לכך שאם תמות לא תאבד מוצרים שעליך או מוצרים פעילים אם תמות."
+        },
+        "buy": 8000,
+        "sell": 800,
+        "durability": 1
+    },
+    {
+        "id": "fakeid",
+        "type": "Tool",
+        "name": {
+            "english": "Fake ID",
+            "hebrew": "זהות מזויפת"
+        },
+        "description": {
+            "english": "Disguise your identity on the leaderboard and robber's wishlist for 1 week.",
+            "hebrew": "תחביא את הזהות שלך על רשימת המובילים ועל משאלות הגנב לשבוע אחד."
+        },
+        "buy": 25000,
+        "sell": 2500,
+        "durability": 1
+    },
+    {
+        "id": "robberswishlist",
+        "type": "Tool",
+        "name": {
+            "english": "Robber's Wishlist",
+            "hebrew": "משאלות הגנב"
+        },
+        "description": {
+            "english": "Will give you a list of users that aren't passive. Basically, anyone you can rob!",
+            "hebrew": "נותן לך רשימה של כל המשתמשים שלא במצב פאסיבי. בקיצור, כל מי שאתה יכול לשדוד!"
+        },
+        "buy": 50000,
+        "sell": 5000,
+        "durability": 1
     }
 ]
