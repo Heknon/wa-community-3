@@ -2246,11 +2246,16 @@
         "robberswishlist": {
             "english": "wow you really tryna be that guy? ok then..\n\nYou can steal from these people:\n{list}",
             "hebrew": "וואו אתה באמת מנסה להיות הבחור הזה? אוקיי...\n\nאתה יכול לגנוב מהאנשים האלה:\n{list}"
+            
         }
     },
     "notuser": {
         "english": "Huh.. Odd, seems like he is not a user of the bot.\nTell him to send a message!",
         "hebrew": "הא.. מוזר.. נראה שהוא לא משתמש של הבוט.\nתגיד לו לשלוח הודעה בקבוצה שאני בה או לפרטי שלי!"
+    },
+    "onlygroups": {
+        "english": "This can only be done in group chats!",
+        "hebrew": "אפשר להשתמש בזה רק בקבוצות!"
     },
     "disclaimer": {}
 }

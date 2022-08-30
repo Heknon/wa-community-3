@@ -5,7 +5,7 @@ import languages from "../../config/language.json";
 import {adjectives, colors, Config} from "unique-names-generator";
 import {animals, starWars} from "unique-names-generator/dist/dictionaries";
 import {uniqueNamesGenerator} from "unique-names-generator/dist/unique-names-generator";
-import { prisma } from "../../db/client";
+import {prisma} from "../../db/client";
 import cuid from "cuid";
 
 const nameGenConfig: Config = {
@@ -29,10 +29,21 @@ export class FakeID extends Item {
             create: {
                 itemId: "fakeid",
                 user: {connect: {jid: executor.jid}},
+                data: {
+                    name
+                },
                 expire: in7days,
             },
             update: {
                 expire: in7days,
+            },
+        });
+        await prisma.user.update({
+            where: {
+                jid: executor.jid,
+            },
+            data: {
+                fakeIdName: name,
             },
         });
         await message?.reply(FakeID.language[chat.language], true, {
