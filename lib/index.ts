@@ -14,7 +14,6 @@ import config from "./config/config.json";
 import languages from "./config/language.json";
 import {getCommandByTrigger, handleChatMessage} from "./chat/chat";
 import {createUser, getFullUser} from "./user/database_interactions";
-import {Chat as FullChat} from "./db/types";
 import {createChat, doesChatExist, getFullChat} from "./chat/database_interactions";
 import {processMessageForStatistic} from "./db/statistics";
 import { disclaimerService } from "./disclaimer_service";

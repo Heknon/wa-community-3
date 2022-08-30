@@ -318,7 +318,7 @@
                     "category_help": "*Category - {category}*",
                     "categories_help": "*Categories - {category}*",
                     "suffix": "Hope I helped ✌\n~bot",
-                    "footer": "Donators receive special perks!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nWant me to make you a bot? https://www.fiverr.com/share/Y0Zb9a",
+                    "footer": "Donators receive special perks!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nWebsite: https://leo-bot.com/\nWant me to make you a bot? https://www.fiverr.com/share/Y0Zb9a",
                     "button": "Click me for help!",
                     "dms": "Check your DMs!",
                     "misc": "Misc",
@@ -339,7 +339,7 @@
                     "category_help": "*קטגוריה - {category}*",
                     "categories_help": "*קטגוריות - {category}*",
                     "suffix": "מקווה שעזרתי ✌",
-                    "footer": "תורמים מקבלים פריבילגיות מיוחדות!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nרוצים שאצור לכם בוט? https://www.fiverr.com/share/Y0Zb9a",
+                    "footer": "תורמים מקבלים פריבילגיות מיוחדות!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot\nhttps://paypal.me/whatsappbotisrael\n\nאתר: https://leo-bot.com\nרוצים שאצור לכם בוט? https://www.fiverr.com/share/Y0Zb9a",
                     "button": "תלחץ עליי לעזרה!",
                     "dms": "תסתכל על השיחות הפרטיות שלך!",
                     "misc": "אחר",
@@ -760,6 +760,7 @@
                 "extended_description": "Anonymously message someone through the bot",
                 "usage": "{prefix}{command} <phone> <message>",
                 "execution": {
+                    "disabled": "This command has been disabled due to worries of malicious use.",
                     "no_content": "You must provide a message to send after the command",
                     "no_number": "You must give a phone number. '{prefix}{command} {phone} {content}",
                     "not_bot_user": "As a saftety measure, I can only send anonymous messages to bot users.",
@@ -778,6 +779,7 @@
                 "extended_description": "שלח הודעה אנונימית למישהו באמצעות הבוט",
                 "usage": "{prefix}{command} <phone> <הודעה>",
                 "execution": {
+                    "disabled": "השימוש בפקודה זו בוטלה עקב חשש לשימוש זדוני.",
                     "no_content": "בבקשה תכתוב מה אתה רוצה לשלוח לאחר המספר טלפון אליו אתה רוצה לשלוח",
                     "no_number": "אתה חייב לספק מספר טלפון. '{prefix}{command} {phone} {content}",
                     "not_bot_user": "כאמצעי הגנה, ניתן רק לשלוח הודעות אנונימיות למשתמשים של הבוט",

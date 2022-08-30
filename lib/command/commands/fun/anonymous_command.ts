@@ -17,7 +17,7 @@ export default class AnonymousCommand extends Command {
         super({
             triggers: langs.triggers.map((e) => new CommandTrigger(e)),
             announcedAliases: lang.triggers,
-            accountType: AccountType.DONOR,
+            accountType: AccountType.ADMIN,
             usage: lang.usage,
             category: lang.category,
             description: lang.description,
@@ -76,7 +76,7 @@ export default class AnonymousCommand extends Command {
     async onBlocked(msg: Message, blockedReason: BlockedReason) {
         // if chat level is not high enough, say that a membership is required
         if (blockedReason == BlockedReason.BadAccountType) {
-            return await messagingService.reply(msg, this.language.execution.membership, true);
+            return await messagingService.reply(msg, this.language.execution.disabled, true);
         }
     }
 }
