@@ -11,4 +11,16 @@ export default class CommandTrigger implements Triggerable<string> {
         return data.trim().toLowerCase().startsWith(this.command.toLowerCase()) ?? false;
     }
 
+    characterMatch(data: string): number {
+        const command = this.command.toLowerCase();
+        const dataLower = data.toLowerCase().trim();
+
+        let i = 0;
+        for (; i < command.length; i++) {
+            if (command[i] !== dataLower[i]) break;
+        }
+
+        return i;
+    }
+
 }

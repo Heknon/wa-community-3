@@ -29,7 +29,7 @@ export default class CommandHandler {
         content: string,
         prefix: string,
     ): [CommandTrigger, Command][] | Promise<[CommandTrigger, Command][]> {
-        const result: [CommandTrigger, Command][] = [];
+        const result: [CommandTrigger, Command, number][] = [];
         if (
             !content
                 .slice(0, prefix.length + 2)
@@ -37,25 +37,29 @@ export default class CommandHandler {
                 .trim()
                 .startsWith(prefix)
         ) {
-            return result;
+            return result.map(([trigger, command, num]) => [trigger, command]);
         }
 
         for (const blockable of this.commands) {
             let foundTrigger: CommandTrigger | undefined = undefined;
+            let length = 0;
 
             for (const trigger of blockable.triggers) {
                 const checkedData = content?.slice(prefix.length) ?? "";
 
                 if (!trigger.isTriggered(checkedData)) continue;
                 foundTrigger = trigger;
+                length = trigger.characterMatch(checkedData);
                 break;
             }
 
             if (!foundTrigger) continue;
-            result.push([foundTrigger, blockable]);
+            result.push([foundTrigger, blockable, length]);
         }
 
-        return result;
+        // sort by length descending
+        result.sort((a, b) => b[2] - a[2]);
+        return result.map(([trigger, command, num]) => [trigger, command]);
     }
 
     appliable(data: Message, prefix: string): boolean | Promise<boolean> {
