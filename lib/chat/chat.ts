@@ -14,7 +14,7 @@ import {
 } from "../user/user";
 import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {prisma, redis, redisAlerts} from "../db/client";
-import {BotResponse, Chat} from "@prisma/client";
+import {AccountType, BotResponse, Chat} from "@prisma/client";
 import moment from "moment";
 import "moment-duration-format";
 import {messagingService} from "../messaging";
@@ -35,32 +35,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
     }
 
     if (foundCommands.length > 0) {
-        redisAlerts.incr(`${chat.jid}:commandsSent`);
-    }
-
-    const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
-    const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
-    const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 65;
-    if (shouldSendAlert) {
-        await redis.set(`${chat.jid}:commandsSent`, "0");
-        await messagingService.sendMessage(
-            chat.jid,
-            {
-                text: languages.donate_alert[chat.language],
-                buttons: [
-                    {
-                        buttonId: "0",
-                        buttonText: {displayText: languages.donate_alert.button[chat.language]},
-                    },
-                ],
-            },
-            undefined,
-            {
-                placeholder: {
-                    chat,
-                },
-            },
-        );
+        await processMessageForDonorAlerts(sender, chat);
     }
 
     for (const [trigger, blockable] of foundCommands) {
@@ -137,6 +112,36 @@ export const executeCommand = async (
             else await addCommandCooldown(executor, command);
         });
     }
+};
+
+export const processMessageForDonorAlerts = async (user: User, chat: FullChat) => {
+    if (user.accountType !== AccountType.USER) return;
+
+    redisAlerts.incr(`${chat.jid}:commandsSent`);
+    const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
+    const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
+    const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 65;
+    if (!shouldSendAlert) return;
+    await redis.set(`${chat.jid}:commandsSent`, "0");
+
+    await messagingService.sendMessage(
+        chat.jid,
+        {
+            text: languages.donate_alert[chat.language],
+            buttons: [
+                {
+                    buttonId: "0",
+                    buttonText: {displayText: languages.donate_alert.button[chat.language]},
+                },
+            ],
+        },
+        undefined,
+        {
+            placeholder: {
+                chat,
+            },
+        },
+    );
 };
 
 export const getCommandByTrigger = async (
