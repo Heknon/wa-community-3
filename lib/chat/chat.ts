@@ -6,12 +6,17 @@ import languages from "../config/language.json";
 import config from "../config/config.json";
 import {Chat as FullChat, User} from "../db/types";
 import {pluralForm} from "../utils/message_utils";
-import {addCommandCooldown, getCooldownLeft, getUserRandom} from "../user/user";
+import {
+    addCommandCooldown,
+    getCooldownLeft,
+    getUserRandom,
+    removeCommandCooldown,
+} from "../user/user";
 import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {prisma} from "../db/client";
 import {BotResponse, Chat} from "@prisma/client";
 import moment from "moment";
-import 'moment-duration-format'
+import "moment-duration-format";
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
@@ -37,7 +42,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         if (isBlocked == BlockedReason.Cooldown) {
             const timeToWait = (await getCooldownLeft(sender.jid, blockable.mainTrigger)) / 1000.0;
             const donateCommand = await getCommandByTrigger(chat, "donate");
-            const isShortWait = timeToWait < 60 * 60;
+            const isShortWait = timeToWait < 60 * 10;
             const text = isShortWait
                 ? languages.cooldown[chat.language].message
                 : languages.cooldown[chat.language].long;
@@ -60,7 +65,9 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
                         custom: {
                             time: isShortWait
                                 ? timeToWait.toString()
-                                : moment.duration(timeToWait, "seconds").format("h[h], m[m] and s[s]"),
+                                : moment
+                                      .duration(timeToWait, "seconds")
+                                      .format("d[d] h[h], m[m] s[s]"),
                             second: pluralForm(timeToWait, languages.times[chat.language].second),
                         },
                         chat: this,
@@ -98,8 +105,9 @@ export const executeCommand = async (
         trigger,
     );
     if (futureCmdRes instanceof Promise) {
-        futureCmdRes.then(async () => {
-            await addCommandCooldown(executor, command);
+        futureCmdRes.then(async (res) => {
+            if (res === false) removeCommandCooldown(executor, command);
+            else await addCommandCooldown(executor, command);
         });
     }
 };

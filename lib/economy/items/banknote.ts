@@ -6,6 +6,7 @@ import {prisma} from "../../db/client";
 import {getUserRandom} from "../../user/user";
 import {weightedReward} from "../../command/commands/economy/utils";
 import {commas} from "../../utils/utils";
+import { pluralForm } from "../../utils/message_utils";
 
 export class BankNote extends Item {
     private static language = languages.items["banknote"];
@@ -13,10 +14,10 @@ export class BankNote extends Item {
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
         const random = getUserRandom(executor);
         const amount = weightedReward(random, [
-            [[40, 55], 30],
-            [[60, 80], 30],
-            [[55, 70], 40],
-        ]) * 1000;
+            [[40 * 1000, 55 * 1000], 30],
+            [[60 * 1000, 80 * 1000], 30],
+            [[55 * 1000, 70 * 1000], 40],
+        ]);
 
         const updated = await prisma.money.update({
             where: {id: executor.money?.id!},
@@ -34,6 +35,7 @@ export class BankNote extends Item {
                     expanded: commas(amount),
                     total_expanded: commas(updated.banknotes),
                     total: commas(updated.bankCapacity),
+                    coins: pluralForm(amount, languages.economy.coin[chat.language]),
                 },
             },
         });

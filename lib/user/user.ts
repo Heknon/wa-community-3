@@ -86,26 +86,11 @@ export const addCooldownToUser = async (jid: string, cooldownOn: string, cooldow
         getCooldownRedisKey(jid, formattedCooldownOn),
         expiresAt.toISOString(),
     );
-    // const cooldownOnUser = user.cooldowns.find(
-    //     (c) => c.cooldownOn.toLowerCase().trim() === formattedCooldownOn,
-    // );
+};
 
-    // cooldownOnUser
-    //     ? await prisma.cooldown.update({
-    //           where: {
-    //               id: cooldownOnUser.id,
-    //           },
-    //           data: {
-    //               expiresAt,
-    //           },
-    //       })
-    //     : await prisma.cooldown.create({
-    //           data: {
-    //               cooldownOn: formattedCooldownOn,
-    //               expiresAt,
-    //               user: {connect: {jid: user.jid}},
-    //           },
-    //       });
+export const removeCooldownFromUser = async (jid: string, cooldownOn: string) => {
+    const formattedCooldownOn = cooldownOn.toLowerCase().trim();
+    return await redisCooldown.del(getCooldownRedisKey(jid, formattedCooldownOn));
 };
 
 export const addCommandCooldown = async (user: Prisma.UserGetPayload<{}>, command: Command) => {
@@ -121,6 +106,10 @@ export const addCommandCooldown = async (user: Prisma.UserGetPayload<{}>, comman
 
     if (cooldown == 0 || cooldown === undefined) return;
     await addCooldownToUser(user.jid, command.mainTrigger.command, cooldown);
+};
+
+export const removeCommandCooldown = async (user: Prisma.UserGetPayload<{}>, command: Command) => {
+    await removeCooldownFromUser(user.jid, command.mainTrigger.command);
 };
 
 export const getCooldownRedisKey = (id: string, cooldownOn: string) => {

@@ -57,11 +57,13 @@ export default class StealCommand extends EconomyCommand {
         trigger: CommandTrigger,
     ) {
         if (user.passive) {
-            return message.reply(this.language.execution.passive, true);
+            message.reply(this.language.execution.passive, true);
+            return false;
         }
 
         if (message.mentions.length === 0) {
-            return message.reply(this.language.execution.no_user, true);
+            message.reply(this.language.execution.no_user, true);
+            return false;
         }
 
         const sandbox = user.activeItems.find(
@@ -69,7 +71,7 @@ export default class StealCommand extends EconomyCommand {
         );
 
         if (sandbox) {
-            return message.reply(this.language.execution.sandbox, true, {
+            message.reply(this.language.execution.sandbox, true, {
                 placeholder: {
                     custom: {
                         time: sandbox.expire
@@ -80,25 +82,30 @@ export default class StealCommand extends EconomyCommand {
                     },
                 },
             });
+            return false;
         }
 
         const target = message.mentions.find((e) => e != user.jid);
         if (!target) {
-            return message.reply(this.language.execution.self_tag, true);
+            await message.reply(this.language.execution.self_tag, true);
+            return false;
         }
 
         const minWalletForSteal = 5000;
         if (!user.money || user.money.wallet < minWalletForSteal) {
-            return message.reply(this.language.execution.not_enough_money_self, true);
+            await message.reply(this.language.execution.not_enough_money_self, true);
+            return false;
         }
 
         const targetUser = await getFullUser(target);
         if (!targetUser || !targetUser.money || targetUser.money.wallet < minWalletForSteal) {
-            return message.reply(this.language.execution.not_enough_money, true);
+            await message.reply(this.language.execution.not_enough_money, true);
+            return false;
         }
 
         if (targetUser.passive) {
-            return message.reply(this.language.execution.target_passive, true);
+            await message.reply(this.language.execution.target_passive, true);
+            return false;
         }
 
         const landmine = targetUser.activeItems.find(
@@ -114,7 +121,7 @@ export default class StealCommand extends EconomyCommand {
             await prisma.activeItem.delete({
                 where: {
                     id: landmine.id,
-                }
+                },
             });
             await message.reply(this.language.execution.blewup, true);
             return await userDoDeath(chat, user, message);
@@ -163,7 +170,7 @@ export default class StealCommand extends EconomyCommand {
             await prisma.activeItem.delete({
                 where: {
                     id: padlock.id,
-                }
+                },
             });
 
             if (brokePadlock) {

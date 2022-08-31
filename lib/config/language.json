@@ -142,7 +142,7 @@
                             "{prefix}use"
                         ]
                     },
-                    "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
+                    "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?\n\n*1.* No\n*2.* Yes",
                     "no_item": "There is no such item!",
                     "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
                     "no_buy": "You can't buy this item!",
@@ -172,7 +172,7 @@
                             "{prefix}השתמש"
                         ]
                     },
-                    "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
+                    "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* לא\n*2.* כן",
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין כזה מוצר!",
                     "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
@@ -204,7 +204,7 @@
                         "title": "*Successfuly sold {item}*",
                         "description": "{tag} has sold {quantity}x *{item}* and received ⏣ {price}"
                     },
-                    "confirm": "Are you sure you want to sell {quantity}x *{item}* for ⏣ {price}?",
+                    "confirm": "Are you sure you want to sell {quantity}x *{item}* for ⏣ {price}?\n\n*1.* No\n*2.* Yes",
                     "no_item": "There is no such item in the shop!",
                     "no_sell": "You can't sell this item!",
                     "no_item_inv": "You do not have this item in your inventory.",
@@ -224,10 +224,10 @@
                 "category": "כלכלה",
                 "execution": {
                     "success": {
-                        "title": "*הקנייה של {item} הצליחה*",
+                        "title": "*המכירה של {item} הצליחה*",
                         "description": "{tag} מכר {quantity}x *{item}* וקיבל ⏣ {price}"
                     },
-                    "confirm": "האם אתה בטוח שאתה רוצה למכור {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
+                    "confirm": "האם אתה בטוח שאתה רוצה למכור {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* לא\n*2.* כן",
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין מוצר כזה בחנות!",
                     "no_sell": "אתה לא יכול למכור את המוצר הזה",
@@ -1538,7 +1538,8 @@
             },
             "hebrew": {
                 "triggers": [
-                    "גניבה"
+                    "גניבה",
+                    "שדידה"
                 ],
                 "category": "כלכלה",
                 "description": "לגנוב כסף ממישהו",
@@ -2349,7 +2350,7 @@
         },
         "banknote": {
             "english": "*EXPANDED BANK*\nExpanded by: {expanded} {coins}\nTotal Bank Space: {total} {coins}\n\n_Expanded in total by: {total_expanded} {coins}_",
-            "hebrew": "*הרחוות בנק*\nהרחבת את הבנק ב: {expanded} {coins}\nאחסון בנק כולל: {total} {coins}\n\n_הרחבת את הבנק בסהכ ב: {total_expanded} {coins}_"
+            "hebrew": "*הרחבת בנק*\nהרחבת את הבנק ב: {expanded} {coins}\nאחסון בנק כולל: {total} {coins}\n\n_הרחבת את הבנק סהכ ב: {total_expanded} {coins}_"
         },
         "boxofsand": {
             "english": "You pull out a bit of old, dirty sand from your pocket and blow it right into {tag}'s face.\n{tag} has been blinded and they can't steal from anybody for another 30 minutes",
@@ -2405,7 +2406,7 @@
         },
         "padlock": {
             "english": "Your wallet now has a padlock on it.\nAnyone who tries to steal from you will automatically fail if they don't have bolt cutters, however this is only a one-time use. This item will expire after a month if no one breaks it by then.",
-            "hebrew": "יש עכשיו מנעול על הארנק שלך.\nאם מישהו מנסה לגנוב ממך הוא יכשל אוטומטית אלה אם יש להם חותך ברגים, אבל זה מוצר בעל שימוש אחד. המנעול יפוג  עוד חודש אם הוא לא ישבר עד אז.",
+            "hebrew": "יש עכשיו מנעול על הארנק שלך.\nאם מישהו מנסה לגנוב ממך הוא יכשל אוטומטית אלה אם יש להם חותך ברגים, אבל זה מוצר בעל שימוש אחד. המנעול יפוג עוד חודש אם הוא לא ישבר עד אז.",
             "break": {
                 "english": "Oui! Looks like {tag}'s padlock wasn't that tough to break! Just like his spirit.",
                 "hebrew": "וואה! נראה שהמנעול של {tag} לא היה כל כך קשה לשבירה!"

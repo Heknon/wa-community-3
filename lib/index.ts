@@ -22,6 +22,7 @@ ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
 export const whatsappBot: BotClient = new BotClient(registerEventHandlers);
 export const SAFE_DEBUG_MODE = true;
+export const ALLOWED_DEBUG_JIDS = ["972557223809@s.whatsapp.net", "120363041344515310@g.us"]
 
 whatsappBot.start();
 
@@ -40,7 +41,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
             // // apply metadata bound to message id in messaging service (this allows bot to send messages with metadata)
             const msg = await messagingService.messageInterceptor(rawMsg);
             const userJid = normalizeJid(msg.senderJid ?? "");
-            if (SAFE_DEBUG_MODE && !["972557223809"].some((e) => userJid?.startsWith(e))) return;
+            if (SAFE_DEBUG_MODE && !ALLOWED_DEBUG_JIDS.some((e) => userJid == e)) return;
 
             logger.debug(
                 `Processing message (${messageNumber++}) - (${moment
@@ -256,7 +257,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
     eventListener.on("groups.upsert", async (groups) => {
         for (const group of groups) {
-            if (SAFE_DEBUG_MODE && group.id != "120363041344515310@g.us") return;
+            if (SAFE_DEBUG_MODE && !ALLOWED_DEBUG_JIDS.some(e => e === group.id)) return;
             const chat = await getFullChat(group.id);
             if (!chat) {
                 return;

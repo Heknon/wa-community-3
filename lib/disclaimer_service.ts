@@ -1,6 +1,6 @@
 import Redis from "ioredis";
 import {env} from "process";
-import {SAFE_DEBUG_MODE} from ".";
+import {ALLOWED_DEBUG_JIDS, SAFE_DEBUG_MODE} from ".";
 import {prisma} from "./db/client";
 import {Chat} from "./db/types";
 import {logger} from "./logger";
@@ -32,8 +32,7 @@ class DisclaimerService {
 
         if (
             SAFE_DEBUG_MODE &&
-            chat.jid != "120363041344515310@g.us" &&
-            chat.jid != "972557223809@s.whatsapp.net"
+            !ALLOWED_DEBUG_JIDS.includes(chat.jid)
         )
             return;
 

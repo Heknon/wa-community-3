@@ -108,8 +108,8 @@ export default class SellCommand extends EconomyCommand {
             const content = confirmResponse.content
                 ?.replace("לא", "no")
                 .replace("כן", "yes")
-                .replace("2", "no")
-                .replace("1", "yes");
+                .replace("1", "no")
+                .replace("2", "yes");
             if (content === "no" || !content) {
                 return message.reply(this.language.execution.cancelled, true, {
                     placeholder,

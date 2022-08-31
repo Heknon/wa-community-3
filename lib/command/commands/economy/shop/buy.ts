@@ -89,7 +89,7 @@ export default class BuyCommand extends EconomyCommand {
         if (amount > 1) {
             const confirmMessage = await this.sendConfirmMessage(message, placeholder);
             const confirmResponse = await this.validatedWaitForInteractionWith(
-                confirmMessage!,
+                message!,
                 async (msg) => {
                     await this.sendConfirmMessage(message, placeholder);
                 },
@@ -110,8 +110,8 @@ export default class BuyCommand extends EconomyCommand {
             const content = confirmResponse.content
                 ?.replace("לא", "no")
                 .replace("כן", "yes")
-                .replace("2", "no")
-                .replace("1", "yes");
+                .replace("1", "no")
+                .replace("2", "yes");
             if (content === "no" || !content) {
                 return message.reply(this.language.execution.cancelled, true, {
                     placeholder,
