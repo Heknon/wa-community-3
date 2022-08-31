@@ -1536,6 +1536,7 @@
                     },
                     "sandbox": "You've been blinded and can't rob anyone for the next {time}",
                     "blewup": "KABOOOOOM!!! You blew up and DIED!",
+                    "stolen_cooldown": "{tag} was already stolen from in the past 30 minutes, you'll be able to steal from {tag} in {time}",
                     "padlock": "Ahhhh damn, {tag} had a padlock on their wallet!",
                     "padlock_broke": "Shhhhhhh you broke the padlock on their wallet 😉",
                     "passive": "You are in passive mode and can't rob anyone",
@@ -1566,6 +1567,7 @@
                         "little": "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
                         "none": "ועזבת את העבודה שלך בשביל זה??? 😹😹😹"
                     },
+                    "stolen_cooldown": "{tag} כבר נשדד ב30 דקות האחרונות, יהיה אפשר לשדוד מ{tag} בעוד {time}",
                     "sandbox": "עיוורו אותך ואתה לא יכול לשדוד אף אחד לעוד {time}",
                     "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק ותפוצצת!",
                     "padlock": "אייייייי, ל{tag} היה מנעול על הארנק!",
@@ -1580,49 +1582,49 @@
                     "odds": 0.05,
                     "amounts": [
                         [
-                            0.5,
+                            0.6,
                             [
                                 0.85,
-                                0.95
+                                0.90
                             ]
                         ],
                         [
-                            0.3,
+                            0.25,
+                            [
+                                0.77,
+                                0.85
+                            ]
+                        ],
+                        [
+                            0.15,
                             [
                                 0.95,
                                 1.0
-                            ],
-                            [
-                                0.2,
-                                [
-                                    0.77,
-                                    0.85
-                                ]
                             ]
                         ]
                     ],
                     "id": "all"
                 },
                 {
-                    "odds": 0.15,
+                    "odds": 0.10,
                     "id": "most",
                     "amounts": [
                         [
-                            0.6,
+                            0.7,
                             [
-                                0.5,
-                                0.70
+                                0.4,
+                                0.65
                             ]
                         ],
                         [
-                            0.1,
+                            0.2,
                             [
                                 0.50,
                                 0.60
                             ]
                         ],
                         [
-                            0.3,
+                            0.05,
                             [
                                 0.60,
                                 0.75
@@ -1631,52 +1633,52 @@
                     ]
                 },
                 {
-                    "odds": 0.45,
+                    "odds": 0.35,
                     "id": "some",
                     "amounts": [
                         [
                             0.7,
                             [
-                                0.3,
-                                0.5
+                                0.2,
+                                0.35
                             ]
                         ],
                         [
-                            0.1,
+                            0.25,
                             [
                                 0.25,
                                 0.40
                             ]
                         ],
                         [
-                            0.2,
+                            0.05,
                             [
-                                0.50,
-                                0.60
+                                0.30,
+                                0.45
                             ]
                         ]
                     ]
                 },
                 {
-                    "odds": 0.3,
+                    "odds": 0.45,
                     "id": "little",
                     "amounts": [
                         [
                             0.7,
                             [
-                                0.20,
-                                0.35
+                                0.05,
+                                0.20
                             ]
                         ],
                         [
-                            0.1,
+                            0.05,
                             [
-                                0.35,
-                                0.40
+                                0.15,
+                                0.25
                             ]
                         ],
                         [
-                            0.2,
+                            0.25,
                             [
                                 0.10,
                                 0.20

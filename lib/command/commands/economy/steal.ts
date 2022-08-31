@@ -11,7 +11,7 @@ import {weightedChoice, weightedReward} from "./utils";
 import {getUserRandom, userDoDeath} from "../../../user/user";
 import {commas} from "../../../utils/utils";
 import {pluralForm} from "../../../utils/message_utils";
-import {prisma} from "../../../db/client";
+import {prisma, redis} from "../../../db/client";
 import moment from "moment";
 import "moment-duration-format";
 import {rescueNumbers} from "../../../utils/regex_utils";
@@ -113,6 +113,22 @@ export default class StealCommand extends EconomyCommand {
             return false;
         }
 
+        const lastStolen = await redis.get(this.lastStolenPrefix(target));
+        const lastStolenMoment = lastStolen ? moment(lastStolen) : undefined;
+        const lastStolenToNowDuration = lastStolenMoment ? moment.duration(moment().diff(lastStolenMoment)) : undefined;
+        if (lastStolenToNowDuration && lastStolenToNowDuration.asMinutes() < 30) {
+            await message.reply(this.language.execution.stolen_cooldown, true, {
+                placeholder: {
+                    custom: {
+                        tag: `@${targetUser.phone}`,
+                        time: lastStolenToNowDuration.format("d[d] h[h] m[m] s[s]"),
+                    }
+                },
+                tags: [targetUser.jid]
+            });
+            return false;
+        }
+
         if (targetUser.passive) {
             await message.reply(this.language.execution.target_passive, true);
             return false;
@@ -127,6 +143,7 @@ export default class StealCommand extends EconomyCommand {
 
         const random = getUserRandom(user);
 
+        await this.registerSteal(targetUser);
         if (landmine && random.intBetween(0, 100) < 50) {
             await prisma.activeItem.delete({
                 where: {
@@ -137,7 +154,7 @@ export default class StealCommand extends EconomyCommand {
                 tags: [targetUser.jid],
                 placeholder: {
                     custom: {
-                        tag: '@' + targetUser.phone,
+                        tag: "@" + targetUser.phone,
                     },
                 },
             });
@@ -153,11 +170,15 @@ export default class StealCommand extends EconomyCommand {
         if (caught) {
             const paid = Math.min(
                 2000 + random.intBetween(0, 500),
-                weightedReward(random, [
-                    [[0.05, 0.1], 0.4],
-                    [[0.2, 0.45], 0.1],
-                    [[0.1, 0.25], 0.5],
-                ], true) * user.money.wallet,
+                weightedReward(
+                    random,
+                    [
+                        [[0.05, 0.1], 0.4],
+                        [[0.2, 0.45], 0.1],
+                        [[0.1, 0.25], 0.5],
+                    ],
+                    true,
+                ) * user.money.wallet,
             );
 
             const fakeid = user.activeItems.find((e) => e.itemId === "fakeid");
@@ -212,7 +233,7 @@ export default class StealCommand extends EconomyCommand {
             weightedReward(
                 random,
                 theft.amounts.map((e) => [e[1], e[0]]),
-                true
+                true,
             ) * max,
         );
 
@@ -230,5 +251,17 @@ export default class StealCommand extends EconomyCommand {
         });
     }
 
-    onBlocked(data: Message, blockedReason: BlockedReason) {}
+    private async registerSteal(target: User) {
+        await redis.set(this.lastStolenPrefix(target.jid), moment().toISOString(true));
+    }
+
+    private lastStolenPrefix(jid: string) {
+        return `${jid}:lastStolenAt`;
+    }
+
+    onBlocked(data: Message, blockedReason: BlockedReason) {
+        if (blockedReason === BlockedReason.BlockedChat) {
+            data.reply(languages.onlygroups[this.langCode], true);
+        }
+    }
 }
