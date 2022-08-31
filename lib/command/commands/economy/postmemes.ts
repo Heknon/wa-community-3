@@ -3,7 +3,7 @@ import {CommandTrigger, EconomyCommand} from "../..";
 import {BlockedReason} from "../../../blockable";
 import {commas} from "../../../utils/utils";
 import languages from "../../../config/language.json";
-import {weightedChoice, weightedReward} from "./utils";
+import {weightedChoice} from "./utils";
 import {pluralForm} from "../../../utils/message_utils";
 import {AccountType} from "@prisma/client";
 import {Chat, User} from "../../../db/types";

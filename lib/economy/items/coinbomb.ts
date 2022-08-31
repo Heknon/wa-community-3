@@ -37,7 +37,7 @@ export class CoinBomb extends Item {
                 return false;
             }
 
-            if (coinsRewardAmount <= 0) {
+            if (coinsLeft <= 0) {
                 message?.reply(CoinBomb.language.ended[chat.language], true, {
                     placeholder: {
                         custom: {
@@ -72,7 +72,7 @@ export class CoinBomb extends Item {
                     [[0.01, 0.05], 0.1],
                     [[0.1, 0.2], 0.4],
                     [[0.15, 0.2], 0.2],
-                ]) * coinsRewardAmount,
+                ], true) * coinsRewardAmount,
             );
             coinsToGive = coinsLeft >= 1000 ? Math.min(coinsToGive, coinsLeft) : coinsLeft;
             coinsLeft -= coinsToGive;

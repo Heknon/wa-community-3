@@ -157,7 +157,7 @@ export default class StealCommand extends EconomyCommand {
                     [[0.05, 0.1], 0.4],
                     [[0.2, 0.45], 0.1],
                     [[0.1, 0.25], 0.5],
-                ]) * user.money.wallet,
+                ], true) * user.money.wallet,
             );
 
             const fakeid = user.activeItems.find((e) => e.itemId === "fakeid");

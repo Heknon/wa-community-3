@@ -308,7 +308,7 @@ const getQuantityToLose = (user: FullUser, item: InventoryItem, random?: RandomS
             [[0.1, 0.3], 0.3],
             [[0.03, 0.1], 0.1],
             [[0.4, 0.7], 0.1],
-        ]);
+        ], true);
 
         return Math.min(1, Math.floor(item.quantity * percentToLose));
     }

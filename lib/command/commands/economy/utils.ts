@@ -85,9 +85,10 @@ export function extractNumbers(str: string): number[] {
 export function weightedReward(
     random: RandomSeed,
     weightRewards: [[number, number], number][],
+    useFloat: boolean = false
 ): number {
     const rewardRange = weightedChoice(weightRewards);
-    return random.intBetween(rewardRange[0], rewardRange[1]);
+    return useFloat ? random.floatBetween(rewardRange[0], rewardRange[1]) : random.intBetween(rewardRange[0], rewardRange[1]);
 }
 
 /**
