@@ -115,16 +115,18 @@ export default class StealCommand extends EconomyCommand {
 
         const lastStolen = await redis.get(this.lastStolenPrefix(target));
         const lastStolenMoment = lastStolen ? moment(lastStolen) : undefined;
-        const lastStolenToNowDuration = lastStolenMoment ? moment.duration(moment().diff(lastStolenMoment)) : undefined;
+        const lastStolenToNowDuration = lastStolenMoment
+            ? moment.duration(moment().diff(lastStolenMoment))
+            : undefined;
         if (lastStolenToNowDuration && lastStolenToNowDuration.asMinutes() < 30) {
             await message.reply(this.language.execution.stolen_cooldown, true, {
                 placeholder: {
                     custom: {
                         tag: `@${targetUser.phone}`,
                         time: lastStolenToNowDuration.format("d[d] h[h] m[m] s[s]"),
-                    }
+                    },
                 },
-                tags: [targetUser.jid]
+                tags: [targetUser.jid],
             });
             return false;
         }
@@ -168,17 +170,19 @@ export default class StealCommand extends EconomyCommand {
         ]);
 
         if (caught) {
-            const paid = Math.min(
-                2000 + random.intBetween(0, 500),
-                weightedReward(
-                    random,
-                    [
-                        [[0.05, 0.1], 0.4],
-                        [[0.2, 0.45], 0.1],
-                        [[0.1, 0.25], 0.5],
-                    ],
-                    true,
-                ) * user.money.wallet,
+            const paid = Math.floor(
+                Math.min(
+                    2000 + random.intBetween(0, 500),
+                    weightedReward(
+                        random,
+                        [
+                            [[0.05, 0.1], 0.4],
+                            [[0.2, 0.45], 0.1],
+                            [[0.1, 0.25], 0.5],
+                        ],
+                        true,
+                    ) * user.money.wallet,
+                ),
             );
 
             const fakeid = user.activeItems.find((e) => e.itemId === "fakeid");
