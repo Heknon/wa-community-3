@@ -117,7 +117,7 @@ export const executeCommand = async (
 export const processMessageForDonorAlerts = async (user: User, chat: FullChat) => {
     if (user.accountType !== AccountType.USER) return;
 
-    redisAlerts.incr(`${chat.jid}:commandsSent`);
+    await redisAlerts.incr(`${chat.jid}:commandsSent`);
     const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
     const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
     const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 65;
