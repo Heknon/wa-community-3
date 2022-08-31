@@ -58,7 +58,7 @@ export default class BaltopCommand extends EconomyCommand {
             : undefined;
         let baltop = cachedBaltop;
 
-        if (!cachedBaltop) {
+        if (!cachedBaltop || body.toLowerCase().includes("refresh") || body.toLowerCase().includes("רענון")) {
             const groupMeta = await client.groupMetadata(chat.jid);
             const usersTop = await prisma.user.findMany({
                 where: {
