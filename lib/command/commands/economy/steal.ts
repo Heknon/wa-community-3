@@ -115,15 +115,14 @@ export default class StealCommand extends EconomyCommand {
 
         const lastStolen = await redis.get(this.lastStolenPrefix(target));
         const lastStolenMoment = lastStolen ? moment(lastStolen) : undefined;
-        const lastStolenToNowDuration = lastStolenMoment
-            ? moment.duration(moment().diff(lastStolenMoment))
-            : undefined;
-        if (lastStolenToNowDuration && lastStolenToNowDuration.asMinutes() < 30) {
+        const canStealAgain = lastStolenMoment?.add(30, "minutes");
+        if (canStealAgain && canStealAgain.isAfter(moment())) {
+            const durationTillNextSteal = moment.duration(canStealAgain.diff(moment()));
             await message.reply(this.language.execution.stolen_cooldown, true, {
                 placeholder: {
                     custom: {
                         tag: `@${targetUser.phone}`,
-                        time: lastStolenToNowDuration.format("d[d] h[h] m[m] s[s]"),
+                        time: durationTillNextSteal.format("d[d] h[h] m[m] s[s]"),
                     },
                 },
                 tags: [targetUser.jid],

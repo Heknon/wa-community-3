@@ -1567,7 +1567,7 @@
                         "little": "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
                         "none": "ועזבת את העבודה שלך בשביל זה??? 😹😹😹"
                     },
-                    "stolen_cooldown": "{tag} כבר נשדד ב30 דקות האחרונות, יהיה אפשר לשדוד מ{tag} בעוד {time}",
+                    "stolen_cooldown": "{tag} כבר נשדד ב30 דקות האחרונות, יהיה אפשר לשדוד ממנו בעוד {time}",
                     "sandbox": "עיוורו אותך ואתה לא יכול לשדוד אף אחד לעוד {time}",
                     "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק ותפוצצת!",
                     "padlock": "אייייייי, ל{tag} היה מנעול על הארנק!",
