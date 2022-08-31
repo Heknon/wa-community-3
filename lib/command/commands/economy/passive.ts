@@ -6,9 +6,10 @@ import languages from "../../../config/language.json";
 import {Chat, User} from "../../../db/types";
 import Message from "../../../messaging/message";
 import {prisma} from "../../../db/client";
-import {userCalculateNetBalance} from "../../../user/user";
+import {removeCommandCooldown, userCalculateNetBalance} from "../../../user/user";
 import {createUser} from "../../../user/database_interactions";
 import {AccountType} from "@prisma/client";
+import { getCommandByTrigger } from "../../../chat/chat";
 
 export default class PassiveCommand extends EconomyCommand {
     private language: typeof languages.commands.passive[Language];
@@ -52,6 +53,8 @@ export default class PassiveCommand extends EconomyCommand {
             },
         });
 
+        const steal = await getCommandByTrigger(chat, 'steal');
+        if (steal) removeCommandCooldown(user, steal);
         await message.reply(this.language.execution[toggledTo ? "enabled" : "disabled"], true);
     }
 
