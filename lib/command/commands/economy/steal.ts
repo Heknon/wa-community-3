@@ -75,7 +75,7 @@ export default class StealCommand extends EconomyCommand {
         );
 
         if (sandbox) {
-            message.reply(this.language.execution.sandbox, true, {
+            await message.reply(this.language.execution.sandbox, true, {
                 placeholder: {
                     custom: {
                         time: sandbox.expire
