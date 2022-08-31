@@ -1325,7 +1325,11 @@
                 "category": "Economy",
                 "description": "Check the group's richest users",
                 "usage": "{prefix}{command}",
-                "execution": {}
+                "execution": {
+                    "title": "*Richest users in the group*",
+                    "format": "*{num}.* {tag} - {balance}",
+                    "footer": "_(updates every 10 minutes)_"
+                }
             },
             "hebrew": {
                 "triggers": [
@@ -1334,7 +1338,11 @@
                 "category": "כלכלה",
                 "description": "בדוק מי המשתמשים העשירים ביותר בקבוצה",
                 "usage": "{prefix}{command}",
-                "execution": {}
+                "execution": {
+                    "title": "*העשירים של הקבוצה*",
+                    "format": "*{num}.* {tag} - {balance}",
+                    "footer": "_(מתעדכן כל עשר דקות)_"
+                }
             }
         },
         "passive": {
@@ -1349,7 +1357,12 @@
                 "category": "Economy",
                 "description": "Change to passive mode. People could no longer steal from you but you will lose access to commands.",
                 "usage": "{prefix}{command}",
-                "execution": {}
+                "execution": {
+                    "enabled": "Passive mode has been enabled.\nPeople can no longer rob from you but also can no longer trade items.",
+                    "disabled": "You are no longer in passive mode.\nPeople can now rob from you.",
+                    "already_passive": "You are already in passive mode.",
+                    "already_not_passive": "You are already not in passive mode."
+                }
             },
             "hebrew": {
                 "triggers": [
@@ -1358,7 +1371,12 @@
                 "category": "כלכלה",
                 "description": "תהפוך את הפרופיל שלך לפאסיבי כך שלא יוכלו לגנוב ממך אבל גם תחסם מפקודות מסוימות",
                 "usage": "{prefix}{command}",
-                "execution": {}
+                "execution": {
+                    "disabled": "יצאת ממצב פאסיבי 😈\nיכולים לגנוב ממך.",
+                    "enabled": "אתה עכשיו במצב פאסיבי ☮\nאנשים לא יכולים לגנוב ממך יותר אבל אתה גם לא תוכל לעשות טריידים.",
+                    "already_passive": "אתה היית כבר במצב פאסיבי 🤨.",
+                    "already_not_passive": "אתה היית כבר במצב לא פאסיבי 🤨."
+                }
             }
         },
         "hunt": {

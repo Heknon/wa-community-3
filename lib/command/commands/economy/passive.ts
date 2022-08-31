@@ -6,9 +6,9 @@ import languages from "../../../config/language.json";
 import {Chat, User} from "../../../db/types";
 import Message from "../../../messaging/message";
 import {prisma} from "../../../db/client";
-import { userCalculateNetBalance } from "../../../user/user";
-import { createUser } from "../../../user/database_interactions";
-import { AccountType } from "@prisma/client";
+import {userCalculateNetBalance} from "../../../user/user";
+import {createUser} from "../../../user/database_interactions";
+import {AccountType} from "@prisma/client";
 
 export default class BalanceCommand extends EconomyCommand {
     private language: typeof languages.commands.passive[Language];
@@ -42,7 +42,17 @@ export default class BalanceCommand extends EconomyCommand {
         body: string,
         trigger: CommandTrigger,
     ) {
-        
+        const toggledTo = !user.passive;
+        await prisma.user.update({
+            where: {
+                jid: user.jid,
+            },
+            data: {
+                passive: toggledTo,
+            },
+        });
+
+        await message.reply(this.language.execution[toggledTo ? "enabled" : "disabled"], true);
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}
