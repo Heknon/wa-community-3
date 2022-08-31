@@ -14,8 +14,8 @@ import {pluralForm} from "../../../utils/message_utils";
 import {prisma} from "../../../db/client";
 import moment from "moment";
 import "moment-duration-format";
-import { rescueNumbers } from "../../../utils/regex_utils";
-import { logger } from "../../../logger";
+import {rescueNumbers} from "../../../utils/regex_utils";
+import {logger} from "../../../logger";
 
 type Theft = {
     odds: number;
@@ -44,7 +44,7 @@ export default class StealCommand extends EconomyCommand {
                 [AccountType.DONOR, 25 * 60 * 1000],
                 [AccountType.SPONSOR, 22 * 60 * 1000],
             ]),
-            blockedChats: ['DM']
+            blockedChats: ["DM"],
         });
 
         this.language = lang;
@@ -64,7 +64,7 @@ export default class StealCommand extends EconomyCommand {
             return false;
         }
 
-        const numbers = rescueNumbers(body).map(e => e + S_WHATSAPP_NET);
+        const numbers = rescueNumbers(body).map((e) => e + S_WHATSAPP_NET);
         if (message.mentions.length === 0 && numbers.length === 0) {
             message.reply(this.language.execution.no_user, true);
             return false;
@@ -89,7 +89,8 @@ export default class StealCommand extends EconomyCommand {
             return false;
         }
 
-        const target = message.mentions.find((e) => e != user.jid) || numbers.find((e) => e != user.jid);
+        const target =
+            message.mentions.find((e) => e != user.jid) || numbers.find((e) => e != user.jid);
         if (!target) {
             await message.reply(this.language.execution.self_tag, true);
             return false;
@@ -132,7 +133,14 @@ export default class StealCommand extends EconomyCommand {
                     id: landmine.id,
                 },
             });
-            await message.reply(this.language.execution.blewup, true);
+            await message.reply(this.language.execution.blewup, true, {
+                tags: [targetUser.jid],
+                placeholder: {
+                    custom: {
+                        tag: targetUser.jid,
+                    },
+                },
+            });
             return await userDoDeath(chat, user, message);
         }
 

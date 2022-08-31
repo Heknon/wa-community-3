@@ -106,7 +106,7 @@ export const executeCommand = async (
     );
     if (futureCmdRes instanceof Promise) {
         futureCmdRes.then(async (res) => {
-            if (res === false) removeCommandCooldown(executor, command);
+            if (res === false) await removeCommandCooldown(executor, command);
             else await addCommandCooldown(executor, command);
         });
     }
