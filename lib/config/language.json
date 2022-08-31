@@ -2387,6 +2387,10 @@
                 "english": "Wooooo! You got {amount} {coins}!",
                 "hebrew": "היידההה! קיבלת {amount} {coins}!"
             },
+            "greed": {
+                "english": "Don't be greedy! You can't take from your own coinbomb.",
+                "hebrew": "אל תהיה חמדן! אתה לא יכול לקבל מטבעות מפצצת המטבעות שלך."
+            },
             "ended": {
                 "english": "*THE COIN BOMB EVENT HAS ENEDED 😢*\n\nA total of {total} {coins} has been collected",
                 "hebrew": "*איסוף המטבעות החמדני הסתיים 😢*\n\nנאספו בסך הכל {total} {coins}"

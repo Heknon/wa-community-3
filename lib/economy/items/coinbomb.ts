@@ -32,7 +32,11 @@ export class CoinBomb extends Item {
             },
         );
         waitForMessage((msg) => {
-            if (msg.jid !== message?.jid) return false;
+            if (msg.fromBot) return false;
+            if (msg.jid !== executor.jid) {
+                message?.reply(CoinBomb.language.greed[chat.language], true);
+                return false;
+            }
             if (coinsRewardAmount <= 0) {
                 message?.reply(CoinBomb.language.ended[chat.language], true, {
                     placeholder: {
