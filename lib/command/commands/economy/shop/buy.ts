@@ -56,6 +56,7 @@ export default class BuyCommand extends EconomyCommand {
                 item: itemData?.name[this.langCode] ?? "N/A",
                 quantity: commas(amount),
                 price: commas(price),
+                missing: commas(price - (user.money?.wallet ?? 0)),
             },
         });
 

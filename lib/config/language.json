@@ -144,7 +144,7 @@
                     },
                     "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?\n\n*1.* No\n*2.* Yes",
                     "no_item": "There is no such item!",
-                    "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
+                    "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!\nYou are missing ⏣ {missing}",
                     "no_buy": "You can't buy this item!",
                     "cancelled": "The purchase has been cancelled.",
                     "timeout": "You took too long to confirm the purchase. Try again.",
@@ -175,7 +175,7 @@
                     "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* לא\n*2.* כן",
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין כזה מוצר!",
-                    "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
+                    "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!\nחסר לך {missing} ⏣",
                     "no_buy": "אתה לא יכול למכור את המוצר הזה",
                     "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
                     "confirm_buttons": [
