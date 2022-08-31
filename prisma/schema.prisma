@@ -23,6 +23,8 @@ model User {
     phone                 String          @unique
     name                  String
     deaths                DateTime[]
+    weeklies              DateTime[]
+    monthlies             DateTime[]
     passive               Boolean         @default(false)
     accountType           AccountType     @default(USER)
     accountTypeExpiration DateTime?
