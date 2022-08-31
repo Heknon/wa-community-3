@@ -1,7 +1,7 @@
 import EconomyCommand from "../../economy_command";
 import languages from "../../../config/language.json";
 import {BlockedReason} from "../../../blockable";
-import {WASocket} from "@adiwajshing/baileys";
+import {S_WHATSAPP_NET, WASocket} from "@adiwajshing/baileys";
 import CommandTrigger from "../../command_trigger";
 import {AccountType} from "@prisma/client";
 import Message from "../../../messaging/message";
@@ -14,6 +14,7 @@ import {pluralForm} from "../../../utils/message_utils";
 import {prisma} from "../../../db/client";
 import moment from "moment";
 import "moment-duration-format";
+import { rescueNumbers } from "../../../utils/regex_utils";
 
 type Theft = {
     odds: number;
@@ -42,6 +43,7 @@ export default class StealCommand extends EconomyCommand {
                 [AccountType.DONOR, 25 * 60 * 1000],
                 [AccountType.SPONSOR, 22 * 60 * 1000],
             ]),
+            blockedChats: ['DM']
         });
 
         this.language = lang;
@@ -61,7 +63,8 @@ export default class StealCommand extends EconomyCommand {
             return false;
         }
 
-        if (message.mentions.length === 0) {
+        const numbers = rescueNumbers(body).map(e => e + S_WHATSAPP_NET);
+        if (message.mentions.length === 0 && numbers.length === 0) {
             message.reply(this.language.execution.no_user, true);
             return false;
         }
@@ -85,9 +88,14 @@ export default class StealCommand extends EconomyCommand {
             return false;
         }
 
-        const target = message.mentions.find((e) => e != user.jid);
+        const target = message.mentions.find((e) => e != user.jid) || numbers.find((e) => e != user.jid);
         if (!target) {
             await message.reply(this.language.execution.self_tag, true);
+            return false;
+        }
+        const meta = await client.groupMetadata(chat.jid);
+        if (meta.participants.findIndex((e) => e.id === target) === -1) {
+            await message.reply(this.language.execution.not_in_group, true);
             return false;
         }
 

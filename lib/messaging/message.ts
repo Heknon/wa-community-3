@@ -118,7 +118,7 @@ export default class Message {
             tags?: string[];
         } = {},
     ) {
-        return messagingService.reply(this, content, quote, {privateReply, metadata, placeholder});
+        return messagingService.reply(this, content, quote, {privateReply, metadata, placeholder, tags});
     }
 
     public replyAdvanced(

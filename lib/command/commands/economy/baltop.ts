@@ -118,7 +118,7 @@ export default class BaltopCommand extends EconomyCommand {
             .map((e, i) => {
                 const tag = e.fakeid ? `@${e.fakeid}` : "@" + e.phone;
                 return this.language.execution.format
-                    .replace("{num}", (start + i).toString())
+                    .replace("{num}", (start + i + 1).toString())
                     .replace("{tag}", tag)
                     .replace("{balance}", commas(e.wallet + e.bank));
             })
@@ -126,8 +126,12 @@ export default class BaltopCommand extends EconomyCommand {
 
         const text = `${this.language.execution.title} (${page}/${Math.ceil(
             baltop.length / pageSize,
-        )}\n${baltopPageText}\n\n${this.language.execution.footer}`;
-        await message.reply(text, true);
+        )})\n${baltopPageText}\n\n${this.language.execution.footer}`;
+        await message.reply(text, true, {
+            tags: baltopPage.filter(e => e.fakeid == undefined).map((e) => {
+                return e.jid;
+            }),
+        });
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}

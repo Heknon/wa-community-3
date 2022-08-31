@@ -21,7 +21,7 @@ import { disclaimerService } from "./disclaimer_service";
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
 export const whatsappBot: BotClient = new BotClient(registerEventHandlers);
-export const SAFE_DEBUG_MODE = true;
+export const SAFE_DEBUG_MODE = false;
 export const ALLOWED_DEBUG_JIDS = ["972557223809@s.whatsapp.net", "120363041344515310@g.us"]
 
 whatsappBot.start();

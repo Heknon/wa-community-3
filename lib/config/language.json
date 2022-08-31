@@ -1515,6 +1515,7 @@
                 "usage": "{prefix}{command} @tag",
                 "execution": {
                     "no_user": "You need to tag the person you want to rob.",
+                    "not_in_group": "You can only steal from people in the same group.",
                     "self_tag": "You can't rob yourself wtf",
                     "no_balance": "This user is too poor to rob 💀.",
                     "caught": "You were caught *HAHAHA*\nYou paid {tag} {coins} {coin}",
@@ -1546,6 +1547,7 @@
                 "usage": "{prefix}{command} @תיוג",
                 "execution": {
                     "no_user": "אתה צריך לתייג את מי שאתה רוצה לשדוד בפקודה.",
+                    "not_in_group": "אתה יכול לגנוב רק מאנשים באותה קבוצה.",
                     "self_tag": "אתה לא יכול לגנוב מעצמך וטפ",
                     "no_balance": "למשתמש הזה אין כסף לגנוב 💀.",
                     "caught": "חחחחחחחחחחחחחחחח נתפסת אני מת\nשילמת ל{tag} {coins} {coin}",
