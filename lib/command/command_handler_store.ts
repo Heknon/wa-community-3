@@ -56,6 +56,7 @@ import {
     PassiveCommand,
     StealCommand,
     BaltopCommand,
+    ActiveItemsCommand,
 } from "./commands/economy";
 import ResponseCommand from "./commands/fun/response";
 import ImageCommand, {ImageGenCommandData} from "./image_command";
@@ -141,7 +142,9 @@ export default class CommandHandlerStore {
             SellCommand,
             PassiveCommand,
             StealCommand,
-            BaltopCommand
+            BaltopCommand,
+            // profile
+            ActiveItemsCommand
         ];
 
         genericCommands.forEach((Command) => {

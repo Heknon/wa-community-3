@@ -8,6 +8,7 @@ import DailyCommand from "./daily";
 import DepositCommand from "./deposit";
 import HighlowCommand from "./highlow";
 import HuntCommand from "./hunt";
+import ActiveItemsCommand from "./inventory/activeitems";
 import InventoryCommand from "./inventory/inventory";
 import UseItemCommand from "./inventory/use";
 import PassiveCommand from "./passive";
@@ -37,5 +38,6 @@ export {
     SellCommand,
     StealCommand,
     BaltopCommand,
-    PassiveCommand
+    PassiveCommand,
+    ActiveItemsCommand
 }

@@ -11,6 +11,7 @@ import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
 import {prisma} from "../db/client";
 import {BotResponse, Chat} from "@prisma/client";
 import moment from "moment";
+import 'moment-duration-format'
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
@@ -59,7 +60,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
                         custom: {
                             time: isShortWait
                                 ? timeToWait.toString()
-                                : moment.duration(timeToWait, "seconds").format("h [hrs], m [min]"),
+                                : moment.duration(timeToWait, "seconds").format("h[h], m[m] and s[s]"),
                             second: pluralForm(timeToWait, languages.times[chat.language].second),
                         },
                         chat: this,

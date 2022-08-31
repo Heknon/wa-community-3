@@ -50,6 +50,42 @@
                 }
             }
         },
+        "activeitems": {
+            "triggers": [
+                "activeitems",
+                "active",
+                "פעילים",
+                "מוצריםפעילים"
+            ],
+            "english": {
+                "triggers": [
+                    "activeitems",
+                    "active"
+                ],
+                "category": "Profile",
+                "description": "Your active items/powerups",
+                "execution": {
+                    "request_title": "*{tag}'s active items:*",
+                    "no_items": "You don't have any active items!",
+                    "format": "*{name}* - Expires in {time}",
+                    "never": "ON DEATH"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "פעילים",
+                    "מוצריםפעילים"
+                ],
+                "category": "פרופיל",
+                "description": "המוצרים שעכשיו מופעלים עליך",
+                "execution": {
+                    "request_title": "*המוצרים הפעילים של {tag}*",
+                    "no_items": "אין לך מוצרים פעילים",
+                    "format": "*{name}* - פג בעוד {time}",
+                    "never": "בעת מוות"
+                }
+            }
+        },
         "shop": {
             "triggers": [
                 "shop",
