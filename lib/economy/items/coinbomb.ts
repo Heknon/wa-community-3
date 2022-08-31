@@ -37,7 +37,7 @@ export class CoinBomb extends Item {
                 message?.reply(CoinBomb.language.ended[chat.language], true, {
                     placeholder: {
                         custom: {
-                            amount: commas(coinsRewardAmount - coinsLeft),
+                            total: commas(coinsRewardAmount - coinsLeft),
                             coins: pluralForm(
                                 coinsRewardAmount - coinsLeft,
                                 languages.economy.coin[chat.language],
@@ -71,7 +71,7 @@ export class CoinBomb extends Item {
             message?.reply(CoinBomb.language.ended[chat.language], true, {
                 placeholder: {
                     custom: {
-                        amount: commas(coinsRewardAmount - coinsLeft),
+                        total: commas(coinsRewardAmount - coinsLeft),
                         coins: pluralForm(
                             coinsRewardAmount - coinsLeft,
                             languages.economy.coin[chat.language],
