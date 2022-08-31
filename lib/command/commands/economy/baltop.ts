@@ -134,5 +134,9 @@ export default class BaltopCommand extends EconomyCommand {
         });
     }
 
-    onBlocked(data: Message, blockedReason: BlockedReason) {}
+    onBlocked(data: Message, blockedReason: BlockedReason) {
+        if (blockedReason == BlockedReason.BlockedChat) {
+            data.reply(languages.onlygroups[this.langCode]);
+        }
+    }
 }

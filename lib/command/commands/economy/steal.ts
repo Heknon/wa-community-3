@@ -212,6 +212,7 @@ export default class StealCommand extends EconomyCommand {
             weightedReward(
                 random,
                 theft.amounts.map((e) => [e[1], e[0]]),
+                true
             ) * max,
         );
 
