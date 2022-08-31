@@ -13,10 +13,11 @@ import {
     removeCommandCooldown,
 } from "../user/user";
 import {isJidGroup, isJidUser} from "@adiwajshing/baileys";
-import {prisma} from "../db/client";
+import {prisma, redis, redisAlerts} from "../db/client";
 import {BotResponse, Chat} from "@prisma/client";
 import moment from "moment";
 import "moment-duration-format";
+import {messagingService} from "../messaging";
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
@@ -33,7 +34,33 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         return;
     }
 
-    if (foundCommands.length > 0 && !chat.sentDisclaimer) {
+    if (foundCommands.length > 0) {
+        redisAlerts.incr(`${chat.jid}:commandsSent`);
+    }
+
+    const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
+    const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
+    const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 65;
+    if (shouldSendAlert) {
+        await redis.set(`${chat.jid}:commandsSent`, "0");
+        await messagingService.sendMessage(
+            chat.jid,
+            {
+                text: languages.donate_alert[chat.language],
+                buttons: [
+                    {
+                        buttonId: "0",
+                        buttonText: {displayText: languages.donate_alert.button[chat.language]},
+                    },
+                ],
+            },
+            undefined,
+            {
+                placeholder: {
+                    chat,
+                },
+            },
+        );
     }
 
     for (const [trigger, blockable] of foundCommands) {

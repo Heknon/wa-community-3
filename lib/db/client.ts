@@ -21,6 +21,12 @@ export const redisBotAuth = new Redis(6379, "localhost", {
     keyPrefix: "auth:",
 });
 
+export const redisAlerts = new Redis(6379, "localhost", {
+    password: env.REDIS_PASSWORD,
+    db: 5,
+    keyPrefix: "alert:",
+});
+
 
 export const redisUserStats = new Redis(6379, "localhost", {
     password: env.REDIS_PASSWORD,

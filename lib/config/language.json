@@ -2459,5 +2459,13 @@
             "hebrew": "*וואה, כמעט מתתה!!*\nבגלל שזה המוות הראשון שלך, החלטנו להציל לך את החיים, אתה יודע.. בקטנה 😎\nאבל פעם הבאה אתה רוצה שיהיה לך מציל חיים עליך או שאתה תהיה טיפה עצוב"
         }
     },
+    "donate_alert": {
+        "english": "Help me fund the bot and continue providing it to thousands of daily users!\nYour donation matters!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
+        "hebrew": "תעזרו לי לממן את הבוט ולהמשיך לספק שירות לאלפי משתמשים יומיים!\nהתרומה שלכם משפיעה!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
+        "button": {
+            "english": "{prefix}donate",
+            "hebrew": "{prefix}תרומה"
+        }
+    },
     "disclaimer": {}
 }
