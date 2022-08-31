@@ -176,7 +176,6 @@ export default class StealCommand extends EconomyCommand {
                 [false, 1 - padlockBreakOdds],
             ]);
 
-            logger.debug(`Breaking padlock `, JSON.stringify(padlock, null, 2));
             await prisma.activeItem.delete({
                 where: {
                     id: padlock.id,
