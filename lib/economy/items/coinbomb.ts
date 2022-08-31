@@ -32,7 +32,7 @@ export class CoinBomb extends Item {
             },
         );
         waitForMessage((msg) => {
-            if (msg.jid !== executor.jid) {
+            if (msg.jid !== message?.jid) {
                 return false;
             }
             if (coinsRewardAmount <= 0) {
