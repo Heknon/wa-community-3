@@ -3,8 +3,7 @@ import Message from "../../messaging/message";
 import Item from "./item";
 import languages from "../../config/language.json";
 import {adjectives, colors, Config} from "unique-names-generator";
-import {animals, starWars} from "unique-names-generator/dist/dictionaries";
-import {uniqueNamesGenerator} from "unique-names-generator/dist/unique-names-generator";
+import {uniqueNamesGenerator, animals, starWars} from "unique-names-generator";
 import {prisma} from "../../db/client";
 import cuid from "cuid";
 
@@ -36,14 +35,6 @@ export class FakeID extends Item {
             },
             update: {
                 expire: in7days,
-            },
-        });
-        await prisma.user.update({
-            where: {
-                jid: executor.jid,
-            },
-            data: {
-                fakeIdName: name,
             },
         });
         await message?.reply(FakeID.language[chat.language], true, {

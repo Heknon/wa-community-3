@@ -15,11 +15,11 @@ import {
 import {commas} from "../../../../utils/utils";
 
 export default class SellCommand extends EconomyCommand {
-    private language: typeof languages.commands.buy[Language];
+    private language: typeof languages.commands.sell[Language];
     private langCode: Language;
 
     constructor(language: Language) {
-        const langs = languages.commands.buy;
+        const langs = languages.commands.sell;
         const lang = langs[language];
         super({
             triggers: langs.triggers.map((e) => new CommandTrigger(e)),

@@ -43,8 +43,8 @@
                     "request_title": "*המוצרים של {tag}*",
                     "no_items": "איכ עני מגעיל אין לך כלום עליך",
                     "buttons": [
-                        "{prefix}השתמש <מוצר>",
-                        "{prefix}תמכור <מוצר>"
+                        "{prefix}השתמש מוצר",
+                        "{prefix}תמכור מוצר"
                     ],
                     "format": "{name} ({category}) ─ {quantity}\n_מזהה_ *{id}*"
                 }
@@ -117,7 +117,7 @@
                     "title": "*קניית מוצרים*",
                     "item": "*{name}* ({quantity}) ─ {price} ⏣\n{description}",
                     "buttons": [
-                        "{prefix}קנה <מוצר>"
+                        "{prefix}קנה מוצר"
                     ]
                 }
             }
@@ -136,15 +136,21 @@
                 "execution": {
                     "success": {
                         "title": "*Successful {item} purchase*",
-                        "description": "{tag} sold {quantity}x *{item}* and received ⏣ {price}"
+                        "description": "{tag} bought {quantity}x *{item}* for ⏣ {price}",
+                        "footer": "Thanks for your purchase!",
+                        "buttons": [
+                            "{prefix}use"
+                        ]
                     },
                     "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
                     "no_item": "There is no such item!",
-                    "no_item_inv": "You do not have this item in your inventory.",
                     "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
-                    "no_sell": "You can't sell this item!",
+                    "no_buy": "You can't buy this item!",
                     "cancelled": "The purchase has been cancelled.",
                     "timeout": "You took too long to confirm the purchase. Try again.",
+                    "buttons": [
+                        "{prefix}shop"
+                    ],
                     "confirm_buttons": [
                         "Yes",
                         "No"
@@ -159,19 +165,25 @@
                 "category": "כלכלה",
                 "execution": {
                     "success": {
-                        "title": "*המכירה של {item} הצליחה*",
-                        "description": "{tag} מכר {quantity}x *{item}* וקיבל ⏣ {price}"
+                        "title": "*הקנייה של {item} הצליחה*",
+                        "description": "{tag} קנה {quantity}x *{item}* ושילם ⏣ {price}",
+                        "footer": "תודה על הקנייה! לא חשבתי שהכרטיס יעבור",
+                        "buttons": [
+                            "{prefix}השתמש"
+                        ]
                     },
                     "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין כזה מוצר!",
-                    "no_item_inv": "אתה כרגדע לא מחזיק שום מוצר כזה.",
                     "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
-                    "no_sell": "אתה לא יכול למכור את המוצר הזה",
+                    "no_buy": "אתה לא יכול למכור את המוצר הזה",
                     "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
                     "confirm_buttons": [
                         "כן",
                         "לא"
+                    ],
+                    "buttons": [
+                        "{prefix}חנות"
                     ]
                 }
             }
@@ -189,22 +201,15 @@
                 "category": "Economy",
                 "execution": {
                     "success": {
-                        "title": "*Successful {item} purchase*",
-                        "description": "{tag} bought {quantity}x *{item}* and paid ⏣ {price}",
-                        "footer": "Thanks for your purchase!",
-                        "buttons": [
-                            "{prefix}use"
-                        ]
+                        "title": "*Successfuly sold {item}*",
+                        "description": "{tag} has sold {quantity}x *{item}* and received ⏣ {price}"
                     },
-                    "confirm": "Are you sure you want to buy {quantity}x *{item}* for ⏣ {price}?",
+                    "confirm": "Are you sure you want to sell {quantity}x *{item}* for ⏣ {price}?",
                     "no_item": "There is no such item in the shop!",
-                    "no_money": "You don't have enough money in your wallet to buy {quantity}x of this item!",
-                    "no_buy": "You can't buy this item!",
+                    "no_sell": "You can't sell this item!",
+                    "no_item_inv": "You do not have this item in your inventory.",
                     "cancelled": "The purchase has been cancelled.",
                     "timeout": "You took too long to confirm the purchase. Try again.",
-                    "buttons": [
-                        "{prefix}shop"
-                    ],
                     "confirm_buttons": [
                         "Yes",
                         "No"
@@ -220,21 +225,14 @@
                 "execution": {
                     "success": {
                         "title": "*הקנייה של {item} הצליחה*",
-                        "description": "{tag} קנה {quantity}x *{item}* ושילם ⏣ {price}",
-                        "footer": "תודה על הקנייה! לא חשבתי שהכרטיס יעבור",
-                        "buttons": [
-                            "{prefix}השתמש"
-                        ]
+                        "description": "{tag} מכר {quantity}x *{item}* וקיבל ⏣ {price}"
                     },
-                    "confirm": "האם אתה בטוח שאתה רוצה לקנות {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
+                    "confirm": "האם אתה בטוח שאתה רוצה למכור {quantity}x *{item}* במחיר ⏣ {price}?\n\n*1.* כן\n*2.* לא",
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין מוצר כזה בחנות!",
-                    "no_money": "אין לך מספיק כסף בארנק כדי לקנות {quantity}x מהמוצר הזה!",
-                    "no_buy": "אתה לא יכול לקנות את המוצר הזה",
+                    "no_sell": "אתה לא יכול למכור את המוצר הזה",
+                    "no_item_inv": "אתה כרגדע לא מחזיק שום מוצר כזה.",
                     "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
-                    "buttons": [
-                        "{prefix}חנות"
-                    ],
                     "confirm_buttons": [
                         "כן",
                         "לא"
@@ -1529,6 +1527,12 @@
                         "little": "Are you even trying? C'mon your a thief...",
                         "none": "LMAO and you quit your job for this?? 😹😹😹"
                     },
+                    "sandbox": "You've been blinded and can't rob anyone for the next {time}",
+                    "blewup": "KABOOOOOM!!! You blew up and DIED!",
+                    "padlock": "Ahhhh damn, {tag} had a padlock on their wallet!",
+                    "padlock_broke": "Shhhhhhh you broke the padlock on their wallet 😉",
+                    "passive": "You are in passive mode and can't rob anyone",
+                    "target_passive": "The target is in passive mode and can't be robbed",
                     "success_footer": "Your payout was {coins} {coin}"
                 }
             },
@@ -1553,6 +1557,12 @@
                         "little": "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
                         "none": "ועזבת את העבודה שלך בשביל זה??? 😹😹😹"
                     },
+                    "sandbox": "עיוורו אותך ואתה לא יכול לשדוד אף אחד לעוד {time}",
+                    "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק ותפוצצת!",
+                    "padlock": "אייייייי, ל{tag} היה מנעול על הארנק!",
+                    "padlock_broke": "שששששש שברת את המנעול על הארנק שלהם 😉",
+                    "passive": "אתה במצב פאסיבי כרגע ולא יכול לגנוב מאף אחד",
+                    "target_passive": "הקורבן במצב פאסיבי ברגע זה ולא ניתן לגנוב ממנו",
                     "success_footer": "קיבלת {coins} {coin}"
                 }
             },

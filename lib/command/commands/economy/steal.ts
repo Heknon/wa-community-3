@@ -8,10 +8,12 @@ import Message from "../../../messaging/message";
 import {Chat, User} from "../../../db/types";
 import {getFullUser} from "../../../user/database_interactions";
 import {weightedChoice, weightedReward} from "./utils";
-import {getUserRandom} from "../../../user/user";
+import {getUserRandom, userDoDeath} from "../../../user/user";
 import {commas} from "../../../utils/utils";
 import {pluralForm} from "../../../utils/message_utils";
 import {prisma} from "../../../db/client";
+import moment from "moment";
+import "moment-duration-format";
 
 type Theft = {
     odds: number;
@@ -54,8 +56,30 @@ export default class StealCommand extends EconomyCommand {
         body: string,
         trigger: CommandTrigger,
     ) {
+        if (user.passive) {
+            return message.reply(this.language.execution.passive, true);
+        }
+
         if (message.mentions.length === 0) {
             return message.reply(this.language.execution.no_user, true);
+        }
+
+        const sandbox = user.activeItems.find(
+            (e) => e.itemId === "sandbox" && (e.expire ?? Date.now() + 1000) > Date.now(),
+        );
+
+        if (sandbox) {
+            return message.reply(this.language.execution.sandbox, true, {
+                placeholder: {
+                    custom: {
+                        time: sandbox.expire
+                            ? moment
+                                  .duration(sandbox.expire.getTime() - Date.now())
+                                  .format("d[d] h[h] m[m] s[s]")
+                            : "NEVER",
+                    },
+                },
+            });
         }
 
         const target = message.mentions.find((e) => e != user.jid);
@@ -73,12 +97,35 @@ export default class StealCommand extends EconomyCommand {
             return message.reply(this.language.execution.not_enough_money, true);
         }
 
+        if (targetUser.passive) {
+            return message.reply(this.language.execution.target_passive, true);
+        }
+
+        const landmine = targetUser.activeItems.find(
+            (e) => e.itemId === "landmine" && (e.expire ?? Date.now() + 1000) > Date.now(),
+        );
+        const padlock = targetUser.activeItems.find(
+            (e) => e.itemId === "padlock" && (e.expire ?? Date.now() + 1000) > Date.now(),
+        );
+
         const random = getUserRandom(user);
 
+        if (landmine && random.intBetween(0, 100) < 50) {
+            await prisma.activeItem.delete({
+                where: {
+                    id: landmine.id,
+                }
+            });
+            await message.reply(this.language.execution.blewup, true);
+            return await userDoDeath(chat, user, message);
+        }
+
+        const caughtOdds = this.caughtOdds + (padlock ? 0.15 : 0);
         const caught = weightedChoice([
-            [true, this.caughtOdds],
-            [false, 1 - this.caughtOdds],
+            [true, caughtOdds],
+            [false, 1 - caughtOdds],
         ]);
+
         if (caught) {
             const paid = Math.min(
                 2000 + random.intBetween(0, 500),
@@ -89,7 +136,7 @@ export default class StealCommand extends EconomyCommand {
                 ]) * user.money.wallet,
             );
 
-            const fakeid = user.activeItems.find((e) => e.id === "fakeid");
+            const fakeid = user.activeItems.find((e) => e.itemId === "fakeid");
             if (fakeid)
                 await prisma.activeItem.delete({
                     where: {
@@ -104,12 +151,39 @@ export default class StealCommand extends EconomyCommand {
                         coin: pluralForm(paid, languages.economy.coin[this.langCode]),
                     },
                 },
+                tags: [targetUser.jid],
             });
+        } else if (padlock) {
+            const padlockBreakOdds = 0.01;
+            const brokePadlock = weightedChoice([
+                [true, padlockBreakOdds],
+                [false, 1 - padlockBreakOdds],
+            ]);
+
+            await prisma.activeItem.delete({
+                where: {
+                    id: padlock.id,
+                }
+            });
+
+            if (brokePadlock) {
+                message.reply(this.language.execution.padlock_broke, true);
+            } else {
+                return message.reply(this.language.execution.padlock, true, {
+                    placeholder: {
+                        custom: {
+                            tag: "@" + targetUser.phone,
+                        },
+                    },
+                    tags: [targetUser.jid],
+                });
+            }
         }
 
         const chosenTheftType = weightedChoice(this.thefts.map((e) => [e.id, e.odds]));
         const theft = this.thefts.find((e) => e.id === chosenTheftType)!;
-        const max = Math.min(targetUser.money.wallet, theft.max ?? targetUser.money.wallet);
+        let max = Math.min(targetUser.money.wallet, theft.max ?? targetUser.money.wallet);
+        if (padlock) max = max * 0.6;
         const amountStolen =
             weightedReward(
                 random,

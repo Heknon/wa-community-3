@@ -11,6 +11,7 @@ export const getFullUser = async (jid: string): Promise<FullUser | null> => {
             items: true,
             money: true,
             reputation: true,
+            activeItems: true,
         },
     });
 };
@@ -56,6 +57,7 @@ export const createUser = async (jid: string, name: string): Promise<FullUser> =
             daily: true,
             items: true,
             reputation: true,
+            activeItems: true,
         },
     });
 };

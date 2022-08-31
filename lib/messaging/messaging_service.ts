@@ -84,16 +84,19 @@ export default class MessagingService {
             privateReply = false,
             metadata,
             placeholder,
+            tags,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
+            tags?: string[];
         } = {},
     ) {
         return await this.replyAdvanced(message, {text: content}, quote, {
             privateReply,
             metadata,
             placeholder,
+            tags,
         });
     }
 
@@ -105,10 +108,12 @@ export default class MessagingService {
             privateReply = false,
             metadata,
             placeholder,
+            tags,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
+            tags?: string[];
         } = {},
     ) {
         if (quote) {
@@ -128,6 +133,7 @@ export default class MessagingService {
             {quoted: quote ? message.raw ?? undefined : undefined},
             metadata,
             placeholder,
+            tags,
         );
     }
 
@@ -138,12 +144,14 @@ export default class MessagingService {
         {
             metadata,
             placeholder,
+            tags,
         }: {
             metadata?: Metadata;
             placeholder?: Placeholder;
+            tags?: string[];
         } = {},
     ) {
-        return this._internalSendMessage(recipient, content, options, metadata, placeholder);
+        return this._internalSendMessage(recipient, content, options, metadata, placeholder, tags);
     }
 
     private async _internalSendMessage(
@@ -152,6 +160,7 @@ export default class MessagingService {
         options?: MiscMessageGenerationOptions,
         metadata?: Metadata,
         placeholder?: Placeholder,
+        tags?: string[],
     ): Promise<Message | undefined> {
         if (!this.client || !recipient || !content) return;
 
@@ -186,6 +195,12 @@ export default class MessagingService {
                     }
                 }
             }
+            if (tags && tags.length > 0 && !(content as any).mentions)
+                (content as any).mentions = [];
+            if (tags && tags.length > 0) {
+                ((content as any).mentions as string[]).push(...tags);
+            }
+
             sentMessage = await this.client!.sendMessage(recipient, content, options);
 
             if (this.metadataEnabled && metadata) {

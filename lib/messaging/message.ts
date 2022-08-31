@@ -110,10 +110,12 @@ export default class Message {
             privateReply = false,
             metadata,
             placeholder,
+            tags
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
+            tags?: string[];
         } = {},
     ) {
         return messagingService.reply(this, content, quote, {privateReply, metadata, placeholder});
@@ -126,12 +128,14 @@ export default class Message {
             privateReply = false,
             metadata,
             placeholder,
+            tags,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
+            tags?: string[];
         } = {},
     ) {
-        return messagingService.replyAdvanced(this, content, quote, {privateReply, metadata, placeholder});
+        return messagingService.replyAdvanced(this, content, quote, {privateReply, metadata, placeholder, tags});
     }
 }

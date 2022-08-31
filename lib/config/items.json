@@ -56,7 +56,7 @@
         "sell": 35000,
         "description": {
             "english": "Use this to expand your bank space!",
-            "hebrew": "השתמש בזה על מנת להגדיל את מקום בבנק שלך!"
+            "hebrew": "השתמש בזה על מנת להגדיל את המקום בבנק שלך!"
         },
         "rarity": "Uncommon"
     },
@@ -151,7 +151,7 @@
         },
         "description": {
             "english": "Eating this once a day makes it so you don't lose any inventory or active items if you die.",
-            "hebrew": "לאכול את זה פעם ביום יגרום לכך שאם תמות לא תאבד מוצרים שעליך או מוצרים פעילים אם תמות."
+            "hebrew": "לאכול את זה פעם ביום יגרום לכך שאם תמות לא תאבד מוצרים שעליך או אפקטים של מוצרים פעילים."
         },
         "buy": 8000,
         "sell": 800,
