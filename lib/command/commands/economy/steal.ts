@@ -191,6 +191,9 @@ export default class StealCommand extends EconomyCommand {
                         id: fakeid.id,
                     },
                 });
+
+            await this.addBalance(targetUser, {wallet: paid});
+            await this.removeBalance(user, {wallet: paid});
             return message.reply(this.language.execution.caught, true, {
                 placeholder: {
                     custom: {
