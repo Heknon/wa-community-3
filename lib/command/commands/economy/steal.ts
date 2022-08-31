@@ -137,7 +137,7 @@ export default class StealCommand extends EconomyCommand {
                 tags: [targetUser.jid],
                 placeholder: {
                     custom: {
-                        tag: targetUser.jid,
+                        tag: '@' + targetUser.phone,
                     },
                 },
             });
