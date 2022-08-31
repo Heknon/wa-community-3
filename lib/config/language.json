@@ -2392,8 +2392,8 @@
                 "hebrew": "אל תהיה חמדן! אתה לא יכול לקבל מטבעות מפצצת המטבעות שלך."
             },
             "ended": {
-                "english": "*THE COIN BOMB EVENT HAS ENEDED 😢*\n\nA total of {total} {coins} has been collected",
-                "hebrew": "*איסוף המטבעות החמדני הסתיים 😢*\n\nנאספו בסך הכל {total} {coins}"
+                "english": "*THE COIN BOMB EVENT HAS ENEDED 😢*\n\nA total of {collected} {coins} has been collected out of {total} {coins_total}.",
+                "hebrew": "*איסוף המטבעות החמדני הסתיים 😢*\n\nנאספו בסך הכל {collected} {coins} מתוך {total} {coins_total}."
             }
         },
         "fakeid": {
