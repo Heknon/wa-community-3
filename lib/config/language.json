@@ -1536,7 +1536,7 @@
                     },
                     "sandbox": "You've been blinded and can't rob anyone for the next {time}",
                     "blewup": "KABOOOOOM!!! You blew up and DIED!",
-                    "stolen_cooldown": "{tag} was already stolen from in the past 30 minutes, you'll be able to steal from {tag} in {time}",
+                    "stolen_cooldown": "{tag} was already stolen from in the past 15 minutes, you'll be able to steal from {tag} in {time}",
                     "padlock": "Ahhhh damn, {tag} had a padlock on their wallet!",
                     "padlock_broke": "Shhhhhhh you broke the padlock on their wallet 😉",
                     "passive": "You are in passive mode and can't rob anyone",
@@ -1567,7 +1567,7 @@
                         "little": "אתה בכלל מנסה? כאילו.. אתה אמור להיות גנב...",
                         "none": "ועזבת את העבודה שלך בשביל זה??? 😹😹😹"
                     },
-                    "stolen_cooldown": "{tag} כבר נשדד ב30 דקות האחרונות, יהיה אפשר לשדוד ממנו בעוד {time}",
+                    "stolen_cooldown": "{tag} כבר נשדד 15 דקות האחרונות, יהיה אפשר לשדוד ממנו בעוד {time}",
                     "sandbox": "עיוורו אותך ואתה לא יכול לשדוד אף אחד לעוד {time}",
                     "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק ותפוצצת!",
                     "padlock": "אייייייי, ל{tag} היה מנעול על הארנק!",
