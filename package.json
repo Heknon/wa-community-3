@@ -28,7 +28,6 @@
     "ioredis": "5.2.2",
     "moment": "^2.29.4",
     "moment-duration-format": "^2.3.2",
-    "mongodb": "^4.7.0",
     "nan": "^2.16.0",
     "node-fetch": "^2.6.1",
     "node-schedule": "^2.1.0",

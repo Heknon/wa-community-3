@@ -13,8 +13,8 @@ import Metadata from "./metadata";
 import {whatsappBot} from "..";
 import {applyPlaceholders} from "../utils/message_utils";
 import {logger} from "../logger";
-import {ObjectId} from "mongodb";
 import {Placeholder} from "./types";
+import cuid from "cuid";
 
 export default class MessagingService {
     private client: WASocket | undefined;
@@ -245,7 +245,7 @@ export default class MessagingService {
         filter: (message: Message) => boolean | Promise<boolean>,
         callback: (message: Message) => Promise<any> | any,
     ) {
-        const id = new ObjectId().toString();
+        const id = cuid();
         this.messageCallbacks.push([id, filter, callback]);
         return id;
     }

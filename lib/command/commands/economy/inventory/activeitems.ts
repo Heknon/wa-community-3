@@ -55,7 +55,7 @@ export default class ActiveItemsCommand extends EconomyCommand {
             activeText += `${this.language.execution.format
                 .replace("{name}", itemData?.name[this.langCode] ?? "DELETED")
                 .replace(
-                    "{quantity}",
+                    "{time}",
                     expireDuration
                         ? expireDuration.format("d[d] h[h] m[m] s[s]")
                         : this.language.execution.never,

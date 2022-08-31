@@ -15,6 +15,7 @@ import {prisma} from "../../../db/client";
 import moment from "moment";
 import "moment-duration-format";
 import { rescueNumbers } from "../../../utils/regex_utils";
+import { logger } from "../../../logger";
 
 type Theft = {
     odds: number;
@@ -175,6 +176,7 @@ export default class StealCommand extends EconomyCommand {
                 [false, 1 - padlockBreakOdds],
             ]);
 
+            logger.debug(`Breaking padlock `, JSON.stringify(padlock, null, 2));
             await prisma.activeItem.delete({
                 where: {
                     id: padlock.id,
