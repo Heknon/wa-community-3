@@ -208,11 +208,12 @@ export default class StealCommand extends EconomyCommand {
         const theft = this.thefts.find((e) => e.id === chosenTheftType)!;
         let max = Math.min(targetUser.money.wallet, theft.max ?? targetUser.money.wallet);
         if (padlock) max = max * 0.6;
-        const amountStolen =
+        const amountStolen = Math.floor(
             weightedReward(
                 random,
                 theft.amounts.map((e) => [e[1], e[0]]),
-            ) * max;
+            ) * max,
+        );
 
         const takeMessage = this.language.execution.take_messsages[theft.id]!;
         const successMessage = `${takeMessage}\n${this.language.execution.success_footer}`;
