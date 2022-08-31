@@ -18,7 +18,7 @@ type BaltopUserData = {
     fakeid: string | undefined;
 };
 
-export default class BalanceCommand extends EconomyCommand {
+export default class BaltopCommand extends EconomyCommand {
     private language: typeof languages.commands.baltop[Language];
     private langCode: Language;
 

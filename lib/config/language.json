@@ -1479,145 +1479,13 @@
                 "category": "Economy",
                 "description": "Steal money from someone",
                 "usage": "{prefix}{command} @tag",
-                "thefts": [
-                    {
-                        "odds": 0.05,
-                        "amounts": [
-                            [
-                                0.5,
-                                [
-                                    0.85,
-                                    0.95
-                                ]
-                            ],
-                            [
-                                0.3,
-                                [
-                                    0.95,
-                                    1.0
-                                ],
-                                [
-                                    0.2,
-                                    [
-                                        0.77,
-                                        0.85
-                                    ]
-                                ]
-                            ]
-                        ],
-                        "id": "all"
-                    },
-                    {
-                        "odds": 0.15,
-                        "id": "most",
-                        "amounts": [
-                            [
-                                0.6,
-                                [
-                                    0.5,
-                                    0.70
-                                ]
-                            ],
-                            [
-                                0.1,
-                                [
-                                    0.50,
-                                    0.60
-                                ]
-                            ],
-                            [
-                                0.3,
-                                [
-                                    0.60,
-                                    0.75
-                                ]
-                            ]
-                        ]
-                    },
-                    {
-                        "odds": 0.45,
-                        "id": "some",
-                        "amounts": [
-                            [
-                                0.7,
-                                [
-                                    0.3,
-                                    0.5
-                                ]
-                            ],
-                            [
-                                0.1,
-                                [
-                                    0.25,
-                                    0.40
-                                ]
-                            ],
-                            [
-                                0.2,
-                                [
-                                    0.50,
-                                    0.60
-                                ]
-                            ]
-                        ]
-                    },
-                    {
-                        "odds": 0.3,
-                        "id": "little",
-                        "amounts": [
-                            [
-                                0.7,
-                                [
-                                    0.20,
-                                    0.35
-                                ]
-                            ],
-                            [
-                                0.1,
-                                [
-                                    0.35,
-                                    0.40
-                                ]
-                            ],
-                            [
-                                0.2,
-                                [
-                                    0.10,
-                                    0.20
-                                ]
-                            ]
-                        ],
-                        "max": 1000000
-                    },
-                    {
-                        "odds": 0.05,
-                        "id": "none",
-                        "amounts": [
-                            [
-                                0.9,
-                                [
-                                    0.0,
-                                    0.01
-                                ]
-                            ],
-                            [
-                                0.1,
-                                [
-                                    0.0,
-                                    0.0
-                                ]
-                            ]
-                        ],
-                        "max": 500
-                    }
-                ],
-                "caught": 0.4,
                 "execution": {
-                    "no_user": "Must provide a user to steal from.",
+                    "no_user": "You need to tag the person you want to rob.",
+                    "self_tag": "You can't rob yourself wtf",
                     "no_balance": "This user is too poor to rob 💀.",
-                    "caught": "You were caught *HAHAHA*\nYou paid {name} {coins} {coin}",
+                    "caught": "You were caught *HAHAHA*\nYou paid {tag} {coins} {coin}",
                     "not_enough_money": "The victim doesn't even have 5,000 coins, it ain't worth it man.",
-                    "not_enough_money_self": "You're so poor... You need at least 5,000 coinds to steal from someone.",
+                    "not_enough_money_self": "You're so poor, at least try some self improvement before this act...\nYou need at least 5,000 coinds to steal from someone.",
                     "take_messsages": {
                         "all": "LMFAO 😂😂 you basically took EVERYTHINg there is to take from this poor bastard",
                         "most": "Great heist! you could have tried to better but good I guess...",
@@ -1636,11 +1504,12 @@
                 "description": "לגנוב כסף ממישהו",
                 "usage": "{prefix}{command} @תיוג",
                 "execution": {
-                    "no_user": "בבקשה תתייג את מי שאתה רוצה לשדוד.",
+                    "no_user": "אתה צריך לתייג את מי שאתה רוצה לשדוד בפקודה.",
+                    "self_tag": "אתה לא יכול לגנוב מעצמך וטפ",
                     "no_balance": "למשתמש הזה אין כסף לגנוב 💀.",
-                    "caught": "חחחחחחחחחחחחחחחח נתפסת אני מת\nשילמת ל{name} {coins} {coin}",
+                    "caught": "חחחחחחחחחחחחחחחח נתפסת אני מת\nשילמת ל{tag} {coins} {coin}",
                     "not_enough_money": "לקורבן אין אפילו 5000 מטבעות... תתרחק.. זה לא שווה את זה.",
-                    "not_enough_money_self": "אתה כל כך עני... אתה צריך לפחות 5,000 מטבעות כדי לשדוד מישהו.",
+                    "not_enough_money_self": "אתה כל כך עני, לפחות תנסה טיפה שיפור עצמי לפני שאתה עושה את זה... אתה צריך לפחות 5,000 מטבעות כדי לשדוד מישהו.",
                     "take_messsages": {
                         "all": "אני מתתתת 😹 לקחת ליטרלי את כל מה שאפשר לקחת מהעני המסכן הזה",
                         "most": "שדידה יפה...  יש מקום להשתפר בטכניקה טיפה אבל יפה.",
@@ -1650,7 +1519,140 @@
                     },
                     "success_footer": "קיבלת {coins} {coin}"
                 }
-            }
+            },
+            "thefts": [
+                {
+                    "odds": 0.05,
+                    "amounts": [
+                        [
+                            0.5,
+                            [
+                                0.85,
+                                0.95
+                            ]
+                        ],
+                        [
+                            0.3,
+                            [
+                                0.95,
+                                1.0
+                            ],
+                            [
+                                0.2,
+                                [
+                                    0.77,
+                                    0.85
+                                ]
+                            ]
+                        ]
+                    ],
+                    "id": "all"
+                },
+                {
+                    "odds": 0.15,
+                    "id": "most",
+                    "amounts": [
+                        [
+                            0.6,
+                            [
+                                0.5,
+                                0.70
+                            ]
+                        ],
+                        [
+                            0.1,
+                            [
+                                0.50,
+                                0.60
+                            ]
+                        ],
+                        [
+                            0.3,
+                            [
+                                0.60,
+                                0.75
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "odds": 0.45,
+                    "id": "some",
+                    "amounts": [
+                        [
+                            0.7,
+                            [
+                                0.3,
+                                0.5
+                            ]
+                        ],
+                        [
+                            0.1,
+                            [
+                                0.25,
+                                0.40
+                            ]
+                        ],
+                        [
+                            0.2,
+                            [
+                                0.50,
+                                0.60
+                            ]
+                        ]
+                    ]
+                },
+                {
+                    "odds": 0.3,
+                    "id": "little",
+                    "amounts": [
+                        [
+                            0.7,
+                            [
+                                0.20,
+                                0.35
+                            ]
+                        ],
+                        [
+                            0.1,
+                            [
+                                0.35,
+                                0.40
+                            ]
+                        ],
+                        [
+                            0.2,
+                            [
+                                0.10,
+                                0.20
+                            ]
+                        ]
+                    ],
+                    "max": 1000000
+                },
+                {
+                    "odds": 0.05,
+                    "id": "none",
+                    "amounts": [
+                        [
+                            0.9,
+                            [
+                                0.0,
+                                0.01
+                            ]
+                        ],
+                        [
+                            0.1,
+                            [
+                                0.0,
+                                0.0
+                            ]
+                        ]
+                    ],
+                    "max": 500
+                }
+            ],
+            "caught": 0.2
         },
         "daily": {
             "triggers": [
@@ -2379,6 +2381,22 @@
     "onlygroups": {
         "english": "This can only be done in group chats!",
         "hebrew": "אפשר להשתמש בזה רק בקבוצות!"
+    },
+    "death": {
+        "english": "*{tag} HAS DIED*\nYikeeess you just lost all the {balance} {coins} in your wallet!\nYou also lost: {items}",
+        "hebrew": "*{tag} HAS DIED*\nYikeeess you just lost all the {balance} {coins} in your wallet!\nYou also lost: {items}",
+        "itemloss": {
+            "english": "{quantity}x {item}",
+            "hebrew": "{quantity}x {item}"
+        },
+        "noloss": {
+            "english": "Oh, uhhh, no items. nice!",
+            "hebrew": "אה אמממ.. לא איבדת מוצרים. נחמד"
+        },
+        "warning": {
+            "english": "*Woah, you almost DIED!*\nSince this is your first death, we went ahead and saved your life, no biggie. But next time, you'll wanna have a lifesaver in your inventory or you will be a bit sad",
+            "hebrew": "*וואה, כמעט מתתה!!*\nבגלל שזה המוות שהראשון שלך, החלטנו להציל לך את החיים, אתה יודע.. בקטנה 😎\nאבל פעם הבאה אתה רוצה שיהיה לך מציל חיים עליך או שאתה תהיה טיפה עצוב"
+        }
     },
     "disclaimer": {}
 }

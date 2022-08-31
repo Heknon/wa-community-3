@@ -9,7 +9,7 @@ import {RandomSeed} from "random-seed";
 import {AccountType} from "@prisma/client";
 import Message from "../../../messaging/message";
 import {Chat, User} from "../../../db/types";
-import {getUserRandom} from "../../../user/user";
+import {getUserRandom, userDoDeath} from "../../../user/user";
 
 type Crime =
     | "vandalism"
@@ -119,14 +119,7 @@ export default class CrimeCommand extends EconomyCommand {
 
         if (crimeDeath) {
             crimeResultMessage += crime.death;
-            crimeChosenMessage.reply(
-                this.language.execution.death_not_implemented,
-                true,
-                {
-                    privateReply: true,
-                    placeholder,
-                },
-            );
+            await userDoDeath(chat, user, message)
         }
 
         if (crimeDeath || !crimeSuccess) {

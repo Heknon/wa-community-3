@@ -5,6 +5,8 @@ import {User} from "../db/types";
 import {getItemData, ItemID} from "../economy/items";
 import Item from "../economy/items/item";
 
+type InventoryItem = ReturnType<typeof getInventory>[number];
+
 export const getInventory = (user: User) => {
     return user.items.map((e) => ({
         ...e,

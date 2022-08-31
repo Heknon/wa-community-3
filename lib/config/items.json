@@ -12,8 +12,9 @@
         "durability": 4,
         "default_use": false,
         "type": "Tool",
+        "rarity": "Common",
         "buy": 25000,
-        "sell": 4167
+        "sell": 2500
     },
     {
         "id": "bread",
@@ -28,7 +29,8 @@
         "durability": 1,
         "type": "Tool",
         "buy": 5000,
-        "sell": 3000
+        "sell": 500,
+        "rarity": "Common"
     },
     {
         "id": "skunk",
@@ -39,7 +41,8 @@
         "durability": -1,
         "type": "Sellable",
         "buy": -1,
-        "sell": 2125
+        "sell": 2125,
+        "rarity": "Common"
     },
     {
         "id": "banknote",
@@ -54,7 +57,8 @@
         "description": {
             "english": "Use this to expand your bank space!",
             "hebrew": "השתמש בזה על מנת להגדיל את מקום בבנק שלך!"
-        }
+        },
+        "rarity": "Uncommon"
     },
     {
         "id": "padlock",
@@ -69,7 +73,8 @@
         },
         "buy": 5000,
         "sell": 500,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Common"
     },
     {
         "id": "boxofsand",
@@ -84,7 +89,8 @@
         },
         "buy": 15000,
         "sell": 1500,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     },
     {
         "id": "landmine",
@@ -99,7 +105,8 @@
         },
         "buy": 20000,
         "sell": 2000,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Common"
     },
     {
         "id": "coinbomb",
@@ -114,7 +121,8 @@
         },
         "buy": 18000,
         "sell": 4000,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     },
     {
         "id": "lifesaver",
@@ -130,7 +138,8 @@
         },
         "buy": 70000,
         "sell": 7000,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     },
     {
         "id": "apple",
@@ -146,7 +155,8 @@
         },
         "buy": 8000,
         "sell": 800,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     },
     {
         "id": "fakeid",
@@ -161,7 +171,8 @@
         },
         "buy": 25000,
         "sell": 2500,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     },
     {
         "id": "robberswishlist",
@@ -176,6 +187,7 @@
         },
         "buy": 50000,
         "sell": 5000,
-        "durability": 1
+        "durability": 1,
+        "rarity": "Uncommon"
     }
 ]

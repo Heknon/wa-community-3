@@ -4,6 +4,7 @@ import Item from "./item";
 import languages from "../../config/language.json";
 import {prisma} from "../../db/client";
 import cuid from "cuid";
+import { messagingService } from "../../messaging";
 
 export class Apple extends Item {
     private static language = languages.items["apple"];

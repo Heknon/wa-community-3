@@ -22,6 +22,7 @@ model User {
     jid                   String          @id
     phone                 String          @unique
     name                  String
+    deaths                DateTime[]
     passive               Boolean         @default(false)
     accountType           AccountType     @default(USER)
     accountTypeExpiration DateTime?
@@ -86,9 +87,9 @@ model Money {
     id   Int  @id @default(autoincrement())
     user User @relation(fields: [userJid], references: [jid], onDelete: Cascade)
 
-    wallet       Int    @default(0)
+    wallet       Int    @default(5000)
     bank         Int    @default(0)
-    bankCapacity Int    @default(10000)
+    bankCapacity Int    @default(20000)
     banknotes    Int    @default(0)
     userJid      String @unique
 

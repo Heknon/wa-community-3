@@ -1,6 +1,7 @@
 import GiveBalanceCommand from "./admin/give";
 import GiveItemCommand from "./admin/give_item";
 import BalanceCommand from "./balance";
+import BaltopCommand from "./baltop";
 import BegCommand from "./beg";
 import CrimeCommand from "./crime";
 import DailyCommand from "./daily";
@@ -9,10 +10,12 @@ import HighlowCommand from "./highlow";
 import HuntCommand from "./hunt";
 import InventoryCommand from "./inventory/inventory";
 import UseItemCommand from "./inventory/use";
+import PassiveCommand from "./passive";
 import PostMemesCommand from "./postmemes";
 import BuyCommand from "./shop/buy";
 import SellCommand from "./shop/sell";
 import ShopCommand from "./shop/shop";
+import StealCommand from "./steal";
 import WithdrawCommand from "./withdraw";
 
 export {
@@ -31,5 +34,8 @@ export {
     GiveItemCommand,
     BuyCommand,
     HuntCommand,
-    SellCommand
+    SellCommand,
+    StealCommand,
+    BaltopCommand,
+    PassiveCommand
 }

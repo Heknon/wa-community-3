@@ -10,7 +10,7 @@ import {userCalculateNetBalance} from "../../../user/user";
 import {createUser} from "../../../user/database_interactions";
 import {AccountType} from "@prisma/client";
 
-export default class BalanceCommand extends EconomyCommand {
+export default class PassiveCommand extends EconomyCommand {
     private language: typeof languages.commands.passive[Language];
     private langCode: Language;
 

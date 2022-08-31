@@ -3,13 +3,16 @@ import Message from "../../messaging/message";
 import Item from "./item";
 import languages from "../../config/language.json";
 import {messagingService} from "../../messaging";
+import {prisma} from "../../db/client";
 
 export class Lifesaver extends Item {
     private static language = languages.items["lifesaver"];
 
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
+        const userChat = await prisma.chat.findUnique({where: {jid: executor.jid}});
+        const userLanguage = userChat?.sentDisclaimer ? userChat.language : undefined;
         await messagingService?.sendMessage(executor.jid, {
-            text: Lifesaver.language[chat.language],
+            text: Lifesaver.language[userLanguage ?? chat.language],
         });
         return true;
     }
