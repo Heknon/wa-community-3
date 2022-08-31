@@ -32,9 +32,7 @@ export class CoinBomb extends Item {
             },
         );
         waitForMessage((msg) => {
-            if (msg.fromBot) return false;
             if (msg.jid !== executor.jid) {
-                message?.reply(CoinBomb.language.greed[chat.language], true);
                 return false;
             }
             if (coinsRewardAmount <= 0) {
@@ -51,6 +49,11 @@ export class CoinBomb extends Item {
                 });
                 return true;
             }
+            if (msg.senderJid === executor.jid && msg.mentions.includes(executor.jid)) {
+                message?.reply(CoinBomb.language.greed[chat.language], true);
+                return false;
+            }
+
             if (msg.mentions.includes(executor.jid)) {
                 let coinsToGive = Math.floor(
                     weightedReward(random, [
