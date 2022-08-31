@@ -38,7 +38,7 @@ export class CoinBomb extends Item {
             }
 
             if (coinsLeft <= 0) {
-                message?.reply(CoinBomb.language.ended[chat.language], true, {
+                await message?.reply(CoinBomb.language.ended[chat.language], true, {
                     placeholder: {
                         custom: {
                             collected: commas(coinsRewardAmount - coinsLeft),
@@ -84,7 +84,7 @@ export class CoinBomb extends Item {
                     },
                 },
             });
-            msg.reply(CoinBomb.language.success[chat.language], true, {
+            await msg.reply(CoinBomb.language.success[chat.language], true, {
                 placeholder: {
                     custom: {
                         amount: commas(coinsToGive),
@@ -94,8 +94,8 @@ export class CoinBomb extends Item {
             });
 
             return false;
-        }, 60 * 1000).catch((res) => {
-            message?.reply(CoinBomb.language.ended[chat.language], true, {
+        }, 60 * 1000).catch(async (res) => {
+            await message?.reply(CoinBomb.language.ended[chat.language], true, {
                 placeholder: {
                     custom: {
                         collected: commas(coinsRewardAmount - coinsLeft),
