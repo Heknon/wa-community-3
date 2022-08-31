@@ -110,7 +110,7 @@ export default class CrimeCommand extends EconomyCommand {
         ]);
         const reward = this.getReward(rand);
 
-        if (crimeSuccess) {
+        if (crimeSuccess && !crimeDeath) {
             crimeResultMessage += crime.success;
             await this.addBalance(user, {wallet: reward});
         } else if (!crimeDeath && !crimeSuccess) {
