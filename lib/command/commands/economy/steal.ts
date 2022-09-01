@@ -205,7 +205,8 @@ export default class StealCommand extends EconomyCommand {
                 tags: [targetUser.jid],
             });
         } else if (padlock) {
-            const padlockBreakOdds = 0.01;
+            // comes out to 1.625% of breaking in to a padlocked wallet (1-caughOdds) * padlockBreakOdds
+            const padlockBreakOdds = 0.025;
             const brokePadlock = weightedChoice([
                 [true, padlockBreakOdds],
                 [false, 1 - padlockBreakOdds],

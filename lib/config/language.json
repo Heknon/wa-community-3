@@ -1395,7 +1395,8 @@
                     "passive"
                 ],
                 "category": "Economy",
-                "description": "Change to passive mode. People could no longer steal from you but you will lose access to commands.",
+                "description": "Change in and out of passive mode.",
+                "extended_description": "In passive mode people can no longer steal from you but you will also lose access to some commands",
                 "usage": "{prefix}{command}",
                 "execution": {
                     "enabled": "Passive mode has been enabled.\nPeople can no longer rob from you but also can no longer trade items.",
@@ -1409,13 +1410,52 @@
                     "פאסיבי"
                 ],
                 "category": "כלכלה",
-                "description": "תהפוך את הפרופיל שלך לפאסיבי כך שלא יוכלו לגנוב ממך אבל גם תחסם מפקודות מסוימות",
+                "description": "תעבור בין מצב פאסיבי ללא פאסיבי ולהיפך.",
+                "extended_description": "במצב פאסיבי לא יוכלו לגנוב ממך אבל גם תחסם מפקודות מסוימות",
                 "usage": "{prefix}{command}",
                 "execution": {
                     "disabled": "יצאת ממצב פאסיבי 😈\nיכולים לגנוב ממך.",
                     "enabled": "אתה עכשיו במצב פאסיבי ☮\nאנשים לא יכולים לגנוב ממך יותר אבל אתה גם לא תוכל לעשות טריידים.",
                     "already_passive": "אתה היית כבר במצב פאסיבי 🤨.",
                     "already_not_passive": "אתה היית כבר במצב לא פאסיבי 🤨."
+                }
+            }
+        },
+        "upgrade_group": {
+            "triggers": [
+                "upgrade group",
+                "שדרג קבוצה"
+            ],
+            "english": {
+                "triggers": [
+                    "upgrade group"
+                ],
+                "category": "Donator",
+                "description": "Give or take a group's access to donor perks you gave them.",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "upgrade": "*UPGRADED GROUP*\nThis group has just been upgraded to level {level} thanks to {upgrader}!",
+                    "downgrade": "*DOWNGRADED GROUP*\nThis group has just been downgraded to level {level}",
+                    "left_gc": "*DOWNGRADED GROUP*\nThis group has just been downgraded to level {level} since {upgrader} is no longer in the group.",
+                    "already_upgraded_by": "This group has already been upgraded by generous {upgrader}!",
+                    "upgrade_triumph": "*UPGRADED GROUP*\nSeems like {upgrader} has a better donor level than {previous}.\nThe group has been upgraded to level {level}!",
+                    "footer": "Tier 2 donators can give groups access to some of their perks.\nUse {prefix}donate to learn more."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "שדרג קבוצה"
+                ],
+                "category": "תורם",
+                "description": "תתן או תיקח את הגישה של קבוצה לגישות פרימיום שנתת לה.",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "upgrade": "*הקבוצה שודרגה*\nהקבוצה שודרגה לרמה {level} תודות ל {upgrader}!",
+                    "downgrade": "*הקבוצה ירדה דרגה*\nהקבוצה ירדה דרגה לרמה {level}",
+                    "left_gc": "*הקבוצה ירדה דרגה*\nהקבוצה ירדה דרגה לרמה {level} בגלל ש {upgrader} כבר לא בקבוצה",
+                    "already_enabled_by": "הקבוצה הזו כבר משודרגת על ידי {upgrader}!",
+                    "upgrade_triumph": "*הקבוצה שודרגה*\nנראה שיש לתורם {upgrader} רמת תרומה גבוהה יותר מאשר {previous}.\nהקבוצה שודרגה לרמה {level}!",
+                    "footer": "תורמים מדרגה שנייה ומעלה יכולים לתת לקבוצות גישה לחלק מהפריבילגיות שלהם.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד."
                 }
             }
         },

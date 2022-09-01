@@ -166,7 +166,7 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
     }
 
     const hasLifesaver = user.items.some((e) => e.itemId === "lifesaver" && e.quantity > 0);
-    const hasActiveApple = user.activeItems.some((e) =>
+    const activeApple = user.activeItems.find((e) =>
         e.itemId === "apple" && e.expire ? e.expire > new Date() : true,
     );
 
@@ -179,7 +179,7 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
 
     let lostItems: ItemLoss[] = [];
     let appleSavedInventory = false;
-    if (!hasActiveApple) {
+    if (!activeApple) {
         await prisma.activeItem.deleteMany({
             where: {
                 userJid: user.jid,
@@ -193,10 +193,10 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
                 id: {in: itemsToGo.map((e) => e.id)},
             },
         });
-    } else {
+    } else if (activeApple.id) {
         await prisma.activeItem.delete({
             where: {
-                id: user.activeItems.find((e) => e.itemId === "apple")?.id,
+                id: activeApple.id,
             },
         });
 

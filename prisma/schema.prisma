@@ -34,6 +34,8 @@ model User {
     daily                 DailyReward?
     activeItems           ActiveItem[]
 
+    giftedRanks ChatRank[]
+
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
 
@@ -128,9 +130,19 @@ model Chat {
     sentDisclaimer Boolean       @default(false)
     language       Language      @default(hebrew)
     responses      BotResponse[]
+    chatRank       ChatRank?
 
     createdAt DateTime @default(now())
     updatedAt DateTime @updatedAt
+}
+
+model ChatRank {
+    id String @id @default(cuid())
+
+    gifter        User   @relation(fields: [gifterJid], references: [jid], onDelete: Cascade)
+    gifterJid     String
+    giftedChat    Chat   @relation(fields: [giftedChatJid], references: [jid], onDelete: Cascade)
+    giftedChatJid String @unique
 }
 
 model BotResponse {

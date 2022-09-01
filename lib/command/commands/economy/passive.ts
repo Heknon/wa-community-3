@@ -23,6 +23,7 @@ export default class PassiveCommand extends EconomyCommand {
             announcedAliases: lang.triggers,
             category: lang.category,
             description: lang.description,
+            extendedDescription: lang.extended_description,
             usage: lang.usage,
             cooldowns: new Map([
                 [AccountType.USER, 1000 * 60 * 60 * 30],

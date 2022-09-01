@@ -13,6 +13,8 @@ export default interface Blockable<In> {
 
     accountType: AccountType;
 
+    groupAccountType: AccountType;
+
     groupLevel: keyof typeof GroupLevel;
 
     blacklistedJids: Array<string>;
@@ -28,6 +30,8 @@ export abstract class EmptyBlockable<In> implements Blockable<In> {
     blockedChats: ChatType[] = [];
 
     accountType: AccountType = AccountType.USER;
+
+    groupAccountType: AccountType = AccountType.USER;
 
     groupLevel: keyof typeof GroupLevel = GroupLevel.USER;
 

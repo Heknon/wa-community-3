@@ -120,28 +120,29 @@ export const processMessageForDonorAlerts = async (user: User, chat: FullChat) =
     await redisAlerts.incr(`${chat.jid}:commandsSent`);
     const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
     const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
-    const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 55;
-    if (!shouldSendAlert) return;
-    await redisAlerts.del(`${chat.jid}:commandsSent`);
+    const shouldSendDonorAlert = chat.type === "DM" ? commandsSent % 50 : commandsSent % 55;
+    if (commandsSent === 0) return;
 
-    await messagingService.sendMessage(
-        chat.jid,
-        {
-            text: languages.donate_alert[chat.language],
-            buttons: [
-                {
-                    buttonId: "0",
-                    buttonText: {displayText: languages.donate_alert.button[chat.language]},
-                },
-            ],
-        },
-        undefined,
-        {
-            placeholder: {
-                chat,
+    if (shouldSendDonorAlert) {
+        await messagingService.sendMessage(
+            chat.jid,
+            {
+                text: languages.donate_alert[chat.language],
+                buttons: [
+                    {
+                        buttonId: "0",
+                        buttonText: {displayText: languages.donate_alert.button[chat.language]},
+                    },
+                ],
             },
-        },
-    );
+            undefined,
+            {
+                placeholder: {
+                    chat,
+                },
+            },
+        );
+    }
 };
 
 export const getCommandByTrigger = async (

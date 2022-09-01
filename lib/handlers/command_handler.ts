@@ -151,11 +151,41 @@ export const messagePermissionsCheck = async (blockable: Blockable<Message>, mes
         return BlockedReason.InvalidUser;
     }
 
+    const isGc = isJidGroup(message.jid);
+    const chat = isGc
+        ? await prisma.chat.findUnique({
+              where: {jid: message.jid},
+              include: {
+                  chatRank: {
+                      select: {
+                          gifter: {
+                              select: {
+                                  accountType: true,
+                              },
+                          },
+                      },
+                  },
+              },
+          })
+        : undefined;
+
+    if (isGc && !chat) {
+        return BlockedReason.InvalidChat;
+    }
+
     const accountLevel = getNumberFromAccountType(user.accountType);
     const accountLevelNeeded = getNumberFromAccountType(blockable.accountType);
 
-    // TODO: Add chat level check
-    // const chat = await chatRepository.get(message.to);
+    if (chat?.chatRank) {
+        // if gifter has account level needed, so does group.
+        const gcAccountLevel = getNumberFromAccountType(chat.chatRank.gifter.accountType);
+        const gcAccountLevelNeeded = getNumberFromAccountType(blockable.groupAccountType);
+
+        if (gcAccountLevelNeeded > 0 && gcAccountLevel < gcAccountLevelNeeded) {
+            return BlockedReason.BadGroupAccountType;
+        }
+    }
+
     if (accountLevelNeeded > 0 && accountLevel < accountLevelNeeded) {
         return BlockedReason.BadAccountType;
     }
