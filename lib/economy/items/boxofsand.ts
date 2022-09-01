@@ -56,7 +56,7 @@ export class BoxOfSand extends Item {
             },
             create: {
                 itemId: "boxofsand",
-                user: {connect: {jid: executor.jid}},
+                user: {connect: {jid: user.jid}},
                 expire: in30minutes,
             },
             update: {
