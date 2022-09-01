@@ -209,7 +209,7 @@ export default class MessagingService {
 
             return Message.fromWAMessage(sentMessage!, metadata);
         } catch (error) {
-            logger.error("FAILED TO SEND MESSAGE", content, options, error);
+            logger.error(`FAILED TO SEND MESSAGE | ${JSON.stringify(content, null, 2)}`);
             logger.error(error);
             if ((error as any).stack) logger.error((error as any).stack);
             sentMessage = await this.client!.sendMessage(

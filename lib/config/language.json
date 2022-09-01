@@ -1439,7 +1439,8 @@
                     "left_gc": "*DOWNGRADED GROUP*\nThis group has just been downgraded to level {level} since {upgrader} is no longer in the group.",
                     "already_upgraded_by": "This group has already been upgraded by generous {upgrader}!",
                     "upgrade_triumph": "*UPGRADED GROUP*\nSeems like {upgrader} has a better donor level than {previous}.\nThe group has been upgraded to level {level}!",
-                    "footer": "Tier 2 donators can give groups access to some of their perks.\nUse {prefix}donate to learn more."
+                    "footer": "Tier 2 donators can give groups access to some of their perks.\nUse {prefix}donate to learn more.",
+                    "not_donor": "In order to upgrade a group you need to be at least a tier 2 donor.\nUse {prefix}donate to learn more."
                 }
             },
             "hebrew": {
@@ -1455,7 +1456,8 @@
                     "left_gc": "*הקבוצה ירדה דרגה*\nהקבוצה ירדה דרגה לרמה {level} בגלל ש {upgrader} כבר לא בקבוצה",
                     "already_enabled_by": "הקבוצה הזו כבר משודרגת על ידי {upgrader}!",
                     "upgrade_triumph": "*הקבוצה שודרגה*\nנראה שיש לתורם {upgrader} רמת תרומה גבוהה יותר מאשר {previous}.\nהקבוצה שודרגה לרמה {level}!",
-                    "footer": "תורמים מדרגה שנייה ומעלה יכולים לתת לקבוצות גישה לחלק מהפריבילגיות שלהם.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד."
+                    "footer": "תורמים מדרגה שנייה ומעלה יכולים לתת לקבוצות גישה לחלק מהפריבילגיות שלהם.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד.",
+                    "not_donor": "כדי לשדרג קבוצה אתה צריך להיות תורם מדרגה 2 ומעלה.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד."
                 }
             }
         },
@@ -2500,8 +2502,8 @@
         }
     },
     "donate_alert": {
-        "english": "Help me fund the bot and continue providing it to thousands of daily users!\nYour donation matters!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
-        "hebrew": "תעזרו לי לממן את הבוט ולהמשיך לספק שירות לאלפי משתמשים יומיים!\nהתרומה שלכם משפיעה!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
+        "english": "Help me fund the bot and continue providing it to thousands of daily users!\nYour donation matters, even one dollar!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
+        "hebrew": "תעזרו לי לממן את הבוט ולהמשיך לספק שירות לאלפי משתמשים יומיים!\nהתרומה שלכם משפיעה מאוד, אפילו שקל אחד!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
         "button": {
             "english": "{prefix}donate",
             "hebrew": "{prefix}תרומה"

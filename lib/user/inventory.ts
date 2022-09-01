@@ -36,11 +36,15 @@ export const giveItemToUser = async (user: User, itemId: ItemID, quantity: numbe
 
     const amount = Math.max((invItem?.quantity ?? 0) + quantity, 0);
     if (amount === 0 && invItem) {
-        return await prisma.inventoryItem.delete({
-            where: {
-                id: invItem.id,
-            },
-        });
+        try {
+            return await prisma.inventoryItem.delete({
+                where: {
+                    id: invItem.id,
+                },
+            });
+        } catch (e) {
+            console.error(e);
+        }
     }
     const updatedUser = await prisma.inventoryItem.upsert({
         where: {
@@ -69,11 +73,16 @@ export const userRegisterItemUse = async (user: User, item: Item) => {
     }
 
     if (itemData.quantity <= 0) {
-        return await prisma.inventoryItem.delete({
-            where: {
-                id: itemData.id,
-            },
-        });
+        try {
+            return await prisma.inventoryItem.delete({
+                where: {
+                    id: itemData.id,
+                },
+            });
+        } catch (e) {
+            console.error(e);
+            return;
+        }
     }
 
     await prisma.inventoryItem.update({

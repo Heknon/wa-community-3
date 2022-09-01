@@ -16,7 +16,7 @@ export default abstract class Command implements Blockable<Message> {
 
     accountType: AccountType;
 
-    groupAccountType: AccountType;
+    groupAccountType: AccountType | 'blocked';
 
     blacklistedJids: string[];
 
@@ -65,7 +65,7 @@ export default abstract class Command implements Blockable<Message> {
         triggers: CommandTrigger[];
         blockedChats?: ChatType[];
         accountType?: AccountType;
-        groupAccountType?: AccountType;
+        groupAccountType?: AccountType | 'blocked';
         blacklistedJids?: string[];
         whitelistedJids?: string[];
         minArgs?: number;

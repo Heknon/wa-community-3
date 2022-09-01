@@ -31,6 +31,7 @@ export default class BaltopCommand extends EconomyCommand {
             category: lang.category,
             description: lang.description,
             usage: lang.usage,
+            groupAccountType: "blocked",
             blockedChats: ["DM"],
         });
 
@@ -52,6 +53,8 @@ export default class BaltopCommand extends EconomyCommand {
     onBlocked(data: Message, blockedReason: BlockedReason) {
         if (blockedReason == BlockedReason.BlockedChat) {
             data.reply(languages.onlygroups[this.langCode]);
+        } else if (blockedReason == BlockedReason.BadAccountType) {
+            data.reply(this.language.execution.not_donor, true);
         }
     }
 }

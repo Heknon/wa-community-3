@@ -13,7 +13,7 @@ export default interface Blockable<In> {
 
     accountType: AccountType;
 
-    groupAccountType: AccountType;
+    groupAccountType: AccountType | 'blocked';
 
     groupLevel: keyof typeof GroupLevel;
 
