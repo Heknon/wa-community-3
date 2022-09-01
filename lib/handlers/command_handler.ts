@@ -175,8 +175,9 @@ export const messagePermissionsCheck = async (blockable: Blockable<Message>, mes
 
     const accountLevel = getNumberFromAccountType(user.accountType);
     const accountLevelNeeded = getNumberFromAccountType(blockable.accountType);
+    const hasDonorAccess = accountLevelNeeded > 0 && accountLevel < accountLevelNeeded;
 
-    if (chat?.chatRank) {
+    if (!hasDonorAccess && chat?.chatRank) {
         // if gifter has account level needed, so does group.
         const gcAccountLevel = getNumberFromAccountType(chat.chatRank.gifter.accountType);
         const gcAccountLevelNeeded = getNumberFromAccountType(blockable.groupAccountType);
@@ -186,7 +187,7 @@ export const messagePermissionsCheck = async (blockable: Blockable<Message>, mes
         }
     }
 
-    if (accountLevelNeeded > 0 && accountLevel < accountLevelNeeded) {
+    if (hasDonorAccess) {
         return BlockedReason.BadAccountType;
     }
 };
