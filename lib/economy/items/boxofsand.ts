@@ -8,6 +8,7 @@ import {prisma} from "../../db/client";
 import {fetchOrCreateUserFromJID} from "../..";
 import cuid from "cuid";
 import {messagingService} from "../../messaging";
+import moment from "moment";
 
 export class BoxOfSand extends Item {
     private static language = languages.items["boxofsand"];
@@ -49,7 +50,7 @@ export class BoxOfSand extends Item {
 
         const active = user.activeItems.find((item) => item.itemId === "boxofsand");
 
-        const in30minutes = new Date(Date.now() + 1000 * 60 * 30);
+        const in30minutes = moment().add(30, "minutes").toDate();
         await prisma.activeItem.upsert({
             where: {
                 id: active?.id ?? cuid(),
