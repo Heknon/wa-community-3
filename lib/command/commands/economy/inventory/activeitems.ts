@@ -37,7 +37,8 @@ export default class ActiveItemsCommand extends EconomyCommand {
         trigger: CommandTrigger,
     ) {
         const placeholder = this.getDefaultPlaceholder({chat, user, message});
-        if (user.activeItems.length === 0) {
+        const activeItems = user.activeItems.filter(e => !hasActiveItemExpired(e));
+        if (activeItems.length === 0) {
             return await message.replyAdvanced(
                 {
                     text: this.language.execution.no_items,
@@ -48,7 +49,7 @@ export default class ActiveItemsCommand extends EconomyCommand {
         }
 
         let activeText = `${this.language.execution.request_title}\n\n`;
-        for (const item of user.activeItems.filter(e => !hasActiveItemExpired(e))) {
+        for (const item of activeItems) {
             const itemData = getItemData(item.itemId);
             const expireDuration = item.expire
                 ? moment.duration(item.expire.getTime() - Date.now(), "milliseconds")
