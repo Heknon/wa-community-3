@@ -4,6 +4,7 @@ import Item from "./item";
 import languages from "../../config/language.json";
 import {prisma} from "../../db/client";
 import cuid from "cuid";
+import moment from "moment";
 
 export class Landmine extends Item {
     private static language = languages.items["landmine"];
@@ -11,7 +12,7 @@ export class Landmine extends Item {
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
         const active = executor.activeItems.find((item) => item.itemId === "landmine");
 
-        const in1day = new Date(Date.now() + 1000 * 60 * 60 * 24 * 1);
+        const in1day = moment().utc().add(1, "days").toDate();
         await prisma.activeItem.upsert({
             where: {
                 id: active?.id ?? cuid(),

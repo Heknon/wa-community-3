@@ -7,6 +7,7 @@ import {prisma, redis} from "../../db/client";
 import {commas} from "../../utils/utils";
 import {isJidGroup} from "@adiwajshing/baileys";
 import { Prisma } from "@prisma/client";
+import { hasActiveItemExpired } from "../utils";
 
 export class RobbersWishlist extends Item {
     private static language = languages.items["robberswishlist"];
@@ -65,8 +66,8 @@ export class RobbersWishlist extends Item {
         const stealList = users
             .map((e, i) => {
                 const fakeid = userGetFakeId(e as any);
-                const expireTime = fakeid?.expire ?? new Date(Date.now() + 100000);
-                const fakeIdName = fakeid && new Date() < expireTime ? (fakeid.data as Prisma.JsonObject)?.name : undefined
+                const fakeIdExpired = hasActiveItemExpired(fakeid);
+                const fakeIdName = !fakeIdExpired && fakeid ? (fakeid.data as Prisma.JsonObject)?.name : undefined
                 return `*${i + 1}.* ${fakeIdName ?? e.phone} - ${commas(e.money?.wallet ?? 0)}`;
             })
             .join("\n");

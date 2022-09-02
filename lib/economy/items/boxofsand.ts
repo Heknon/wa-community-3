@@ -50,7 +50,7 @@ export class BoxOfSand extends Item {
 
         const active = user.activeItems.find((item) => item.itemId === "boxofsand");
 
-        const in30minutes = moment().add(30, "minutes").toDate();
+        const in30minutes = moment().utc().add(30, "minutes").toDate();
         await prisma.activeItem.upsert({
             where: {
                 id: active?.id ?? cuid(),

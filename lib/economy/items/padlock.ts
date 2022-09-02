@@ -12,7 +12,7 @@ export class Padlock extends Item {
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
         const active = executor.activeItems.find((item) => item.itemId === "padlock");
 
-        const in1month = moment().add(1, "month").toDate();
+        const in1month = moment().utc().add(1, "month").toDate();
         await prisma.activeItem.upsert({
             where: {
                 id: active?.id ?? cuid(),

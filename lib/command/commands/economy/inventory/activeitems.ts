@@ -8,6 +8,7 @@ import {User} from "../../../../db/types";
 import {getItemData} from "../../../../economy/items";
 import Message from "../../../../messaging/message";
 import "moment-duration-format";
+import { hasActiveItemExpired } from "../../../../economy/utils";
 
 export default class ActiveItemsCommand extends EconomyCommand {
     private language: typeof languages.commands.activeitems[Language];
@@ -47,7 +48,7 @@ export default class ActiveItemsCommand extends EconomyCommand {
         }
 
         let activeText = `${this.language.execution.request_title}\n\n`;
-        for (const item of user.activeItems) {
+        for (const item of user.activeItems.filter(e => !hasActiveItemExpired(e))) {
             const itemData = getItemData(item.itemId);
             const expireDuration = item.expire
                 ? moment.duration(item.expire.getTime() - Date.now(), "milliseconds")

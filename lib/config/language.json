@@ -2572,8 +2572,8 @@
         "hebrew": "אפשר להשתמש בזה רק בקבוצות!"
     },
     "death": {
-        "english": "*{tag} HAS DIED*\nYikeeess you just lost all the {balance} {coins} in your wallet!\nYou also lost: {items}",
-        "hebrew": "*{tag} HAS DIED*\nYikeeess you just lost all the {balance} {coins} in your wallet!\nYou also lost: {items}",
+        "english": "*{tag} HAS DIED*\nYikeeess you just lost {balance} {coins} from your wallet!\nYou also lost:\n{items}",
+        "hebrew": "*{tag} מת*\nוווואייי הרגע איבדת {balance} {coins} מהארנק שלך!\nאה וגם איבדת כמה מוצרים:\n{items}",
         "itemloss": {
             "english": "{quantity}x {item}",
             "hebrew": "{quantity}x {item}"

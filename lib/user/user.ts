@@ -13,7 +13,7 @@ import Message from "../messaging/message";
 import {getInventory, userRegisterItemUse} from "./inventory";
 import {weightedChoice, weightedReward} from "../command/commands/economy/utils";
 import {Rarity, RarityKey} from "../economy/rarity";
-import {rarityToNumber} from "../economy/utils";
+import {hasActiveItemExpired, rarityToNumber} from "../economy/utils";
 import {Apple} from "../economy/items/apple";
 import language from "../config/language.json";
 import {pluralForm} from "../utils/message_utils";
@@ -167,7 +167,7 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
 
     const hasLifesaver = user.items.some((e) => e.itemId === "lifesaver" && e.quantity > 0);
     const activeApple = user.activeItems.find((e) =>
-        e.itemId === "apple" && e.expire ? e.expire > new Date() : true,
+        e.itemId === "apple" && !hasActiveItemExpired(e),
     );
 
     if (hasLifesaver) {
@@ -204,12 +204,13 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
     }
 
     const random = getUserRandom(user);
+    const moneyLost = Math.floor((user.money?.wallet ?? 0) * (random.intBetween(50, 100) / 100));
     await prisma.money.update({
         where: {
             id: user.money?.id,
         },
         data: {
-            wallet: Math.floor((user.money?.wallet ?? 0) * (random.intBetween(50, 100) / 100)),
+            wallet: moneyLost,
         },
     });
 
@@ -232,9 +233,9 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
             placeholder: {
                 custom: {
                     tag: "@" + user.phone,
-                    balance: commas(user.money?.wallet ?? 0),
+                    balance: commas(moneyLost),
                     coins: pluralForm(
-                        user.money?.wallet ?? 0,
+                        moneyLost,
                         language.economy.coin[chat.language],
                     ),
                     items: itemsLostMessage,

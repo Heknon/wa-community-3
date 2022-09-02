@@ -1,3 +1,5 @@
+import {ActiveItem} from "@prisma/client";
+import moment from "moment";
 import {Rarity, RarityKey} from "./rarity";
 
 export const rarityToNumber = (rarity: RarityKey | undefined) => {
@@ -23,4 +25,11 @@ export const rarityToNumber = (rarity: RarityKey | undefined) => {
         default:
             return 0;
     }
+};
+
+export const hasActiveItemExpired = (activeItem: {expire?: Date | null} | undefined | null) => {
+    if (!activeItem) return true;
+    if (!activeItem.expire) return false;
+
+    return moment().utc().isAfter(activeItem.expire);
 };

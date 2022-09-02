@@ -16,6 +16,7 @@ import moment from "moment";
 import "moment-duration-format";
 import {rescueNumbers} from "../../../utils/regex_utils";
 import {logger} from "../../../logger";
+import { hasActiveItemExpired } from "../../../economy/utils";
 
 type Theft = {
     odds: number;
@@ -71,7 +72,7 @@ export default class StealCommand extends EconomyCommand {
         }
 
         const sandbox = user.activeItems.find(
-            (e) => e.itemId === "sandbox" && (e.expire ?? Date.now() + 1000) > Date.now(),
+            (e) => e.itemId === "sandbox" && !hasActiveItemExpired(e),
         );
 
         if (sandbox) {
@@ -136,10 +137,10 @@ export default class StealCommand extends EconomyCommand {
         }
 
         const landmine = targetUser.activeItems.find(
-            (e) => e.itemId === "landmine" && (e.expire ?? Date.now() + 1000) > Date.now(),
+            (e) => e.itemId === "landmine" && !hasActiveItemExpired(e),
         );
         const padlock = targetUser.activeItems.find(
-            (e) => e.itemId === "padlock" && (e.expire ?? Date.now() + 1000) > Date.now(),
+            (e) => e.itemId === "padlock" && !hasActiveItemExpired(e),
         );
 
         const random = getUserRandom(user);

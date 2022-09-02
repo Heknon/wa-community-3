@@ -5,6 +5,7 @@ import languages from "../../config/language.json";
 import {prisma} from "../../db/client";
 import cuid from "cuid";
 import { messagingService } from "../../messaging";
+import moment from "moment";
 
 export class Apple extends Item {
     private static language = languages.items["apple"];
@@ -12,7 +13,7 @@ export class Apple extends Item {
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
         const active = executor.activeItems.find((item) => item.itemId === "apple");
 
-        const in24hours = new Date(Date.now() + 1000 * 60 * 60 * 24);
+        const in24hours = moment().utc().add(24, "hours").toDate();
         await prisma.activeItem.upsert({
             where: {
                 id: active?.id ?? cuid(),

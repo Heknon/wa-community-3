@@ -9,6 +9,7 @@ import {prisma, redis} from "../../../db/client";
 import {userCalculateNetBalance} from "../../../user/user";
 import {createUser} from "../../../user/database_interactions";
 import {Prisma} from "@prisma/client";
+import { hasActiveItemExpired } from "../../../economy/utils";
 
 type BaltopUserData = {
     jid: string;
@@ -86,16 +87,14 @@ export default class BaltopCommand extends EconomyCommand {
 
             baltop = usersTop.map((e) => {
                 const fakeid = e.activeItems.find((e) => e.itemId === "fakeid");
-                const expirationTime = new Date(
-                    fakeid?.expire ?? Date.now() + 1000 * 60 * 60 * 24 * 5,
-                );
+                const expired = hasActiveItemExpired(fakeid)
                 return {
                     jid: e.jid,
                     wallet: e.money?.wallet ?? 0,
                     bank: e.money?.bank ?? 0,
                     phone: e.phone,
                     fakeid:
-                        new Date() < expirationTime && fakeid?.data
+                        !expired && fakeid?.data
                             ? ((fakeid.data as Prisma.JsonObject).name as string | undefined)
                             : undefined,
                 };
