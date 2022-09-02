@@ -20,7 +20,7 @@
                     "inv",
                     "inventory"
                 ],
-                "category": "Economy",
+                "category": "Profile",
                 "description": "Check your inventory and see what you have!",
                 "execution": {
                     "request_title": "*{tag}'s inventory:*",
@@ -37,7 +37,7 @@
                     "מוצרים",
                     "אינבנטורי"
                 ],
-                "category": "כלכלה",
+                "category": "פרופיל",
                 "description": "תראה את כל המוצרים שאתה מחזיק עליך באינבנטורי!",
                 "execution": {
                     "request_title": "*המוצרים של {tag}*",
@@ -1394,7 +1394,7 @@
                 "triggers": [
                     "passive"
                 ],
-                "category": "Economy",
+                "category": "Profile",
                 "description": "Change in and out of passive mode.",
                 "extended_description": "In passive mode people can no longer steal from you but you will also lose access to some commands",
                 "usage": "{prefix}{command}",
@@ -1409,7 +1409,7 @@
                 "triggers": [
                     "פאסיבי"
                 ],
-                "category": "כלכלה",
+                "category": "פרופיל",
                 "description": "תעבור בין מצב פאסיבי ללא פאסיבי ולהיפך.",
                 "extended_description": "במצב פאסיבי לא יוכלו לגנוב ממך אבל גם תחסם מפקודות מסוימות",
                 "usage": "{prefix}{command}",

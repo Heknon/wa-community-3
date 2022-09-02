@@ -30,6 +30,7 @@ import DonateCommand from "./info/donate";
 import ClownCommand from "./fun/clown";
 import FullStatsCommand from "./admin/full_stats";
 import CommunityCommand from "./groups/outreach/community";
+import GivePremiumCommand from "./donor/give_premium";
 
 export {
     JIDCommand,
@@ -63,5 +64,6 @@ export {
     DonateCommand,
     ClownCommand,
     FullStatsCommand,
-    CommunityCommand
+    CommunityCommand,
+    GivePremiumCommand,
 };

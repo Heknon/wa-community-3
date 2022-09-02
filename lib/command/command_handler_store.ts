@@ -96,25 +96,48 @@ export default class CommandHandlerStore {
 
         const languageSpecificCommands = [
             // fun
-            AnonymousCommand,
-            ResponseCommand,
-            LmgtfyCommand,
             MP3Command,
-            SpoofCommand,
             StickerCommand,
+            ResponseCommand,
             ReminderCommand,
             ReputationCommand,
+            SpoofCommand,
             ClownCommand,
+            LmgtfyCommand,
+            AnonymousCommand,
             // community reach
             CommunityCommand,
             JoinCommand,
+            GiveDonorCommand,
             // group utils
-            AddCommand,
-            DeleteCommand,
-            GtfoCommand,
-            KickCommand,
             EveryoneCommand,
+            DeleteCommand,
             PrefixCommand,
+            GtfoCommand,
+            AddCommand,
+            KickCommand,
+            // economy
+            BalanceCommand,
+            ShopCommand,
+            DailyCommand,
+            StealCommand,
+            CrimeCommand,
+            PostMemesCommand,
+            HighlowCommand,
+            BegCommand,
+            DepositCommand,
+            WithdrawCommand,
+            HuntCommand,
+            // inventory - items
+            UseItemCommand,
+            BuyCommand,
+            SellCommand,
+            BaltopCommand,
+            GiveItemCommand,
+            // profile
+            InventoryCommand,
+            ActiveItemsCommand,
+            PassiveCommand,
             // misc
             DonateCommand,
             CreatorCommand,
@@ -122,28 +145,6 @@ export default class CommandHandlerStore {
             PingCommand,
             CodeCommand,
             SpeechToTextCommand,
-            // economy
-            BalanceCommand,
-            DailyCommand,
-            HighlowCommand,
-            DepositCommand,
-            BegCommand,
-            WithdrawCommand,
-            CrimeCommand,
-            PostMemesCommand,
-            // inventory - items
-            InventoryCommand,
-            UseItemCommand,
-            GiveItemCommand,
-            ShopCommand,
-            BuyCommand,
-            HuntCommand,
-            SellCommand,
-            PassiveCommand,
-            StealCommand,
-            BaltopCommand,
-            // profile
-            ActiveItemsCommand
         ];
 
         genericCommands.forEach((Command) => {

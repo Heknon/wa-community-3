@@ -10,7 +10,7 @@ import cuid from "cuid";
 import {AccountType, Prisma} from "@prisma/client";
 import {chatRankInclusion} from "../../../chat/database_interactions";
 
-export default class GiveDonorCommand extends EconomyCommand {
+export default class GivePremiumCommand extends EconomyCommand {
     private language: typeof languages.commands.upgrade_group[Language];
     private langCode: Language;
 
