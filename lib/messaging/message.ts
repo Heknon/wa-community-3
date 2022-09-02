@@ -1,12 +1,17 @@
 import type {AnyMessageContent, MediaType, WAMessage} from "@adiwajshing/baileys/lib/Types/Message";
 import {isJidGroup} from "@adiwajshing/baileys/lib/WABinary/jid-utils";
-import { messagingService } from ".";
-import { User, Chat } from "../db/types";
-import { getMediaPath, getMessageMedia, getMessageMediaType, saveMessageMedia } from "../utils/media_utils";
-import { getMessageBody, getQuotedMessage } from "../utils/message_utils";
-import { BotClient } from "../whatsapp_bot";
+import {messagingService} from ".";
+import {User, Chat} from "../db/types";
+import {
+    getMediaPath,
+    getMessageMedia,
+    getMessageMediaType,
+    saveMessageMedia,
+} from "../utils/media_utils";
+import {getMessageBody, getQuotedMessage} from "../utils/message_utils";
+import {BotClient} from "../whatsapp_bot";
 import Metadata from "./metadata";
-import { Placeholder } from "./types";
+import {Placeholder} from "./types";
 
 export default class Message {
     public _media: Buffer | undefined;
@@ -60,7 +65,11 @@ export default class Message {
             : fromGroup
             ? message.key.participant ?? message.participant
             : message.key.remoteJid!;
-        const to = fromGroup ? message.key.remoteJid! : fromMe ? message.key.remoteJid! : BotClient.currentClientId;
+        const to = fromGroup
+            ? message.key.remoteJid!
+            : fromMe
+            ? message.key.remoteJid!
+            : BotClient.currentClientId;
 
         let quoted: WAMessage | undefined = getQuotedMessage(message);
         const mediaBlocked = metadata?.meta.get("media") == false;
@@ -110,15 +119,23 @@ export default class Message {
             privateReply = false,
             metadata,
             placeholder,
-            tags
+            tags,
+            buttons,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
             tags?: string[];
+            buttons?: string[];
         } = {},
     ) {
-        return messagingService.reply(this, content, quote, {privateReply, metadata, placeholder, tags});
+        return messagingService.reply(this, content, quote, {
+            privateReply,
+            metadata,
+            placeholder,
+            tags,
+            buttons,
+        });
     }
 
     public replyAdvanced(
@@ -129,13 +146,21 @@ export default class Message {
             metadata,
             placeholder,
             tags,
+            buttons,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
             tags?: string[];
+            buttons?: string[];
         } = {},
     ) {
-        return messagingService.replyAdvanced(this, content, quote, {privateReply, metadata, placeholder, tags});
+        return messagingService.replyAdvanced(this, content, quote, {
+            privateReply,
+            metadata,
+            placeholder,
+            tags,
+            buttons,
+        });
     }
 }

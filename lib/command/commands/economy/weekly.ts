@@ -1,4 +1,4 @@
-import { WASocket} from "@adiwajshing/baileys";
+import {WASocket} from "@adiwajshing/baileys";
 import moment from "moment";
 import {CommandTrigger, EconomyCommand} from "../..";
 import {BlockedReason} from "../../../blockable";
@@ -88,8 +88,9 @@ export default class WeeklyCommand extends EconomyCommand {
         if (blockedReason == BlockedReason.BadAccountType) {
             await data.reply(languages.not_donor[this.langCode], true, {
                 placeholder: {
-                    chat
-                }
+                    chat,
+                },
+                buttons: [languages.not_donor.buttons[this.langCode]],
             });
         }
     }

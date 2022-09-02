@@ -85,11 +85,13 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
+            buttons,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
             tags?: string[];
+            buttons?: string[];
         } = {},
     ) {
         return await this.replyAdvanced(message, {text: content}, quote, {
@@ -97,6 +99,7 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
+            buttons
         });
     }
 
@@ -109,11 +112,13 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
+            buttons,
         }: {
             privateReply?: boolean;
             metadata?: Metadata;
             placeholder?: Placeholder;
             tags?: string[];
+            buttons?: string[];
         } = {},
     ) {
         if (quote) {
@@ -134,6 +139,7 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
+            buttons
         );
     }
 
@@ -145,13 +151,15 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
+            buttons,
         }: {
             metadata?: Metadata;
             placeholder?: Placeholder;
             tags?: string[];
+            buttons?: string[];
         } = {},
     ) {
-        return this._internalSendMessage(recipient, content, options, metadata, placeholder, tags);
+        return this._internalSendMessage(recipient, content, options, metadata, placeholder, tags, buttons);
     }
 
     private async _internalSendMessage(
@@ -161,6 +169,7 @@ export default class MessagingService {
         metadata?: Metadata,
         placeholder?: Placeholder,
         tags?: string[],
+        buttons?: string[],
     ): Promise<Message | undefined> {
         if (!this.client || !recipient || !content) return;
 
@@ -177,16 +186,28 @@ export default class MessagingService {
                 options.quoted.key.fromMe = false;
             }
 
+            if (tags && tags.length > 0 && !(content as any).mentions)
+                (content as any).mentions = [];
+            if (tags && tags.length > 0) {
+                ((content as any).mentions as string[]).push(...tags);
+            }
+
+            if (buttons && buttons.length > 0 && !(content as any).buttons)
+                (content as any).buttons = [];
+            if (buttons && buttons.length > 0) {
+                ((content as any).buttons as string[]).push(...buttons);
+            }
+
             const text = (content as any).text;
             const caption = (content as any).caption;
-            const buttons = (content as any).buttons;
+            const btns = (content as any).buttons;
             if (text != undefined && text.length > 0)
                 (content as any).text = await applyPlaceholders(text, placeholder);
             if (caption != undefined && caption.length > 0)
                 (content as any).caption = await applyPlaceholders(caption, placeholder);
-            if (buttons != undefined && buttons.length > 0) {
-                if (buttons && buttons.length > 0) {
-                    for (const button of buttons) {
+            if (btns != undefined && btns.length > 0) {
+                if (btns && btns.length > 0) {
+                    for (const button of btns) {
                         if (!button.buttonText.displayText) continue;
                         button.buttonText.displayText = await applyPlaceholders(
                             button.buttonText.displayText,
@@ -194,11 +215,6 @@ export default class MessagingService {
                         );
                     }
                 }
-            }
-            if (tags && tags.length > 0 && !(content as any).mentions)
-                (content as any).mentions = [];
-            if (tags && tags.length > 0) {
-                ((content as any).mentions as string[]).push(...tags);
             }
 
             sentMessage = await this.client!.sendMessage(recipient, content, options);
