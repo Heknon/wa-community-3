@@ -125,6 +125,7 @@ enum AccountType {
 model Chat {
     jid String @id
 
+    name           String?
     type           ChatType
     prefix         String
     sentDisclaimer Boolean       @default(false)

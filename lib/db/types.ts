@@ -17,11 +17,24 @@ export type User = Prisma.UserGetPayload<{
         money: true;
         reputation: true;
         activeItems: true;
+        giftedRanks: true
     };
 }>;
 
 export type Chat = Prisma.ChatGetPayload<{
     include: {
         responses: true;
+        chatRank: {
+            select: {
+                id: true,
+                gifter: {
+                    select: {
+                        jid: true;
+                        phone: true;
+                        accountType: true;
+                    };
+                };
+            };
+        };
     };
 }>;

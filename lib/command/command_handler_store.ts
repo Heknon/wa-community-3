@@ -118,7 +118,6 @@ export default class CommandHandlerStore {
             // misc
             DonateCommand,
             CreatorCommand,
-            GptCommand,
             VCardCommand,
             PingCommand,
             CodeCommand,

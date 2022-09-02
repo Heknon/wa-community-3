@@ -14,15 +14,20 @@ import config from "./config/config.json";
 import languages from "./config/language.json";
 import {getCommandByTrigger, handleChatMessage} from "./chat/chat";
 import {createUser, getFullUser} from "./user/database_interactions";
-import {createChat, doesChatExist, getFullChat} from "./chat/database_interactions";
+import {
+    chatRankInclusion,
+    createChat,
+    doesChatExist,
+    getFullChat,
+} from "./chat/database_interactions";
 import {processMessageForStatistic} from "./db/statistics";
-import { disclaimerService } from "./disclaimer_service";
+import {disclaimerService} from "./disclaimer_service";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
 export const whatsappBot: BotClient = new BotClient(registerEventHandlers);
 export const SAFE_DEBUG_MODE = false;
-export const ALLOWED_DEBUG_JIDS = ["972557223809@s.whatsapp.net", "120363041344515310@g.us"]
+export const ALLOWED_DEBUG_JIDS = ["972557223809@s.whatsapp.net", "120363041344515310@g.us"];
 
 whatsappBot.start();
 
@@ -78,29 +83,37 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                 where: {jid: chatJid},
                 include: {
                     responses: true,
+                    chatRank: chatRankInclusion,
                 },
             });
+            const chatSubject = whatsappBot.store.groupMetadata[chatJid]?.subject;
             if (!chat) {
                 try {
-                    chat = await createChat(chatJid);
+                    chat = await createChat(chatJid, chatSubject);
                 } catch (e) {
                     logger.error(e);
-                    chat =
-                        (await prisma.chat
-                            .findUnique({
-                                where: {jid: chatJid},
-                                include: {
-                                    responses: true,
-                                },
-                            })
-                            .catch((err) => {
-                                logger.error(err.stack);
-                            })) || null;
+                    chat = await getFullChat(chatJid);
                 }
             }
 
             if (!chat) {
                 return logger.error(`Failed to fetch chat.`, {jid: chatJid});
+            }
+
+            if (
+                chatSubject &&
+                typeof chatSubject === "string" &&
+                chat.type == "GROUP" &&
+                chat.name != chatSubject
+            ) {
+                await prisma.chat.update({
+                    where: {
+                        jid: chatJid,
+                    },
+                    data: {
+                        name: chatSubject,
+                    },
+                });
             }
 
             if (!chat.sentDisclaimer) {
@@ -257,7 +270,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
     eventListener.on("groups.upsert", async (groups) => {
         for (const group of groups) {
-            if (SAFE_DEBUG_MODE && !ALLOWED_DEBUG_JIDS.some(e => e === group.id)) return;
+            if (SAFE_DEBUG_MODE && !ALLOWED_DEBUG_JIDS.some((e) => e === group.id)) return;
             const chat = await getFullChat(group.id);
             if (!chat) {
                 return;

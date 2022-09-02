@@ -465,7 +465,7 @@
                 "category": "מידע",
                 "description": "מידע לגבי התרמות לבוט. מה מקבלים? איך מתרימים?",
                 "execution": {
-                    "text": "תודה רבה על השיקול לתרום לבוט.\n\nאני רק רוצה לומר שכרגע הבוט עוזר לסביבות ה10000 אנשים ביום ומעבד בסביבות ה40 פקודות בדקה. אם רק 10% מהאנשים הללו היו תורמים שקל בחודש אני אוכל לתקצב לרגע זה *לגמרי* את העלויות של הבוט.\n\n_איך תורמים?_\nניתן לתרום דרך פייבוקס, פייפל (PayPal) וPatreon.\n1. https://payboxapp.page.link/VNQQ1AAknBKoneF79\n2. https://www.patreon.com/wailcommunitybot\n3. https://www.buymeacoffee.com/leobot\n4. https://www.paypal.com/paypalme/whatsappbotisrael\n\nכאשר אתם תורמים, אנא השאירו בחלק של הפתק את מספר הטלפון שלכם על מנת שאוכל ליצור אתכם קשר ולתת לכם \"פריבילגיות\"\n\n_שאלות_\nלשאלות שלחו הודעה ליוצר בעזרת הפקודה \"{prefix}מפתח\"\n\n_מה מקבלים?_ (*רק* תורמים של 3 שקל ומעלה!)\n1. לחכות בין שליחת פקודות *פחות*\n2. משאירים את הבוט רץ!\n3. אלו שתורמים חמש דולר ומעלה (17 שקל) יקבלו את האפשרות להוסיף את הפריבילגיות האלו לקבוצה אחת לבחירתם.\n*(הפריבילגיות של התרומות שלכם נשארות לחודש מהרגע שהם התווספו אלה אם התרמת יותר מהמינימום, דבר שיכול לתת לך יותר זמן)*\n\n_למה לתרום?_\nהתרומות שלכם משאירים את הבוט רץ.\nכרגע, הבוט במצב לא טוב כספית והמצב הזה לצערי רק מחמיר.\nהתרומות שלכם יכסו את:\n1. השרת שאליו הבוט רץ\n2. שדרוג החומרה שעליו רץ הבוט על מנת להתמודד עם ביקוש עולה\n3. מספר הטלפון (על מנת שלא ישתנה)\n4. הזמן שלי - השקעתי מעל 200 שעות בפיתוח הבוט על מנת שיהיה מעולה לכל קבוצה או אדם."
+                    "text": "תודה רבה על השיקול לתרום לבוט.\nאפילו שקל עוזר ברמה מאוד גדולה!\nהתרומה שלכם משפיעה מאוד, אפילו שקל אחד!\nהבוט לצערי יצטרך להפסיק לעבוד בראשון באוקטובר אם לא יהיו תרומות בגלל עלויות מצטברות. תתרמו אפילו רק שקל אחד.\n\n_איך תורמים?_\nניתן לתרום דרך פייבוקס, פייפל (PayPal) וPatreon.\n1. https://payboxapp.page.link/VNQQ1AAknBKoneF79\n2. https://www.patreon.com/wailcommunitybot\n3. https://www.buymeacoffee.com/leobot\n4. https://www.paypal.com/paypalme/whatsappbotisrael\n\nכאשר אתם תורמים, אנא השאירו בחלק של הפתק את מספר הטלפון שלכם על מנת שאוכל ליצור אתכם קשר ולתת לכם \"פריבילגיות\"\n\n_שאלות_\nלשאלות שלחו הודעה ליוצר בעזרת הפקודה \"{prefix}מפתח\"\n\n_מה מקבלים?_ (*רק* תורמים של 3 שקל ומעלה!)\n1. לחכות בין שליחת פקודות *פחות*\n2. משאירים את הבוט רץ!\n3. אלו שתורמים חמש דולר ומעלה (17 שקל) יקבלו את האפשרות להוסיף את הפריבילגיות האלו לקבוצה אחת לבחירתם.\n*(הפריבילגיות של התרומות שלכם נשארות לחודש מהרגע שהם התווספו אלה אם התרמת יותר מהמינימום, דבר שיכול לתת לך יותר זמן)*\n\n_למה לתרום?_\nהתרומות שלכם משאירים את הבוט רץ.\nכרגע, הבוט במצב לא טוב כספית והמצב הזה לצערי רק מחמיר.\nהתרומות שלכם יכסו את:\n1. השרת שאליו הבוט רץ\n2. שדרוג החומרה שעליו רץ הבוט על מנת להתמודד עם ביקוש עולה\n3. מספר הטלפון (על מנת שלא ישתנה)\n4. הזמן שלי - השקעתי מעל 200 שעות בפיתוח הבוט על מנת שיהיה מעולה לכל קבוצה או אדם."
                 }
             }
         },
@@ -1434,10 +1434,21 @@
                 "description": "Give or take a group's access to donor perks you gave them.",
                 "usage": "{prefix}{command}",
                 "execution": {
+                    "interaction": {
+                        "message": "*Group Upgrade Menu*\n\n*1.* Upgrade group\n*2.* Take donor perks\n*3.* View gifted groups\n*4.* Cancel",
+                        "cancel": "Cancel",
+                        "cancelled": "Cancelled!",
+                        "gc_format": "*{num}.* {subject}",
+                        "title": "*Group Upgraded*",
+                        "empty": "You haven't gifted any groups yet."
+                    },
                     "upgrade": "*UPGRADED GROUP*\nThis group has just been upgraded to level {level} thanks to {upgrader}!",
                     "downgrade": "*DOWNGRADED GROUP*\nThis group has just been downgraded to level {level}",
                     "left_gc": "*DOWNGRADED GROUP*\nThis group has just been downgraded to level {level} since {upgrader} is no longer in the group.",
                     "already_upgraded_by": "This group has already been upgraded by generous {upgrader}!",
+                    "not_gifter": "You did not gift this group with donator perks, so you can't downgrade it.",
+                    "already_gifted": "You've already gifted this group with donor perks!",
+                    "too_many": "You've already gifted too many chats.\nYou can upgrade your donator level and upgrade more chats!",
                     "upgrade_triumph": "*UPGRADED GROUP*\nSeems like {upgrader} has a better donor level than {previous}.\nThe group has been upgraded to level {level}!",
                     "footer": "Tier 2 donators can give groups access to some of their perks.\nUse {prefix}donate to learn more.",
                     "not_donor": "In order to upgrade a group you need to be at least a tier 2 donor.\nUse {prefix}donate to learn more."
@@ -1451,10 +1462,21 @@
                 "description": "תתן או תיקח את הגישה של קבוצה לגישות פרימיום שנתת לה.",
                 "usage": "{prefix}{command}",
                 "execution": {
+                    "interaction": {
+                        "cancel": "בטל",
+                        "message": "*תפריט שדרוג קבוצה*\n\n*1.* שדרג קבוצה\n*2.* קח פריבילגיות תורם\n*3.* קבוצות התורם שלך\n*4.* בטל",
+                        "cancelled": "בוטל!",
+                        "gc_format": "*{num}.* {subject}",
+                        "title": "*קבוצות ששידרגת*",
+                        "empty": "לא שידרגת שום קבוצה עד כה"
+                    },
+                    "already_gifted": "כבר נתת לקבוצה זו פריבילגיות תורם",
                     "upgrade": "*הקבוצה שודרגה*\nהקבוצה שודרגה לרמה {level} תודות ל {upgrader}!",
+                    "not_gifter": "אתה לא נתת לקבוצה זו פריבילגיות תורם ולכן אתה לא יכול לקחת אותן.",
                     "downgrade": "*הקבוצה ירדה דרגה*\nהקבוצה ירדה דרגה לרמה {level}",
                     "left_gc": "*הקבוצה ירדה דרגה*\nהקבוצה ירדה דרגה לרמה {level} בגלל ש {upgrader} כבר לא בקבוצה",
-                    "already_enabled_by": "הקבוצה הזו כבר משודרגת על ידי {upgrader}!",
+                    "already_upgraded_by": "הקבוצה הזו כבר משודרגת על ידי {upgrader}!",
+                    "too_many": "אתה לא יכול לשדרג עוד קבוצה.\nאתה יכול לשדרג את רמת התורם שלך ולשדרג עוד קבוצות!",
                     "upgrade_triumph": "*הקבוצה שודרגה*\nנראה שיש לתורם {upgrader} רמת תרומה גבוהה יותר מאשר {previous}.\nהקבוצה שודרגה לרמה {level}!",
                     "footer": "תורמים מדרגה שנייה ומעלה יכולים לתת לקבוצות גישה לחלק מהפריבילגיות שלהם.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד.",
                     "not_donor": "כדי לשדרג קבוצה אתה צריך להיות תורם מדרגה 2 ומעלה.\nהשתמש ב {prefix}תרומה כדי ללמוד עוד."
@@ -2503,11 +2525,15 @@
     },
     "donate_alert": {
         "english": "Help me fund the bot and continue providing it to thousands of daily users!\nYour donation matters, even one dollar!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
-        "hebrew": "תעזרו לי לממן את הבוט ולהמשיך לספק שירות לאלפי משתמשים יומיים!\nהתרומה שלכם משפיעה מאוד, אפילו שקל אחד!\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
+        "hebrew": "תעזרו לי לממן את הבוט ולהמשיך לספק שירות לאלפי משתמשים יומיים!\nהתרומה שלכם משפיעה מאוד, אפילו שקל אחד!\nהבוט לצערי יצטרף להפסיק לעבוד בראשון באוקטובר אם לא יהיו תרומות בגלל עלויות מצטברות. תתרמו אפילו רק שקל אחד.\nhttps://payboxapp.page.link/VNQQ1AAknBKoneF79\nhttps://www.patreon.com/wailcommunitybot",
         "button": {
             "english": "{prefix}donate",
             "hebrew": "{prefix}תרומה"
         }
+    },
+    "timeout": {
+        "english": "Timed out! Please try again but this time answer quicker.",
+        "hebrew": "חיכיתי מספיק 😤 תנסה שוב"
     },
     "disclaimer": {}
 }
