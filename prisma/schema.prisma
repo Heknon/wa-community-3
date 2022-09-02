@@ -169,3 +169,19 @@ enum Language {
     english
     hebrew
 }
+
+model Item {
+    id Int @id @default(autoincrement())
+
+}
+
+
+model Translatable {
+    id Int @id @default(autoincrement())
+
+    key String
+    en  String
+    he  String
+
+    @@index([key])
+}

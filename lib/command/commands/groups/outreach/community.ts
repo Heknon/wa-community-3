@@ -34,36 +34,6 @@ export default class CommunityCommand extends Command {
                 },
             },
         });
-        if (!res) return;
-
-        waitForMessage(async (msg) => {
-            if (msg.raw?.key.remoteJid != res.raw?.key.remoteJid) return false;
-            const quoted = await msg.quoted;
-            if (
-                !quoted ||
-                quoted.from != res.from ||
-                quoted.to != res.to ||
-                quoted.content != res.content ||
-                !msg.senderJid ||
-                ["כנס", "join"].every((e) => (msg.content?.toLowerCase().indexOf(e) ?? -1) == -1)
-            ) {
-                return false;
-            }
-
-            // dont return true because it will stop listening for new messages.
-            try {
-                logger.debug(`Adding ${message.senderJid} to the group`);
-                await client.groupParticipantsUpdate(config.support_group_jid, [msg.senderJid], "add");
-                logger.debug(`${msg.senderJid} joined the bot's group!`);
-                await msg.reply(this.language.execution.added, true);
-            } catch (err) {
-                await msg.reply(this.language.execution.failed_add, true);
-            }
-
-            return false;
-        }).then(() => {
-            logger.debug("Stopped listening for join request messages");
-        });
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}

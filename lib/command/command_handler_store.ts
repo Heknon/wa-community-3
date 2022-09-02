@@ -117,7 +117,7 @@ export default class CommandHandlerStore {
             DeleteCommand,
             PrefixCommand,
             GtfoCommand,
-            AddCommand,
+            // AddCommand,
             KickCommand,
             // economy
             BalanceCommand,
