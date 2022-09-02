@@ -7,8 +7,8 @@ import {Chat, User} from "../../../db/types";
 import Message from "../../../messaging/message";
 import {prisma, redis} from "../../../db/client";
 import cuid from "cuid";
-import {Prisma} from "@prisma/client";
-import { chatRankInclusion } from "../../../chat/database_interactions";
+import {AccountType, Prisma} from "@prisma/client";
+import {chatRankInclusion} from "../../../chat/database_interactions";
 
 export default class GiveDonorCommand extends EconomyCommand {
     private language: typeof languages.commands.upgrade_group[Language];
@@ -38,14 +38,14 @@ export default class GiveDonorCommand extends EconomyCommand {
             include: {
                 chatRank: {
                     select: {
-                        id: true,
+                        id: true;
                         gifter: {
                             select: {
-                                jid: true,
-                                phone: true,
-                                accountType: true,
-                            },
-                        },
+                                jid: true;
+                                phone: true;
+                                accountType: true;
+                            };
+                        };
                     };
                 };
             };
@@ -81,13 +81,27 @@ export default class GiveDonorCommand extends EconomyCommand {
 
         if (!responseText) return;
         if (responseText === "1") {
-            const level = getNumberFromAccountType(user.accountType);
+            const level = Math.min(
+                getNumberFromAccountType(user.accountType),
+                getNumberFromAccountType(AccountType.SPONSOR),
+            );
             const chatLevel = getNumberFromAccountType(chat.chatRank?.gifter.accountType);
 
             if (chat.chatRank?.gifter.jid === user.jid) {
                 return message.reply(this.language.execution.already_gifted, true);
             } else if (chat.chatRank?.gifter.jid != user.jid && level <= chatLevel) {
-                return message.reply(this.language.execution.already_upgraded_by, true);
+                return message.reply(this.language.execution.already_upgraded_by, true, {
+                    placeholder: {
+                        custom: {
+                            upgrader: "@" + jidDecode(chat.chatRank?.gifter.jid)?.user!,
+                        },
+                    },
+                    tags: [chat.chatRank?.gifter.jid!],
+                });
+            }
+
+            if (user.giftedRanks.length >= 1 && user.accountType === "SPONSOR") {
+                return message.reply(this.language.execution.too_many, true);
             }
 
             const updated = await prisma.chatRank.upsert({
@@ -109,7 +123,15 @@ export default class GiveDonorCommand extends EconomyCommand {
                     : this.language.execution.upgrade) +
                 "\n\n" +
                 this.language.execution.footer;
-            await message.reply(text, true);
+            await message.reply(text, true, {
+                placeholder: {
+                    custom: {
+                        upgrader: "@" + user.phone,
+                        previous: "@" + jidDecode(chat.chatRank?.gifter.jid)?.user ?? "",
+                        level: level.toString(),
+                    },
+                },
+            });
         } else if (responseText === "2") {
             if (!chat.chatRank || chat.chatRank.gifter.jid !== user.jid) {
                 return message.reply(this.language.execution.not_gifter, true);
@@ -124,6 +146,13 @@ export default class GiveDonorCommand extends EconomyCommand {
             return await message.reply(
                 this.language.execution.downgrade + "\n\n" + this.language.execution.footer,
                 true,
+                {
+                    placeholder: {
+                        custom: {
+                            level: "1"
+                        }
+                    }
+                }
             );
         } else if (responseText === "3") {
             let text = this.language.execution.interaction.title + "\n\n";
@@ -171,8 +200,8 @@ export default class GiveDonorCommand extends EconomyCommand {
                     jid: gifted.giftedChatJid,
                 },
                 include: {
-                    chatRank: chatRankInclusion
-                }
+                    chatRank: chatRankInclusion,
+                },
             });
             if (!chatGifted) return;
             return this.execute(client, chatGifted, user, result, body, trigger);
