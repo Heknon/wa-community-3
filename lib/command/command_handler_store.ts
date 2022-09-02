@@ -35,6 +35,7 @@ import {
     CodeCommand,
     SpeechToTextCommand,
     LanguageCommand,
+    GivePremiumCommand,
 } from "./commands";
 import {
     BalanceCommand,
@@ -57,6 +58,8 @@ import {
     StealCommand,
     BaltopCommand,
     ActiveItemsCommand,
+    WeeklyCommand,
+    MonthlyCommand,
 } from "./commands/economy";
 import ResponseCommand from "./commands/fun/response";
 import ImageCommand, {ImageGenCommandData} from "./image_command";
@@ -108,7 +111,7 @@ export default class CommandHandlerStore {
             // community reach
             CommunityCommand,
             JoinCommand,
-            GiveDonorCommand,
+            GivePremiumCommand,
             // group utils
             EveryoneCommand,
             DeleteCommand,
@@ -119,7 +122,11 @@ export default class CommandHandlerStore {
             // economy
             BalanceCommand,
             ShopCommand,
+            BuyCommand,
+            SellCommand,
             DailyCommand,
+            WeeklyCommand,
+            MonthlyCommand,
             StealCommand,
             CrimeCommand,
             PostMemesCommand,
@@ -130,8 +137,6 @@ export default class CommandHandlerStore {
             HuntCommand,
             // inventory - items
             UseItemCommand,
-            BuyCommand,
-            SellCommand,
             BaltopCommand,
             GiveItemCommand,
             // profile

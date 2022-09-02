@@ -1811,6 +1811,70 @@
                 }
             }
         },
+        "monthly": {
+            "triggers": [
+                "monthly",
+                "חודשי"
+            ],
+            "english": {
+                "triggers": [
+                    "monthly"
+                ],
+                "category": "Economy",
+                "description": "Get a bunch of coins once a month!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "claimed": "*You've already claimed your monthly reward!*\n\nYour next monthly will be available on {date}",
+                    "success_title": "{tag}'s Monthly Coins",
+                    "success": "*{coins}* {coin} was placed in injected into your wallet!\n\nYour next monthly will be available on {date}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "חודשי"
+                ],
+                "category": "כלכלה",
+                "description": "תקבל מלא מטבעות פעם בחודש!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "claimed": "*אתה כבר לקחת את המתנה החודשית שלך!*\n\nתוכל לקחת עוד מתנה חודשית בתאריך: {date}",
+                    "success_title": "המתנה החודשית של {tag}",
+                    "success": "*{coins}* {coin} הוזרקו אל תוך הארנק שלך!\n\nהמתנה החודשית הבאה שלך תהיה זמינה בתאריך: {date}"
+                }
+            }
+        },
+        "weekly": {
+            "triggers": [
+                "weekly",
+                "שבועי"
+            ],
+            "english": {
+                "triggers": [
+                    "weekly"
+                ],
+                "category": "Economy",
+                "description": "Once a week, get an injection of a fair amount of coins",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "claimed": "*You've already claimed your weekly reward!*\n\nYour next weekly will be available on {date}",
+                    "success_title": "{tag}'s Weekly Coins",
+                    "success": "*{coins}* {coin} was just injected into your wallet!\n\nYour next weekly will be available on {date}"
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "שבועי"
+                ],
+                "category": "כלכלה",
+                "description": "פעם בשבוע, תקבל כמות יפה של מטבעות.",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "claimed": "*אתה כבר לקחת את המתנה השבועית שלך!*\n\nתוכל לקחת עוד מתנה שבועית בתאריך: {date}",
+                    "success_title": "המתנה השבועית של {tag}",
+                    "success": "*{coins}* {coin} הוזרקו אל תוך הארנק שלך!\n\nהמתנה השבועית הבאה שלך תהיה זמינה בתאריך: {date}"
+                }
+            }
+        },
         "deposit": {
             "triggers": [
                 "deposit",
@@ -2534,6 +2598,14 @@
     "timeout": {
         "english": "Timed out! Please try again but this time answer quicker.",
         "hebrew": "חיכיתי מספיק 😤 תנסה שוב"
+    },
+    "not_donor": {
+        "english": "This command is only for donators\nDonate here: https://payboxapp.page.link/VNQQ1AAknBKoneF79",
+        "hebrew": "הפקודה הזו רק לתורמים\nתרמו כאן: https://payboxapp.page.link/VNQQ1AAknBKoneF79",
+        "buttons": {
+            "english": "{prefix}donate",
+            "hebrew": "{prefix}תרומה"
+        }
     },
     "disclaimer": {}
 }

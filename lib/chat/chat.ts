@@ -79,7 +79,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
         }
 
         if (isBlocked != undefined) {
-            await blockable.onBlocked(message, isBlocked);
+            await blockable.onBlocked(message, isBlocked, chat);
             return;
         }
 

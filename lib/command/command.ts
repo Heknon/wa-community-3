@@ -104,7 +104,7 @@ export default abstract class Command implements Blockable<Message> {
         trigger: CommandTrigger,
     ): Promise<any> | any;
 
-    abstract onBlocked(message: Message, blockedReason: BlockedReason): Promise<any> | any;
+    abstract onBlocked(message: Message, blockedReason: BlockedReason, chat?: Chat): Promise<any> | any;
 
     public get mainTrigger() {
         return this.triggers[0];

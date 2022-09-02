@@ -11,12 +11,14 @@ import HuntCommand from "./hunt";
 import ActiveItemsCommand from "./inventory/activeitems";
 import InventoryCommand from "./inventory/inventory";
 import UseItemCommand from "./inventory/use";
+import MonthlyCommand from "./monthly";
 import PassiveCommand from "./passive";
 import PostMemesCommand from "./postmemes";
 import BuyCommand from "./shop/buy";
 import SellCommand from "./shop/sell";
 import ShopCommand from "./shop/shop";
 import StealCommand from "./steal";
+import WeeklyCommand from "./weekly";
 import WithdrawCommand from "./withdraw";
 
 export {
@@ -39,5 +41,7 @@ export {
     StealCommand,
     BaltopCommand,
     PassiveCommand,
-    ActiveItemsCommand
+    ActiveItemsCommand,
+    MonthlyCommand,
+    WeeklyCommand,
 }
