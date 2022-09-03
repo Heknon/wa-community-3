@@ -77,32 +77,5 @@ export class BoxOfSand extends Item {
                 },
             },
         );
-        if (targetChat?.sentDisclaimer) {
-            await messagingService.sendMessage(
-                targetChat.jid,
-                {text: BoxOfSand.language.receiver[targetChat.language], mentions: [executor.jid]},
-                undefined,
-                {
-                    placeholder: {
-                        custom: {
-                            tag: "@" + executor.phone,
-                        },
-                    },
-                },
-            );
-        } else {
-            await messagingService.sendMessage(
-                chat.jid,
-                {text: BoxOfSand.language.receiver[chat.language], mentions: [executor.jid]},
-                undefined,
-                {
-                    placeholder: {
-                        custom: {
-                            tag: "@" + executor.phone,
-                        },
-                    },
-                },
-            );
-        }
     }
 }

@@ -22,6 +22,7 @@ import {
 } from "./chat/database_interactions";
 import {processMessageForStatistic} from "./db/statistics";
 import {disclaimerService} from "./disclaimer_service";
+import { wait } from "./utils/async_utils";
 
 ffmpeg.setFfmpegPath(ffmpegPath);
 dotenv.config({path: "./"});
@@ -280,6 +281,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                 const langCode = chat.language;
                 const helpCommand = (await getCommandByTrigger(chat, "help")) as HelpCommand;
 
+                await wait(3000)
                 await messagingService.sendMessage(
                     chat.jid,
                     {

@@ -11,8 +11,15 @@ export class Lifesaver extends Item {
     public async use(chat: Chat, executor: User, message?: Message | undefined) {
         const userChat = await prisma.chat.findUnique({where: {jid: executor.jid}});
         const userLanguage = userChat?.sentDisclaimer ? userChat.language : undefined;
-        await messagingService?.sendMessage(executor.jid, {
+        await messagingService?.sendMessage(chat.jid, {
             text: Lifesaver.language[userLanguage ?? chat.language],
+        }, undefined, {
+            placeholder: {
+                custom: {
+                    tag: '@' + executor.phone
+                }
+            },
+            tags: [executor.jid]
         });
         return true;
     }

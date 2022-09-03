@@ -45,7 +45,7 @@ export default class ClownCommand extends Command {
             },
         });
 
-        messagingService.sendMessage(message.raw?.key.remoteJid!, {
+        await messagingService.sendMessage(message.raw?.key.remoteJid!, {
             react: {key: quoted.raw!.key!, text: "🤡", groupingKey: "clown", senderTimestampMs: Date.now()},
         });
     }

@@ -2543,8 +2543,8 @@
             }
         },
         "lifesaver": {
-            "english": "Phew!\nYou would've died from that!\nLuckily, you had a lifesaver in your inventory.",
-            "hebrew": "פיוווייי\nיכולת למות מזה!\nלמזלך, היה עליך מציל חיים."
+            "english": "Phew!\nYou would've died from that!\nLuckily, you had a lifesaver in your inventory {tag}.",
+            "hebrew": "פיוווייי\nיכולת למות מזה!\nלמזלך, היה עליך מציל חיים {tag}."
         },
         "padlock": {
             "english": "Your wallet now has a padlock on it.\nAnyone who tries to steal from you will automatically fail if they don't have bolt cutters, however this is only a one-time use. This item will expire after a month if no one breaks it by then.",

@@ -120,7 +120,7 @@ export const processMessageForDonorAlerts = async (user: User, chat: FullChat) =
     await redisAlerts.incr(`${chat.jid}:commandsSent`);
     const commandsSentRaw = await redisAlerts.get(`${chat.jid}:commandsSent`);
     const commandsSent = parseInt(commandsSentRaw ?? "0", 10);
-    const shouldSendAlert = chat.type === "DM" ? commandsSent >= 50 : commandsSent >= 55;
+    const shouldSendAlert = commandsSent >= 50;
     if (!shouldSendAlert) return;
     await redisAlerts.del(`${chat.jid}:commandsSent`);
 
