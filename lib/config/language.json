@@ -821,7 +821,7 @@
                 "extended_description": "If you want to stay up to date, know when and why the bot is offline or acting slow, join the group!",
                 "usage": "{prefix}{command}",
                 "execution": {
-                    "join_message": "Join using this link!\n{link}\n\nReply to this message with \"join\" and I'll add you to the group!",
+                    "join_message": "Join using this link!\n{link}",
                     "failed_add": "Huh... Seems like I couldn't add you to the group.\nMaybe you just left it? 😟 Or maybe you're already in it 🧐",
                     "added": "Awesome! I added you to the group."
                 }
@@ -834,7 +834,7 @@
                 "description": "קישור לקבוצה של הבוט. אם אתם רוצים להישאר מעודכנים על מה שבתהליך עבודה, למה הבוט לא עובד ועוד דברים, תצטרפו!",
                 "usage": "{prefix}{command}",
                 "execution": {
-                    "join_message": "תצטרפו!\n{link}\n\nתגיבו להודעה הזו עם \"כנס\" ואני אצרף אותכם!",
+                    "join_message": "תצטרפו!\n{link}",
                     "failed_add": "הא... נראה שאני לא מצליח לצרף אותך לקבוצה. אולי יצאת? 😟 או שאולי אתה כבר בתוכה 🧐",
                     "added": "מגניב! צירפתי אותך לקבוצה!"
                 }

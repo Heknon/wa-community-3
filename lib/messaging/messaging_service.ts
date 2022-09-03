@@ -254,7 +254,7 @@ export default class MessagingService {
                 await wait(10)
                 msg = await this.client?.sendMessage(recipient, content, options);
             } catch (err) {
-                logger.error(`FAILED TO SEND MESSAGE | ${JSON.stringify(content, null, 2)}`);
+                logger.error(`FAILED TO SEND MESSAGE TO ${recipient}`);
                 logger.error(err);
                 if ((err as any).stack) logger.error((err as any).stack);
 
