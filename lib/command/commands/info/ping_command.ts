@@ -20,9 +20,9 @@ export default class PingCommand extends Command {
             category: lang.category,
             description: lang.description,
             cooldowns: new Map([
-                [AccountType.USER, 500],
-                [AccountType.DONOR, 250],
-                [AccountType.SPONSOR, 0],
+                [AccountType.USER, 1000 * 2],
+                [AccountType.DONOR, 1000 * 1.5],
+                [AccountType.SPONSOR, 1000],
             ]),
         });
 

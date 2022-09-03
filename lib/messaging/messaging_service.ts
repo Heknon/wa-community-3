@@ -13,6 +13,7 @@ import {logger} from "../logger";
 import {Placeholder} from "./types";
 import cuid from "cuid";
 import Queue from "queue";
+import { wait } from "../utils/async_utils";
 
 export default class MessagingService {
     private client: WASocket | undefined;
@@ -250,6 +251,7 @@ export default class MessagingService {
         this.jobQueue.push(async (cb) => {
             let msg: WAMessage | undefined;
             try {
+                await wait(10)
                 msg = await this.client?.sendMessage(recipient, content, options);
             } catch (err) {
                 logger.error(`FAILED TO SEND MESSAGE | ${JSON.stringify(content, null, 2)}`);
