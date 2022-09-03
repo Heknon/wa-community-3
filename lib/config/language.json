@@ -1633,7 +1633,7 @@
                     },
                     "stolen_cooldown": "{tag} כבר נשדד ב15 דקות האחרונות, יהיה אפשר לשדוד ממנו בעוד {time}",
                     "sandbox": "עיוורו אותך ואתה לא יכול לשדוד אף אחד לעוד {time}",
-                    "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק ותפוצצת!",
+                    "blewup": "קאאאבווום!!! {tag} השטיל מקוש על הארנק והתפוצצת!",
                     "padlock": "אייייייי, ל{tag} היה מנעול על הארנק!",
                     "padlock_broke": "שששששש שברת את המנעול על הארנק שלהם 😉",
                     "passive": "אתה במצב פאסיבי כרגע ולא יכול לגנוב מאף אחד",
