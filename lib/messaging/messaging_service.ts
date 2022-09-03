@@ -1,8 +1,6 @@
 import {
     AnyMessageContent,
-    GroupMetadata,
     isJidGroup,
-    isJidUser,
     MiscMessageGenerationOptions,
     proto,
     WAMessage,
@@ -10,14 +8,21 @@ import {
 } from "@adiwajshing/baileys";
 import Message from "./message";
 import Metadata from "./metadata";
-import {whatsappBot} from "..";
 import {applyPlaceholders} from "../utils/message_utils";
 import {logger} from "../logger";
 import {Placeholder} from "./types";
 import cuid from "cuid";
+import Queue from "queue";
 
 export default class MessagingService {
     private client: WASocket | undefined;
+    private jobQueue: Queue = new Queue({
+        concurrency: 2,
+        autostart: true,
+        results: [],
+        timeout: undefined,
+    });
+
     private metadataEnabled: boolean;
     private metadataAssignment: Map<string, Metadata>;
     private messageCallbacks: [
@@ -35,6 +40,16 @@ export default class MessagingService {
         this.metadataAssignment = new Map();
         this.messageCallbacks = [];
         this.metadataEnabled = metadataEnabled;
+
+        this.jobQueue.on('success', (result, job) => {
+            if (result && result instanceof Message && result.raw) {
+                this.storeMessageToCache(
+                    result.raw.key.remoteJid!,
+                    result.raw.key.id!,
+                    result.raw.message!,
+                );
+            }
+        })
 
         setInterval(() => {
             // clear references in sentMessagesCache
@@ -99,7 +114,7 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
-            buttons
+            buttons,
         });
     }
 
@@ -139,7 +154,7 @@ export default class MessagingService {
             metadata,
             placeholder,
             tags,
-            buttons
+            buttons,
         );
     }
 
@@ -159,7 +174,15 @@ export default class MessagingService {
             buttons?: string[];
         } = {},
     ) {
-        return this._internalSendMessage(recipient, content, options, metadata, placeholder, tags, buttons);
+        return this._internalSendMessage(
+            recipient,
+            content,
+            options,
+            metadata,
+            placeholder,
+            tags,
+            buttons,
+        );
     }
 
     private async _internalSendMessage(
@@ -173,76 +196,83 @@ export default class MessagingService {
     ): Promise<Message | undefined> {
         if (!this.client || !recipient || !content) return;
 
-        let sentMessage: proto.IWebMessageInfo | undefined;
+        if (metadata) {
+            metadata.meta.set("ignore", this._shouldIgnore);
+        } else {
+            metadata = new Metadata(new Map<string, any>([["ignore", this._shouldIgnore]]));
+        }
 
-        try {
-            if (metadata) {
-                metadata.meta.set("ignore", this._shouldIgnore);
-            } else {
-                metadata = new Metadata(new Map<string, any>([["ignore", this._shouldIgnore]]));
-            }
+        if (options?.quoted) {
+            options.quoted.key.fromMe = false;
+        }
 
-            if (options?.quoted) {
-                options.quoted.key.fromMe = false;
-            }
+        if (tags && tags.length > 0 && !(content as any).mentions) (content as any).mentions = [];
+        if (tags && tags.length > 0) {
+            ((content as any).mentions as string[]).push(...tags);
+        }
 
-            if (tags && tags.length > 0 && !(content as any).mentions)
-                (content as any).mentions = [];
-            if (tags && tags.length > 0) {
-                ((content as any).mentions as string[]).push(...tags);
-            }
+        if (buttons && buttons.length > 0 && !(content as any).buttons)
+            (content as any).buttons = [];
+        if (buttons && buttons.length > 0) {
+            ((content as any).buttons as string[]).push(...buttons);
+        }
 
-            if (buttons && buttons.length > 0 && !(content as any).buttons)
-                (content as any).buttons = [];
-            if (buttons && buttons.length > 0) {
-                ((content as any).buttons as string[]).push(...buttons);
-            }
-
-            const text = (content as any).text;
-            const caption = (content as any).caption;
-            const btns = (content as any).buttons;
-            if (text != undefined && text.length > 0)
-                (content as any).text = await applyPlaceholders(text, placeholder);
-            if (caption != undefined && caption.length > 0)
-                (content as any).caption = await applyPlaceholders(caption, placeholder);
-            if (btns != undefined && btns.length > 0) {
-                if (btns && btns.length > 0) {
-                    for (const button of btns) {
-                        if (!button.buttonText.displayText) continue;
-                        button.buttonText.displayText = await applyPlaceholders(
-                            button.buttonText.displayText,
-                            placeholder,
-                        );
-                    }
+        const text = (content as any).text;
+        const caption = (content as any).caption;
+        const btns = (content as any).buttons;
+        if (text != undefined && text.length > 0)
+            (content as any).text = await applyPlaceholders(text, placeholder);
+        if (caption != undefined && caption.length > 0)
+            (content as any).caption = await applyPlaceholders(caption, placeholder);
+        if (btns != undefined && btns.length > 0) {
+            if (btns && btns.length > 0) {
+                for (const button of btns) {
+                    if (!button.buttonText.displayText) continue;
+                    button.buttonText.displayText = await applyPlaceholders(
+                        button.buttonText.displayText,
+                        placeholder,
+                    );
                 }
             }
+        }
 
-            sentMessage = await this.client!.sendMessage(recipient, content, options);
+        this._sendMessage(recipient, content, options, metadata);
+    }
 
-            if (this.metadataEnabled && metadata) {
-                this.metadataAssignment.set(sentMessage?.key.id!, metadata);
-            }
+    private _sendMessage(
+        recipient: string,
+        content: AnyMessageContent,
+        options?: MiscMessageGenerationOptions,
+        metadata?: Metadata,
+    ) {
+        if (!this.client || !recipient || !content) return;
 
-            return Message.fromWAMessage(sentMessage!, metadata);
-        } catch (error) {
-            logger.error(`FAILED TO SEND MESSAGE | ${JSON.stringify(content, null, 2)}`);
-            logger.error(error);
-            if ((error as any).stack) logger.error((error as any).stack);
-            sentMessage = await this.client!.sendMessage(
-                recipient,
-                {text: "Failed to send this message."},
-                options,
-            );
-            return Message.fromWAMessage(sentMessage!, metadata);
-        } finally {
-            if (sentMessage && sentMessage.message) {
-                this.storeMessageToCache(
-                    sentMessage.key.remoteJid!,
-                    sentMessage.key.id!,
-                    sentMessage.message!,
+        this.jobQueue.push(async (cb) => {
+            let msg: WAMessage | undefined;
+            try {
+                msg = await this.client?.sendMessage(recipient, content, options);
+            } catch (err) {
+                logger.error(`FAILED TO SEND MESSAGE | ${JSON.stringify(content, null, 2)}`);
+                logger.error(err);
+                if ((err as any).stack) logger.error((err as any).stack);
+
+                msg = await this.client?.sendMessage(
+                    recipient,
+                    {text: "Failed to send this message."},
+                    options,
                 );
             }
-        }
+
+            if (msg && msg.message) {
+                if (this.metadataEnabled && metadata) {
+                    this.metadataAssignment.set(msg?.key.id!, metadata);
+                }
+
+                return Message.fromWAMessage(msg, metadata);
+            }
+
+            return undefined;
+        });
     }
 
     private storeMessageToCache(jid: string, id: string, message: proto.IMessage) {
