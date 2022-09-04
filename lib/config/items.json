@@ -25,6 +25,31 @@
         "durability": -1
     },
     {
+        "id": "shovel",
+        "name": {
+            "english": "Shovel",
+            "hebrew": "את חפירה"
+        },
+        "description": {
+            "english": "Use this to access `{prefix}dig`.",
+            "hebrew": "קנה את זה כדי להשתמש בפקודת `{prefix}חפירה`."
+        },
+        "extended_description": {
+            "english": "This shovel allows you to use the dig command, giving you potentially lots of different types of items!",
+            "hebrew": "את חפירה מאפשר לך להשתמש בפקודה חפירה, ומעניקה לך פוטנציאל להשיג הרבה סוגים שונים של מוצרים!"
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
+        "type": "Tool",
+        "value": 25000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/868263822035669002.png",
+        "durability": -1
+    },
+    {
         "id": "skunk",
         "name": {
             "english": "Skunk",
@@ -397,6 +422,56 @@
         "value": 8000,
         "rarity": "Common",
         "image": "https://cdn.discordapp.com/emojis/971160094349869126.png",
+        "durability": -1
+    },
+    {
+        "id": "garbage",
+        "name": {
+            "english": "Garbage",
+            "hebrew": "אשפה"
+        },
+        "description": {
+            "english": "A garbage thing, not worth much.",
+            "hebrew": "זבל, לא שווה הרבה."
+        },
+        "extended_description": {
+            "english": "This is an absolute garbage item.",
+            "hebrew": "ליטרלי זבל מוחלט."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 200,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/935631382590394398.png",
+        "durability": -1
+    },
+    {
+        "id": "seaweed",
+        "name": {
+            "english": "Seaweed",
+            "hebrew": "אצות"
+        },
+        "description": {
+            "english": "Some slimy seaweed. You can sell it to gain a tiny portion of coins.",
+            "hebrew": "כמה אצות דביקות. אתה יכול למכור אותם כדי להרוויח טיפה מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 400,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/887000050201419787.gif",
         "durability": -1
     },
     {

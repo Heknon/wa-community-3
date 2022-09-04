@@ -1496,7 +1496,13 @@
                 "description": "Hunt animals",
                 "usage": "{prefix}{command}",
                 "execution": {
-                    "dev": "This command is under development."
+                    "nothing": [
+                        "All that time in the woods, and you couldn't catch a single thing hahaha.",
+                        "You might be the only hunter in the world to never hit anything, just like this time",
+                        "You went hunting the woods and brought back literally nothing lol."
+                    ],
+                    "found": "You went hunting in the woods and brought back {item}!",
+                    "nogun": "C'mon, you know better than this.\nYou need a Hunting Rifle in your inventory to go hunting."
                 }
             },
             "hebrew": {
@@ -1507,7 +1513,89 @@
                 "description": "תצוד חיות ותמכור אותם!",
                 "usage": "{prefix}{command}",
                 "execution": {
-                    "dev": "הפקודה תחת פיתוח, סליחה!"
+                    "nothing": [
+                        "כל הזמן שהיית ביער ולא הצלחת לצוד דבר אחד 🤦‍♂️ חחחחחחחחחחחחחחחחחחחחחחחח.",
+                        "אני חושב שאתה הצייד היחיד בעולם שלא פגע בדבר אחד.",
+                        "אני מת אתה יצאת לצוד וחזרת עם ליטרלי כלום"
+                    ],
+                    "found": "יצאת לצוד ומצאת {item}!",
+                    "nogun": "אתה צריך להיות עם אקדח ציידים עליך כדי לצאת לצוד."
+                }
+            }
+        },
+        "fish": {
+            "triggers": [
+                "fish",
+                "דייג"
+            ],
+            "english": {
+                "triggers": [
+                    "fish"
+                ],
+                "category": "Economy",
+                "description": "Fish and maybe find some items you could sell for profit",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "nothing": [
+                        "You cast out your line and sadly didn't get a bite",
+                        "Your fishing trip came up empty, shoes for dinner again tonight!"
+                    ],
+                    "found": "You cast out your line and brought back {item}!",
+                    "nopole": "C'mon, you know better than this.\nYou need a Fishing Pole in your inventory to go fishing."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "דייג"
+                ],
+                "category": "כלכלה",
+                "description": "תדוג ואולי תמצא כמה מוצרים שתוכל למכור בשביל כסף!",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "nothing": [
+                        "זרקת את החכה ולא מצאת כלום... כלום.",
+                        "סיימת את שייט הדייג שלך עם כלום. נעליים לארוחת ערב שוב!"
+                    ],
+                    "found": "יצאת לדוג ומצאת {item}!",
+                    "nopole": "אתה צריך להיות עם חכה עליך כדי לצאת לדוג."
+                }
+            }
+        },
+        "dig": {
+            "triggers": [
+                "dig",
+                "חפירה"
+            ],
+            "english": {
+                "triggers": [
+                    "dig"
+                ],
+                "category": "Economy",
+                "description": "Dig deep into the ground and you might some items",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "nothing": [
+                        "You dig in the dirt and find... nothing...",
+                        "You dig in the dirt and find... nothing... egh go take a shower"
+                    ],
+                    "found": "You went out to dig and brought back {item}!",
+                    "noshovel": "C'mon, you know better than this.\nYou need a Shovel in your inventory to go digging."
+                }
+            },
+            "hebrew": {
+                "triggers": [
+                    "חפירה"
+                ],
+                "category": "כלכלה",
+                "description": "תחפור באדמה ואולי תמצא כמה מוצרים",
+                "usage": "{prefix}{command}",
+                "execution": {
+                    "nothing": [
+                        "חפרת בבוץ ומצאת.... כלום....",
+                        "חפרת בבוץ ומצאת... כלום... לך תתקלח איכס"
+                    ],
+                    "found": "יצאת לחפור טיפה ומצאת {item}!",
+                    "noshovel": "אתה צריך להיות עם את חפירה עליך כדי לחפור."
                 }
             }
         },

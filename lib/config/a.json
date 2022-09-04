@@ -1807,7 +1807,7 @@
         },
         "description": {
             "english": "Use this to access `{prefix}fish`.",
-            "hebrew": "קנה את זה כדי לגשת לפקודה `{prefix}דייג`."
+            "hebrew": "קנה את זה כדי להשתמש בפקודת `{prefix}דייג`."
         },
         "extended_description": {
             "english": "This fishing pole allows you to use the fish command, giving you potentially lots of different types of items!",
@@ -1928,15 +1928,15 @@
         "id": "garbage",
         "name": {
             "english": "Garbage",
-            "hebrew": "אַשׁפָּה"
+            "hebrew": "אשפה"
         },
         "description": {
             "english": "A garbage thing, not worth much.",
-            "hebrew": "עניין זבל, לא שווה הרבה."
+            "hebrew": "זבל, לא שווה הרבה."
         },
         "extended_description": {
             "english": "This is an absolute garbage item.",
-            "hebrew": "זהו פריט זבל מוחלט."
+            "hebrew": "ליטרלי זבל מוחלט."
         },
         "flags": {
             "CONSUMABLE": false,
@@ -2332,11 +2332,11 @@
         },
         "description": {
             "english": "A junky thing, not worth much.",
-            "hebrew": "דבר מופרך, לא שווה הרבה."
+            "hebrew": "דבר מסריח, לא שווה הרבה."
         },
         "extended_description": {
-            "english": "This is an absolute junk item. This item additionally no longer drops from any sources.",
-            "hebrew": "זהו פריט זבל מוחלט. בנוסף, פריט זה אינו נופל ממקורות כלשהם."
+            "english": "This is an absolute junk item.",
+            "hebrew": "ליטרלי זבל מוחלט."
         },
         "flags": {
             "CONSUMABLE": false,
@@ -3978,11 +3978,11 @@
         "id": "seaweed",
         "name": {
             "english": "Seaweed",
-            "hebrew": "אַצָה"
+            "hebrew": "אצות"
         },
         "description": {
             "english": "Some slimy seaweed. You can sell it to gain a tiny portion of coins.",
-            "hebrew": "קצת אצות רירות. אתה יכול למכור אותו כדי להרוויח חלק זעיר של מטבעות."
+            "hebrew": "כמה אצות דביקות. אתה יכול למכור אותם כדי להרוויח טיפה מטבעות."
         },
         "extended_description": {
             "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
@@ -3994,7 +3994,7 @@
             "TRADEABLE": true
         },
         "type": "Sellable",
-        "value": 250,
+        "value": 400,
         "rarity": "Common",
         "image": "https://cdn.discordapp.com/emojis/887000050201419787.gif",
         "durability": 1
@@ -4057,11 +4057,11 @@
         },
         "description": {
             "english": "Use this to access `{prefix}dig`.",
-            "hebrew": "השתמש בזה כדי לגשת אל `{prefix}dig`."
+            "hebrew": "קנה את זה כדי להשתמש בפקודת `{prefix}חפירה`."
         },
         "extended_description": {
             "english": "This shovel allows you to use the dig command, giving you potentially lots of different types of items!",
-            "hebrew": "חפירה זו מאפשרת לך להשתמש בפקודה חפירה, ומעניקה לך פוטנציאל הרבה סוגים שונים של פריטים!"
+            "hebrew": "את חפירה מאפשר לך להשתמש בפקודה חפירה, ומעניקה לך פוטנציאל להשיג הרבה סוגים שונים של מוצרים!"
         },
         "flags": {
             "CONSUMABLE": false,

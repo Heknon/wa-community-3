@@ -2,7 +2,7 @@ import {Prisma} from "@prisma/client";
 import cuid from "cuid";
 import {prisma} from "../db/client";
 import {User} from "../db/types";
-import {getItemData, ItemID} from "../economy/items";
+import {getItemData, ItemData, ItemID} from "../economy/items";
 import Item from "../economy/items/item";
 
 type InventoryItem = ReturnType<typeof getInventory>[number];
@@ -62,8 +62,8 @@ export const giveItemToUser = async (user: User, itemId: ItemID, quantity: numbe
     return updatedUser;
 };
 
-export const userRegisterItemUse = async (user: User, item: Item) => {
-    const itemData = getInventoryItem(user, item.data.id);
+export const userRegisterItemUse = async (user: User, item: ItemData) => {
+    const itemData = getInventoryItem(user, item.id);
     if (!itemData) return;
 
     itemData.uses++;

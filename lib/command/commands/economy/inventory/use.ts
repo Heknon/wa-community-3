@@ -80,7 +80,7 @@ export default class UseItemCommand extends EconomyCommand {
         const invItem = getInventoryItem(user, item.data.id);
         if (!invItem || invItem.quantity <= 0) {
             if (invItem && invItem.quantity <= 0) {
-                await userRegisterItemUse(user, item);
+                await userRegisterItemUse(user, item.data);
             }
 
             return await message.reply(this.language.execution.no_item, true, {
@@ -89,7 +89,7 @@ export default class UseItemCommand extends EconomyCommand {
         }
 
         const useRes = await item.use(chat, user, message);
-        if (useRes !== false) await userRegisterItemUse(user, item);
+        if (useRes !== false) await userRegisterItemUse(user, item.data);
     }
 
     onBlocked(data: Message, blockedReason: BlockedReason) {}

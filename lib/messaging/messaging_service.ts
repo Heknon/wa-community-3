@@ -18,7 +18,7 @@ import { wait } from "../utils/async_utils";
 export default class MessagingService {
     private client: WASocket | undefined;
     private jobQueue: Queue = new Queue({
-        concurrency: 2,
+        concurrency: 1,
         autostart: true,
         results: [],
         timeout: undefined,
