@@ -78,7 +78,7 @@ export default class FishCommand extends EconomyCommand {
             [choice([getItemData("legendaryfish")!, getItemData("kraken")!]), 0.2],
         ]);
 
-        if (random.intBetween(1, 100) <= 5) {
+        if (random.intBetween(1, 100) <= 2) {
             await userRegisterItemUse(user, fishingpole.item!);
         }
 

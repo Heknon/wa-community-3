@@ -61,7 +61,7 @@ export default class HuntCommand extends EconomyCommand {
             [getItemData("boar")!, 1.5],
         ]);
 
-        if (random.intBetween(1, 100) <= 5) {
+        if (random.intBetween(1, 100) <= 2) {
             await userRegisterItemUse(user, rifle.item!);
         }
 
