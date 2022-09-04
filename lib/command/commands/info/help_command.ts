@@ -44,7 +44,7 @@ export default class HelpCommand extends Command {
         const cmdArg = body?.trim().startsWith(prefix) ? body.trim() : prefix + body?.trim();
         const cmdArgRes = await getCommandByTrigger(chat, cmdArg);
         const isBlocked = cmdArgRes
-            ? await this.commandHandler.isBlocked(message, chat, cmdArgRes, false)
+            ? await this.commandHandler.isBlocked(message, chat, user, cmdArgRes, false)
             : undefined;
         if (
             cmdArgRes &&
@@ -72,7 +72,7 @@ export default class HelpCommand extends Command {
         }
 
         const args = body!.split(" ") as string[];
-        let [filteredCommands, sendInGroup] = await this.getFilteredCommands(message, chat);
+        let [filteredCommands, sendInGroup] = await this.getFilteredCommands(message, chat, user);
         const categories = [
             ...new Set(
                 filteredCommands.map(
@@ -242,7 +242,7 @@ export default class HelpCommand extends Command {
         return sections;
     }
 
-    private async getFilteredCommands(message: Message, chat: Chat): Promise<[Command[], boolean]> {
+    private async getFilteredCommands(message: Message, chat: Chat, user: User): Promise<[Command[], boolean]> {
         const allCommands = this.commandHandler.commands;
         const filteredCommands: Array<Command> = [];
         let sendInGroup = true;
@@ -252,7 +252,7 @@ export default class HelpCommand extends Command {
             if (!command.mainTrigger.command) continue;
             if (command.mainTrigger.command == this.mainTrigger.command) continue;
 
-            if ((await this.commandHandler.isBlocked(message, chat, command, false)) != undefined)
+            if ((await this.commandHandler.isBlocked(message, chat, user, command, false)) != undefined)
                 continue;
 
             const commandLevel = getNumberFromAccountType(command.accountType);

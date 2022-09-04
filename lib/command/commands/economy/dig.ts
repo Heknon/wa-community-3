@@ -70,7 +70,7 @@ export default class DigCommand extends EconomyCommand {
             [choice([getItemData("ladybug")!, getItemData("banknote")!]), 7],
         ]);
 
-        if (random.intBetween(1, 100) <= 2) {
+        if (random.intBetween(1, 100) <= 3) {
             await userRegisterItemUse(user, shovel.item!);
         }
 

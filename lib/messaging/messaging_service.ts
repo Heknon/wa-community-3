@@ -215,7 +215,7 @@ export default class MessagingService {
         if (buttons && buttons.length > 0 && !(content as any).buttons)
             (content as any).buttons = [];
         if (buttons && buttons.length > 0) {
-            ((content as any).buttons as string[]).push(...buttons);
+            ((content as any).buttons).push(...(buttons.map((e)=> ({buttonId: cuid(), buttonText: {displayText: e}}))));
         }
 
         const text = (content as any).text;

@@ -39,7 +39,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
     }
 
     for (const [trigger, blockable] of foundCommands) {
-        const isBlocked = await handler.isBlocked(message, chat, blockable, true, trigger);
+        const isBlocked = await handler.isBlocked(message, chat, sender, blockable, true, trigger);
 
         if (isBlocked == BlockedReason.Cooldown) {
             const timeToWait = (await getCooldownLeft(sender.jid, blockable.mainTrigger)) / 1000.0;

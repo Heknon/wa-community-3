@@ -237,7 +237,7 @@
                     "cancelled": "הקנייה בוטלה.",
                     "no_item": "אין מוצר כזה בחנות!",
                     "no_sell": "אתה לא יכול למכור את המוצר הזה",
-                    "no_item_inv": "אתה כרגדע לא מחזיק שום מוצר כזה.",
+                    "no_item_inv": "אתה כרגע לא מחזיק שום מוצר כזה.",
                     "timeout": "לקח לך יותר מדי זמן לאשר את הקנייה, נסה שוב.",
                     "confirm_buttons": [
                         "כן",
@@ -1578,7 +1578,7 @@
                         "You dig in the dirt and find... nothing...",
                         "You dig in the dirt and find... nothing... egh go take a shower"
                     ],
-                    "found": "You went out to dig and brought back {item}!",
+                    "found": "You went out to dig and brought back *{item}*!",
                     "noshovel": "C'mon, you know better than this.\nYou need a Shovel in your inventory to go digging."
                 }
             },
@@ -1594,7 +1594,7 @@
                         "חפרת בבוץ ומצאת.... כלום....",
                         "חפרת בבוץ ומצאת... כלום... לך תתקלח איכס"
                     ],
-                    "found": "יצאת לחפור טיפה ומצאת {item}!",
+                    "found": "יצאת לחפור טיפה ומצאת *{item}*!",
                     "noshovel": "אתה צריך להיות עם את חפירה עליך כדי לחפור."
                 }
             }

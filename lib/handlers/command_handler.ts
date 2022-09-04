@@ -6,10 +6,10 @@ import Triggerable from "../blockable/triggerable";
 import {Command, CommandTrigger} from "../command";
 import Message from "../../lib/messaging/message";
 import {getUserPrivilegeLevel} from "../utils/group_utils";
-import {Chat} from "@prisma/client";
 import {getNumberFromAccountType, getNumberFromGroupLevel} from "../utils/utils";
 import {prisma} from "../db/client";
 import {getCooldownLeft} from "../user/user";
+import { User, Chat } from "../db/types";
 
 export default class CommandHandler {
     public commands: Command[];
@@ -69,11 +69,12 @@ export default class CommandHandler {
     async isBlocked(
         data: Message,
         chat: Chat,
+        user: User,
         blockable: Command,
         checkCooldown: boolean,
         trigger?: CommandTrigger | undefined,
     ): Promise<BlockedReason | undefined> {
-        const res = await this.isBlockedCheck(data, chat, blockable, checkCooldown, trigger);
+        const res = await this.isBlockedCheck(data, chat, user, blockable, checkCooldown, trigger);
 
         return res;
     }
@@ -81,6 +82,7 @@ export default class CommandHandler {
     async isBlockedCheck(
         message: Message,
         chat: Chat,
+        user: User,
         blockable: Command,
         checkCooldown: boolean = true,
         trigger?: CommandTrigger,
@@ -88,7 +90,7 @@ export default class CommandHandler {
         if (!(blockable instanceof Command)) return -1;
         if (trigger && !(trigger instanceof CommandTrigger)) return -1;
 
-        const checkedPerms = await messagePermissionsCheck(blockable, message);
+        const checkedPerms = await messagePermissionsCheck(blockable, message, chat, user);
         if (checkedPerms != undefined) return checkedPerms;
 
         const usedTrigger = trigger ?? blockable.mainTrigger;
@@ -115,7 +117,7 @@ export default class CommandHandler {
     }
 }
 
-export const messagePermissionsCheck = async (blockable: Blockable<Message>, message: Message) => {
+export const messagePermissionsCheck = async (blockable: Blockable<Message>, message: Message, chat: Chat, user: User) => {
     if (blockable.blockedChats.includes("GROUP") && isJidGroup(message.raw?.key.remoteJid!)) {
         return BlockedReason.BlockedChat;
     }
@@ -140,37 +142,6 @@ export const messagePermissionsCheck = async (blockable: Blockable<Message>, mes
         if (level < gLevel) {
             return BlockedReason.InsufficientGroupLevel;
         }
-    }
-
-    const user = await prisma.user.findUnique({
-        where: {
-            jid: message.from,
-        },
-    });
-    if (!user) {
-        return BlockedReason.InvalidUser;
-    }
-
-    const isGc = isJidGroup(message.jid);
-    const chat = isGc
-        ? await prisma.chat.findUnique({
-              where: {jid: message.jid},
-              include: {
-                  chatRank: {
-                      select: {
-                          gifter: {
-                              select: {
-                                  accountType: true,
-                              },
-                          },
-                      },
-                  },
-              },
-          })
-        : undefined;
-
-    if (isGc && !chat) {
-        return BlockedReason.InvalidChat;
     }
 
     const accountLevel = getNumberFromAccountType(user.accountType);

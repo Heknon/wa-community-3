@@ -669,7 +669,7 @@
             "TRADEABLE": true
         },
         "type": "Tool",
-        "value": 30000,
+        "value": 20000,
         "rarity": "Uncommon",
         "image": "https://cdn.discordapp.com/emojis/942168959346704435.gif",
         "durability": 1
