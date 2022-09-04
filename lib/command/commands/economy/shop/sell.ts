@@ -49,7 +49,9 @@ export default class SellCommand extends EconomyCommand {
         const invItem = itemData ? getInventoryItem(user, itemData.id) : undefined;
         const textNum = Number(/\d+/.exec(body)?.[0]);
         const amount = textNum ? Math.min(textNum, invItem?.quantity ?? 1) || 1 : 1;
-        const price = (itemData?.sell ?? 0) * amount;
+        const isSellable = itemData?.type.toLowerCase() === "sellable";
+        const sellValue = isSellable ? itemData.value ?? 0 : (itemData?.value ?? 0) / 1000;
+        const price = sellValue * amount;
         const placeholder = this.getDefaultPlaceholder({
             chat,
             user,
@@ -69,7 +71,7 @@ export default class SellCommand extends EconomyCommand {
                 true,
                 {placeholder},
             );
-        } else if (itemData.sell <= 0) {
+        } else if (sellValue <= 0) {
             return message.replyAdvanced(
                 {
                     text: this.language.execution.no_sell,

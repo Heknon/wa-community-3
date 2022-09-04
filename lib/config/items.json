@@ -6,40 +6,23 @@
             "hebrew": "אקדח ציידים"
         },
         "description": {
-            "english": "Use this to access {prefix}hunt",
-            "hebrew": "השתמש בזה כדי לגשת ל {prefix}צייד"
+            "english": "Use this to access `{prefix}hunt`.",
+            "hebrew": "השתמש בזה כדי לגשת אל `{prefix}צייד`."
+        },
+        "extended_description": {
+            "english": "This hunting rifle allows you to use the hunt command, giving you potentially lots of different types of items!",
+            "hebrew": "רובה הציידים מאפשר לך להשתמש בפקודת הצייד, ונותן לך את האפשרות להשיג הרבה סוגים שונים של פריטים!"
         },
         "flags": {
             "CONSUMABLE": false,
             "PURCHASEABLE": true,
             "TRADEABLE": true
         },
-        "durability": 4,
         "type": "Tool",
+        "value": 25000,
         "rarity": "Common",
-        "buy": 25000,
-        "sell": 2500
-    },
-    {
-        "id": "bread",
-        "name": {
-            "english": "Bread",
-            "hebrew": "לחם"
-        },
-        "description": {
-            "english": "Why not have some bread 🍞",
-            "hebrew": "יאמ יאמ לחם 🍞"
-        },
-        "flags": {
-            "CONSUMABLE": true,
-            "PURCHASEABLE": true,
-            "TRADEABLE": true
-        },
-        "durability": 1,
-        "type": "Tool",
-        "buy": 5000,
-        "sell": 500,
-        "rarity": "Common"
+        "image": "https://cdn.discordapp.com/emojis/868286178070261760.png",
+        "durability": -1
     },
     {
         "id": "skunk",
@@ -47,131 +30,587 @@
             "english": "Skunk",
             "hebrew": "בואש"
         },
+        "description": {
+            "english": "This skunk is not alive; I think someone shot it. GOD, IT SMELLS WTF!",
+            "hebrew": "הבואש הזה מת; אני חושב שמישהו ירה בו. אלוהים ישמור זה מסריח וטפפפכגדכ!"
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
         "flags": {
             "CONSUMABLE": false,
             "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "durability": -1,
         "type": "Sellable",
-        "buy": -1,
-        "sell": 2125,
-        "rarity": "Common"
+        "value": 1250,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/861390875992522792.png",
+        "durability": -1
+    },
+    {
+        "id": "boar",
+        "name": {
+            "english": "Boar",
+            "hebrew": "חזיר בר"
+        },
+        "description": {
+            "english": "This boar is not alive; I think someone shot it. Hakuna matata...",
+            "hebrew": "החזיר הזה מת; אני חושב שמישהו ירה בו. האקונה מטאטה..."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 4000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/861584585656762398.png",
+        "durability": -1
+    },
+    {
+        "id": "deer",
+        "name": {
+            "english": "Deer",
+            "hebrew": "צבי"
+        },
+        "description": {
+            "english": "This deer is not alive; I think someone shot it. WHO COULD HAVE DONE SUCH A THING TO BAMBI.",
+            "hebrew": "הצבי הזה לא חי... אני חושב שמישהו ירה בו. למה שיעשו לבמבי דבר כזה??!??!?!?!?!!!."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 2000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/981686994524569710.png",
+        "durability": -1
+    },
+    {
+        "id": "duck",
+        "name": {
+            "english": "Duck",
+            "hebrew": "ברווז"
+        },
+        "description": {
+            "english": "This duck is not alive; I think someone shot it. WE'RE EATING GOOD TONIGHT BOYS!",
+            "hebrew": "הברווז הזה מת... אני חושב שמישהו ירה בו.\nBOISSSS אנחנו אוכלים טוב הלילה!"
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 1750,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/920400262911373383.png",
+        "durability": -1
+    },
+    {
+        "id": "spider",
+        "name": {
+            "english": "Spider",
+            "hebrew": "עכביש"
+        },
+        "description": {
+            "english": "This spider is not alive; I think someone shot it? Yeah that checks out, spiders suck.",
+            "hebrew": "העכביש הזה לא חי; אני חושב שמישהו ירה בו? כן זה נראה ככה, עכבישים 😖."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 5000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/864261394944884746.png",
+        "durability": -1
+    },
+    {
+        "id": "worm",
+        "name": {
+            "english": "Worm",
+            "hebrew": "תולעת"
+        },
+        "description": {
+            "english": "This worm is not alive; I think someone shot it? Who shoots a worm wtf.",
+            "hebrew": "התולעת הזו אינה חיה; אני חושב שמישהו ירה בו? מי יורה בתולעת וטפ."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 500,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/864261394920898600.png",
+        "durability": -1
+    },
+    {
+        "id": "ladybug",
+        "name": {
+            "english": "Ladybug",
+            "hebrew": "פרת משה רבנו"
+        },
+        "description": {
+            "english": "This ladybug is not alive; I think someone shot it? This smells stale as crap.",
+            "hebrew": "פרת משה רבנו לא חיה... אני חושב שמישהו ירה בו? זה מריח כמו זבל."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 3000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/863198415822389268.png",
+        "durability": -1
+    },
+    {
+        "id": "rabbit",
+        "name": {
+            "english": "Rabbit",
+            "hebrew": "ארנב"
+        },
+        "description": {
+            "english": "This rabbit is not alive; I think someone shot it. Rabbit fur is pretty soft...",
+            "hebrew": "הארנב הזה מת. אני חושב שמישהו ירה בו. הפרווה של הארנב די רכה..."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 1500,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/860665246875254784.png",
+        "durability": -1
+    },
+    {
+        "id": "ant",
+        "name": {
+            "english": "Ant",
+            "hebrew": "נמלה"
+        },
+        "description": {
+            "english": "This ant is not alive; I think someone shot it? Who shoots an ant wtf.",
+            "hebrew": "הנמלה הזו אינה בחיים; אני חושב שמישהו ירה בו? מי יורה בנמלה וטפ."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 1000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/864220608865763378.png",
+        "durability": -1
+    },
+    {
+        "id": "dragon",
+        "name": {
+            "english": "Dragon",
+            "hebrew": "דרקון"
+        },
+        "description": {
+            "english": "I hope this dragon isn't alive. I think someone shot it? This is probably worth a pretty penny!",
+            "hebrew": "אני מקווה שהדרקון הזה לא חי... אני חושב שמישהו ירה בו? זה כנראה שווה טיפה הרבה!"
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less. Unless...",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות. אלא אם..."
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 30000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/861390869696741396.png",
+        "durability": -1
+    },
+    {
+        "id": "fishingpole",
+        "name": {
+            "english": "Fishing Pole",
+            "hebrew": "חכה"
+        },
+        "description": {
+            "english": "Use this to access `{prefix}fish`.",
+            "hebrew": "קנה את זה כדי לגשת לפקודה `{prefix}דייג`."
+        },
+        "extended_description": {
+            "english": "This fishing pole allows you to use the fish command, giving you potentially lots of different types of items!",
+            "hebrew": "חכה מאפשרת לך להשתמש בפקודת דייג, ומעניק לך את האפשרות להשיג הרבה סוגים שונים של פריטים!"
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
+        "type": "Tool",
+        "value": 25000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/868519722759630858.png",
+        "durability": -1
+    },
+    {
+        "id": "commonfish",
+        "name": {
+            "english": "Common Fish",
+            "hebrew": "דג מצוי"
+        },
+        "description": {
+            "english": "This is a pretty common fish. You can sell it to gain a few coins.",
+            "hebrew": "דג די נפוץ. אתה יכול למכור אותו כדי להרוויח כמה מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 750,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/957698195000025158.png",
+        "durability": -1
+    },
+    {
+        "id": "rarefish",
+        "name": {
+            "english": "Rare Fish",
+            "hebrew": "דג נדיר"
+        },
+        "description": {
+            "english": "This is a fairly rare fish. You can sell it to gain a fair amount of coins.",
+            "hebrew": "זהו דג נדיר למדי. אתה יכול למכור אותו כדי להרוויח כמות נאה של מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 2500,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/971151079096061962.png",
+        "durability": -1
+    },
+    {
+        "id": "exoticfish",
+        "name": {
+            "english": "Exotic Fish",
+            "hebrew": "דג אקזוטי"
+        },
+        "description": {
+            "english": "This is a really rare fish. You can sell it to gain a large sum of coins.",
+            "hebrew": "דג נדיר מאוד. אתה יכול למכור אותו ולקבל סכום גדול של מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 7000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/970794371869995058.png",
+        "durability": -1
+    },
+    {
+        "id": "jellyfish",
+        "name": {
+            "english": "Jelly Fish",
+            "hebrew": "מדוזה"
+        },
+        "description": {
+            "english": "This is a really neat jellyfish. You can sell it to gain a large sum of coins.",
+            "hebrew": "מדוזה מאוד מגניבה. אתה יכול למכור אותה ולקבל סכום גדול של מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 8000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/971160094349869126.png",
+        "durability": -1
+    },
+    {
+        "id": "legendaryfish",
+        "name": {
+            "english": "Legendary Fish",
+            "hebrew": "דג אגדי"
+        },
+        "description": {
+            "english": "This is a really, REALLY rare fish. You can sell it to gain a massive sum of coins.",
+            "hebrew": "דג מאוד מאוד נדיר. אתה יכול למכור אותו כדי להרוויח סכום עצום של מטבעות."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less.",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות."
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 20000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/971430841211322408.gif",
+        "durability": -1
+    },
+    {
+        "id": "kraken",
+        "name": {
+            "english": "Kraken",
+            "hebrew": "קראקן"
+        },
+        "description": {
+            "english": "The king of the sea can be sold to fill your pockets.",
+            "hebrew": "את מלך הים אפשר למכור כדי למלא את הכיסים שלכם."
+        },
+        "extended_description": {
+            "english": "This item's purpose is to be collected or sold. Nothing more, nothing less..?",
+            "hebrew": "מטרת פריט זה היא לאספנות או מכירה. לא יותר, לא פחות..?"
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 80000,
+        "rarity": "Rare",
+        "image": "https://cdn.discordapp.com/emojis/860228238956429313.png",
+        "durability": -1
+    },
+    {
+        "id": "bread",
+        "name": {
+            "english": "Fresh Bread",
+            "hebrew": "לחם טרי"
+        },
+        "description": {
+            "english": "The best fresh bread from our bakery made daily!",
+            "hebrew": "הלחם הטרי והטוב ביותר מהמאפייה שלנו!"
+        },
+        "extended_description": {
+            "english": "",
+            "hebrew": ""
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
+        },
+        "type": "Sellable",
+        "value": 500,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/980955203018821632.png",
+        "durability": 1
     },
     {
         "id": "banknote",
         "name": {
-            "english": "Banknote",
+            "english": "Bank Note",
             "hebrew": "פתק בנק"
         },
-        "durability": 1,
-        "type": "Power-up",
-        "buy": 350000,
-        "sell": 35000,
         "description": {
             "english": "Use this to expand your bank space!",
             "hebrew": "השתמש בזה על מנת להגדיל את המקום בבנק שלך!"
         },
+        "extended_description": {
+            "english": "You can either use this note to expand your bank space by a large amount or sell it for some coins. Your choice, really. Expanded bank space does not reset on prestige (regular bank space earned via running commands does)",
+            "hebrew": "אתה יכול להשתמש בפתק זה כדי להרחיב את האחסון בבנק שלך או למכור אותו עבור כמה מטבעות. הבחירה שלך. אחסון הבנק המורחב אינו מתאפס כשעושים פרסטיג' (אחסון בנק רגיל שנצבר באמצעות פקודות כן)"
+        },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "rarity": "Uncommon"
+        "type": "Power-up",
+        "value": 350000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/830509316888985621.png",
+        "durability": 1
     },
     {
         "id": "padlock",
-        "type": "Tool",
         "name": {
             "english": "Padlock",
             "hebrew": "מנעול"
         },
+        "description": {
+            "english": "Lock a padlock on your wallet to prevent people from robbing you.",
+            "hebrew": "תנעל את הארנק שלך ותמנע מאנשים מלגנוב ממך."
+        },
+        "extended_description": {
+            "english": "Lock a padlock on your wallet to prevent people from robbing you. This is a one-time use item; once the lock is broken or removed, it won't come back or do anything unless you buy another one. It will not ALWAYS break, but it has a chance to break when someone tries to steal from you.",
+            "hebrew": "שים מנעול על הארנק שלך כדי למנוע מאנשים מלשדוד אותך.\nשימוש חד פעמי; ברגע שהמנעול נשבר או מוסר, הוא לא יחזור או יעשה שום דבר אלא אם תקנה אחד חדש.\nזה לא תמיד ישבר, אבל יש לו סיכוי להישבר כשמישהו מנסה לגנוב ממך."
+        },
         "flags": {
             "CONSUMABLE": true,
             "PURCHASEABLE": true,
             "TRADEABLE": true
         },
-        "description": {
-            "english": "Lock your wallet to prevent others from accessing it. *ONE-TIME USE.*\nThere is a chance the padlock would break and not protect your wallet.",
-            "hebrew": "תנעל את הארנק שלך ותמנע מאחרים גישה אליו. *שימוש אחד בלבד*\nיש סיכוי שמישהו יצליח לשבור אותו ולגשת לארנק."
-        },
-        "buy": 5000,
-        "sell": 500,
-        "durability": 1,
-        "rarity": "Common"
+        "type": "Tool",
+        "value": 5000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/830509316900651059.png",
+        "durability": 1
     },
     {
         "id": "boxofsand",
-        "type": "Tool",
         "name": {
             "english": "Box of Sand",
-            "hebrew": "ארגז חול"
+            "hebrew": "קופסת חול"
         },
         "description": {
-            "english": "Throw a box of sand at someone's eyes and prevent them from robbing anyone for 30 minutes.",
-            "hebrew": "תזרוק חול לעיניים של מישהו ותמנע מהם לגנוב מכולם ל30 דקות."
+            "english": "Chuck some sand in someone's face to prevent them from robbing people briefly.",
+            "hebrew": "זרוק קצת חול לתוך הפנים של מישהו כדי למנוע מהם לשדוד אנשים לזמן קצר."
+        },
+        "extended_description": {
+            "english": "Throw a box of sand in someone's eyes to prevent them from robbing anyone for 30 minutes.",
+            "hebrew": "זרוק חול אל תוך העיניים של מישהו כדי למנוע מהם מלשדוד מישהו במשך 30 דקות."
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "buy": 15000,
-        "sell": 1500,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Tool",
+        "value": 5000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/830509316901175366.png",
+        "durability": 1
     },
     {
         "id": "landmine",
-        "type": "Tool",
         "name": {
             "english": "Landmine",
             "hebrew": "מוקש"
         },
         "description": {
-            "english": "If someone tries to steal from you they have a 50% of dying from going KABOOM! (Lasts 24 hours)",
-            "hebrew": "אם מישהו מנסה לגנוב ממך יש להם 50% של ללכת *קאבום* ולמות (פעיל ל24 שעות מהשימוש)"
+            "english": "Blows up when someone steps on it when trying to steal from you, potentially killing them.",
+            "hebrew": "מתפוצץ כשמישהו דורך עליו בזמן שהוא מנסה לגנוב ממך, ועלול להרוג אותו."
+        },
+        "extended_description": {
+            "english": "If someone tries to steal from you, there's a 50% chance they will die from blowing up. Lasts 24 hours.",
+            "hebrew": "אם מישהו ינסה לגנוב ממך, יש סיכוי של 50% שהוא ילך קאאבום וימות. פעיל ל24 שעות."
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "buy": 20000,
-        "sell": 2000,
-        "durability": 1,
-        "rarity": "Common"
+        "type": "Tool",
+        "value": 20000,
+        "rarity": "Common",
+        "image": "https://cdn.discordapp.com/emojis/887000049354145792.png",
+        "durability": 1
     },
     {
         "id": "coinbomb",
-        "type": "Tool",
         "name": {
             "english": "Coin Bomb",
             "hebrew": "פצצת מטבעות"
         },
         "description": {
-            "english": "A bomb that explodes coins for others to pick up. Anywhere from 2,00 to 15,000 coins.",
-            "hebrew": "פצצה שמתפוצצת כמטבעות בשביל אחרים לאסוף. מוציא בין 2,000 ל15,000 מטבעות."
+            "english": "A bomb that explodes coins for other people to pick up.",
+            "hebrew": "פצצה שמתפוצצת כמטבעות בשביל אחרים לאסוף."
+        },
+        "extended_description": {
+            "english": "A bomb that explodes coins for other people to pick up. Dispenses anywhere from ⏣ 2,000 - ⏣ 15,000 for other people on the server to pick up in chat. Basically used to get people active and share some coins!",
+            "hebrew": "פצצה שמפוצצת מטבעות שאנשים אחרים יוכלו להרים. מחלק בין ⏣ 2,000 - ⏣ 15,000 עבור אנשים אחרים בקבוצה לאסוף.!"
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "buy": 18000,
-        "sell": 4000,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Tool",
+        "value": 30000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/942168959346704435.gif",
+        "durability": 1
     },
     {
         "id": "lifesaver",
-        "type": "Power-up",
         "name": {
-            "english": "Lifesaver",
+            "english": "Life Saver",
             "hebrew": "מציל חיים"
         },
         "description": {
-            "english": "Having one in the inventory prevents death. This is used before the apple effects.",
+            "english": "Quite literally saves your life and keeps you from dying!",
+            "hebrew": "ליטרלי מציל את החיים שלך ומונע ממך מוות כואב ומצער!"
+        },
+        "extended_description": {
+            "english": "Having one in your inventory prevents death and uses one when you almost die. This is used BEFORE the apple's effects.",
             "hebrew": "אם יש לך מציל חיים עליך זה ימנע את מותך. נעשה שימוש בזה לפני האפקט של התפוח."
         },
         "flags": {
@@ -179,20 +618,24 @@
             "PURCHASEABLE": true,
             "TRADEABLE": true
         },
-        "buy": 90000,
-        "sell": 9000,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Power-up",
+        "value": 90000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/935147848977219635.gif",
+        "durability": 1
     },
     {
         "id": "apple",
-        "type": "Power-up",
         "name": {
             "english": "Apple",
-            "hebrew": "תפוח"
+            "hebrew": "תפוח עץ"
         },
         "description": {
-            "english": "Eating this once a day makes it so you don't lose any inventory or active items if you die.",
+            "english": "An apple a day keeps the what away? Avoid item loss on death!",
+            "hebrew": "תפוח ביום מרחיק את מה? הימנע מאובדן פריטים כשאתה מת!"
+        },
+        "extended_description": {
+            "english": "Eating this once a day makes it so you do not lose any inventory or active items if you die. The lifesaver takes priority over this effect. (Lasts 24 hours)",
             "hebrew": "לאכול את זה פעם ביום יגרום לכך שאם תמות לא תאבד מוצרים שעליך או אפקטים של מוצרים פעילים."
         },
         "flags": {
@@ -200,51 +643,60 @@
             "PURCHASEABLE": true,
             "TRADEABLE": true
         },
-        "buy": 8000,
-        "sell": 800,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Power-up",
+        "value": 8500,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/887000049266069575.png",
+        "durability": 1
     },
     {
         "id": "fakeid",
-        "type": "Tool",
         "name": {
             "english": "Fake ID",
-            "hebrew": "זהות מזויפת"
+            "hebrew": "תעודת זהות מזוייפת"
         },
         "description": {
-            "english": "Disguise your identity on the leaderboard and robber's wishlist for 1 week.",
-            "hebrew": "תחביא את הזהות שלך על רשימת המובילים ועל משאלות הגנב לשבוע אחד."
+            "english": "Disguise your identity on the `{prefix}top` command",
+            "hebrew": "תסוו את הזהות שלכם בפקודה `{prefix}מובילים`"
+        },
+        "extended_description": {
+            "english": "Disguise your identity on the leaderboard with a random fake name! Lasts for 1 week. Also, it will hide you from robbers' wishlists.",
+            "hebrew": "תסוו את הזהות שלך בכל מיני מקומות עם שם מזויף אקראי!\nנמשך שבוע אחד. כמו כן, זה יסתיר אותכם גם ממשאלות הגנב."
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "buy": 25000,
-        "sell": 2500,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Tool",
+        "value": 20000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/966338245443080213.png",
+        "durability": 1
     },
     {
         "id": "robberswishlist",
-        "type": "Tool",
         "name": {
-            "english": "Robber's Wishlist",
-            "hebrew": "משאלות הגנב"
+            "english": "Robbers Wishlist",
+            "hebrew": "רשימת שודדים"
         },
         "description": {
-            "english": "Will give you a list of users that aren't passive. Basically, anyone you can rob!",
-            "hebrew": "נותן לך רשימה של כל המשתמשים שלא במצב פאסיבי. בקיצור, כל מי שאתה יכול לשדוד!"
+            "english": "A robber's best friend! List all users able to be robbed within a server!",
+            "hebrew": "החבר הכי טוב של שודד! מראה את כל המשתמשים שניתן לשדוד בתוך קבוצה!"
+        },
+        "extended_description": {
+            "english": "This item when used gives a list of users that aren't passive and do not have a fake ID on. Basically, anyone who is able to be robbed!",
+            "hebrew": "כשמשתמשים במוצר זה הוא נותן רשימה של משתמשים שאינם פסיביים ואין להם זהות מוסוות.\nבעצם, כל מי שאפשר לשדוד ממנו!"
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": true,
+            "PURCHASEABLE": false,
             "TRADEABLE": true
         },
-        "buy": 50000,
-        "sell": 5000,
-        "durability": 1,
-        "rarity": "Uncommon"
+        "type": "Tool",
+        "value": 50000,
+        "rarity": "Uncommon",
+        "image": "https://cdn.discordapp.com/emojis/966630329756565594.png",
+        "durability": 1
     }
 ]

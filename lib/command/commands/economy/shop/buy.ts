@@ -47,7 +47,7 @@ export default class BuyCommand extends EconomyCommand {
         );
 
         const amount = Number(/\d+/.exec(body)?.[0]) || 1;
-        const price = (itemData?.buy ?? 0) * amount;
+        const price = (itemData?.value ?? 0) * amount;
         const placeholder = this.getDefaultPlaceholder({
             chat,
             user,
@@ -71,7 +71,7 @@ export default class BuyCommand extends EconomyCommand {
                 true,
                 {placeholder},
             );
-        } else if (itemData.buy <= 0) {
+        } else if (itemData.value <= 0 || !itemData.flags.PURCHASEABLE) {
             return message.replyAdvanced(
                 {
                     text: this.language.execution.no_buy,

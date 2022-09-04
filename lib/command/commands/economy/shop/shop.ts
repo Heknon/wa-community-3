@@ -38,12 +38,12 @@ export default class ShopCommand extends Command {
         let shopText = this.language.execution.title + "\n";
         const items = getAllItems();
         for (const item of items) {
-            if (item.buy <= 0) continue;
+            if (item.value <= 0 || !item.flags.PURCHASEABLE) continue;
             shopText +=
                 this.language.execution.item
                     .replace("{name}", item.name[this.langCode])
                     .replace("{quantity}", commas(user.items.find(e => e.itemId == item.id)?.quantity ?? 0))
-                    .replace('{price}', commas(item.buy))
+                    .replace('{price}', commas(item.value))
                     .replace('{description}', item.description?.[this.langCode] ?? "No description") + "\n\n";
         }
 
