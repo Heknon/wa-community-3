@@ -226,7 +226,7 @@
                     "מכירה",
                     "תמכור"
                 ],
-                "description": "קנה מוצר מהחנות!",
+                "description": "תמכור מוצר!",
                 "category": "כלכלה",
                 "execution": {
                     "success": {
