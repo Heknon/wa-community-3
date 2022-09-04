@@ -67,7 +67,7 @@ export default class UseItemCommand extends EconomyCommand {
                 true,
                 {placeholder},
             );
-        } else if (itemData.default_use === false) {
+        } else if (itemData.flags.CONSUMABLE === false) {
             return message.replyAdvanced(
                 {
                     text: this.language.execution.no_default_use,
