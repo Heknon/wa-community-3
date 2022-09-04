@@ -11,7 +11,7 @@ import {createUser} from "../../../user/database_interactions";
 import {choice, weightedChoice, weightedReward} from "./utils";
 import {getItemData} from "../../../economy/items";
 import {getInventory, giveItemToUser, userRegisterItemUse} from "../../../user/inventory";
-import { AccountType } from "@prisma/client";
+import {AccountType} from "@prisma/client";
 
 export default class HuntCommand extends EconomyCommand {
     private language: typeof languages.commands.hunt[Language];
@@ -47,7 +47,8 @@ export default class HuntCommand extends EconomyCommand {
     ) {
         const rifle = getInventory(user).find((e) => e.item?.id === "huntingrifle");
         if (!rifle) {
-            return await message.reply(this.language.execution.nogun, true);
+            await message.reply(this.language.execution.nogun, true);
+            return false;
         }
 
         const random = getUserRandom(user);

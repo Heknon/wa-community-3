@@ -44,7 +44,8 @@ export default class FishCommand extends EconomyCommand {
     ) {
         const fishingpole = getInventory(user).find((e) => e.item?.id === "fishingpole");
         if (!fishingpole) {
-            return await message.reply(this.language.execution.nopole, true);
+            await message.reply(this.language.execution.nopole, true);
+            return false;
         }
 
         const random = getUserRandom(user);

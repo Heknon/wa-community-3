@@ -11,7 +11,7 @@ import {createUser} from "../../../user/database_interactions";
 import {choice, weightedChoice, weightedReward} from "./utils";
 import {getItemData} from "../../../economy/items";
 import {getInventory, giveItemToUser, userRegisterItemUse} from "../../../user/inventory";
-import { AccountType } from "@prisma/client";
+import {AccountType} from "@prisma/client";
 
 export default class DigCommand extends EconomyCommand {
     private language: typeof languages.commands.dig[Language];
@@ -47,18 +47,15 @@ export default class DigCommand extends EconomyCommand {
     ) {
         const shovel = getInventory(user).find((e) => e.item?.id === "shovel");
         if (!shovel) {
-            return await message.reply(this.language.execution.noshovel, true);
+            await message.reply(this.language.execution.noshovel, true);
+            return false;
         }
 
         const random = getUserRandom(user);
         const drop = weightedChoice([
             [undefined, 35],
             [
-                choice([
-                    getItemData("worm")!,
-                    getItemData("boxofsand")!,
-                    getItemData("garbage")!,
-                ]),
+                choice([getItemData("worm")!, getItemData("boxofsand")!, getItemData("garbage")!]),
                 45,
             ],
             [
@@ -70,13 +67,7 @@ export default class DigCommand extends EconomyCommand {
                 ]),
                 13,
             ],
-            [
-                choice([
-                    getItemData("ladybug")!,
-                    getItemData("banknote")!,
-                ]),
-                7,
-            ]
+            [choice([getItemData("ladybug")!, getItemData("banknote")!]), 7],
         ]);
 
         if (random.intBetween(1, 100) <= 5) {
