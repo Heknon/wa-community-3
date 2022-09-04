@@ -565,7 +565,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Power-up",
@@ -615,7 +615,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Tool",
@@ -640,7 +640,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Tool",
@@ -665,7 +665,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Tool",
@@ -740,7 +740,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Tool",
@@ -765,7 +765,7 @@
         },
         "flags": {
             "CONSUMABLE": true,
-            "PURCHASEABLE": false,
+            "PURCHASEABLE": true,
             "TRADEABLE": true
         },
         "type": "Tool",
