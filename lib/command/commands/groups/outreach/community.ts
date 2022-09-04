@@ -30,7 +30,7 @@ export default class CommunityCommand extends Command {
         const res = await message.reply(this.language.execution.join_message, true, {
             placeholder: {
                 custom: {
-                    link: "https://chat.whatsapp.com/FBw47iX6G9z6IFrc44iKct",
+                    link: "https://chat.whatsapp.com/C3fRIrfoqBUJa6PhJMUdU2",
                 },
             },
         });

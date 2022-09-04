@@ -544,7 +544,7 @@
             "TRADEABLE": true
         },
         "type": "Sellable",
-        "value": 500,
+        "value": 5000,
         "rarity": "Common",
         "image": "https://cdn.discordapp.com/emojis/980955203018821632.png",
         "durability": 1
@@ -594,7 +594,7 @@
             "TRADEABLE": true
         },
         "type": "Tool",
-        "value": 5000,
+        "value": 10000,
         "rarity": "Common",
         "image": "https://cdn.discordapp.com/emojis/830509316900651059.png",
         "durability": 1
