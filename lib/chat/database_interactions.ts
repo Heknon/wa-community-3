@@ -14,7 +14,7 @@ export const createChat = async (jid: string, subject?: string) => {
             prefix: config.default_command_prefix,
             type: isJidGroup(jid) ? "GROUP" : isJidUser(jid) ? "DM" : "DM",
             jid: jid,
-            language: 'hebrew',
+            language: await getLanguageFromJid(jid),
         },
         include: {
             responses: true,
