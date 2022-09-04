@@ -603,7 +603,7 @@
         "id": "boxofsand",
         "name": {
             "english": "Box of Sand",
-            "hebrew": "קופסת חול"
+            "hebrew": "ארגז חול"
         },
         "description": {
             "english": "Chuck some sand in someone's face to prevent them from robbing people briefly.",
@@ -619,7 +619,7 @@
             "TRADEABLE": true
         },
         "type": "Tool",
-        "value": 5000,
+        "value": 25000,
         "rarity": "Uncommon",
         "image": "https://cdn.discordapp.com/emojis/830509316901175366.png",
         "durability": 1
