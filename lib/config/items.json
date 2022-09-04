@@ -9,8 +9,12 @@
             "english": "Use this to access {prefix}hunt",
             "hebrew": "השתמש בזה כדי לגשת ל {prefix}צייד"
         },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "durability": 4,
-        "default_use": false,
         "type": "Tool",
         "rarity": "Common",
         "buy": 25000,
@@ -26,6 +30,11 @@
             "english": "Why not have some bread 🍞",
             "hebrew": "יאמ יאמ לחם 🍞"
         },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "durability": 1,
         "type": "Tool",
         "buy": 5000,
@@ -37,6 +46,11 @@
         "name": {
             "english": "Skunk",
             "hebrew": "בואש"
+        },
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": false,
+            "TRADEABLE": true
         },
         "durability": -1,
         "type": "Sellable",
@@ -58,6 +72,11 @@
             "english": "Use this to expand your bank space!",
             "hebrew": "השתמש בזה על מנת להגדיל את המקום בבנק שלך!"
         },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "rarity": "Uncommon"
     },
     {
@@ -66,6 +85,11 @@
         "name": {
             "english": "Padlock",
             "hebrew": "מנעול"
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
         },
         "description": {
             "english": "Lock your wallet to prevent others from accessing it. *ONE-TIME USE.*\nThere is a chance the padlock would break and not protect your wallet.",
@@ -87,6 +111,11 @@
             "english": "Throw a box of sand at someone's eyes and prevent them from robbing anyone for 30 minutes.",
             "hebrew": "תזרוק חול לעיניים של מישהו ותמנע מהם לגנוב מכולם ל30 דקות."
         },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "buy": 15000,
         "sell": 1500,
         "durability": 1,
@@ -102,6 +131,11 @@
         "description": {
             "english": "If someone tries to steal from you they have a 50% of dying from going KABOOM! (Lasts 24 hours)",
             "hebrew": "אם מישהו מנסה לגנוב ממך יש להם 50% של ללכת *קאבום* ולמות (פעיל ל24 שעות מהשימוש)"
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
         },
         "buy": 20000,
         "sell": 2000,
@@ -119,6 +153,11 @@
             "english": "A bomb that explodes coins for others to pick up. Anywhere from 2,00 to 15,000 coins.",
             "hebrew": "פצצה שמתפוצצת כמטבעות בשביל אחרים לאסוף. מוציא בין 2,000 ל15,000 מטבעות."
         },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "buy": 18000,
         "sell": 4000,
         "durability": 1,
@@ -127,7 +166,6 @@
     {
         "id": "lifesaver",
         "type": "Power-up",
-        "default_use": false,
         "name": {
             "english": "Lifesaver",
             "hebrew": "מציל חיים"
@@ -136,15 +174,19 @@
             "english": "Having one in the inventory prevents death. This is used before the apple effects.",
             "hebrew": "אם יש לך מציל חיים עליך זה ימנע את מותך. נעשה שימוש בזה לפני האפקט של התפוח."
         },
-        "buy": 70000,
-        "sell": 7000,
+        "flags": {
+            "CONSUMABLE": false,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
+        "buy": 90000,
+        "sell": 9000,
         "durability": 1,
         "rarity": "Uncommon"
     },
     {
         "id": "apple",
         "type": "Power-up",
-        "default_use": true,
         "name": {
             "english": "Apple",
             "hebrew": "תפוח"
@@ -152,6 +194,11 @@
         "description": {
             "english": "Eating this once a day makes it so you don't lose any inventory or active items if you die.",
             "hebrew": "לאכול את זה פעם ביום יגרום לכך שאם תמות לא תאבד מוצרים שעליך או אפקטים של מוצרים פעילים."
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
         },
         "buy": 8000,
         "sell": 800,
@@ -169,6 +216,11 @@
             "english": "Disguise your identity on the leaderboard and robber's wishlist for 1 week.",
             "hebrew": "תחביא את הזהות שלך על רשימת המובילים ועל משאלות הגנב לשבוע אחד."
         },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
+        },
         "buy": 25000,
         "sell": 2500,
         "durability": 1,
@@ -184,6 +236,11 @@
         "description": {
             "english": "Will give you a list of users that aren't passive. Basically, anyone you can rob!",
             "hebrew": "נותן לך רשימה של כל המשתמשים שלא במצב פאסיבי. בקיצור, כל מי שאתה יכול לשדוד!"
+        },
+        "flags": {
+            "CONSUMABLE": true,
+            "PURCHASEABLE": true,
+            "TRADEABLE": true
         },
         "buy": 50000,
         "sell": 5000,

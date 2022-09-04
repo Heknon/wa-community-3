@@ -72,7 +72,7 @@ export default class StealCommand extends EconomyCommand {
         }
 
         const sandbox = user.activeItems.find(
-            (e) => e.itemId === "sandbox" && !hasActiveItemExpired(e),
+            (e) => e.itemId === "boxofsand" && !hasActiveItemExpired(e),
         );
 
         if (sandbox) {
@@ -87,6 +87,7 @@ export default class StealCommand extends EconomyCommand {
                     },
                 },
             });
+
             return false;
         }
 
