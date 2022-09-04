@@ -6,6 +6,8 @@ import BegCommand from "./beg";
 import CrimeCommand from "./crime";
 import DailyCommand from "./daily";
 import DepositCommand from "./deposit";
+import DigCommand from "./dig";
+import FishCommand from "./fish";
 import HighlowCommand from "./highlow";
 import HuntCommand from "./hunt";
 import ActiveItemsCommand from "./inventory/activeitems";
@@ -44,4 +46,6 @@ export {
     ActiveItemsCommand,
     MonthlyCommand,
     WeeklyCommand,
+    FishCommand,
+    DigCommand
 }

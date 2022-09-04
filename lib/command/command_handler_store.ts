@@ -60,6 +60,8 @@ import {
     ActiveItemsCommand,
     WeeklyCommand,
     MonthlyCommand,
+    DigCommand,
+    FishCommand,
 } from "./commands/economy";
 import ResponseCommand from "./commands/fun/response";
 import ImageCommand, {ImageGenCommandData} from "./image_command";
@@ -124,6 +126,8 @@ export default class CommandHandlerStore {
             ShopCommand,
             BuyCommand,
             SellCommand,
+            DepositCommand,
+            WithdrawCommand,
             DailyCommand,
             WeeklyCommand,
             MonthlyCommand,
@@ -132,9 +136,9 @@ export default class CommandHandlerStore {
             PostMemesCommand,
             HighlowCommand,
             BegCommand,
-            DepositCommand,
-            WithdrawCommand,
             HuntCommand,
+            DigCommand,
+            FishCommand,
             // inventory - items
             UseItemCommand,
             BaltopCommand,

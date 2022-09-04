@@ -48,7 +48,7 @@ export const userCalculateNetBalance = async (
         userMoney.wallet +
         user.items.reduce((acc, {quantity, itemId}) => {
             const item = items.find((e) => e.id === itemId);
-            return acc + (item?.buy ?? 0) * quantity;
+            return acc + (item?.value ?? 0) * quantity;
         }, 0)
     );
 };
@@ -173,7 +173,7 @@ export const userDoDeath = async (chat: FullChat, user: FullUser, message: Messa
     if (hasLifesaver) {
         const lifesaverItem = getItem("lifesaver") as Lifesaver;
         await lifesaverItem?.use(chat, user, message);
-        await userRegisterItemUse(user, lifesaverItem);
+        await userRegisterItemUse(user, lifesaverItem.data);
         return;
     }
 
