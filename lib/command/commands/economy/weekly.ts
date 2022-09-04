@@ -85,7 +85,10 @@ export default class WeeklyCommand extends EconomyCommand {
     }
 
     async onBlocked(data: Message, blockedReason: BlockedReason, chat: Chat) {
-        if (blockedReason == BlockedReason.BadAccountType) {
+        if (
+            blockedReason == BlockedReason.BadAccountType ||
+            blockedReason == BlockedReason.BadGroupAccountType
+        ) {
             await data.reply(languages.not_donor[this.langCode], true, {
                 placeholder: {
                     chat,
