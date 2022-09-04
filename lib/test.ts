@@ -1,27 +1,13 @@
-import moment from "moment";
-import queue from "queue";
-import {wait} from "./utils/async_utils";
+import {jidDecode} from "@adiwajshing/baileys";
+import {PhoneNumberUtil} from "google-libphonenumber";
+const phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance();
 
-function a() {
-    const q = new queue({results: [], autostart: true, concurrency: 1, timeout: undefined});
-    q.autostart = true;
+export const getJidLanguage = async (jid: string) => {
+    const phone = phoneUtil.parse("+" + jidDecode(jid)?.user);
+    return phone;
+};
 
-    q.on("success", (res, job) => {
-        console.log("The result is:", res);
-    });
-
-    q.push(async (cb) => {
-        console.log("hello");
-        console.log(moment().format("HH:mm:ss"));
-        cb?.(undefined, "hello");
-        return await wait(3000);
-    });
-
-    q.push(async (cb) => {
-        console.log("heyA");
-        console.log(moment().format("HH:mm:ss"));
-        return wait(3000);
-    });
-}
-
-a();
+(async () => {
+    const res = await getJidLanguage("1585551784@s.whatsapp.net");
+    console.log(res.getCountryCode());
+})();

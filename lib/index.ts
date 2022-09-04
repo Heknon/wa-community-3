@@ -80,13 +80,7 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
                 return;
             }
 
-            let chat = await prisma.chat.findUnique({
-                where: {jid: chatJid},
-                include: {
-                    responses: true,
-                    chatRank: chatRankInclusion,
-                },
-            });
+            let chat = await getFullChat(chatJid);
             const chatSubject = whatsappBot.store.groupMetadata[chatJid]?.subject;
             if (!chat) {
                 try {
