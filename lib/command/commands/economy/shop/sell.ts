@@ -89,7 +89,7 @@ export default class SellCommand extends EconomyCommand {
         if (amount > 1) {
             const confirmMessage = await this.sendConfirmMessage(message, placeholder);
             const confirmResponse = await this.validatedWaitForInteractionWith(
-                confirmMessage!,
+                message!,
                 async (msg) => {
                     await this.sendConfirmMessage(message, placeholder);
                 },
