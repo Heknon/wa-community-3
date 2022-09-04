@@ -728,7 +728,7 @@
         "id": "fakeid",
         "name": {
             "english": "Fake ID",
-            "hebrew": "תעודת זהות מזוייפת"
+            "hebrew": "זהות מזוייפת"
         },
         "description": {
             "english": "Disguise your identity on the `{prefix}top` command",
@@ -753,7 +753,7 @@
         "id": "robberswishlist",
         "name": {
             "english": "Robbers Wishlist",
-            "hebrew": "רשימת שודדים"
+            "hebrew": "משאלות הגנב"
         },
         "description": {
             "english": "A robber's best friend! List all users able to be robbed within a server!",
