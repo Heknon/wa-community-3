@@ -8,6 +8,7 @@ import {getUserRandom} from "../../../user/user";
 import {choice, weightedChoice} from "./utils";
 import {getItemData} from "../../../economy/items";
 import {getInventory, giveItemToUser, userRegisterItemUse} from "../../../user/inventory";
+import { AccountType } from "@prisma/client";
 
 export default class FishCommand extends EconomyCommand {
     private language: typeof languages.commands.fish[Language];
@@ -22,6 +23,11 @@ export default class FishCommand extends EconomyCommand {
             category: lang.category,
             description: lang.description,
             usage: lang.usage,
+            cooldowns: new Map([
+                [AccountType.USER, 50 * 1000],
+                [AccountType.DONOR, 40 * 1000],
+                [AccountType.SPONSOR, 30 * 1000],
+            ]),
         });
 
         this.language = lang;

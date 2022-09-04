@@ -11,6 +11,7 @@ import {createUser} from "../../../user/database_interactions";
 import {choice, weightedChoice, weightedReward} from "./utils";
 import {getItemData} from "../../../economy/items";
 import {getInventory, giveItemToUser, userRegisterItemUse} from "../../../user/inventory";
+import { AccountType } from "@prisma/client";
 
 export default class HuntCommand extends EconomyCommand {
     private language: typeof languages.commands.hunt[Language];
@@ -25,6 +26,11 @@ export default class HuntCommand extends EconomyCommand {
             category: lang.category,
             description: lang.description,
             usage: lang.usage,
+            cooldowns: new Map([
+                [AccountType.USER, 50 * 1000],
+                [AccountType.DONOR, 40 * 1000],
+                [AccountType.SPONSOR, 30 * 1000],
+            ]),
         });
 
         this.language = lang;
