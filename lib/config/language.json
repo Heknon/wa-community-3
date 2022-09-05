@@ -2545,12 +2545,12 @@
     },
     "cooldown": {
         "english": {
-            "message": "You have to wait {time} {second} before using this command again.\nYou can reduce this a lot by donating!",
-            "long": "You have to wait {time} before using this command again.\nYou can reduce this a lot by donating!"
+            "message": "You have to wait {time} {second} before using this command again.\nYou can reduce this a lot by donating!\n\nCan't donate? Click here (ad): {link}",
+            "long": "You have to wait {time} before using this command again.\nYou can reduce this a lot by donating!\n\nCan't donate? Click here (ad): {link}"
         },
         "hebrew": {
-            "message": "אתה לא יכול להשתמש בפקודה זו לעוד {time} {second}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!",
-            "long": "אתה לא יכול להשתמש בפקודה זו לעוד {time}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!"
+            "message": "אתה לא יכול להשתמש בפקודה זו לעוד {time} {second}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!\n\nלא יכולים לתרום? לחצו כאן (פרסומת): {link}",
+            "long": "אתה לא יכול להשתמש בפקודה זו לעוד {time}.\nאתה יכול להפחית את זה בהרבה על ידי תרומה!\n\nלא יכולים לתרום? לחצו כאן (פרסומת): {link}"
         }
     },
     "image_gen": {
@@ -2688,8 +2688,8 @@
         "hebrew": "חיכיתי מספיק 😤 תנסה שוב"
     },
     "not_donor": {
-        "english": "This command is only for donators\nDonate here: https://payboxapp.page.link/VNQQ1AAknBKoneF79",
-        "hebrew": "הפקודה הזו רק לתורמים\nתרמו כאן: https://payboxapp.page.link/VNQQ1AAknBKoneF79",
+        "english": "This command is only for donators\nDonate here: https://payboxapp.page.link/VNQQ1AAknBKoneF79\n\nIf you can't donate please press this link (ad): {link}",
+        "hebrew": "הפקודה הזו רק לתורמים\nתרמו כאן: https://payboxapp.page.link/VNQQ1AAknBKoneF79\n\nאם אתם לא יכולים לתרום בבקשה תלחצו על הקישור הזה (פרסומת): {link}",
         "buttons": {
             "english": "{prefix}donate",
             "hebrew": "{prefix}תרומה"

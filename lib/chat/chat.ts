@@ -18,6 +18,7 @@ import {AccountType, BotResponse, Chat} from "@prisma/client";
 import moment from "moment";
 import "moment-duration-format";
 import {messagingService} from "../messaging";
+import { choice } from "../command/commands/economy/utils";
 
 export const handleChatMessage = async (message: Message, sender: User, chat: FullChat) => {
     if (message.fromBot) return;
@@ -71,6 +72,7 @@ export const handleChatMessage = async (message: Message, sender: User, chat: Fu
                                       .duration(timeToWait, "seconds")
                                       .format("d[d] h[h], m[m] s[s]"),
                             second: pluralForm(timeToWait, languages.times[chat.language].second),
+                            link: choice(["https://intorterraon.com/4/5353952", "https://betzapdoson.com/4/5353958"])
                         },
                         chat: this,
                     },
@@ -139,6 +141,9 @@ export const processMessageForDonorAlerts = async (user: User, chat: FullChat) =
         {
             placeholder: {
                 chat,
+                custom: {
+                    link: choice(["https://intorterraon.com/4/5353952", "https://betzapdoson.com/4/5353958"])
+                }
             },
         },
     );
