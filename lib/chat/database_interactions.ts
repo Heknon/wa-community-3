@@ -7,14 +7,18 @@ import {PhoneNumberUtil} from "google-libphonenumber";
 import {Language} from "@prisma/client";
 const phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance();
 
-export const createChat = async (jid: string, subject?: string) => {
+export const createChat = async (jid: string) => {
     return prisma.chat.create({
         data: {
-            name: subject ?? jid,
+            name: "",
             prefix: config.default_command_prefix,
             type: isJidGroup(jid) ? "GROUP" : isJidUser(jid) ? "DM" : "DM",
             jid: jid,
-            language: await getLanguageFromJid(jid),
+            language: await getLanguageFromJid(jid).catch((e) => {
+                console.log("ERROR CALCULATING LANGUAGE")
+                console.error(e);
+                return Language.hebrew;
+            }),
         },
         include: {
             responses: true,

@@ -81,10 +81,9 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
             }
 
             let chat = await getFullChat(chatJid);
-            const chatSubject = whatsappBot.store.groupMetadata[chatJid]?.subject;
             if (!chat) {
                 try {
-                    chat = await createChat(chatJid, chatSubject);
+                    chat = await createChat(chatJid);
                 } catch (e) {
                     logger.error(e);
                     chat = await getFullChat(chatJid);
@@ -93,22 +92,6 @@ function registerEventHandlers(eventListener: BaileysEventEmitter, bot: BotClien
 
             if (!chat) {
                 return logger.error(`Failed to fetch chat.`, {jid: chatJid});
-            }
-
-            if (
-                chatSubject &&
-                typeof chatSubject === "string" &&
-                chat.type == "GROUP" &&
-                chat.name != chatSubject
-            ) {
-                await prisma.chat.update({
-                    where: {
-                        jid: chatJid,
-                    },
-                    data: {
-                        name: chatSubject,
-                    },
-                });
             }
 
             if (!chat.sentDisclaimer) {
