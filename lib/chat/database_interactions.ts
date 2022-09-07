@@ -5,6 +5,7 @@ import config from "../config/config.json";
 import {whatsappBot} from "..";
 import {PhoneNumberUtil} from "google-libphonenumber";
 import {Language} from "@prisma/client";
+import { logger } from "../logger";
 const phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance();
 
 export const createChat = async (jid: string) => {
@@ -24,6 +25,10 @@ export const createChat = async (jid: string) => {
             responses: true,
             chatRank: chatRankInclusion,
         },
+    }).catch(e => {
+        logger.error("CREATION ERROR")
+        console.error(e);
+        return null;
     });
 };
 
@@ -38,7 +43,12 @@ export const getFullChat = async (jid: string): Promise<FullChat | null> => {
                 chatRank: chatRankInclusion,
             },
         })
-        .catch((err) => null);
+        .catch((err) => {
+        logger.error("FETCHING ERROR")
+
+            console.error(err)
+            return null;
+        });
 };
 
 export const chatRankInclusion = {
