@@ -5,31 +5,35 @@ import config from "../config/config.json";
 import {whatsappBot} from "..";
 import {PhoneNumberUtil} from "google-libphonenumber";
 import {Language} from "@prisma/client";
-import { logger } from "../logger";
+import {logger} from "../logger";
 const phoneUtil: PhoneNumberUtil = PhoneNumberUtil.getInstance();
 
 export const createChat = async (jid: string) => {
-    return prisma.chat.create({
-        data: {
-            name: "",
-            prefix: config.default_command_prefix,
-            type: isJidGroup(jid) ? "GROUP" : isJidUser(jid) ? "DM" : "DM",
-            jid: jid,
-            language: await getLanguageFromJid(jid).catch((e) => {
-                console.log("ERROR CALCULATING LANGUAGE")
-                console.error(e);
-                return Language.hebrew;
-            }),
-        },
-        include: {
-            responses: true,
-            chatRank: chatRankInclusion,
-        },
-    }).catch(e => {
-        logger.error("CREATION ERROR")
+    const language = await getLanguageFromJid(jid).catch((e) => {
+        console.log("ERROR CALCULATING LANGUAGE");
         console.error(e);
-        return null;
+        return Language.hebrew;
     });
+
+    return prisma.chat
+        .create({
+            data: {
+                name: "",
+                prefix: config.default_command_prefix,
+                type: isJidGroup(jid) ? "GROUP" : isJidUser(jid) ? "DM" : "DM",
+                jid: jid,
+                language: language,
+            },
+            include: {
+                responses: true,
+                chatRank: chatRankInclusion,
+            },
+        })
+        .catch((e) => {
+            logger.error("CREATION ERROR");
+            console.error(e);
+            return null;
+        });
 };
 
 export const getFullChat = async (jid: string): Promise<FullChat | null> => {
@@ -44,9 +48,8 @@ export const getFullChat = async (jid: string): Promise<FullChat | null> => {
             },
         })
         .catch((err) => {
-        logger.error("FETCHING ERROR")
-
-            console.error(err)
+            logger.error("FETCHING ERROR");
+            console.error(err);
             return null;
         });
 };
@@ -103,9 +106,10 @@ export const getJidCountryCode = async (jid: string): Promise<string[]> => {
         return [phone.getCountryCode()?.toString()].filter((c) => c !== undefined) as string[];
     } else if (isJidGroup(jid)) {
         const chat = await whatsappBot.client?.groupMetadata(jid);
-        const countryCodes = chat?.participants.map((participant) =>
-            phoneUtil.parse(jidDecode(participant.id)?.user)?.getCountryCode()?.toString(),
-        );
+        const countryCodes = chat?.participants.map((participant) => {
+            const phone = jidDecode(participant.id)?.user;
+            return phone ? phoneUtil.parse('+' + phone).getCountryCode()?.toString() : undefined;
+        });
 
         return (countryCodes?.filter((countryCode) => countryCode !== undefined) ?? []) as string[];
     } else {
